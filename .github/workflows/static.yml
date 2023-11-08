@@ -1,9 +1,9 @@
 # Simple workflow for deploying static content to GitHub Pages
-name: Deploy static content to Pages
+name: Build Static Site
 
 on:
   # Runs on pushes targeting the default branch
-  push:
+  pull_request:
     branches: ["main"]
 
   # Allows you to run this workflow manually from the Actions tab
@@ -43,7 +43,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: Static-Site-Assets
-          path: public/usidiamond.github.io/
+          path: public/neurodiversity-main/
 
   # Single deploy job since we're just deploying
   deploy:
