@@ -1,10 +1,17 @@
-# UsidiamondGithubIo
+# Build Instructions
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.1.5.
+## Docker with Build of Angular Application Directly
+
+First run the npm build
+`npm run-script build`
+Then Run the following to create the docker image
+`npm run-script dockerBuild`
+And then run the image with docker.
+`npm run-script dockerRun`
 
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Run `npm run-script start-dev` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
 ## Code scaffolding
 
@@ -20,7 +27,17 @@ Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.
 
 ## Running end-to-end tests
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+Make sure that you have build the application docker image running via
+
+`npm run dockerBuild`
+
+and then,
+
+`npm run dockerRun`
+
+which will make the application available locally through <http://localhost:8080>
+
+Then run `npm run-script e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
 
 ## Further help
 
