@@ -3,8 +3,8 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "outDir": "./out-tsc/app",
-    "types": []
+    "types": ["mocha", "node"]
   },
-  "files": ["src/main.ts"],
+  "files": ["src/main.ts", "src/test.ts", "src/polyfills.ts"],
   "include": ["src/**/*.d.ts"]
 }
