@@ -53,7 +53,7 @@
     "@types/jasmine": "~4.0.0",
     "@types/mocha": "^10.0.4",
     "@types/node": "^20.4.1",
-    "chromedriver": "^114.0.2",
+    "chromedriver": "^119.0.1",
     "cucumber": "^6.0.7",
     "cucumber-html-reporter": "^6.0.0",
     "cucumber-pretty": "^6.0.1",
