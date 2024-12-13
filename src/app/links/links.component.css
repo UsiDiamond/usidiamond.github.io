@@ -9,12 +9,13 @@ p {
   align-items: center;
   display: grid;
   grid-template-areas: " link link link ";
-  grid-gap: 5vw;
+  grid-gap: 20em;
   padding-bottom: 2em;
 }
 
 .link-item {
   text-align: center;
+  min-height: fit-content;
   width: 24vw;
   height: 24vh;
   max-width: 24vh;
