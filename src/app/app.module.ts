@@ -9,10 +9,17 @@ import { HeaderComponent } from './header/header.component';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { MenuComponent } from './menu/menu.component';
 import { RouterModule } from '@angular/router';
+import { LinksComponent } from './links/links.component';
 
 @NgModule({
   declarations: [AppComponent, FooterComponent, HomeComponent, HeaderComponent],
-  imports: [BrowserModule, AppRoutingModule, MenuComponent, RouterModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    MenuComponent,
+    RouterModule,
+    LinksComponent,
+  ],
   exports: [],
   providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }],
   bootstrap: [AppComponent],
