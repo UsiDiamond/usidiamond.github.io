@@ -1,1 +1,1 @@
-# Usi's Personal Website
+# Usi's Personal Website [![Deploy static content to Pages](https://github.com/UsiDiamond/usidiamond.github.io/actions/workflows/deploy.yml/badge.svg)](https://github.com/UsiDiamond/usidiamond.github.io/actions/workflows/deploy.yml)
