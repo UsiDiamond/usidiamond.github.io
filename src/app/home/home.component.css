@@ -3,3 +3,13 @@ p {
   font-style: italic;
   font-weight: 600;
 }
+
+.links-grid {
+  display: grid;
+  grid-template-areas: " link link link ";
+  grid-gap: 1em;
+}
+
+.link-item {
+  padding: 1em;
+}
