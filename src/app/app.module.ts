@@ -5,20 +5,13 @@ import { AppComponent } from './app.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
-import { AboutComponent } from './about/about.component';
 import { HeaderComponent } from './header/header.component';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { MenuComponent } from './menu/menu.component';
 import { RouterModule } from '@angular/router';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    FooterComponent,
-    HomeComponent,
-    AboutComponent,
-    HeaderComponent,
-  ],
+  declarations: [AppComponent, FooterComponent, HomeComponent, HeaderComponent],
   imports: [BrowserModule, AppRoutingModule, MenuComponent, RouterModule],
   exports: [],
   providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }],
