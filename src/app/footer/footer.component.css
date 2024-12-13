@@ -23,6 +23,13 @@
   margin-bottom: 5em;
 }
 
+hr {
+  width: 95%;
+  margin: auto auto;
+  padding-top: 2em;
+  padding-bottom: 1em;
+  color: rgb(255, 255, 255);
+}
 @media screen and (max-width: 450px) {
   .creatorsig {
     position: relative;
