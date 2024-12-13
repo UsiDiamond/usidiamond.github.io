@@ -1,14 +1,15 @@
 .creatorsig {
-  position: relative;
-  bottom: -1em;
   float: left;
   color: rgb(190, 190, 190);
   font-weight: 600;
   font-family: MoreSugar;
   font-size: smaller;
+  position: relative;
 }
 
 .github {
+  height: 1em;
+  position: relative;
   float: right;
   text-align: right;
   color: rgb(190, 190, 190);
@@ -24,13 +25,15 @@
 
 @media screen and (max-width: 450px) {
   .footer-wrapper {
+    height: 1em;
+    position: relative;
     display: list-item;
     margin-bottom: 3vh;
   }
 
   .creatorsig {
+    height: 1em;
     position: relative;
-    bottom: -1em;
     float: right;
   }
 
