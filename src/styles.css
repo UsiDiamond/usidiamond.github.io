@@ -28,7 +28,7 @@
 }
 .menu-content {
   grid-area: menu;
-    background-color: rgba(255, 255, 255, 0.096);
+  background-color: rgba(255, 255, 255, 0.096);
   border-radius: 25px;
   margin: 0.25em;
   padding: 0.25em;
