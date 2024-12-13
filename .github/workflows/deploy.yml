@@ -44,7 +44,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: Static-Built-Site
-          path: public/thejoshieman.github.io/browser
+          path: public/usidiamond.github.io/browser
 
   # Single deploy job since we're just deploying
   deploy:
