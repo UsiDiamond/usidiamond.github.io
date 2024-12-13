@@ -8,7 +8,7 @@
     }
   },
   "projects": {
-    "usidiamond": {
+    "usidiamond.github.io": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -16,12 +16,15 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "public/usidiamond.github.io",
+            "outputPath": {
+              "base": "public/usidiamond.github.io"
+            },
             "index": "src/index.html",
-            "main": "src/main.ts",
-            "polyfills": "src/polyfills.ts",
+            "polyfills": [
+              "src/polyfills.ts"
+            ],
             "tsConfig": "tsconfig.app.json",
             "assets": ["src/favicon.ico", "src/assets"],
             "styles": [
@@ -32,17 +35,16 @@
               "includePaths": ["src/styles"]
             },
             "scripts": [
-              "node_modules/jquery/dist/jquery.min.js",
               "node_modules/popper.js/dist/umd/popper.min.js",
               {
                 "input": "node_modules/bootstrap/dist/js/bootstrap.bundle.js",
                 "inject": false
               }
-            ]
+            ],
+            "browser": "src/main.ts"
           },
           "configurations": {
             "production": {
-              "buildOptimizer": true,
               "optimization": true,
               "budgets": [
                 {
@@ -65,10 +67,8 @@
               "outputHashing": "all"
             },
             "development": {
-              "buildOptimizer": true,
               "optimization": true,
-              "vendorChunk": true,
-              "extractLicenses": false,
+              "extractLicenses": true,
               "sourceMap": true,
               "namedChunks": true
             }
@@ -79,10 +79,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "usidiamond.github.io:build:production"
+              "buildTarget": "usidiamond.github.io:build:production"
             },
             "development": {
-              "browserTarget": "usidiamond.github.io:build:development"
+              "buildTarget": "usidiamond.github.io:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -90,7 +90,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "usidiamond.github.io:build"
+            "buildTarget": "usidiamond.github.io:build"
           }
         },
         "test": {
@@ -107,5 +107,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": false
   }
 }

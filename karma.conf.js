@@ -8,7 +8,7 @@ module.exports = function (config) {
     plugins: [
       require("karma-jasmine"),
       require("karma-chrome-launcher"),
-      require("karma-jasmine-html-reporter"),
+      require("karma-junit-reporter"),
       require("karma-coverage"),
       require("@angular-devkit/build-angular/plugins/karma"),
     ],
@@ -21,27 +21,23 @@ module.exports = function (config) {
       },
       clearContext: false, // leave Jasmine Spec Runner output visible in browser
     },
-    jasmineHtmlReporter: {
-      suppressAll: true, // removes the duplicated traces
-    },
-    coverageReporter: {
-      dir: require("path").join(__dirname, "./coverage/usidiamond/"),
-      subdir: ".",
-      reporters: [{ type: "html" }, { type: "text-summary" }],
-    },
-    reporters: ["progress", "kjhtml"],
+    junitReporter: {
+      outputDir: require("path").join(__dirname, "./coverage/usidiamond/"),
+      outputFile: 'test-results.xml'
+  },
+    reporters: ["progress", "junit", "coverage"],
     port: 9876,
     colors: true,
     logLevel: config.LOG_INFO,
-    autoWatch: true,
-    browsers: ["ChromeHeadlessNoSandbox"],
+    autoWatch: false,
+    browsers: ['Chrome', 'ChromeHeadless', 'ChromeHeadlessCI'],
     customLaunchers: {
-      ChromeHeadlessNoSandbox: {
-        base: "ChromeHeadless",
-        flags: ["--no-sandbox"],
+      ChromeHeadlessCI: {
+        base: 'ChromeHeadless',
+        flags: ['--no-sandbox']
       },
     },
-    singleRun: false,
+    singleRun: true,
     restartOnFileChange: true,
   });
 };
