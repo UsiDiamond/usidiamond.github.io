@@ -60,7 +60,7 @@
     "cucumber-html-reporter": "^6.0.0",
     "cucumber-pretty": "^6.0.1",
     "fs": "^0.0.1-security",
-    "geckodriver": "^4.4.2",
+    "geckodriver": "^5.0.0",
     "gh-pages": "^6.1.1",
     "handlebars": "^4.7.8",
     "jasmine-core": "~5.1.2",
