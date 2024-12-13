@@ -56,7 +56,7 @@
   grid-gap: 1em;
   width: 100vw;
   height: 100vh;
-  overflow-y: scroll;
+  overflow-y:auto;
   --y-0: 80%;
   --x-0: 85%;
   --c-0: hsla(266.99999999999983, 1%, 12%, 1);
