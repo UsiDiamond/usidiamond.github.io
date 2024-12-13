@@ -1,6 +1,6 @@
 {
   "name": "usidiamond.github.io",
-  "version": "0.9.9",
+  "version": "1.0.0",
   "scripts": {
     "e2e:test": "./node_modules/.bin/nightwatch --env 'chrome' --config './nightwatch.conf.js'",
     "ng": "ng",
