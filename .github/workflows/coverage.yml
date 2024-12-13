@@ -25,4 +25,4 @@ jobs:
         if: always()
         with:
           files: |
-            coverage/thejoshieman/**/test-results.xml
+            coverage/usidiamond/**/test-results.xml
