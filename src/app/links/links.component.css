@@ -22,10 +22,12 @@ p {
   background-color: rgba(255, 255, 255, 0.096);
   border-radius: 15px;
 }
+
 .pronouns-svg {
   width: 45%;
   height: 45%;
 }
+
 @media screen and (max-width: 1000px) {
   .link-item {
     height: 20px;
