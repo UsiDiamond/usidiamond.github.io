@@ -1,7 +1,7 @@
 /* Fancy Font */
 @font-face {
   font-family: MoreSugar;
-  src: url("../assets/MoreSugar-Thin.ttf") format("truetype");
+  src: url("assets/MoreSugar-Thin.ttf") format("truetype");
 }
 
 /* Moving background definitions */
