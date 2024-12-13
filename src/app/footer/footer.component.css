@@ -19,7 +19,7 @@
 .footer-wrapper {
   padding-left: 2em;
   padding-right: 2em;
-  padding-bottom: 2em;
+  margin-bottom: 5em;
 }
 
 @media screen and (max-width: 450px) {
@@ -44,5 +44,6 @@
     padding-left: 2em;
     padding-right: 2em;
     padding-bottom: 5em;
+    margin-bottom: auto;
   }
 }
