@@ -4,11 +4,11 @@
   font-weight: 600;
   font-family: MoreSugar;
   font-size: smaller;
+  height: -2em;
   position: relative;
 }
 
 .github {
-  height: 1em;
   position: relative;
   float: right;
   text-align: right;
@@ -24,25 +24,19 @@
 }
 
 @media screen and (max-width: 450px) {
-  .footer-wrapper {
-    height: 1em;
-    position: relative;
-    display: list-item;
-    margin-bottom: 3vh;
-  }
-
   .creatorsig {
-    height: 1em;
     position: relative;
     float: right;
   }
 
   .github {
-    padding: 1em;
+    padding-bottom: 1em;
     float: right;
     text-align: right;
   }
   .footer-wrapper {
+    position: relative;
+    display: list-item;
     padding: 1em;
     padding-left: 2em;
     padding-right: 2em;
