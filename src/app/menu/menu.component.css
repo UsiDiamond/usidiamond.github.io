@@ -22,7 +22,7 @@ a {
 }
 
 .active-route::after {
-  content: " (current)";
+  content: " UwU";
 }
 
 .menu-label {
