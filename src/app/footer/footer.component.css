@@ -19,5 +19,31 @@
 .footer-wrapper {
   padding-left: 2em;
   padding-right: 2em;
-  padding-bottom: 2em;
+  margin-bottom: 5em;
+}
+
+@media screen and (max-width: 450px) {
+  .footer-wrapper {
+    display: list-item;
+    margin-bottom: 3vh;
+  }
+
+  .creatorsig {
+    position: relative;
+    bottom: -1em;
+    float: right;
+  }
+
+  .github {
+    padding: 1em;
+    float: right;
+    text-align: right;
+  }
+  .footer-wrapper {
+    padding: 1em;
+    padding-left: 2em;
+    padding-right: 2em;
+    padding-bottom: 5em;
+    margin-bottom: auto;
+  }
 }
