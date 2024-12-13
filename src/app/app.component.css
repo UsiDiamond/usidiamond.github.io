@@ -33,6 +33,7 @@
   padding: 0.25em;
   margin-left: 1vw;
   margin-right: 1vw;
+  max-width: 95vw;
 }
 .left-content {
   grid-area: left;
@@ -45,6 +46,7 @@
 .footer-content {
   grid-area: footer;
 }
+
 .grid-wrapper {
   display: grid;
   color: rgb(190, 190, 190);
