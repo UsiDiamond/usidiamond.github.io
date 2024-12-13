@@ -1,0 +1,23 @@
+.creatorsig {
+  position: relative;
+  bottom: -1em;
+  float: left;
+  color: rgb(190, 190, 190);
+  font-weight: 600;
+  font-family: MoreSugar;
+  font-size: smaller;
+}
+
+.github {
+  float: right;
+  text-align: right;
+  color: rgb(190, 190, 190);
+  font-weight: 600;
+  font-family: MoreSugar;
+  font-size: smaller;
+}
+.footer-wrapper {
+  padding-left: 2em;
+  padding-right: 2em;
+  padding-bottom: 2em;
+}

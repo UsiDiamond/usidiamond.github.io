@@ -1,0 +1,30 @@
+@media screen and (min-width: 300px) {
+  .sidenav {
+    padding-left: 1.5em;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+  }
+}
+
+a {
+  text-align: left;
+  font-weight: bold;
+  color: rgb(131, 131, 131);
+  text-decoration: none;
+  font-family: MoreSugar;
+}
+
+.active-route {
+  text-align: left;
+  text-decoration: underline !important;
+  font-weight: bold !important;
+  color: rgb(190, 190, 190);
+}
+
+.active-route::after {
+  content: " (current)";
+}
+
+.menu-label {
+  min-width: 24vh;
+}
