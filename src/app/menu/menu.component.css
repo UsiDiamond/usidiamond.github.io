@@ -20,6 +20,7 @@ a {
 .menu-label {
   width: 200px;
 }
+
 @media screen and (max-width: 450px) {
   .menu-label {
     width: 170px;

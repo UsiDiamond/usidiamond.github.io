@@ -4,25 +4,6 @@ p {
   font-weight: 600;
 }
 
-.links-grid {
-  justify-content: center;
-  align-items: center;
-  display: grid;
-  grid-template-areas: " link link link ";
-  grid-gap: 5vw;
-  padding-bottom: 2em;
-}
-
-.link-item {
-  text-align: center;
-  width: 24vw;
-  height: 24vh;
-  max-width: 24vh;
-  padding: 0.75em;
-  background-color: rgba(255, 255, 255, 0.096);
-  border-radius: 15px;
-}
-
 .section {
   font-family: MoreSugar;
   font-weight: 300;
