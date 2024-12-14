@@ -20,7 +20,7 @@ import { LinksComponent } from './home/links/links.component';
     RouterModule,
     LinksComponent,
   ],
-  schemas:[CUSTOM_ELEMENTS_SCHEMA],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   exports: [],
   providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }],
   bootstrap: [AppComponent],
