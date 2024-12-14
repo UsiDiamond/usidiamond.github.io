@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -9,7 +9,7 @@ import { HeaderComponent } from './header/header.component';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { MenuComponent } from './menu/menu.component';
 import { RouterModule } from '@angular/router';
-import { LinksComponent } from './links/links.component';
+import { LinksComponent } from './home/links/links.component';
 
 @NgModule({
   declarations: [AppComponent, FooterComponent, HomeComponent, HeaderComponent],
@@ -20,6 +20,7 @@ import { LinksComponent } from './links/links.component';
     RouterModule,
     LinksComponent,
   ],
+  schemas:[CUSTOM_ELEMENTS_SCHEMA],
   exports: [],
   providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }],
   bootstrap: [AppComponent],
