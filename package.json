@@ -55,7 +55,7 @@
     "@types/nightwatch": "3.0.1",
     "@types/node": "~22.10.2",
     "chai": "~5.1.2",
-    "chromedriver": "~126.0.1",
+    "chromedriver": "~131.0.3",
     "cucumber": "~6.0.7",
     "cucumber-html-reporter": "~6.0.0",
     "cucumber-pretty": "~6.0.1",
