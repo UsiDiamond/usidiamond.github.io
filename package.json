@@ -53,7 +53,7 @@
     "@types/jasmine": "~5.1.4",
     "@types/mocha": "~10.0.6",
     "@types/nightwatch": "3.0.1",
-    "@types/node": "~20.14.2",
+    "@types/node": "~22.10.2",
     "chai": "~5.1.2",
     "chromedriver": "~126.0.1",
     "cucumber": "~6.0.7",
