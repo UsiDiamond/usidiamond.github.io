@@ -27,7 +27,7 @@
   min-height: 100vh;
   display: grid;
   color: rgb(190, 190, 190);
-  background-color: rgba(0, 0, 0, 0.425);
+  background-color: rgb(53, 0, 70);
   grid-template-areas:
     " header "
     " menu  "
