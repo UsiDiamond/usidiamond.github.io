@@ -1,0 +1,35 @@
+.header-content {
+  grid-area: header;
+  text-align: center;
+  padding-top: 1em;
+}
+.menu-content {
+  grid-area: menu;
+  background-color: rgba(255, 255, 255, 0.096);
+  border-radius: 25px;
+  padding: 0.25em;
+  margin-left: 1vw;
+  margin-right: 1vw;
+}
+.left-content {
+  grid-area: left;
+  background-color: rgba(255, 255, 255, 0.096);
+  border-radius: 25px;
+  margin-left: 5vw;
+  margin-right: 5vw;
+  padding: 1em;
+}
+.footer-content {
+  grid-area: footer;
+}
+
+.grid-wrapper {
+  display: grid;
+  color: rgb(190, 190, 190);
+  grid-template-areas:
+    " header "
+    " menu  "
+    " left "
+    " footer ";
+  grid-gap: 1em;
+}
