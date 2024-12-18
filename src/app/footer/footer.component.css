@@ -20,14 +20,13 @@
 .footer-wrapper {
   padding-left: 2em;
   padding-right: 2em;
-  margin-bottom: 5em;
 }
 
 hr {
   width: 95%;
-  margin: auto auto;
   padding-top: 2em;
   padding-bottom: 1em;
+  margin-top: calc(100%-200px);
   color: rgb(255, 255, 255);
 }
 @media screen and (max-width: 450px) {
