@@ -26,10 +26,6 @@
 .grid-wrapper {
   display: grid;
   color: rgb(190, 190, 190);
-<<<<<<< Updated upstream
-=======
-  background-color: rgb(53, 0, 70);
->>>>>>> Stashed changes
   grid-template-areas:
     " header "
     " menu  "
