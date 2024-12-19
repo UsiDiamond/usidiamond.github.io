@@ -26,7 +26,6 @@ hr {
   width: 95%;
   padding-top: 2em;
   padding-bottom: 1em;
-  margin-top: calc(100%-200px);
   color: rgb(255, 255, 255);
 }
 @media screen and (max-width: 450px) {
