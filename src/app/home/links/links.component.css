@@ -18,8 +18,14 @@ p {
   min-height: 12em;
   min-width: 12em;
   padding: 0.75em;
-  background-color: rgba(255, 255, 255, 0.096);
   border-radius: 15px;
+  background: rgba(163, 163, 163);
+  background: linear-gradient(
+    90deg,
+    rgb(107, 107, 107, 1) 0%,
+    rgb(130, 81, 155, 0.2) 47%,
+    rgb(68, 114, 126, 0.5) 100%
+  );
 }
 
 @media screen and (max-width: 714px) {
