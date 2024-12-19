@@ -46,6 +46,7 @@ hr {
 }
 
 .grid-wrapper {
+  min-height: 100vh;
   display: grid;
   color: rgb(190, 190, 190);
   background: rgb(71, 71, 71);
