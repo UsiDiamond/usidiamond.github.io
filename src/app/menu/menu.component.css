@@ -6,19 +6,12 @@ a {
   font-family: MoreSugar;
 }
 
-.active-route {
-  text-align: left;
-  text-decoration: underline !important;
-  font-weight: bold !important;
-  color: rgb(190, 190, 190);
-}
-
-.active-route::after {
-  content: " UwU";
-}
-
 .menu-label {
   width: 200px;
+}
+
+.navbar {
+  padding-left: 1em;
 }
 
 @media screen and (max-width: 450px) {

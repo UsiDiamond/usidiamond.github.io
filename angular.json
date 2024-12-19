@@ -28,17 +28,12 @@
             "tsConfig": "tsconfig.app.json",
             "assets": ["src/favicon.ico", "src/assets"],
             "styles": [
-              "src/styles.css",
-              "node_modules/bootstrap/dist/css/bootstrap.min.css"
+              "src/styles.css"
             ],
             "stylePreprocessorOptions": {
               "includePaths": ["src/styles"]
             },
             "scripts": [
-              {
-                "input": "node_modules/bootstrap/dist/js/bootstrap.bundle.js",
-                "inject": false
-              }
             ],
             "browser": "src/main.ts"
           },

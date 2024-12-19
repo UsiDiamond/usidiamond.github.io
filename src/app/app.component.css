@@ -5,11 +5,6 @@
 }
 .menu-content {
   grid-area: menu;
-  background-color: rgba(255, 255, 255, 0.096);
-  border-radius: 25px;
-  padding: 0.25em;
-  margin-left: 1vw;
-  margin-right: 1vw;
 }
 .left-content {
   grid-area: left;
