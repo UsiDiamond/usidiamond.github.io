@@ -7,8 +7,14 @@ p {
 .section {
   font-family: MoreSugar;
   font-weight: 300;
-  background-color: rgba(255, 0, 242, 0.089);
   border-radius: 15px;
   padding: 1em;
   margin: 1em;
+  background: rgba(163, 163, 163);
+  background: linear-gradient(
+    90deg,
+    rgb(107, 107, 107, 1) 0%,
+    rgb(130, 81, 155, 0.2) 47%,
+    rgb(68, 114, 126, 0.5) 100%
+  );
 }
