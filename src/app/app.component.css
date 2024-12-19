@@ -5,6 +5,9 @@
 }
 .menu-content {
   grid-area: menu;
+  padding: 0.25em;
+  margin-left: 1vw;
+  margin-right: 1vw;
 }
 .left-content {
   grid-area: left;
@@ -30,7 +33,6 @@
     " footer ";
   grid-gap: 1em;
   position: relative;
-
   --y-0: 80%;
   --x-0: 85%;
   --c-0: hsla(266.99999999999983, 1%, 12%, 1);

@@ -13,9 +13,3 @@ a {
 .navbar {
   padding-left: 1em;
 }
-
-@media screen and (max-width: 450px) {
-  .menu-label {
-    width: 170px;
-  }
-}
