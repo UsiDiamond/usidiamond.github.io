@@ -7,13 +7,14 @@ p {
 .links-grid {
   justify-content: center;
   align-items: center;
-  display: grid;
-  grid-template-areas: " link link link ";
-  grid-gap: 1em;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   padding-bottom: 2em;
 }
 
 .link-item {
+  margin: 2em;
   text-align: center;
   min-height: 12em;
   min-width: 12em;

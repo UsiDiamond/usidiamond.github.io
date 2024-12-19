@@ -9,8 +9,8 @@
   margin-left: 1vw;
   margin-right: 1vw;
 }
-.left-content {
-  grid-area: left;
+.router-content {
+  grid-area: router;
   background-color: rgba(255, 255, 255, 0.096);
   border-radius: 25px;
   margin-left: 5vw;
@@ -29,7 +29,7 @@
   grid-template-areas:
     " header "
     " menu  "
-    " left "
+    " router "
     " footer ";
   grid-gap: 1em;
   position: relative;
