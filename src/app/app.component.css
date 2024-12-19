@@ -1,35 +1,35 @@
 .header-content {
   grid-area: header;
   text-align: center;
-  padding-top: 1em;
 }
+
 .menu-content {
   grid-area: menu;
-  padding: 0.25em;
   margin-left: 1vw;
   margin-right: 1vw;
 }
-.left-content {
-  grid-area: left;
+
+.router-content {
+  grid-area: router;
   background-color: rgba(255, 255, 255, 0.096);
   border-radius: 25px;
   margin-left: 5vw;
   margin-right: 5vw;
-  padding: 1em;
+  padding: 0.75em;
 }
+
 .footer-content {
   grid-area: footer;
 }
 
 .grid-wrapper {
-  min-height: 100vh;
   display: grid;
   color: rgb(190, 190, 190);
   background: rgb(71, 71, 71);
   grid-template-areas:
     " header "
     " menu  "
-    " left "
+    " router "
     " footer ";
   grid-gap: 1em;
   position: relative;
