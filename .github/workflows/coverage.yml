@@ -20,7 +20,7 @@ jobs:
         uses: actions/checkout@v4
       - name: npm install and coverage
         run: |
-          npm install
+          npm ci
           npm run-script coverage
       - name: Publish Test Results
         uses: EnricoMi/publish-unit-test-result-action@v2.18.0
