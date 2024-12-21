@@ -4,16 +4,6 @@ p {
   font-weight: 700;
 }
 
-h2 {
-  color: rgb(222, 187, 255);
-}
-
-.pronouns {
-  color: rgb(222, 187, 255);
-  font-style: normal;
-  font-weight: bolder !important;
-}
-
 .section {
   padding: 0.75em;
   margin: 1em;
