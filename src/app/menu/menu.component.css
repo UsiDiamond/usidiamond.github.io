@@ -6,11 +6,11 @@ a::after {
   content: " UwU";
 }
 
-a:hover {
+a:hover:not(.active) {
   color: #0cf !important;
 }
 
-a:hover::after {
+a:hover:not(.active)::after {
   content: " UwO";
 }
 
