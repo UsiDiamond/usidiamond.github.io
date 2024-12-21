@@ -1,9 +1,16 @@
 a {
   text-align: left;
   font-weight: bold;
-  color: rgb(131, 131, 131);
   text-decoration: none;
   font-family: MoreSugar;
+}
+
+.active-route {
+  border-bottom: 2em;
+}
+
+.disabled {
+  color: rgba(222, 187, 255, 0.411);
 }
 
 .menu-label {
