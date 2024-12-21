@@ -5,13 +5,8 @@ p {
 }
 
 h2 {
+  text-align: center;
   color: rgb(222, 187, 255);
-}
-
-.pronouns {
-  color: rgb(222, 187, 255);
-  font-style: normal;
-  font-weight: bolder !important;
 }
 
 .section {
@@ -27,4 +22,10 @@ h2 {
     rgba(181, 111, 216, 0.2) 47%,
     rgb(68, 114, 126, 0.5) 100%
   );
+}
+
+.pronouns {
+  color: rgb(222, 187, 255);
+  font-style: normal;
+  font-weight: bolder !important;
 }

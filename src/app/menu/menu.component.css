@@ -1,15 +1,36 @@
 a {
-  text-align: left;
-  font-weight: bold;
-  color: rgb(131, 131, 131);
-  text-decoration: none;
-  font-family: MoreSugar;
+  color: rgb(206, 154, 255) !important;
+}
+
+a::after {
+  content: " UwU";
+}
+
+a:hover:not(.active) {
+  color: #0cf !important;
+}
+
+a:hover:not(.active)::after {
+  content: " UwO";
+}
+
+.active {
+  color: rgb(151, 39, 255) !important;
+  text-decoration: underline !important;
+}
+
+.active::after {
+  content: " OwO";
+}
+
+.disabled {
+  color: rgba(222, 187, 255, 0.411) !important;
 }
 
 .menu-label {
-  width: 200px;
+  width: 200px !important;
 }
 
 .navbar {
-  padding-left: 1em;
+  padding-left: 1em !important;
 }
