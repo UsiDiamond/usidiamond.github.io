@@ -10,6 +10,10 @@ a:hover {
   color: #0cf !important;
 }
 
+a:hover::after {
+  content: " UwO";
+}
+
 .active {
   color: rgb(151, 39, 255) !important;
   text-decoration: underline !important;
