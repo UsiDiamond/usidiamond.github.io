@@ -28,12 +28,16 @@
             "tsConfig": "tsconfig.app.json",
             "assets": ["src/favicon.ico", "src/assets"],
             "styles": [
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.css"
             ],
             "stylePreprocessorOptions": {
               "includePaths": ["src/styles"]
             },
-            "scripts": [
+            "scripts": [ 
+                "node_modules/bootstrap/dist/js/bootstrap.bundle.js",
+                "node_modules/jquery/dist/jquery.min.js",
+                "node_modules/popper/index.js"
             ],
             "browser": "src/main.ts"
           },
