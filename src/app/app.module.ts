@@ -7,20 +7,10 @@ import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
 import { HeaderComponent } from './header/header.component';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
-import { MenuComponent } from './menu/menu.component';
-import { RouterModule } from '@angular/router';
-import { LinksComponent } from './home/links/links.component';
 
 @NgModule({
   declarations: [AppComponent, FooterComponent, HomeComponent, HeaderComponent],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    MenuComponent,
-    RouterModule,
-    LinksComponent,
-  ],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  imports: [BrowserModule, AppRoutingModule],
   exports: [],
   providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }],
   bootstrap: [AppComponent],
