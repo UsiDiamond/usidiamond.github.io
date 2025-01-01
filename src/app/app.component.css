@@ -33,9 +33,6 @@ hr {
   grid-area: router;
   background-color: rgba(255, 255, 255, 0.096);
   border-radius: 25px;
-  margin-left: 1em;
-  margin-right: 1em;
-  padding: 1em;
 }
 
 .footer-content {
