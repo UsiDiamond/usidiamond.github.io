@@ -1,4 +1,6 @@
-<div class="col-12 col-md-5 col-lg-3 mx-3 my-3 px-6 py-3 about-section">
-  <h1>${{ title }}</h1>
-  <ng-content></ng-content>
+<div class="col-15 col-md-5 col-lg-3 mx-3 my-3 px-6 py-3 about-section">
+  <h2><ng-content select="[question]"></ng-content></h2>
+  <p class="mx-3 my-3 px-6 py-3 content">
+    <ng-content select="[content]"> </ng-content>
+  </p>
 </div>

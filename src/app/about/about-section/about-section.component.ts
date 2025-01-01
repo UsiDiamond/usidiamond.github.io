@@ -7,6 +7,4 @@ import { Component, Input } from '@angular/core';
   styleUrl: './about-section.component.css',
 })
 export class AboutSectionComponent {
-  @Input({ required: true })
-  title: any;
 }
