@@ -1,18 +1,8 @@
-<a href="#home" class="skip visually-hidden-focusable">Skip to main content</a>
+<a href="#maincontent" class="skip visually-hidden-focusable"
+  >Skip to main content</a
+>
 
-<div class="grid-wrapper">
-  <div class="header-content">
-    <personal-header></personal-header>
-  </div>
-  <div class="menu-content">
-    <menu></menu>
-  </div>
-  <div class="router-content mx-3">
-    <router-outlet></router-outlet>
-  </div>
-
-  <div class="footer-content">
-    <hr />
-    <personal-footer></personal-footer>
-  </div>
-</div>
+<div personal-header></div>
+<div menu></div>
+<router-outlet></router-outlet>
+<div personal-footer></div>
