@@ -1,3 +1,8 @@
+li {
+  font-size: larger;
+  font-weight: bolder;
+}
+
 .menu-label {
   width: 200px !important;
 }
