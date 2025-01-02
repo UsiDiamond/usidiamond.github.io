@@ -14,6 +14,14 @@ button:hover:not(.navbar-toggler):not(.active)::after {
   content: " UwO";
 }
 
+button:not(.navbar-toggler):not(.active):focus {
+  color: #0cf !important;
+}
+
+button:focus:not(.navbar-toggler):not(.active)::after {
+  content: " UwO";
+}
+
 button.active {
   color: rgb(151, 39, 255) !important;
   text-decoration: underline !important;
