@@ -1,16 +1,16 @@
-a {
+button {
   color: rgb(206, 154, 255) !important;
 }
 
-a::after {
+button::after {
   content: " UwU";
 }
 
-a:hover:not(.active) {
+button:hover:not(.active) {
   color: #0cf !important;
 }
 
-a:hover:not(.active)::after {
+button:hover:not(.active)::after {
   content: " UwO";
 }
 
