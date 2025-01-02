@@ -8,11 +8,7 @@
 h2 {
   text-align: center;
   color: rgb(222, 187, 255);
-  padding: 1em;
-}
-
-p {
-  margin: 0.5em;
+  padding-top: 1em;
 }
 
 .about-section {
