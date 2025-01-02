@@ -2,11 +2,17 @@
   font-family: MoreSugar;
   font-style: italic;
   font-weight: 700;
+  padding: 0.5em;
 }
 
 h2 {
   text-align: center;
   color: rgb(222, 187, 255);
+  padding: 1em;
+}
+
+p {
+    margin: 0.5em;
 }
 
 .about-section {
