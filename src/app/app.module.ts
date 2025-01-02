@@ -1,6 +1,6 @@
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 
-import { AppRoutingModule } from './app-routing.module';
+import { AppRoutingModule, routes } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { FooterComponent } from './footer/footer.component';
@@ -18,7 +18,12 @@ import { AboutSectionComponent } from './about/about-section/about-section.compo
     BrowserModule,
     AppRoutingModule,
     MenuComponent,
-    RouterModule,
+    RouterModule.forRoot(routes, {
+      anchorScrolling: 'enabled',
+      scrollPositionRestoration: 'enabled',
+      onSameUrlNavigation: 'reload',
+      enableViewTransitions: true,
+    }),
     LinksComponent,
     AboutSectionComponent,
   ],

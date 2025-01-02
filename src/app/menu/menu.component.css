@@ -1,3 +1,7 @@
+.menu-label {
+  width: 200px !important;
+}
+
 button:not(.navbar-toggler) {
   color: rgb(206, 154, 255) !important;
 }
@@ -33,12 +37,4 @@ button.active:not(.navbar-toggler)::after {
 
 button.disabled {
   color: rgba(222, 187, 255, 0.411) !important;
-}
-
-.menu-label {
-  width: 200px !important;
-}
-
-.navbar {
-  padding-left: 1em !important;
 }
