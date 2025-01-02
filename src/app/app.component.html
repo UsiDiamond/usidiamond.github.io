@@ -1,17 +1,18 @@
 <a href="#router-content" class="skip">Skip to main content</a>
-<main>
-  <div class="grid-wrapper">
-    <div class="header-content" tabindex="0"><app-header></app-header></div>
-    <div class="menu-content" tabindex="0">
-      <app-menu></app-menu>
-    </div>
-    <div id="router-content" class="router-content mx-3" tabindex="0">
-      <router-outlet></router-outlet>
-    </div>
 
-    <div class="footer-content" tabindex="0">
-      <hr />
-      <app-footer></app-footer>
-    </div>
+<div class="grid-wrapper">
+  <div class="header-content" tabindex="0">
+    <personal-header></personal-header>
   </div>
-</main>
+  <div class="menu-content" tabindex="0">
+    <menu></menu>
+  </div>
+  <div id="router-content" class="router-content mx-3" tabindex="0">
+    <router-outlet></router-outlet>
+  </div>
+
+  <div class="footer-content" tabindex="0">
+    <hr />
+    <personal-footer></personal-footer>
+  </div>
+</div>

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-links',
+  selector: 'links-grid',
   imports: [],
   templateUrl: './links.component.html',
   styleUrl: './links.component.css',
