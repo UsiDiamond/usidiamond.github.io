@@ -1,29 +1,29 @@
-button {
+button:not(.navbar-toggler) {
   color: rgb(206, 154, 255) !important;
 }
 
-button::after {
+button:not(.navbar-toggler)::after {
   content: " UwU";
 }
 
-button:hover:not(.active) {
+button:not(.navbar-toggler):not(.active):hover {
   color: #0cf !important;
 }
 
-button:hover:not(.active)::after {
+button:hover:not(.navbar-toggler):not(.active)::after {
   content: " UwO";
 }
 
-.active {
+button.active {
   color: rgb(151, 39, 255) !important;
   text-decoration: underline !important;
 }
 
-.active::after {
+button.active:not(.navbar-toggler)::after {
   content: " OwO";
 }
 
-.disabled {
+button.disabled {
   color: rgba(222, 187, 255, 0.411) !important;
 }
 
