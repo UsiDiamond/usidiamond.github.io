@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-dark container-fluid">
+<nav id="menu" class="navbar navbar-expand-lg navbar-dark container-fluid">
   <button
     class="navbar-toggler"
     type="button"
@@ -14,37 +14,39 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <a
+        <button
           class="nav-link"
-          href="#"
-          routerLink="/home"
+          href="#home"
+          routerLink="home"
           routerLinkActive="active"
           ariaCurrentWhenActive="page"
-          >Introduction</a
         >
+          Introduction
+        </button>
       </li>
       <li class="nav-item">
-        <a
+        <button
           class="nav-link disabled"
           href="#"
           tabindex="-1"
           aria-disabled="true"
-          href="#"
-          routerLink="/projects"
+          routerLink="projects"
           routerLinkActive="active"
           ariaCurrentWhenActive="page"
-          >Projects [Coming Soon]</a
         >
+          Projects [Coming Soon]
+        </button>
       </li>
       <li class="nav-item">
-        <a
+        <button
           class="nav-link"
-          href="#"
-          routerLink="/about"
+          href="#about"
+          routerLink="about"
           routerLinkActive="active"
           ariaCurrentWhenActive="page"
-          >About</a
         >
+          About
+        </button>
       </li>
     </ul>
   </div>
