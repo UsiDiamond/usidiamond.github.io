@@ -32,5 +32,6 @@ h2 {
 .pronouns {
   color: rgb(222, 187, 255);
   font-style: normal;
+  font-size: large;
   font-weight: bolder !important;
 }
