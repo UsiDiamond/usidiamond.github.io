@@ -1,0 +1,29 @@
+.content {
+  font-family: MoreSugar;
+  font-style: italic;
+  font-weight: 700;
+  padding: 0.5em;
+}
+
+h2 {
+  text-align: center;
+  color: rgb(222, 187, 255);
+  padding: 1em;
+}
+
+p {
+    margin: 0.5em;
+}
+
+.about-section {
+  font-family: MoreSugar;
+  font-weight: 400;
+  border-radius: 15px;
+  background: rgba(163, 163, 163);
+  background: linear-gradient(
+    90deg,
+    rgb(107, 107, 107, 1) 0%,
+    rgba(181, 111, 216, 0.2) 47%,
+    rgb(68, 114, 126, 0.5) 100%
+  );
+}
