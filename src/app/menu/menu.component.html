@@ -1,4 +1,7 @@
-<nav id="menu" class="navbar navbar-expand-lg navbar-dark container-fluid">
+<nav
+  id="menu"
+  class="navbar navbar-expand-lg navbar-dark container-fluid navigation"
+>
   <button
     class="navbar-toggler"
     type="button"
@@ -15,6 +18,7 @@
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
         <button
+          tabindex="0"
           class="nav-link"
           href="#home"
           routerLink="home"
@@ -26,6 +30,7 @@
       </li>
       <li class="nav-item">
         <button
+          tabindex="-1"
           class="nav-link disabled"
           href="#"
           tabindex="-1"
@@ -39,6 +44,7 @@
       </li>
       <li class="nav-item">
         <button
+          tabindex="0"
           class="nav-link"
           href="#about"
           routerLink="about"
