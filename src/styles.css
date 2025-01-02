@@ -3,17 +3,12 @@
 }
 
 main {
-  min-height: 100vh;
-  display: grid;
+  top: 0 !important ;
+  position: absolute;
+  min-width: 100%;
+  min-height: 100%;
   color: rgb(190, 190, 190);
   background: rgb(71, 71, 71);
-  grid-template-areas:
-    " header "
-    " menu  "
-    " router "
-    " footer ";
-  grid-gap: 1em;
-  position: relative;
   --y-0: 80%;
   --x-0: 85%;
   --c-0: hsla(266.99999999999983, 1%, 12%, 1);
