@@ -1,10 +1,9 @@
 import { Component, Input } from '@angular/core';
 
 @Component({
-  selector: 'app-about-section',
+  selector: '[section]',
   imports: [],
   templateUrl: './about-section.component.html',
   styleUrl: './about-section.component.css',
 })
-export class AboutSectionComponent {
-}
+export class AboutSectionComponent {}
