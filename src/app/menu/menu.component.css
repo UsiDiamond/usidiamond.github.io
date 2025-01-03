@@ -3,8 +3,12 @@ li {
   font-weight: bolder;
 }
 
-.menu-label {
-  width: 200px !important;
+.nav-link {
+  min-width: 170px !important;
+}
+
+button {
+  text-align: start;
 }
 
 button:not(.navbar-toggler) {
@@ -33,7 +37,6 @@ button:focus:not(.navbar-toggler):not(.active)::after {
 
 button.active {
   color: rgb(151, 39, 255) !important;
-  text-decoration: underline !important;
 }
 
 button.active:not(.navbar-toggler)::after {
