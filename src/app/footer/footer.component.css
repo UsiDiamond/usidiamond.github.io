@@ -1,9 +1,12 @@
+a {
+  color: white;
+}
+
 .github {
   color: rgb(190, 190, 190);
   font-weight: 600;
   font-family: MoreSugar;
   font-size: smaller;
-  text-align: end;
 }
 
 .h-divider {
