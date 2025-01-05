@@ -6,7 +6,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
 import { HeaderComponent } from './header/header.component';
-import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import { LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { MenuComponent } from './menu/menu.component';
 import { RouterModule } from '@angular/router';
 import { LinksComponent } from './home/links/links.component';
@@ -29,7 +29,7 @@ import { AboutSectionComponent } from './about/about-section/about-section.compo
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   exports: [],
-  providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }],
+  providers: [{ provide: LocationStrategy, useClass: PathLocationStrategy }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
