@@ -21,7 +21,6 @@ import { AboutSectionComponent } from './about/about-section/about-section.compo
     RouterModule.forRoot(routes, {
       anchorScrolling: 'enabled',
       scrollPositionRestoration: 'enabled',
-      onSameUrlNavigation: 'reload',
       enableViewTransitions: true,
     }),
     LinksComponent,
