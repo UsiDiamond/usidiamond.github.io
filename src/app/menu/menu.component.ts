@@ -23,11 +23,11 @@ export class MenuComponent {
     this.router.events
       .pipe(filter((event) => event instanceof NavigationEnd))
       .subscribe(() => {
-        const mainHeader = document.querySelector(
+        const mainContent = document.querySelector(
           '#maincontent',
         ) as HTMLElement;
-        if (mainHeader) {
-          mainHeader.focus();
+        if (mainContent) {
+          mainContent.focus();
         }
       });
   }
