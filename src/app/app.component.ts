@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
+import { Component, Inject } from '@angular/core';
 
 @Component({
   selector: '[app-root]',
@@ -7,5 +8,7 @@ import { Component } from '@angular/core';
   standalone: false,
 })
 export class AppComponent {
-  title = 'usidiamond Website';
+  @Inject(DOCUMENT) document: Document;
+  constructor() {}
+  title = "Usi Diamond's Website";
 }
