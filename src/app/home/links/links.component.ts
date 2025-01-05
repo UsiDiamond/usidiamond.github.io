@@ -1,9 +1,7 @@
-import { identifierName } from '@angular/compiler';
 import { Component } from '@angular/core';
 
 @Component({
   selector: '[links-grid]',
-  imports: [],
   host: {
     id: 'links-grid',
     style:
