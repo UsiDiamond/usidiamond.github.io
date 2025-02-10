@@ -23,7 +23,7 @@
   "private": true,
   "dependencies": {
     "@angular/animations": "^19.0.x",
-    "@angular/common": "^19.0.x",
+    "@angular/common": "^19.1.x",
     "@angular/compiler": "^19.0.x",
     "@angular/core": "^19.0.x",
     "@angular/platform-browser": "^19.0.x",
