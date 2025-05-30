@@ -59,7 +59,7 @@ jobs:
           name: Static-Built-Site
           path: .
       - uses: actions/configure-pages@v5
-      - uses: actions/upload-pages-artifact@v1
+      - uses: actions/upload-pages-artifact@v3
         with:
           path: .
       - name: Deploy to GitHub Pages
