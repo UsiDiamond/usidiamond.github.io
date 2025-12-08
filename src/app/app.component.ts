@@ -1,4 +1,3 @@
-
 import { Component, Inject, DOCUMENT } from '@angular/core';
 
 @Component({
