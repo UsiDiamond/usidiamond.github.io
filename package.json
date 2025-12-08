@@ -36,10 +36,10 @@
     "zone.js": "^0.15.x"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "^21.0.x",
-    "@angular/cli": "^21.0.x",
-    "@angular/compiler-cli": "^21.0.x",
-    "@angular/localize": "^21.0.x",
+    "@angular-devkit/build-angular": "^21.0.3",
+    "@angular/cli": "^21.0.3",
+    "@angular/compiler-cli": "^21.0.3",
+    "@angular/localize": "^21.0.3",
     "@cucumber/cucumber": "^11.3.0",
     "@cucumber/pretty-formatter": "~1.0.1",
     "@nightwatch/angular": "~3.1.1",
