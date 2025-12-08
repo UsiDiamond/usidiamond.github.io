@@ -21,7 +21,8 @@ main {
   --y-3: 7%;
   --x-3: 24%;
   --c-3: hsla(299, 4%, 36%, 1);
-  background-image: radial-gradient(
+  background-image:
+    radial-gradient(
       circle at var(--x-0) var(--y-0),
       var(--c-0) var(--s-start-0),
       transparent var(--s-end-0)

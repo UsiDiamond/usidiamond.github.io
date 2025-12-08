@@ -1,4 +1,3 @@
-import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import {
   NavigationEnd,
@@ -10,7 +9,7 @@ import { filter } from 'rxjs';
 
 @Component({
   selector: '[menu]',
-  imports: [CommonModule, RouterLink, RouterLinkActive],
+  imports: [RouterLink, RouterLinkActive],
   host: {
     id: 'menu',
     class: 'container-fluid',
