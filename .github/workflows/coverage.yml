@@ -13,6 +13,9 @@ on:
     branches: ["main", "release/*"]
 
 jobs:
+      strategy:
+      matrix:
+        node-version: [24.x]
   build_and_test:
     runs-on: ubuntu-latest
     steps:
