@@ -40,6 +40,13 @@ describe('MenuComponent', () => {
     expect(btn?.textContent?.trim()).toBe('Projects');
   });
 
+  it('should have an Education link pointing to education', () => {
+    const el: HTMLElement = fixture.nativeElement;
+    const btn = el.querySelector('button[routerLink="education"]');
+    expect(btn).toBeTruthy();
+    expect(btn?.textContent?.trim()).toBe('Education');
+  });
+
   it('should have an About link pointing to about', () => {
     const el: HTMLElement = fixture.nativeElement;
     const btn = el.querySelector('button[routerLink="about"]');
