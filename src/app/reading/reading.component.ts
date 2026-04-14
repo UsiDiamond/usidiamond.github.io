@@ -9,6 +9,8 @@ export interface AuthorGroup {
 export interface SubjectGroup {
   subject: string;
   authors: AuthorGroup[];
+  /** Flattened, ordered list: authors alphabetical, titles alphabetical within each author. */
+  books: Book[];
 }
 
 /** Subjects that should not render at all. */
@@ -46,7 +48,8 @@ function groupBySubjectAndAuthor(books: readonly Book[]): SubjectGroup[] {
       });
     }
     authors.sort((a, b) => a.author.localeCompare(b.author));
-    groups.push({ subject, authors });
+    const books = authors.flatMap((a) => a.books);
+    groups.push({ subject, authors, books });
   }
 
   const PINNED_ORDER = ['Fantasy & Science Fiction', 'Literature & Fiction'];

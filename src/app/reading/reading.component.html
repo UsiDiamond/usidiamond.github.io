@@ -4,32 +4,31 @@
   </div>
 </div>
 
-@for (subject of subjectGroups; track subject.subject) {
-  <div class="row justify-content-center mb-2 mt-4">
-    <div class="col-12">
+<div class="reading-sections">
+  @for (subject of subjectGroups; track subject.subject) {
+    <section class="reading-section">
       <h2 tabindex="0" class="reading-subject">{{ subject.subject }}</h2>
-    </div>
-  </div>
-  <div class="row justify-content-center">
-    <div class="col-12 reading-subject-pane">
-      @for (author of subject.authors; track author.author) {
-        <div class="reading-author-block">
-          <h3 tabindex="0" class="reading-author">{{ author.author }}</h3>
-          <ul class="reading-chip-list">
-            @for (book of author.books; track book.title) {
-              <li class="reading-chip">
-                <a
-                  class="reading-chip-link"
-                  [attr.href]="book.amazonUrl"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  [attr.title]="book.series ? book.title + ' — ' + book.series : book.title"
-                >{{ book.title }}@if (book.parts > 1) {<span class="reading-chip-vols"> ({{ book.parts }} vols)</span>}</a>
-              </li>
-            }
-          </ul>
+      <div class="reading-subject-pane">
+        <div class="reading-card-grid">
+          @for (book of subject.books; track $index) {
+            <a
+              class="reading-card"
+              [attr.href]="book.amazonUrl"
+              target="_blank"
+              rel="noopener noreferrer"
+              [attr.title]="book.series ? book.title + ' — ' + book.series : book.title"
+            >
+              <p class="reading-card-title" tabindex="0">
+                {{ book.title }}@if (book.parts > 1) {<span class="reading-card-vols"> ({{ book.parts }} vols)</span>}
+              </p>
+              <p class="reading-card-author" tabindex="0">{{ book.author }}</p>
+              @if (book.series) {
+                <p class="reading-card-series" tabindex="0">{{ book.series }}</p>
+              }
+            </a>
+          }
         </div>
-      }
-    </div>
-  </div>
-}
+      </div>
+    </section>
+  }
+</div>
