@@ -4,6 +4,7 @@
 /dist
 /public
 /coverage
+/integration-tests-report
 /tmp
 /out-tsc
 /bazel-out
