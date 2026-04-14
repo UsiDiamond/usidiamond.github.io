@@ -54,6 +54,13 @@ describe('MenuComponent', () => {
     expect(btn?.textContent?.trim()).toBe('About');
   });
 
+  it('should have a Contact link pointing to contact', () => {
+    const el: HTMLElement = fixture.nativeElement;
+    const btn = el.querySelector('button[routerLink="contact"]');
+    expect(btn).toBeTruthy();
+    expect(btn?.textContent?.trim()).toBe('Contact');
+  });
+
   it('all nav links should be keyboard accessible', () => {
     const el: HTMLElement = fixture.nativeElement;
     const navBtns = el.querySelectorAll('button[routerLink]');
