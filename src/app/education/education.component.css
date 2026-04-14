@@ -1,0 +1,45 @@
+h2 {
+  text-align: center;
+  color: rgb(222, 187, 255);
+}
+
+p,
+li {
+  font-family: MoreSugar;
+  font-style: italic;
+  font-weight: 700;
+}
+
+.education-degree {
+  text-align: center;
+  color: rgb(222, 187, 255);
+  font-size: 0.95em;
+}
+
+.education-date {
+  text-align: center;
+  color: rgb(181, 111, 216);
+}
+
+.education-org {
+  text-align: center;
+  color: rgb(180, 180, 180);
+}
+
+.education-skills {
+  text-align: center;
+  color: rgb(180, 180, 180);
+}
+
+.education-section {
+  padding: 0.75em;
+  margin: 1em;
+  border-radius: 15px;
+  background: rgba(163, 163, 163);
+  background: linear-gradient(
+    90deg,
+    rgb(107, 107, 107, 1) 0%,
+    rgba(181, 111, 216, 0.2) 47%,
+    rgb(68, 114, 126, 0.5) 100%
+  );
+}
