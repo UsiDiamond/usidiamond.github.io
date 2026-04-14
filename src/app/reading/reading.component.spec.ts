@@ -28,16 +28,16 @@ describe('ReadingComponent', () => {
     expect(el.getAttribute('id')).toBe('maincontent');
   });
 
-  it('should render a chip for every visible book', () => {
+  it('should render a card for every visible book', () => {
     const el: HTMLElement = fixture.nativeElement;
-    const chips = el.querySelectorAll('.reading-chip');
-    expect(chips.length).toBe(VISIBLE_BOOKS.length);
+    const cards = el.querySelectorAll('.reading-card');
+    expect(cards.length).toBe(VISIBLE_BOOKS.length);
   });
 
   it('should render at least 250 books (library-sized list)', () => {
     const el: HTMLElement = fixture.nativeElement;
-    const chips = el.querySelectorAll('.reading-chip');
-    expect(chips.length).toBeGreaterThan(250);
+    const cards = el.querySelectorAll('.reading-card');
+    expect(cards.length).toBeGreaterThan(250);
   });
 
   it('should group visible books into subject panes, one per unique visible subject', () => {
@@ -96,14 +96,14 @@ describe('ReadingComponent', () => {
     }
   });
 
-  it('should render an h3 author header for every author group', () => {
-    const totalAuthors = component.subjectGroups.reduce(
-      (sum, s) => sum + s.authors.length,
-      0
-    );
-    const el: HTMLElement = fixture.nativeElement;
-    const authorHeaders = el.querySelectorAll('h3.reading-author');
-    expect(authorHeaders.length).toBe(totalAuthors);
+  it('should flatten each subject into a books[] preserving author-then-title order', () => {
+    for (const subject of component.subjectGroups) {
+      const expected = subject.authors.flatMap((a) => a.books);
+      expect(subject.books.length).toBe(expected.length);
+      for (let i = 0; i < expected.length; i++) {
+        expect(subject.books[i]).toBe(expected[i]);
+      }
+    }
   });
 
   it('should have keyboard-accessible subject headings', () => {
@@ -115,22 +115,24 @@ describe('ReadingComponent', () => {
     expect(headings.length).toBeGreaterThan(0);
   });
 
-  it('should have keyboard-accessible author headings', () => {
+  it('should have keyboard-accessible card text (title and author)', () => {
     const el: HTMLElement = fixture.nativeElement;
-    const headings = el.querySelectorAll('h3[tabindex="0"]');
-    expect(headings.length).toBeGreaterThan(0);
+    const titles = el.querySelectorAll('.reading-card-title[tabindex="0"]');
+    const authors = el.querySelectorAll('.reading-card-author[tabindex="0"]');
+    expect(titles.length).toBe(VISIBLE_BOOKS.length);
+    expect(authors.length).toBe(VISIBLE_BOOKS.length);
   });
 
-  it('should render an Amazon link per visible book opening in a new tab safely', () => {
+  it('each card should link to Amazon and open in a new tab safely', () => {
     const el: HTMLElement = fixture.nativeElement;
-    const links = el.querySelectorAll('.reading-chip-link');
-    expect(links.length).toBe(VISIBLE_BOOKS.length);
-    links.forEach((link) => {
-      const href = link.getAttribute('href') ?? '';
+    const cards = el.querySelectorAll('a.reading-card');
+    expect(cards.length).toBe(VISIBLE_BOOKS.length);
+    cards.forEach((card) => {
+      const href = card.getAttribute('href') ?? '';
       expect(href).toContain('amazon.com');
-      expect(link.getAttribute('target')).toBe('_blank');
-      expect(link.getAttribute('rel')).toContain('noopener');
-      expect(link.getAttribute('rel')).toContain('noreferrer');
+      expect(card.getAttribute('target')).toBe('_blank');
+      expect(card.getAttribute('rel')).toContain('noopener');
+      expect(card.getAttribute('rel')).toContain('noreferrer');
     });
   });
 
@@ -158,7 +160,7 @@ describe('ReadingComponent', () => {
     const collapsed = VISIBLE_BOOKS.filter((b) => b.parts > 1);
     if (collapsed.length === 0) return;
     const el: HTMLElement = fixture.nativeElement;
-    const annotations = el.querySelectorAll('.reading-chip-vols');
+    const annotations = el.querySelectorAll('.reading-card-vols');
     expect(annotations.length).toBe(collapsed.length);
   });
 
