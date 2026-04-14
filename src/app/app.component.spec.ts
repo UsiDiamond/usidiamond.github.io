@@ -14,13 +14,35 @@ describe('AppComponent', () => {
 
   it('should create the app', () => {
     const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app).toBeTruthy();
+    expect(fixture.componentInstance).toBeTruthy();
   });
 
-  it(`should have as title 'usidiamond Website'`, () => {
+  it('should have the correct title', () => {
     const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual("Usi Diamond's Website");
+    expect(fixture.componentInstance.title).toEqual("Usi Diamond's Website");
+  });
+
+  it('should render a skip to main content link', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    fixture.detectChanges();
+    const el: HTMLElement = fixture.nativeElement;
+    const skipLink = el.querySelector('a.skip');
+    expect(skipLink).toBeTruthy();
+    expect(skipLink!.textContent?.trim()).toBe('Skip to main content');
+  });
+
+  it('skip link should be visually hidden and focusable', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    fixture.detectChanges();
+    const el: HTMLElement = fixture.nativeElement;
+    const skipLink = el.querySelector('a.skip');
+    expect(skipLink?.classList.contains('visually-hidden-focusable')).toBeTrue();
+  });
+
+  it('should render a router outlet', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    fixture.detectChanges();
+    const el: HTMLElement = fixture.nativeElement;
+    expect(el.querySelector('router-outlet')).toBeTruthy();
   });
 });
