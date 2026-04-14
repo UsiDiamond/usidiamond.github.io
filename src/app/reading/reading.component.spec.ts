@@ -59,8 +59,8 @@ describe('ReadingComponent', () => {
     for (const subject of component.subjectGroups) {
       const uniqueAuthorsInSubject = new Set(
         VISIBLE_BOOKS.filter((b) => b.subject === subject.subject).map(
-          (b) => b.author
-        )
+          (b) => b.author,
+        ),
       );
       expect(subject.authors.length).toBe(uniqueAuthorsInSubject.size);
     }
@@ -85,11 +85,13 @@ describe('ReadingComponent', () => {
   });
 
   it('should pin Fantasy & Science Fiction then Literature & Fiction, then order the rest by book count descending', () => {
-    expect(component.subjectGroups[0].subject).toBe('Fantasy & Science Fiction');
+    expect(component.subjectGroups[0].subject).toBe(
+      'Fantasy & Science Fiction',
+    );
     expect(component.subjectGroups[1].subject).toBe('Literature & Fiction');
     const rest = component.subjectGroups.slice(2);
     const counts = rest.map((g) =>
-      g.authors.reduce((sum, a) => sum + a.books.length, 0)
+      g.authors.reduce((sum, a) => sum + a.books.length, 0),
     );
     for (let i = 1; i < counts.length; i++) {
       expect(counts[i - 1]).toBeGreaterThanOrEqual(counts[i]);
@@ -166,7 +168,7 @@ describe('ReadingComponent', () => {
 
   it('should collapse The Cambridge History of Japan into a single chip', () => {
     const cambridge = BOOKS.find(
-      (b) => b.title === 'The Cambridge History of Japan'
+      (b) => b.title === 'The Cambridge History of Japan',
     );
     expect(cambridge).toBeTruthy();
     expect(cambridge!.parts).toBe(6);

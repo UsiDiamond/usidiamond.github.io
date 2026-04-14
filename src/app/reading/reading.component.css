@@ -3,7 +3,8 @@ h2 {
   color: rgb(222, 187, 255);
 }
 
-p, li {
+p,
+li {
   font-family: MoreSugar;
   font-style: italic;
   font-weight: 700;
@@ -80,7 +81,10 @@ p, li {
   );
   border: 1px solid rgba(181, 111, 216, 0.35);
   color: rgb(222, 187, 255);
-  transition: border-color 0.15s ease, background 0.15s ease, transform 0.12s ease;
+  transition:
+    border-color 0.15s ease,
+    background 0.15s ease,
+    transform 0.12s ease;
   display: flex;
   flex-direction: column;
   gap: 0.15rem;

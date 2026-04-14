@@ -16,14 +16,23 @@
               [attr.href]="book.amazonUrl"
               target="_blank"
               rel="noopener noreferrer"
-              [attr.title]="book.series ? book.title + ' — ' + book.series : book.title"
+              [attr.title]="
+                book.series ? book.title + ' — ' + book.series : book.title
+              "
             >
               <p class="reading-card-title" tabindex="0">
-                {{ book.title }}@if (book.parts > 1) {<span class="reading-card-vols"> ({{ book.parts }} vols)</span>}
+                {{ book.title }}
+                @if (book.parts > 1) {
+                  <span class="reading-card-vols">
+                    ({{ book.parts }} vols)</span
+                  >
+                }
               </p>
               <p class="reading-card-author" tabindex="0">{{ book.author }}</p>
               @if (book.series) {
-                <p class="reading-card-series" tabindex="0">{{ book.series }}</p>
+                <p class="reading-card-series" tabindex="0">
+                  {{ book.series }}
+                </p>
               }
             </a>
           }

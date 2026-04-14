@@ -36,7 +36,9 @@ describe('AppComponent', () => {
     fixture.detectChanges();
     const el: HTMLElement = fixture.nativeElement;
     const skipLink = el.querySelector('a.skip');
-    expect(skipLink?.classList.contains('visually-hidden-focusable')).toBeTrue();
+    expect(
+      skipLink?.classList.contains('visually-hidden-focusable'),
+    ).toBeTrue();
   });
 
   it('should render a router outlet', () => {
