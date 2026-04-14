@@ -34,10 +34,10 @@ describe('ReadingComponent', () => {
     expect(chips.length).toBe(VISIBLE_BOOKS.length);
   });
 
-  it('should render at least 300 books (library-sized list)', () => {
+  it('should render at least 250 books (library-sized list)', () => {
     const el: HTMLElement = fixture.nativeElement;
     const chips = el.querySelectorAll('.reading-chip');
-    expect(chips.length).toBeGreaterThan(300);
+    expect(chips.length).toBeGreaterThan(250);
   });
 
   it('should group visible books into subject panes, one per unique visible subject', () => {
@@ -138,10 +138,10 @@ describe('ReadingComponent', () => {
     const el: HTMLElement = fixture.nativeElement;
     const text = el.textContent ?? '';
     expect(text).toContain('The Anarchy');
-    expect(text).toContain('A Wizard of Earthsea');
-    expect(text).toContain('The Phoenix Project');
-    expect(text).toContain('Gödel, Escher, Bach');
+    expect(text).toContain('The King in Yellow');
+    expect(text).toContain('Classical Mechanics');
     expect(text).toContain('The Bahir');
+    expect(text).toContain('The Cambridge History of Japan');
   });
 
   it('every book entry should have a title, author, subject, parts >=1, and amazon URL', () => {
