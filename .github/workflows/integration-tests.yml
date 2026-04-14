@@ -78,6 +78,14 @@ jobs:
         run: node generate-summary.js
         env:
           ARTIFACT_URL: ${{ steps.upload-report.outputs.artifact-url }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+
+      - name: Comment integration test summary on PR
+        if: always() && github.event_name == 'pull_request'
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          header: integration-tests
+          path: integration-tests-report/pr-comment.md
 
       - name: Publish test results
         uses: EnricoMi/publish-unit-test-result-action@v2

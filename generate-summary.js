@@ -14,7 +14,9 @@ const path = require("path");
 
 const REPORT_PATH = "integration-tests-report/cucumber-report.json";
 const SUMMARY_FILE = process.env.GITHUB_STEP_SUMMARY;
+const PR_COMMENT_FILE = "integration-tests-report/pr-comment.md";
 const ARTIFACT_URL = process.env.ARTIFACT_URL || "";
+const RUN_URL = process.env.RUN_URL || "";
 
 if (!fs.existsSync(REPORT_PATH)) {
   console.log("No cucumber report found at", REPORT_PATH);
@@ -104,6 +106,10 @@ if (ARTIFACT_URL) {
   );
 }
 
+if (RUN_URL) {
+  lines.push(`\n[View full workflow run ↗](${RUN_URL})`);
+}
+
 const summary = lines.join("\n");
 
 if (SUMMARY_FILE) {
@@ -112,4 +118,13 @@ if (SUMMARY_FILE) {
 } else {
   console.log("GITHUB_STEP_SUMMARY not set — preview:");
   console.log(summary);
+}
+
+// Always write a file copy so the workflow can post it as a PR comment.
+try {
+  fs.mkdirSync(path.dirname(PR_COMMENT_FILE), { recursive: true });
+  fs.writeFileSync(PR_COMMENT_FILE, summary + "\n");
+  console.log(`PR comment body written to ${PR_COMMENT_FILE}`);
+} catch (e) {
+  console.error("Failed to write PR comment file:", e.message);
 }
