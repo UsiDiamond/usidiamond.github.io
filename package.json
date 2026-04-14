@@ -18,7 +18,8 @@
     "e2e:edge": "nightwatch  -r e2e/html-reporter.js nightwatch.conf.js -e edge",
     "e2e:chrome": "nightwatch  -r e2e/html-reporter.js nightwatch.conf.js -e chrome",
     "dockerBuild": "docker build -f Dockerfile -t usidiamond.github.io .",
-    "dockerRun": "docker run  --env=PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin --workdir=/ -p 8080:8080 --runtime=runc -d usidiamond.github.io:latest"
+    "dockerRun": "docker run  --env=PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin --workdir=/ -p 8080:8080 --runtime=runc -d usidiamond.github.io:latest",
+    "e2e:docker": "docker compose up -d --wait && npm run e2e:test; docker compose down"
   },
   "private": true,
   "dependencies": {
