@@ -4,6 +4,7 @@
 /dist
 /public
 /coverage
+/integration-tests-report
 /tmp
 /out-tsc
 /bazel-out
@@ -38,6 +39,7 @@ yarn-error.log
 /libpeerconnection.log
 testem.log
 /typings
+logs
 
 # System files
 .DS_Store
