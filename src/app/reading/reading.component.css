@@ -1,0 +1,100 @@
+h2 {
+  text-align: center;
+  color: rgb(222, 187, 255);
+}
+
+p, li {
+  font-family: MoreSugar;
+  font-style: italic;
+  font-weight: 700;
+}
+
+.reading-subject {
+  font-size: 1.25rem;
+  padding: 0.4rem 0.75rem;
+  border-radius: 12px;
+  background: linear-gradient(
+    90deg,
+    rgb(107, 107, 107, 1) 0%,
+    rgba(181, 111, 216, 0.35) 47%,
+    rgb(68, 114, 126, 0.5) 100%
+  );
+}
+
+.reading-subject-pane {
+  padding: 0.75em;
+  margin: 0 1em 1em 1em;
+  border-radius: 15px;
+  background: linear-gradient(
+    90deg,
+    rgba(107, 107, 107, 0.6) 0%,
+    rgba(181, 111, 216, 0.15) 47%,
+    rgba(68, 114, 126, 0.35) 100%
+  );
+}
+
+.reading-author-block {
+  padding: 0.4rem 0;
+  margin-bottom: 0.75rem;
+}
+
+.reading-author-block + .reading-author-block {
+  border-top: 1px solid rgba(222, 187, 255, 0.2);
+  padding-top: 0.75rem;
+}
+
+.reading-author {
+  font-family: MoreSugar;
+  font-style: italic;
+  font-weight: 700;
+  color: rgb(181, 111, 216);
+  text-align: left;
+  font-size: 1rem;
+  margin: 0 0 0.4rem;
+  padding-left: 0.25rem;
+}
+
+.reading-chip-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 0.5rem;
+}
+
+.reading-chip {
+  display: inline-block;
+}
+
+.reading-chip-link {
+  display: inline-block;
+  padding: 0.25rem 0.7rem;
+  border-radius: 999px;
+  font-family: MoreSugar;
+  font-style: italic;
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: rgb(222, 187, 255);
+  text-decoration: none;
+  background: rgba(107, 107, 107, 0.45);
+  border: 1px solid rgba(181, 111, 216, 0.45);
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+
+.reading-chip-link:hover,
+.reading-chip-link:focus {
+  background: rgba(181, 111, 216, 0.35);
+  border-color: rgb(181, 111, 216);
+  color: #fff;
+  text-decoration: none;
+  outline: none;
+}
+
+.reading-chip-vols {
+  color: rgb(181, 111, 216);
+  font-style: normal;
+  font-weight: 400;
+  font-size: 0.75rem;
+  margin-left: 0.2rem;
+}
