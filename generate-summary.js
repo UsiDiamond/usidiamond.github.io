@@ -17,7 +17,9 @@ const { spawnSync } = require("child_process");
 const REPORT_PATH = "integration-tests-report/cucumber-report.json";
 const SCREENSHOTS_DIR = "integration-tests-report/screenshots";
 const SUMMARY_FILE = process.env.GITHUB_STEP_SUMMARY;
+const PR_COMMENT_FILE = "integration-tests-report/pr-comment.md";
 const ARTIFACT_URL = process.env.ARTIFACT_URL || "";
+<<<<<<< e2e-screenshot-thumbnails
 const THUMB_WIDTH = 300;
 
 // Cucumber HTML report color palette
@@ -94,6 +96,9 @@ function screenshotCell(scenarioName, prefix, altLabel) {
 }
 
 // ─── Load report ────────────────────────────────────────────────────────────
+=======
+const RUN_URL = process.env.RUN_URL || "";
+>>>>>>> main
 
 if (!fs.existsSync(REPORT_PATH)) {
   console.log("No cucumber report found at", REPORT_PATH);
@@ -207,7 +212,15 @@ if (SUMMARY_FILE) {
   );
 }
 
+<<<<<<< e2e-screenshot-thumbnails
 // ─── Helpers ─────────────────────────────────────────────────────────────────
+=======
+if (RUN_URL) {
+  lines.push(`\n[View full workflow run ↗](${RUN_URL})`);
+}
+
+const summary = lines.join("\n");
+>>>>>>> main
 
 function escHtml(str) {
   return str
@@ -215,4 +228,13 @@ function escHtml(str) {
     .replace(/</g, "&lt;")
     .replace(/>/g, "&gt;")
     .replace(/"/g, "&quot;");
+}
+
+// Always write a file copy so the workflow can post it as a PR comment.
+try {
+  fs.mkdirSync(path.dirname(PR_COMMENT_FILE), { recursive: true });
+  fs.writeFileSync(PR_COMMENT_FILE, summary + "\n");
+  console.log(`PR comment body written to ${PR_COMMENT_FILE}`);
+} catch (e) {
+  console.error("Failed to write PR comment file:", e.message);
 }
