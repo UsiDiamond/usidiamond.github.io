@@ -13,9 +13,6 @@ var limiter = RateLimit({
 app.use(limiter);
 
 
-var bodyParser = require("body-parser");
-app.use(bodyParser.json());
-
 var distDir = __dirname + "/public/usidiamond.github.io/browser/";
 app.use(express.static(distDir));
 

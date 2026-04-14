@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { AboutSectionComponent } from './about-section/about-section.component';
-import { style } from '@angular/animations';
 
 @Component({
   selector: '[about]',
