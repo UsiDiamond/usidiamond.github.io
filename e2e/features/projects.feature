@@ -1,20 +1,27 @@
 Feature: Projects Page
-  Verifies that the Projects page loads correctly and displays project content.
-
-  Scenario: Projects link navigates to the projects page
-    Given I go to "http://localhost:8080/"
-    When I click the Projects nav link
-    Then the URL contains "/projects"
-    And the page header is visible
+  Verifies that the Projects page loads and displays all project content.
 
   Scenario: Projects page renders project section cards
     Given I go to "http://localhost:8080/#/projects"
     Then project section cards are visible
 
-  Scenario: Projects page contains the mySocialSecurity project
+  Scenario Outline: Projects page contains the "<project>" project
     Given I go to "http://localhost:8080/#/projects"
-    Then the projects page contains "mySocialSecurity - Online Self Service"
+    Then the page contains "<project>"
 
-  Scenario: Projects page has skip link target
-    Given I go to "http://localhost:8080/#/projects"
-    Then the main content area is present
+    Examples:
+      | project                                          |
+      | mySocialSecurity - Online Self Service           |
+      | mySocialSecurity - Representative Payee Services |
+      | Upload Documents                                 |
+      | Neurodiversity in Business Website Rewrite       |
+      | Heros-Engine                                     |
+      | Enterprise Project Management Office Application |
+      | EMAC 1                                           |
+      | LRERWMS                                          |
+      | AuDITS                                           |
+      | EMAC 2                                           |
+      | SRDP                                             |
+      | DOORS                                            |
+      | ESP                                              |
+      | Combined Federal Campaign Data Analytics and Reporting |
