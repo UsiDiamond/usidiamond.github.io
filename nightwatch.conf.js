@@ -28,8 +28,8 @@ module.exports = {
       launch_url: 'http://localhost:8080',
 
       screenshots: {
-        enabled: false,
-        path: 'screens',
+        enabled: true,
+        path: 'integration-tests-report/screenshots',
         on_failure: true
       },
 

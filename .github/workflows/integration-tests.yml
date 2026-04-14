@@ -65,12 +65,19 @@ jobs:
         run: npm run e2e
 
       - name: Upload test report
+        id: upload-report
         uses: actions/upload-artifact@v4
         if: always()
         with:
           name: integration-test-report
           path: integration-tests-report/
           retention-days: 30
+
+      - name: Generate test summary
+        if: always()
+        run: node generate-summary.js
+        env:
+          ARTIFACT_URL: ${{ steps.upload-report.outputs.artifact-url }}
 
       - name: Publish test results
         uses: EnricoMi/publish-unit-test-result-action@v2
