@@ -11,7 +11,7 @@ permissions:
   pull-requests: write
 
 jobs:
-  integration-tests:
+  build:
     runs-on: ubuntu-latest
 
     steps:
