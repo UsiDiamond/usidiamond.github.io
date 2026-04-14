@@ -33,26 +33,42 @@ jobs:
       github.event.workflow_run.conclusion == 'success'
 
     steps:
-      - uses: actions/checkout@v5
+      # --- workflow_run path: reuse the artifact built and verified by integration tests ---
+      - name: Download pre-built site from integration tests
+        if: github.event_name != 'workflow_dispatch'
+        uses: actions/download-artifact@v4
         with:
-          # Check out the commit that triggered the integration tests,
-          # not necessarily the tip of the default branch
-          ref: ${{ github.event.workflow_run.head_sha || github.sha }}
+          name: site-build
+          run-id: ${{ github.event.workflow_run.id }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: site
 
-      - name: Use Node.js 24.x
+      # --- workflow_dispatch path: build fresh ---
+      - name: Checkout
+        if: github.event_name == 'workflow_dispatch'
+        uses: actions/checkout@v5
+
+      - name: Setup Node.js
+        if: github.event_name == 'workflow_dispatch'
         uses: actions/setup-node@v4
         with:
           node-version: "24.x"
           cache: "npm"
 
-      - run: npm install
-      - run: npm run build
+      - name: Install and build
+        if: github.event_name == 'workflow_dispatch'
+        run: npm install && npm run build
 
-      - name: Archive production artifacts
+      - name: Stage build output
+        if: github.event_name == 'workflow_dispatch'
+        run: mkdir -p site && cp -r public/usidiamond.github.io/browser/. site/
+
+      # --- common: hand off to deploy job ---
+      - name: Upload site for deployment
         uses: actions/upload-artifact@v4
         with:
-          name: Static-Built-Site
-          path: public/usidiamond.github.io/browser
+          name: site-for-deploy
+          path: site
 
   deploy:
     runs-on: ubuntu-latest
@@ -61,14 +77,18 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - uses: actions/download-artifact@v4
+      - name: Download site
+        uses: actions/download-artifact@v4
         with:
-          name: Static-Built-Site
+          name: site-for-deploy
           path: .
+
       - uses: actions/configure-pages@v5
+
       - uses: actions/upload-pages-artifact@v3
         with:
           path: .
+
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
