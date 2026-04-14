@@ -7,6 +7,7 @@ const navLabelToRoute = {
   Projects: "projects",
   Education: "education",
   Volunteering: "volunteering",
+  Reading: "reading",
   About: "about",
   Contact: "contact",
 };
@@ -47,6 +48,10 @@ Then("education section cards are visible", function () {
 
 Then("volunteering section cards are visible", function () {
   browser.waitForElementVisible(".volunteering-section");
+});
+
+Then("reading section cards are visible", function () {
+  browser.waitForElementVisible(".reading-subject-pane");
 });
 
 Then("a link to {string} is present", function (urlFragment) {
