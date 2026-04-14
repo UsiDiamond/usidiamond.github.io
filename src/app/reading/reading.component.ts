@@ -43,7 +43,10 @@ function groupBySubjectAndAuthor(books: readonly Book[]): SubjectGroup[] {
     groups.push({ subject, authors });
   }
 
+  const PINNED_FIRST = 'Fantasy & Science Fiction';
   groups.sort((a, b) => {
+    if (a.subject === PINNED_FIRST && b.subject !== PINNED_FIRST) return -1;
+    if (b.subject === PINNED_FIRST && a.subject !== PINNED_FIRST) return 1;
     const countA = a.authors.reduce((sum, g) => sum + g.books.length, 0);
     const countB = b.authors.reduce((sum, g) => sum + g.books.length, 0);
     if (countA !== countB) return countB - countA;

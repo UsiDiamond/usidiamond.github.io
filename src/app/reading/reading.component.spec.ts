@@ -73,8 +73,10 @@ describe('ReadingComponent', () => {
     }
   });
 
-  it('should order subject panes by book count descending', () => {
-    const counts = component.subjectGroups.map((g) =>
+  it('should pin Fantasy & Science Fiction first, then order the rest by book count descending', () => {
+    expect(component.subjectGroups[0].subject).toBe('Fantasy & Science Fiction');
+    const rest = component.subjectGroups.slice(1);
+    const counts = rest.map((g) =>
       g.authors.reduce((sum, a) => sum + a.books.length, 0)
     );
     for (let i = 1; i < counts.length; i++) {
