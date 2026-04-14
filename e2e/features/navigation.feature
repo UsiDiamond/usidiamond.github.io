@@ -19,7 +19,6 @@ Feature: Site Navigation
       | Introduction | home      |
       | Projects     | projects  |
       | Education    | education |
-      | About        | about     |
       | Contact      | contact   |
 
   Scenario Outline: Skip link and main content target are present on the <page> page
@@ -32,5 +31,4 @@ Feature: Site Navigation
       | Home        | home      |
       | Projects    | projects  |
       | Education   | education |
-      | About       | about     |
       | Contact     | contact   |

@@ -47,11 +47,10 @@ describe('MenuComponent', () => {
     expect(btn?.textContent?.trim()).toBe('Education');
   });
 
-  it('should have an About link pointing to about', () => {
+  it('should not have an About link (About content lives on Home)', () => {
     const el: HTMLElement = fixture.nativeElement;
     const btn = el.querySelector('button[routerLink="about"]');
-    expect(btn).toBeTruthy();
-    expect(btn?.textContent?.trim()).toBe('About');
+    expect(btn).toBeNull();
   });
 
   it('should have a Contact link pointing to contact', () => {
