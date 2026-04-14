@@ -42,13 +42,13 @@ describe('HomeComponent', () => {
     expect(el.querySelector('[links-grid]')).toBeTruthy();
   });
 
-  it('should render the merged-in about sections', () => {
+  it('should render four Q&A sections', () => {
     const el: HTMLElement = fixture.nativeElement;
     const sections = el.querySelectorAll('[section]');
     expect(sections.length).toBe(4);
   });
 
-  it('should contain each merged-in about section prompt', () => {
+  it('should contain each Q&A section prompt', () => {
     const el: HTMLElement = fixture.nativeElement;
     const text = el.textContent ?? '';
     expect(text).toContain('What music does it like?');

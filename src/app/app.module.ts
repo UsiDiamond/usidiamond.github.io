@@ -10,7 +10,7 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { MenuComponent } from './menu/menu.component';
 import { RouterModule } from '@angular/router';
 import { LinksComponent } from './home/links/links.component';
-import { AboutSectionComponent } from './about/about-section/about-section.component';
+import { SectionComponent } from './home/section/section.component';
 
 @NgModule({
   declarations: [AppComponent, FooterComponent, HomeComponent, HeaderComponent],
@@ -24,7 +24,7 @@ import { AboutSectionComponent } from './about/about-section/about-section.compo
       enableViewTransitions: true,
     }),
     LinksComponent,
-    AboutSectionComponent,
+    SectionComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   exports: [],
