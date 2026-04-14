@@ -3,6 +3,14 @@ module.exports = {
   src_folders: ['e2e'],
   output_folder: './integration-tests-report/',
 
+  test_runner: {
+    type: 'cucumber',
+    options: {
+      feature_path: 'e2e/features',
+      require: ['e2e/step_definitions']
+    }
+  },
+
   globals_path: '',
 
   test_workers: {
