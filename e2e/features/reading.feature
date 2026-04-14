@@ -24,9 +24,9 @@ Feature: Reading Page
       | title                          |
       | The Anarchy                    |
       | A Wizard of Earthsea           |
-      | The Phoenix Project            |
+      | The Cambridge History of Japan |
       | The Bahir                      |
       | Classical Mechanics            |
       | Flatland                       |
       | Dragonflight                   |
-      | Gödel, Escher, Bach            |
+      | Classical Mechanics            |
