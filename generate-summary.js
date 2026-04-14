@@ -1,7 +1,8 @@
 #!/usr/bin/env node
 /**
  * Generates a GitHub Actions job summary that mirrors the Cucumber HTML report.
- * Shows a color-coded table per feature with inline thumbnail screenshots.
+ * Shows a color-coded table per feature with inline thumbnail screenshots for
+ * both the entry state (before steps) and exit state (after steps).
  *
  * Usage: node generate-summary.js
  * Env:   GITHUB_STEP_SUMMARY - path to the GitHub Actions summary file
@@ -37,12 +38,16 @@ function toSafeName(name) {
     .substring(0, 60);
 }
 
-/** Find the screenshot saved by Nightwatch (UPPERCASE) or hooks.js (lowercase). */
-function findScreenshotFile(scenarioName, status) {
+/**
+ * Find a screenshot saved by hooks.js.
+ * prefix is the filename prefix, e.g. "BEFORE", "PASSED", "FAILED", "passed", "failed".
+ * Tries both the exact prefix and its UPPER/lower counterpart.
+ */
+function findScreenshotFile(scenarioName, prefix) {
   const safe = toSafeName(scenarioName);
   const candidates = [
-    path.join(SCREENSHOTS_DIR, `${status.toUpperCase()}_${safe}.png`),
-    path.join(SCREENSHOTS_DIR, `${status.toLowerCase()}_${safe}.png`),
+    path.join(SCREENSHOTS_DIR, `${prefix.toUpperCase()}_${safe}.png`),
+    path.join(SCREENSHOTS_DIR, `${prefix.toLowerCase()}_${safe}.png`),
   ];
   return candidates.find((f) => fs.existsSync(f)) || null;
 }
@@ -73,6 +78,19 @@ function thumbnail(imagePath) {
       // ignore
     }
   }
+}
+
+/** Render an inline thumbnail cell, or a "no screenshot" placeholder. */
+function screenshotCell(scenarioName, prefix, altLabel) {
+  const shotFile = findScreenshotFile(scenarioName, prefix);
+  if (!shotFile) {
+    return `<span class="nw-none">no screenshot</span>`;
+  }
+  const b64 = thumbnail(shotFile);
+  if (!b64) {
+    return `<span class="nw-none">screenshot (thumbnail unavailable)</span>`;
+  }
+  return `<img class="nw-thumb" src="data:image/jpeg;base64,${b64}" alt="${escHtml(altLabel)}" width="${THUMB_WIDTH}">`;
 }
 
 // ─── Load report ────────────────────────────────────────────────────────────
@@ -119,10 +137,10 @@ for (const feature of features) {
 <table class="nw-table">
   <thead>
     <tr style="background:${fc.bg};color:${fc.text}">
-      <th colspan="3" class="nw-feature">${featureIcon} ${escHtml(feature.name)}</th>
+      <th colspan="4" class="nw-feature">${featureIcon} ${escHtml(feature.name)}</th>
     </tr>
     <tr style="background:#f8f9fa">
-      <th>Scenario</th><th>Status</th><th>Last screenshot</th>
+      <th>Scenario</th><th>Status</th><th>Entry screenshot</th><th>Exit screenshot</th>
     </tr>
   </thead>
   <tbody>`;
@@ -145,21 +163,15 @@ for (const feature of features) {
           ? "❌ Failed"
           : "⏭️ Skipped";
 
-    // Screenshot cell
-    const shotFile = findScreenshotFile(scenario.name, statusKey);
-    let shotHtml = `<span class="nw-none">no screenshot</span>`;
-    if (shotFile) {
-      const b64 = thumbnail(shotFile);
-      if (b64) {
-        shotHtml = `<img class="nw-thumb" src="data:image/jpeg;base64,${b64}" alt="${escHtml(scenario.name)}" width="${THUMB_WIDTH}">`;
-      }
-    }
+    const entryHtml = screenshotCell(scenario.name, "BEFORE", `${scenario.name} — entry`);
+    const exitHtml = screenshotCell(scenario.name, statusKey, `${scenario.name} — exit`);
 
     html += `
     <tr style="background:${c.bg};color:${c.text}">
       <td>${escHtml(scenario.name)}</td>
       <td style="white-space:nowrap"><strong>${statusLabel}</strong></td>
-      <td>${shotHtml}</td>
+      <td>${entryHtml}</td>
+      <td>${exitHtml}</td>
     </tr>`;
   }
 
@@ -176,7 +188,7 @@ html += `
 </p>`;
 
 if (ARTIFACT_URL) {
-  html += `<p>📥 <a href="${ARTIFACT_URL}">Download integration-test-report artifact</a> for the full Cucumber HTML report with embedded screenshots.</p>`;
+  html += `<p>📥 <a href="${ARTIFACT_URL}">Download integration-test-report artifact</a> for the full Cucumber HTML report with all embedded screenshots.</p>`;
 }
 
 // ─── Write ───────────────────────────────────────────────────────────────────
