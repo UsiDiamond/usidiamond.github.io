@@ -17,6 +17,11 @@ When("I click the Projects nav link", function () {
   browser.click('button[routerlink="projects"]');
 });
 
+When("I click the Contact nav link", function () {
+  browser.waitForElementVisible('button[routerlink="contact"]');
+  browser.click('button[routerlink="contact"]');
+});
+
 Then("the page header is visible", function () {
   browser.waitForElementVisible("h1");
 });
@@ -39,4 +44,12 @@ Then("the projects page contains {string}", function (text) {
 
 Then("the main content area is present", function () {
   browser.assert.elementPresent("#maincontent");
+});
+
+Then("the contact page displays {string}", function (text) {
+  browser.assert.textContains("body", text);
+});
+
+Then("a mailto link for {string} is present", function (email) {
+  browser.assert.elementPresent(`a[href="mailto:${email}"]`);
 });
