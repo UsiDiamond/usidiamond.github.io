@@ -81,13 +81,13 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: site-for-deploy
-          path: .
+          path: ${{ runner.temp }}/site-for-deploy
 
       - uses: actions/configure-pages@v5
 
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: .
+          path: ${{ runner.temp }}/site-for-deploy
 
       - name: Deploy to GitHub Pages
         id: deployment
