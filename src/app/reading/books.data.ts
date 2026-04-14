@@ -827,13 +827,6 @@ export const BOOKS: Book[] = [
     amazonUrl: 'https://www.amazon.com/s?k=Jewish%20History%20-%20A%20Trilogy%20Rabbi%20Berel%20Wein&i=stripbooks',
   },
   {
-    title: 'Artscroll',
-    author: 'Hersh Goldwurm',
-    subject: 'Kabbalah & Jewish Mysticism',
-    parts: 1,
-    amazonUrl: 'https://www.amazon.com/s?k=Artscroll%20Hersh%20Goldwurm&i=stripbooks',
-  },
-  {
     title: 'The Early Rishonim: A Gemara Student\'s Guide',
     author: 'Aryeh Leibowitz',
     subject: 'Kabbalah & Jewish Mysticism',
@@ -874,20 +867,6 @@ export const BOOKS: Book[] = [
     subject: 'Kabbalah & Jewish Mysticism',
     parts: 1,
     amazonUrl: 'https://www.amazon.com/s?k=College%20Yiddish%20Uriel%20Weinreich&i=stripbooks',
-  },
-  {
-    title: 'Schottenstein Edition Ein Yaakov',
-    author: 'ArtScroll Mesorah Publications',
-    subject: 'Kabbalah & Jewish Mysticism',
-    parts: 1,
-    amazonUrl: 'https://www.amazon.com/s?k=Schottenstein%20Edition%20Ein%20Yaakov%20ArtScroll%20Mesorah%20Publications&i=stripbooks',
-  },
-  {
-    title: 'Rubin / Milstein Prophets and Writings Full size 13 volume Set Includes',
-    author: 'ArtScroll Mesorah Publications',
-    subject: 'Kabbalah & Jewish Mysticism',
-    parts: 1,
-    amazonUrl: 'https://www.amazon.com/s?k=Rubin%20%2F%20Milstein%20Prophets%20and%20Writings%20Full%20size%2013%20volume%20Set%20Includes%20ArtScroll%20Mesorah%20Publications&i=stripbooks',
   },
   {
     title: 'Bacterial and Bacteriophage Genetics',
@@ -1000,13 +979,6 @@ export const BOOKS: Book[] = [
     subject: 'Physics',
     parts: 1,
     amazonUrl: 'https://www.amazon.com/s?k=A%20Textbook%20of%20Fluid%20Mechanics%20and%20Hydraulic%20Machines%20Bansal&i=stripbooks',
-  },
-  {
-    title: 'Sefer Zera Shimshon - 10 volume Set Haas Family Edition The Classic Torah Commentary of the 18th Century Kabbalist Rabbi Shimshon Chaim Nachmani',
-    author: 'ArtScroll Mesorah Publications',
-    subject: 'Kabbalah & Jewish Mysticism',
-    parts: 1,
-    amazonUrl: 'https://www.amazon.com/s?k=Sefer%20Zera%20Shimshon%20-%2010%20volume%20Set%20Haas%20Family%20Edition%20The%20Classic%20Torah%20Commentary%20of%20the%2018th%20Century%20Kabbalist%20Rabbi%20Shimshon%20Chaim%20Nachmani%20ArtScroll%20Mesorah%20Publications&i=stripbooks',
   },
   {
     title: 'The Fractional Calculus',
@@ -1491,13 +1463,6 @@ export const BOOKS: Book[] = [
     amazonUrl: 'https://www.amazon.com/s?k=Tanach%20Rabbi%20Nosson%20Scherman&i=stripbooks',
   },
   {
-    title: 'The Complete Artscroll Machzor: Rosh Hashanah',
-    author: 'Nosson Scherman',
-    subject: 'Kabbalah & Jewish Mysticism',
-    parts: 1,
-    amazonUrl: 'https://www.amazon.com/s?k=The%20Complete%20Artscroll%20Machzor%3A%20Rosh%20Hashanah%20Nosson%20Scherman&i=stripbooks',
-  },
-  {
     title: 'Was Yosef on the Spectrum?',
     author: 'Samuel J. Levine',
     subject: 'Other',
@@ -1534,13 +1499,6 @@ export const BOOKS: Book[] = [
     amazonUrl: 'https://www.amazon.com/s?k=Handbook%20to%20Biblical%20Hebrew%20N.%20Clayton%20Croy&i=stripbooks',
   },
   {
-    title: 'Queer Qabala',
-    author: 'Enfys J. Book',
-    subject: 'Occult, Hermetic, & Western Magick',
-    parts: 1,
-    amazonUrl: 'https://www.amazon.com/s?k=Queer%20Qabala%20Enfys%20J.%20Book&i=stripbooks',
-  },
-  {
     title: 'The Chief Eunuch of the Ottoman Harem',
     author: 'Jane Hathaway',
     subject: 'History & Society',
@@ -1560,13 +1518,6 @@ export const BOOKS: Book[] = [
     subject: 'Mathematics',
     parts: 1,
     amazonUrl: 'https://www.amazon.com/s?k=Continued%20Fractions%20A.%20Ya.%20Khinchin&i=stripbooks',
-  },
-  {
-    title: 'Artscroll Siddur Complete Weekday, Shabbos and Holidays',
-    author: 'Nosson Scherman',
-    subject: 'Kabbalah & Jewish Mysticism',
-    parts: 1,
-    amazonUrl: 'https://www.amazon.com/s?k=Artscroll%20Siddur%20Complete%20Weekday%2C%20Shabbos%20and%20Holidays%20Nosson%20Scherman&i=stripbooks',
   },
   {
     title: 'Differential Forms',
