@@ -8,7 +8,6 @@ const navLabelToRoute = {
   Education: "education",
   Volunteering: "volunteering",
   Reading: "reading",
-  About: "about",
   Contact: "contact",
 };
 

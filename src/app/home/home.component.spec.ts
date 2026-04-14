@@ -41,4 +41,19 @@ describe('HomeComponent', () => {
     const el: HTMLElement = fixture.nativeElement;
     expect(el.querySelector('[links-grid]')).toBeTruthy();
   });
+
+  it('should render the merged-in about sections', () => {
+    const el: HTMLElement = fixture.nativeElement;
+    const sections = el.querySelectorAll('[section]');
+    expect(sections.length).toBe(4);
+  });
+
+  it('should contain each merged-in about section prompt', () => {
+    const el: HTMLElement = fixture.nativeElement;
+    const text = el.textContent ?? '';
+    expect(text).toContain('What music does it like?');
+    expect(text).toContain('What causes does it care about?');
+    expect(text).toContain('What games does it like?');
+    expect(text).toContain('What does the Usi do for money?');
+  });
 });
