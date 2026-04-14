@@ -2,6 +2,9 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ReadingComponent } from './reading.component';
 import { BOOKS } from './books.data';
 
+const HIDDEN_SUBJECTS = new Set(['Biology & Medicine']);
+const VISIBLE_BOOKS = BOOKS.filter((b) => !HIDDEN_SUBJECTS.has(b.subject));
+
 describe('ReadingComponent', () => {
   let component: ReadingComponent;
   let fixture: ComponentFixture<ReadingComponent>;
@@ -25,10 +28,10 @@ describe('ReadingComponent', () => {
     expect(el.getAttribute('id')).toBe('maincontent');
   });
 
-  it('should render a chip for every book in the data file', () => {
+  it('should render a chip for every visible book', () => {
     const el: HTMLElement = fixture.nativeElement;
     const chips = el.querySelectorAll('.reading-chip');
-    expect(chips.length).toBe(BOOKS.length);
+    expect(chips.length).toBe(VISIBLE_BOOKS.length);
   });
 
   it('should render at least 300 books (library-sized list)', () => {
@@ -37,8 +40,8 @@ describe('ReadingComponent', () => {
     expect(chips.length).toBeGreaterThan(300);
   });
 
-  it('should group books into subject panes, one per unique subject', () => {
-    const uniqueSubjects = new Set(BOOKS.map((b) => b.subject));
+  it('should group visible books into subject panes, one per unique visible subject', () => {
+    const uniqueSubjects = new Set(VISIBLE_BOOKS.map((b) => b.subject));
     expect(component.subjectGroups.length).toBe(uniqueSubjects.size);
 
     const el: HTMLElement = fixture.nativeElement;
@@ -46,10 +49,18 @@ describe('ReadingComponent', () => {
     expect(subjectHeaders.length).toBe(uniqueSubjects.size);
   });
 
+  it('should not render any hidden subject sections', () => {
+    for (const subject of component.subjectGroups) {
+      expect(HIDDEN_SUBJECTS.has(subject.subject)).toBe(false);
+    }
+  });
+
   it('should subdivide each subject by author', () => {
     for (const subject of component.subjectGroups) {
       const uniqueAuthorsInSubject = new Set(
-        BOOKS.filter((b) => b.subject === subject.subject).map((b) => b.author)
+        VISIBLE_BOOKS.filter((b) => b.subject === subject.subject).map(
+          (b) => b.author
+        )
       );
       expect(subject.authors.length).toBe(uniqueAuthorsInSubject.size);
     }
@@ -73,9 +84,10 @@ describe('ReadingComponent', () => {
     }
   });
 
-  it('should pin Fantasy & Science Fiction first, then order the rest by book count descending', () => {
+  it('should pin Fantasy & Science Fiction then Literature & Fiction, then order the rest by book count descending', () => {
     expect(component.subjectGroups[0].subject).toBe('Fantasy & Science Fiction');
-    const rest = component.subjectGroups.slice(1);
+    expect(component.subjectGroups[1].subject).toBe('Literature & Fiction');
+    const rest = component.subjectGroups.slice(2);
     const counts = rest.map((g) =>
       g.authors.reduce((sum, a) => sum + a.books.length, 0)
     );
@@ -109,10 +121,10 @@ describe('ReadingComponent', () => {
     expect(headings.length).toBeGreaterThan(0);
   });
 
-  it('should render an Amazon link per book opening in a new tab safely', () => {
+  it('should render an Amazon link per visible book opening in a new tab safely', () => {
     const el: HTMLElement = fixture.nativeElement;
     const links = el.querySelectorAll('.reading-chip-link');
-    expect(links.length).toBe(BOOKS.length);
+    expect(links.length).toBe(VISIBLE_BOOKS.length);
     links.forEach((link) => {
       const href = link.getAttribute('href') ?? '';
       expect(href).toContain('amazon.com');
@@ -143,7 +155,7 @@ describe('ReadingComponent', () => {
   });
 
   it('should display a "(N vols)" annotation on collapsed multi-volume series', () => {
-    const collapsed = BOOKS.filter((b) => b.parts > 1);
+    const collapsed = VISIBLE_BOOKS.filter((b) => b.parts > 1);
     if (collapsed.length === 0) return;
     const el: HTMLElement = fixture.nativeElement;
     const annotations = el.querySelectorAll('.reading-chip-vols');
