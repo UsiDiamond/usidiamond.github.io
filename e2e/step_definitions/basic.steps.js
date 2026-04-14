@@ -1,4 +1,4 @@
-const { Before, Given, When } = require("@cucumber/cucumber");
+const { Before, Given, When, Then } = require("@cucumber/cucumber");
 const { HomePage } = require("../pages/home.po");
 
 Before(function (scenario, callback) {
@@ -16,4 +16,8 @@ When("I click on the Skip to Content link", function () {
   browser.execute(function () {
     document.querySelector(".skip").click();
   });
+});
+
+Then("a skip to content link is present", function () {
+  browser.assert.elementPresent(".skip");
 });
