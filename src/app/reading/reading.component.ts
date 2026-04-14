@@ -14,9 +14,7 @@ export interface SubjectGroup {
 }
 
 /** Subjects that should not render at all. */
-const HIDDEN_SUBJECTS: ReadonlySet<string> = new Set([
-  'Biology & Medicine',
-]);
+const HIDDEN_SUBJECTS: ReadonlySet<string> = new Set(['Biology & Medicine']);
 
 /**
  * Group books by subject, then by author within each subject.
@@ -82,5 +80,6 @@ function groupBySubjectAndAuthor(books: readonly Book[]): SubjectGroup[] {
   styleUrl: './reading.component.css',
 })
 export class ReadingComponent {
-  readonly subjectGroups: readonly SubjectGroup[] = groupBySubjectAndAuthor(BOOKS);
+  readonly subjectGroups: readonly SubjectGroup[] =
+    groupBySubjectAndAuthor(BOOKS);
 }

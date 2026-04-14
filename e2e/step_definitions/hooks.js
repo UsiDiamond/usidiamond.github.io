@@ -29,7 +29,7 @@ After(async function (scenario) {
     await this.attach(imageData, "image/png");
   } catch (err) {
     console.warn(
-      `[hooks] Screenshot failed for "${scenario.pickle.name}": ${err.message}`
+      `[hooks] Screenshot failed for "${scenario.pickle.name}": ${err.message}`,
     );
   }
 });
