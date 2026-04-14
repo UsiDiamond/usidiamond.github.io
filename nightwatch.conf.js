@@ -7,7 +7,12 @@ module.exports = {
     type: 'cucumber',
     options: {
       feature_path: 'e2e/features',
-      require: ['e2e/step_definitions']
+      require: ['e2e/step_definitions'],
+      format: [
+        'html:./integration-tests-report/cucumber-report.html',
+        'json:./integration-tests-report/cucumber-report.json',
+        'junit:./integration-tests-report/cucumber-junit.xml'
+      ]
     }
   },
 
