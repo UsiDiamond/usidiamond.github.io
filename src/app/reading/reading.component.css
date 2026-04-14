@@ -9,10 +9,33 @@ p, li {
   font-weight: 700;
 }
 
+/* Sections flow left-to-right and wrap. Basis 480px lets a section stand alone
+   on narrow screens and pair up on wide ones; max-width 50% caps the layout at
+   two sections per row even on very wide viewports. */
+.reading-sections {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.reading-section {
+  flex: 1 1 480px;
+  min-width: 0;
+  max-width: 100%;
+}
+
+@media (min-width: 1100px) {
+  .reading-section {
+    max-width: calc(50% - 0.5rem);
+  }
+}
+
 .reading-subject {
   font-size: 1.25rem;
   padding: 0.4rem 0.75rem;
   border-radius: 12px;
+  margin-bottom: 0.5rem;
   background: linear-gradient(
     90deg,
     rgb(107, 107, 107, 1) 0%,
@@ -23,7 +46,6 @@ p, li {
 
 .reading-subject-pane {
   padding: 0.75em;
-  margin: 0 1em 1em 1em;
   border-radius: 15px;
   background: linear-gradient(
     90deg,
