@@ -1,19 +1,36 @@
 Feature: Site Navigation
-  Verifies that the site loads correctly and the navigation links work.
+  Verifies that the site header, navigation menu, skip link, and all nav links work correctly.
 
-  Scenario: Site loads and displays the header and navigation
+  Scenario: Site loads with header, navigation menu, and skip link
     Given I go to "http://localhost:8080/"
     Then the page header is visible
     And the navigation menu is visible
+    And a skip to content link is present
 
-  Scenario: Introduction link navigates to the home page
+  Scenario Outline: <label> nav link navigates to the correct page
     Given I go to "http://localhost:8080/"
-    When I click the Introduction nav link
-    Then the URL contains "/home"
+    When I click the "<label>" nav link
+    Then the URL contains "/<route>"
     And the page header is visible
+    And the navigation menu is visible
 
-  Scenario: About link navigates to the about page
-    Given I go to "http://localhost:8080/"
-    When I click the About nav link
-    Then the URL contains "/about"
-    And the page header is visible
+    Examples:
+      | label        | route     |
+      | Introduction | home      |
+      | Projects     | projects  |
+      | Education    | education |
+      | About        | about     |
+      | Contact      | contact   |
+
+  Scenario Outline: Skip link and main content target are present on the <page> page
+    Given I go to "http://localhost:8080/#/<route>"
+    Then a skip to content link is present
+    And the main content area is present
+
+    Examples:
+      | page        | route     |
+      | Home        | home      |
+      | Projects    | projects  |
+      | Education   | education |
+      | About       | about     |
+      | Contact     | contact   |
