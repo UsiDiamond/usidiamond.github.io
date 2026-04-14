@@ -64,6 +64,54 @@ module.exports = {
       }
     },
 
+    firefox: {
+      desiredCapabilities: {
+        browserName: 'firefox',
+        'moz:firefoxOptions': {
+          args: ['--headless', '--width=1280', '--height=1024']
+        }
+      },
+
+      webdriver: {
+        start_process: true,
+        server_path: ''
+      }
+    },
+
+    edge: {
+      desiredCapabilities: {
+        browserName: 'MicrosoftEdge',
+        'ms:edgeOptions': {
+          args: [
+            '--headless',
+            '--no-sandbox',
+            '--disable-dev-shm-usage',
+            '--ignore-certificate-errors',
+            '--allow-insecure-localhost',
+            '--window-size=1280,1024'
+          ]
+        }
+      },
+
+      webdriver: {
+        start_process: true,
+        server_path: ''
+      }
+    },
+
+    safari: {
+      // Safari requires macOS and safaridriver to be enabled via:
+      //   sudo safaridriver --enable
+      desiredCapabilities: {
+        browserName: 'safari'
+      },
+
+      webdriver: {
+        start_process: true,
+        server_path: '/usr/bin/safaridriver'
+      }
+    },
+
     'android.real.chrome': {
       desiredCapabilities: {
         real_mobile: true,
