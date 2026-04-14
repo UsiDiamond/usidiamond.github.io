@@ -49,7 +49,7 @@ export const BOOKS: Book[] = [
     amazonUrl: 'https://www.amazon.com/s?k=Shadows%20of%20the%20Empire%3A%20Star%20Wars%20Legends%20Steve%20Perry&i=stripbooks',
   },
   {
-    title: 'Legend of Zelda Complete Box Set',
+    title: 'Legend of Zelda Twilight Princess',
     author: 'Akira Himekawa',
     subject: 'Fantasy & Science Fiction',
     parts: 1,
@@ -204,7 +204,7 @@ export const BOOKS: Book[] = [
   },
   {
     title: 'Xeelee An Omnibus',
-    author: 'baxter-stephen',
+    author: 'Baxter Stephen',
     subject: 'Fantasy & Science Fiction',
     parts: 1,
     amazonUrl: 'https://www.amazon.com/s?k=Xeelee%20An%20Omnibus%20baxter-stephen&i=stripbooks',
@@ -1443,7 +1443,7 @@ export const BOOKS: Book[] = [
     amazonUrl: 'https://www.amazon.com/s?k=The%20Dead%20Sea%20Scrolls%20Bible%20Martin%20G.%20Abegg%20Jr.&i=stripbooks',
   },
   {
-    title: 'The Holy Zohar I 23 Volumes Set I The Zohar with Hebrew Translation and the Original Aramaic Zohar by Rabbi Shimon Bar Yochai I Translated into Hebrew by the Baal Ha\'Sulam Rabbi Yehuda Ashlag',
+    title: 'The Zohar with Hebrew Translation and the Original Aramaic Zohar by Rabbi Shimon Bar Yochai I Translated into Hebrew by the Baal Ha\'Sulam Rabbi Yehuda Ashlag',
     author: 'Rabbi Shimon Bar Yochai',
     subject: 'Kabbalah & Jewish Mysticism',
     parts: 1,
@@ -1815,13 +1815,6 @@ export const BOOKS: Book[] = [
     subject: 'Physics',
     parts: 1,
     amazonUrl: 'https://www.amazon.com/s?k=Fusion%20Plasma%20Physics%20Weston%20M.%20Stacey&i=stripbooks',
-  },
-  {
-    title: 'Super Scratch Art Pads: Nature',
-    author: 'Super Scratch Art Pads',
-    subject: 'Games, Art, & Pop Culture',
-    parts: 1,
-    amazonUrl: 'https://www.amazon.com/s?k=Super%20Scratch%20Art%20Pads%3A%20Nature%20Super%20Scratch%20Art%20Pads&i=stripbooks',
   },
   {
     title: 'Complete Song Cycles',
