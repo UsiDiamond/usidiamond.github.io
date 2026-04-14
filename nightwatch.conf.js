@@ -14,7 +14,7 @@ module.exports = {
   globals_path: '',
 
   test_workers: {
-    enabled: true
+    enabled: false
   },
 
   test_settings: {
@@ -45,7 +45,8 @@ module.exports = {
         'goog:chromeOptions': {
           // More info on Chromedriver: https://sites.google.com/a/chromium.org/chromedriver/
           args: [
-            //'--no-sandbox',
+            '--no-sandbox',
+            '--disable-dev-shm-usage',
             '--ignore-certificate-errors',
             '--allow-insecure-localhost',
             '--headless=new',
