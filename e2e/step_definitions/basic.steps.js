@@ -11,5 +11,9 @@ Given("I go to {string}", function (string) {
 });
 
 When("I click on the Skip to Content link", function () {
-  browser.click(".skip");
+  // The skip link is visually hidden (off-screen at 0,0) so a pointer-based
+  // click is intercepted by the element on top. Use JS click instead.
+  browser.execute(function () {
+    document.querySelector(".skip").click();
+  });
 });
