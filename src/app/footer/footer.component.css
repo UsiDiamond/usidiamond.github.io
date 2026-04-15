@@ -8,3 +8,9 @@ a {
   font-family: MoreSugar;
   font-size: smaller;
 }
+
+.cc-icon {
+  height: 22px;
+  margin-left: 3px;
+  vertical-align: text-bottom;
+}

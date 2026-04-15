@@ -28,13 +28,4 @@ li {
 
 .volunteering-section {
   padding: 0.75em;
-  margin: 1em;
-  border-radius: 15px;
-  background: rgba(163, 163, 163);
-  background: linear-gradient(
-    90deg,
-    rgb(107, 107, 107, 1) 0%,
-    rgba(181, 111, 216, 0.2) 47%,
-    rgb(68, 114, 126, 0.5) 100%
-  );
 }
