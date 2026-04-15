@@ -1,11 +1,11 @@
-<div class="row justify-content-center">
-  <div class="col-10 col-md-5 col-lg-5 home-section">
+<div class="row justify-content-center gy-5 gx-4">
+  <div class="col-10 col-md-6 col-lg-6"><div class="card diamond-card home-section shadow-sm rounded-4 h-100">
     <h2 tabindex="0">{{ 'home.whatIsAnUsi' | translate }}</h2>
     <p tabindex="0">{{ 'home.aboutP1' | translate }}</p>
     <p tabindex="0">{{ 'home.aboutP2' | translate }}</p>
     <p tabindex="0">{{ 'home.aboutP3' | translate }}</p>
-  </div>
-  <div class="col-10 col-md-5 col-lg-5 home-section">
+  </div></div>
+  <div class="col-10 col-md-6 col-lg-6"><div class="card diamond-card home-section shadow-sm rounded-4 h-100">
     <h2 tabindex="0">{{ 'home.pronouns' | translate }}</h2>
     <p tabindex="0" [innerHTML]="'home.pronounsP1' | translate"></p>
     <p tabindex="0" [innerHTML]="'home.pronounsP2' | translate"></p>
@@ -15,8 +15,8 @@
       <a
         tabindex="0"
         target="_blank"
+        class="text-diamond-muted"
         [title]="'home.pronounsPage' | translate"
-        style="color: rgb(131, 131, 131)"
         href="https://en.pronouns.page/@usiia"
       >
         <svg
@@ -32,10 +32,10 @@
         </svg>
       </a>
     </p>
-  </div>
+  </div></div>
 </div>
 
-<div class="row mx-auto justify-content-center">
+<div class="row mx-auto justify-content-center mt-4">
   <div section>
     <div question>{{ 'home.questionMusic' | translate }}</div>
     <div content>
@@ -103,7 +103,7 @@
   </div>
 </div>
 
-<div class="row mx-auto justify-content-center">
+<div class="row mx-auto justify-content-center mt-4">
   <div class="col-10">
     <h2 tabindex="0">{{ 'home.socialLinks' | translate }}</h2>
     <div links-grid></div>

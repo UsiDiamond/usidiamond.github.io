@@ -1,48 +1,36 @@
-li {
+:host .nav-link {
+  min-width: 170px;
+  text-align: start;
+  color: rgb(206, 154, 255);
+}
+
+:host li {
   font-size: larger;
   font-weight: bolder;
 }
 
-.nav-link {
-  min-width: 170px !important;
-}
-
-button {
-  text-align: start;
-}
-
-button:not(.navbar-toggler) {
-  color: rgb(206, 154, 255) !important;
-}
-
-button:not(.navbar-toggler)::after {
+:host .nav-link:not(.navbar-toggler)::after {
   content: " UwU";
 }
 
-button:not(.navbar-toggler):not(.active):hover {
-  color: #0cf !important;
+:host .nav-link:not(.navbar-toggler):not(.active):hover,
+:host .nav-link:not(.navbar-toggler):not(.active):focus {
+  color: #0cf;
 }
 
-button:hover:not(.navbar-toggler):not(.active)::after {
+:host .nav-link:not(.navbar-toggler):not(.active):hover::after,
+:host .nav-link:not(.navbar-toggler):not(.active):focus::after {
   content: " UwO";
 }
 
-button:not(.navbar-toggler):not(.active):focus {
-  color: #0cf !important;
+:host .nav-link.active {
+  color: rgb(151, 39, 255);
 }
 
-button:focus:not(.navbar-toggler):not(.active)::after {
-  content: " UwO";
-}
-
-button.active {
-  color: rgb(151, 39, 255) !important;
-}
-
-button.active:not(.navbar-toggler)::after {
+:host .nav-link.active::after {
   content: " OwO";
 }
 
-button.disabled {
-  color: rgba(222, 187, 255, 0.411) !important;
+:host .nav-link.disabled {
+  color: rgba(222, 187, 255, 0.411);
 }
