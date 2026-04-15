@@ -14,3 +14,44 @@
 .header-content {
   text-align: center;
 }
+
+.bg-toggle {
+  position: fixed;
+  bottom: max(1rem, env(safe-area-inset-bottom));
+  right: max(1rem, env(safe-area-inset-right));
+  z-index: 100;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  min-height: 44px;
+  padding: 0 0.9rem 0 0.75rem;
+  border-radius: 999px;
+  border: 1px solid rgba(181, 111, 216, 0.6);
+  background: rgba(0, 0, 0, 0.65);
+  color: rgb(222, 187, 255);
+  font-family: MoreSugar, system-ui, sans-serif;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease, transform 0.12s ease;
+}
+
+.bg-toggle:hover,
+.bg-toggle:focus-visible {
+  background: rgba(181, 111, 216, 0.35);
+  color: #fff;
+}
+
+.bg-toggle:focus-visible {
+  outline: 2px solid rgb(222, 187, 255);
+  outline-offset: 2px;
+}
+
+.bg-toggle:active { transform: scale(0.97); }
+
+.bg-toggle.is-paused {
+  border-color: rgba(222, 187, 255, 0.8);
+}
+
+.bg-toggle__label {
+  line-height: 1;
+}
