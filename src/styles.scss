@@ -1,59 +1,47 @@
 // =============================================================================
-// Bootstrap theme overrides — declared BEFORE importing Bootstrap SCSS source
-// so generated utilities, navbar vars, card vars, link vars etc. pick them up.
+// Global stylesheet: theme Bootstrap with design tokens, expose shared classes,
+// drive the animated background.
 // =============================================================================
 
 @use "sass:color";
+@use "sass:list";
+@use "sass:meta";
+@use "tokens" as t;
+@use "mixins" as m;
 
 @font-face {
   font-family: MoreSugar;
   src: url("assets/MoreSugar-Thin.ttf") format("truetype");
 }
 
-// Brand palette
-$diamond-lavender: rgb(222, 187, 255);
-$diamond-purple:   rgb(181, 111, 216);
-$diamond-violet:   rgb(151, 39, 255);
-$diamond-gray:     rgb(190, 190, 190);
-$diamond-gray-mid: rgb(180, 180, 180);
-$diamond-gray-dim: rgb(131, 131, 131);
-$diamond-charcoal: rgb(71, 71, 71);
-$diamond-slate:    rgb(107, 107, 107);
-$diamond-teal:     rgb(68, 114, 126);
-$diamond-accent:   rgb(206, 154, 255);
+// -- Bootstrap theme overrides (must precede the Bootstrap import) -----------
+$primary:            t.$lavender;
+$secondary:          t.$purple;
+$body-bg:            t.$charcoal;
+$body-color:         t.$gray;
+$link-color:         t.$lavender;
+$link-hover-color:   #0cf;
+$font-family-base:   t.$font-fancy, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+$headings-color:     t.$lavender;
+$card-bg:            transparent;
+$card-border-color:  rgba(t.$purple, 0.35);
+$card-border-radius: t.$card-radius;
 
-// Map onto Bootstrap's theme variables
-$primary:           $diamond-lavender;
-$secondary:         $diamond-purple;
-$body-bg:           $diamond-charcoal;
-$body-color:        $diamond-gray;
-$link-color:        $diamond-lavender;
-$link-hover-color:  #0cf;
-$font-family-base:  MoreSugar, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-$headings-color:    $diamond-lavender;
-$card-bg:           transparent;
-$card-border-color: rgba($diamond-purple, 0.35);
-$card-border-radius:15px;
-
-// Navbar dark-scheme overrides let menu.css drop its !important stack.
-$navbar-dark-color:          $diamond-accent;
+$navbar-dark-color:          t.$accent;
 $navbar-dark-hover-color:    #0cf;
-$navbar-dark-active-color:   $diamond-violet;
-$navbar-dark-disabled-color: rgba($diamond-lavender, 0.41);
+$navbar-dark-active-color:   t.$violet;
+$navbar-dark-disabled-color: rgba(t.$lavender, 0.41);
 
 @import "bootstrap/scss/bootstrap";
 
-// =============================================================================
-// Global structural styles (gradient background lives on <main app-root>)
-// =============================================================================
-
+// -- Animated background on <main app-root> ----------------------------------
 main {
   top: 0;
   position: absolute;
   min-width: 100%;
   min-height: 100%;
-  color: $diamond-gray;
-  background: $diamond-charcoal;
+  color: t.$gray;
+  background: t.$charcoal;
 
   --y-0: 80%;
   --x-0: 85%;
@@ -77,121 +65,82 @@ main {
   background-blend-mode: normal, normal, normal, normal;
 }
 
-// =============================================================================
-// Shared diamond-card surface (used by page cards across the site)
-// =============================================================================
-
+// -- Shared page-card surface ------------------------------------------------
 .diamond-card {
-  background: linear-gradient(
-    90deg,
-    rgba($diamond-slate, 1)     0%,
-    rgba($diamond-purple, 0.2) 47%,
-    rgba($diamond-teal, 0.5)  100%
-  );
-  color: $diamond-gray;
-  border-radius: 15px;
-  border: 1px solid rgba($diamond-purple, 0.35);
+  @include m.card-gradient;
+  color: t.$gray;
+  border-radius: t.$card-radius;
+  border: 1px solid rgba(t.$purple, 0.35);
 
-  h2 {
-    text-align: center;
-    color: $diamond-lavender;
-  }
-
-  p, li, a {
-    font-family: MoreSugar;
-    font-style: italic;
-    font-weight: 700;
-  }
+  h2 { @include m.centered-heading; }
+  p, li, a { @include m.italic-body; }
 }
 
-// Inline-style replacements
-.text-diamond-muted   { color: $diamond-gray-dim; }
-.text-diamond-accent  { color: $diamond-lavender; }
-.text-diamond-purple  { color: $diamond-purple; }
-.text-diamond-gray    { color: $diamond-gray-mid; }
+// -- Inline-style-replacement utility classes --------------------------------
+$text-utils: (
+  "muted":  t.$gray-dim,
+  "accent": t.$lavender,
+  "purple": t.$purple,
+  "gray":   t.$gray-mid,
+);
+@each $name, $color in $text-utils {
+  .text-diamond-#{$name} { color: $color; }
+}
 
 .diamond-chip {
   display: inline-block;
-  padding: 0.2rem 0.7rem;
-  border-radius: 999px;
-  background: rgba($diamond-purple, 0.25);
-  border: 1px solid rgba($diamond-purple, 0.5);
-  color: $diamond-lavender;
-  font-family: MoreSugar;
-  font-style: italic;
-  font-weight: 700;
-  font-size: 0.82rem;
-  text-align: center;
-  white-space: nowrap;
+  @include m.diamond-pill;
 }
 
-// =============================================================================
-// Moving background keyframes + custom property registrations
-// =============================================================================
+// -- Animated-background keyframes + custom property registrations -----------
 @keyframes gradient-animation {
   0% {
-    --y-0: 80%;
-    --x-0: 85%;
-    --s-start-0: 9%;
-    --s-end-0: 55%;
+    --y-0: 80%;  --x-0: 85%;  --s-start-0: 9%;  --s-end-0: 55%;
     --c-0: hsla(266.99999999999983, 1%, 12%, 1);
     --c-1: hsla(335.9999999999997, 2%, 22%, 1);
-    --y-1: 24%;
-    --s-start-1: 5%;
-    --s-end-1: 72%;
-    --x-1: 60%;
-    --x-2: 13%;
+    --y-1: 24%;  --x-1: 60%;  --s-start-1: 5%;  --s-end-1: 72%;
+    --x-2: 13%;  --y-2: 82%;  --s-start-2: 5%;  --s-end-2: 52%;
     --c-2: hsla(53.999999999999886, 0%, 0%, 0.49);
-    --s-start-2: 5%;
-    --s-end-2: 52%;
-    --y-2: 82%;
-    --s-start-3: 13%;
-    --s-end-3: 68%;
-    --y-3: 7%;
-    --x-3: 24%;
+    --y-3: 7%;   --x-3: 24%;  --s-start-3: 13%; --s-end-3: 68%;
     --c-3: hsla(299, 4%, 36%, 1);
   }
   100% {
-    --y-0: 94%;
-    --x-0: 31%;
-    --s-start-0: 9%;
-    --s-end-0: 55%;
+    --y-0: 94%;  --x-0: 31%;  --s-start-0: 9%;  --s-end-0: 55%;
     --c-0: hsla(266.99999999999943, 0%, 12%, 1);
     --c-1: hsla(0, 4%, 19%, 1);
-    --y-1: 25%;
-    --s-start-1: 5%;
-    --s-end-1: 72%;
-    --x-1: 2%;
-    --x-2: 98%;
+    --y-1: 25%;  --x-1: 2%;   --s-start-1: 5%;  --s-end-1: 72%;
+    --x-2: 98%;  --y-2: 20%;  --s-start-2: 5%;  --s-end-2: 52%;
     --c-2: hsla(54.000000000000036, 0%, 0%, 0.49);
-    --s-start-2: 5%;
-    --s-end-2: 52%;
-    --y-2: 20%;
-    --s-start-3: 13%;
-    --s-end-3: 68%;
-    --y-3: 92%;
-    --x-3: 95%;
+    --y-3: 92%;  --x-3: 95%;  --s-start-3: 13%; --s-end-3: 68%;
     --c-3: hsla(298.99999999999994, 3%, 41%, 1);
   }
 }
 
-@property --y-0 { syntax: "<percentage>"; inherits: false; initial-value: 80%; }
-@property --x-0 { syntax: "<percentage>"; inherits: false; initial-value: 85%; }
-@property --s-start-0 { syntax: "<percentage>"; inherits: false; initial-value: 9%; }
-@property --s-end-0 { syntax: "<percentage>"; inherits: false; initial-value: 55%; }
-@property --c-0 { syntax: "<color>"; inherits: false; initial-value: hsla(266.99999999999983, 1%, 12%, 1); }
-@property --c-1 { syntax: "<color>"; inherits: false; initial-value: hsla(335.9999999999997, 2%, 22%, 1); }
-@property --y-1 { syntax: "<percentage>"; inherits: false; initial-value: 24%; }
-@property --s-start-1 { syntax: "<percentage>"; inherits: false; initial-value: 5%; }
-@property --s-end-1 { syntax: "<percentage>"; inherits: false; initial-value: 72%; }
-@property --x-1 { syntax: "<percentage>"; inherits: false; initial-value: 60%; }
-@property --x-2 { syntax: "<percentage>"; inherits: false; initial-value: 13%; }
-@property --c-2 { syntax: "<color>"; inherits: false; initial-value: hsla(53.999999999999886, 0%, 0%, 0.49); }
-@property --s-start-2 { syntax: "<percentage>"; inherits: false; initial-value: 5%; }
-@property --s-end-2 { syntax: "<percentage>"; inherits: false; initial-value: 52%; }
-@property --y-2 { syntax: "<percentage>"; inherits: false; initial-value: 82%; }
-@property --s-start-3 { syntax: "<percentage>"; inherits: false; initial-value: 13%; }
-@property --s-end-3 { syntax: "<percentage>"; inherits: false; initial-value: 68%; }
-@property --y-3 { syntax: "<percentage>"; inherits: false; initial-value: 7%; }
-@property --x-3 { syntax: "<percentage>"; inherits: false; initial-value: 24%; }
-@property --c-3 { syntax: "<color>"; inherits: false; initial-value: hsla(299, 4%, 36%, 1); }
+// Registered custom properties so the gradient stops/colors tween smoothly.
+$percent-props: (
+  (--y-0, 80%), (--x-0, 85%), (--s-start-0, 9%),  (--s-end-0, 55%),
+  (--y-1, 24%), (--x-1, 60%), (--s-start-1, 5%),  (--s-end-1, 72%),
+  (--x-2, 13%), (--y-2, 82%), (--s-start-2, 5%),  (--s-end-2, 52%),
+  (--y-3, 7%),  (--x-3, 24%), (--s-start-3, 13%), (--s-end-3, 68%)
+);
+$color-props: (
+  (--c-0, hsla(266.99999999999983, 1%, 12%, 1)),
+  (--c-1, hsla(335.9999999999997, 2%, 22%, 1)),
+  (--c-2, hsla(53.999999999999886, 0%, 0%, 0.49)),
+  (--c-3, hsla(299, 4%, 36%, 1))
+);
+
+@each $name, $initial in $percent-props {
+  @property #{$name} {
+    syntax: "<percentage>";
+    inherits: false;
+    initial-value: $initial;
+  }
+}
+@each $name, $initial in $color-props {
+  @property #{$name} {
+    syntax: "<color>";
+    inherits: false;
+    initial-value: $initial;
+  }
+}

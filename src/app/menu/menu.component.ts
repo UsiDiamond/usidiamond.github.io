@@ -22,7 +22,7 @@ import { MENU_ITEMS, MenuItem } from '../app-routing.module';
     class: 'container-fluid',
   },
   templateUrl: './menu.component.html',
-  styleUrl: './menu.component.css',
+  styleUrl: './menu.component.scss',
 })
 export class MenuComponent {
   /** Nav items sorted by their declared order; drives the template loop. */

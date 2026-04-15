@@ -1,0 +1,29 @@
+@use 'tokens' as t;
+@use 'mixins' as m;
+
+h1 { color: t.$lavender; }
+
+// Toolbar above the title: holds the language switcher (and room for future
+// header controls). Right-aligned on wide screens, centre on narrow.
+.header-toolbar {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 0 0.5rem;
+  min-height: 2rem;
+
+  @media (max-width: 576px) {
+    justify-content: center;
+  }
+}
+
+.contact-link a {
+  color: t.$purple;
+  @include m.italic-body;
+  text-decoration: none;
+
+  &:hover {
+    color: t.$lavender;
+    text-decoration: underline;
+  }
+}

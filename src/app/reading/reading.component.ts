@@ -78,7 +78,7 @@ function groupBySubjectAndAuthor(books: readonly Book[]): SubjectGroup[] {
   },
   imports: [TranslateModule],
   templateUrl: './reading.component.html',
-  styleUrl: './reading.component.css',
+  styleUrl: './reading.component.scss',
 })
 export class ReadingComponent {
   readonly subjectGroups: readonly SubjectGroup[] =

@@ -10,6 +10,6 @@ import { TranslateModule } from '@ngx-translate/core';
   },
   imports: [TranslateModule],
   templateUrl: './volunteering.component.html',
-  styleUrl: './volunteering.component.css',
+  styleUrl: './volunteering.component.scss',
 })
 export class VolunteeringComponent {}

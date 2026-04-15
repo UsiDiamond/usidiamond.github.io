@@ -1,0 +1,18 @@
+@use 'tokens' as t;
+@use 'mixins' as m;
+
+p { @include m.italic-body; }
+h2 { @include m.centered-heading; }
+
+.home-section {
+  padding: t.$card-padding;
+  font-family: t.$font-fancy;
+  font-weight: 400;
+}
+
+.pronouns {
+  color: t.$lavender;
+  font-style: normal;
+  font-size: large;
+  font-weight: bolder !important;
+}

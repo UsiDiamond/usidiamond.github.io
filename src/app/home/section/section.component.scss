@@ -1,0 +1,19 @@
+@use 'tokens' as t;
+@use 'mixins' as m;
+
+h2 {
+  @include m.centered-heading;
+  padding-top: 1em;
+}
+
+.content {
+  @include m.italic-body;
+  padding: 0.5em;
+}
+
+.section-backpane {
+  font-family: t.$font-fancy;
+  font-weight: 400;
+  border-radius: t.$card-radius;
+  @include m.card-gradient;
+}

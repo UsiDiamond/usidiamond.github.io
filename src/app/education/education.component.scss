@@ -1,0 +1,30 @@
+@use 'tokens' as t;
+@use 'mixins' as m;
+
+h2 { @include m.centered-heading; }
+p, li { @include m.italic-body; }
+
+.education-degree {
+  @include m.label(t.$lavender);
+  font-size: 0.95em;
+}
+.education-date { @include m.label(t.$purple); }
+.education-org  { @include m.label(t.$gray-mid); }
+
+// Skills row: equidistant chips pinned to the bottom of each card.
+.education-skills {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: auto;
+  padding-top: 0.6rem;
+}
+
+.education-skill {
+  flex: 0 1 auto;
+  @include m.diamond-pill;
+}
+
+.education-section { padding: t.$card-padding; }

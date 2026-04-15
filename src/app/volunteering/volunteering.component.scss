@@ -1,0 +1,14 @@
+@use 'tokens' as t;
+@use 'mixins' as m;
+
+h2 { @include m.centered-heading; }
+p, li { @include m.italic-body; }
+
+.volunteering-date { @include m.label(t.$purple); }
+.volunteering-org  { @include m.label(t.$gray-mid); }
+.volunteering-cause {
+  @include m.label(t.$gray-mid);
+  font-size: 0.9em;
+}
+
+.volunteering-section { padding: t.$card-padding; }

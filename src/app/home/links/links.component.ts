@@ -9,6 +9,6 @@ import { Component } from '@angular/core';
     class: 'links-grid container-sm',
   },
   templateUrl: './links.component.html',
-  styleUrl: './links.component.css',
+  styleUrl: './links.component.scss',
 })
 export class LinksComponent {}

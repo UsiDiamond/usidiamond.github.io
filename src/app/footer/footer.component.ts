@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
     class: 'container-fluid',
   },
   templateUrl: './footer.component.html',
-  styleUrls: ['./footer.component.css'],
+  styleUrls: ['./footer.component.scss'],
   standalone: false,
 })
 export class FooterComponent {}

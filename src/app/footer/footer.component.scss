@@ -1,11 +1,11 @@
-a {
-  color: white;
-}
+@use 'tokens' as t;
+
+a { color: white; }
 
 .github {
-  color: rgb(190, 190, 190);
+  color: t.$gray;
   font-weight: 600;
-  font-family: MoreSugar;
+  font-family: t.$font-fancy;
   font-size: smaller;
 }
 

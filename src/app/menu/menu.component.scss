@@ -1,0 +1,32 @@
+@use 'tokens' as t;
+
+:host {
+  li {
+    font-size: larger;
+    font-weight: bolder;
+  }
+
+  .nav-link {
+    min-width: 170px;
+    text-align: start;
+    color: t.$accent;
+
+    &:not(.navbar-toggler)::after { content: " UwU"; }
+
+    &:not(.navbar-toggler):not(.active) {
+      &:hover,
+      &:focus {
+        color: #0cf;
+
+        &::after { content: " UwO"; }
+      }
+    }
+
+    &.active {
+      color: t.$violet;
+      &::after { content: " OwO"; }
+    }
+
+    &.disabled { color: rgba(t.$lavender, 0.411); }
+  }
+}
