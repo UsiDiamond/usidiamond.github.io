@@ -17,6 +17,5 @@ Feature: Education Page
       | Licenses & Certifications                                 |
       | Adult and Pediatric First Aid/CPR/AED                     |
       | Basic Life Support for Healthcare and Public Safety (BLS) |
-      | Certified Tutor                                           |
       | Introduction to R Course                                  |
       | Certified Advanced Tutor                                  |

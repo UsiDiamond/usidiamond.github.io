@@ -77,11 +77,6 @@ describe('EducationComponent', () => {
     );
   });
 
-  it('should contain the Certified Tutor certification', () => {
-    const el: HTMLElement = fixture.nativeElement;
-    expect(el.textContent).toContain('Certified Tutor');
-  });
-
   it('should contain the Introduction to R Course certification', () => {
     const el: HTMLElement = fixture.nativeElement;
     expect(el.textContent).toContain('Introduction to R Course');
