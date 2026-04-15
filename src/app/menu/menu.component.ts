@@ -1,9 +1,4 @@
-import {
-  Component,
-  ElementRef,
-  QueryList,
-  ViewChildren,
-} from '@angular/core';
+import { Component, ElementRef, QueryList, ViewChildren } from '@angular/core';
 import {
   NavigationEnd,
   Router,

@@ -35,9 +35,7 @@ function makeFakeDocument(languages: string[]): Document {
 function configureWith(languages: string[]): void {
   TestBed.configureTestingModule({
     imports: [TranslateModule.forRoot()],
-    providers: [
-      { provide: DOCUMENT, useValue: makeFakeDocument(languages) },
-    ],
+    providers: [{ provide: DOCUMENT, useValue: makeFakeDocument(languages) }],
   });
 }
 

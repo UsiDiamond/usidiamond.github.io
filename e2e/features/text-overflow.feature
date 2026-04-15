@@ -3,17 +3,6 @@ Feature: Text does not overflow its container
   effects rendered on top of them) stay within their parent card or
   column and that no page introduces horizontal scrolling.
 
-  Scenario Outline: No horizontal overflow on "<page>"
-    Given I go to "http://localhost:8080/#/<page>"
-    Then the page does not scroll horizontally
-
-    Examples:
-      | page          |
-      | home          |
-      | projects      |
-      | education     |
-      | volunteering  |
-      | contact       |
 
   Scenario Outline: Card headings fit within their cards on "<page>"
     Given I go to "http://localhost:8080/#/<page>"

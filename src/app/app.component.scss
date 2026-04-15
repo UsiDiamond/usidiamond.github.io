@@ -33,7 +33,10 @@
   font-family: MoreSugar, system-ui, sans-serif;
   font-size: 0.9rem;
   cursor: pointer;
-  transition: background 0.15s ease, color 0.15s ease, transform 0.12s ease;
+  transition:
+    background 0.15s ease,
+    color 0.15s ease,
+    transform 0.12s ease;
 
   @media (max-width: 576px) {
     top: auto;
@@ -71,7 +74,9 @@
   outline-offset: 2px;
 }
 
-.bg-toggle:active { transform: scale(0.97); }
+.bg-toggle:active {
+  transform: scale(0.97);
+}
 
 .bg-toggle.is-paused {
   border-color: rgba(222, 187, 255, 0.8);

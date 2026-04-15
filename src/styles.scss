@@ -1,4 +1,3 @@
-
 @use "sass:color";
 @use "sass:list";
 @use "sass:meta";
@@ -10,31 +9,39 @@
   src: url("assets/MoreSugar-Thin.ttf") format("truetype");
 }
 
-$primary:            t.$lavender;
-$secondary:          t.$purple;
-$body-bg:            t.$charcoal;
-$body-color:         t.$gray;
-$link-color:         t.$lavender;
-$link-hover-color:   #0cf;
-$font-family-base:   t.$font-fancy, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-$headings-color:     t.$lavender;
-$card-bg:            transparent;
-$card-border-color:  rgba(t.$purple, 0.35);
+$primary: t.$lavender;
+$secondary: t.$purple;
+$body-bg: t.$charcoal;
+$body-color: t.$gray;
+$link-color: t.$lavender;
+$link-hover-color: #0cf;
+$font-family-base:
+  t.$font-fancy,
+  system-ui,
+  -apple-system,
+  "Segoe UI",
+  Roboto,
+  sans-serif;
+$headings-color: t.$lavender;
+$card-bg: transparent;
+$card-border-color: rgba(t.$purple, 0.35);
 $card-border-radius: t.$card-radius;
 
-$navbar-dark-color:          t.$accent;
-$navbar-dark-hover-color:    #0cf;
-$navbar-dark-active-color:   t.$violet;
+$navbar-dark-color: t.$accent;
+$navbar-dark-hover-color: #0cf;
+$navbar-dark-active-color: t.$violet;
 $navbar-dark-disabled-color: rgba(t.$lavender, 0.41);
 
 @import "bootstrap/scss/bootstrap";
 
-html, body {
+html,
+body {
   overflow-x: hidden;
   max-width: 100%;
 }
 
-img, svg {
+img,
+svg {
   max-width: 100%;
   height: auto;
 }
@@ -43,7 +50,9 @@ img, svg {
   main {
     animation: none !important;
   }
-  *, *::before, *::after {
+  *,
+  *::before,
+  *::after {
     animation-duration: 0.001ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.001ms !important;
@@ -51,8 +60,12 @@ img, svg {
   }
 }
 
-h1 { font-size: clamp(1.75rem, 4vw + 1rem, 3rem); }
-h2 { font-size: clamp(1.25rem, 1.5vw + 0.75rem, 1.75rem); }
+h1 {
+  font-size: clamp(1.75rem, 4vw + 1rem, 3rem);
+}
+h2 {
+  font-size: clamp(1.25rem, 1.5vw + 0.75rem, 1.75rem);
+}
 
 @media (max-width: 576px) {
   .form-select,
@@ -81,11 +94,22 @@ main {
   background: transparent;
 }
 
-app-background { z-index: 0; }
-header, .container-xl, footer { position: relative; z-index: 1; }
-[menu] { position: relative; z-index: 5; }
+app-background {
+  z-index: 0;
+}
+header,
+.container-xl,
+footer {
+  position: relative;
+  z-index: 1;
+}
+[menu] {
+  position: relative;
+  z-index: 5;
+}
 
-h1, h2 {
+h1,
+h2 {
   position: relative;
   display: block;
   width: fit-content;
@@ -98,8 +122,8 @@ h1, h2 {
   -webkit-backdrop-filter: blur(10px) saturate(1.4);
   border: 1px solid rgba(255, 255, 255, 0.14);
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.10),
-    0 4px 18px rgba(0, 0, 0, 0.30);
+    inset 0 1px 0 rgba(255, 255, 255, 0.1),
+    0 4px 18px rgba(0, 0, 0, 0.3);
 }
 
 .diamond-card {
@@ -110,18 +134,26 @@ h1, h2 {
   overflow-wrap: anywhere;
   min-width: 0;
 
-  h2 { @include m.centered-heading; }
-  p, li, a { @include m.italic-body; }
+  h2 {
+    @include m.centered-heading;
+  }
+  p,
+  li,
+  a {
+    @include m.italic-body;
+  }
 }
 
 $text-utils: (
-  "muted":  t.$gray-dim,
+  "muted": t.$gray-dim,
   "accent": t.$lavender,
   "purple": t.$purple,
-  "gray":   t.$gray-mid,
+  "gray": t.$gray-mid,
 );
 @each $name, $color in $text-utils {
-  .text-diamond-#{$name} { color: $color; }
+  .text-diamond-#{$name} {
+    color: $color;
+  }
 }
 
 .diamond-chip {

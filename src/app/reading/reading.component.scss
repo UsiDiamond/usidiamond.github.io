@@ -1,8 +1,13 @@
-@use 'tokens' as t;
-@use 'mixins' as m;
+@use "tokens" as t;
+@use "mixins" as m;
 
-h2 { @include m.centered-heading; }
-p, li { @include m.italic-body; }
+h2 {
+  @include m.centered-heading;
+}
+p,
+li {
+  @include m.italic-body;
+}
 
 .reading-sections {
   display: flex;
@@ -32,11 +37,7 @@ p, li { @include m.italic-body; }
 .reading-subject-pane {
   padding: t.$card-padding;
   border-radius: t.$card-radius;
-  @include m.card-gradient(
-    $start-a: 0.6,
-    $mid-a:   0.15,
-    $end-a:   0.35
-  );
+  @include m.card-gradient($start-a: 0.6, $mid-a: 0.15, $end-a: 0.35);
 }
 
 .reading-card-grid {
@@ -65,9 +66,9 @@ p, li { @include m.italic-body; }
 
   background: linear-gradient(
     135deg,
-    rgba(t.$slate,  0.6) 0%,
+    rgba(t.$slate, 0.6) 0%,
     rgba(t.$purple, 0.25) 55%,
-    rgba(t.$teal,   0.4) 100%
+    rgba(t.$teal, 0.4) 100%
   );
 
   &:hover,
@@ -79,9 +80,9 @@ p, li { @include m.italic-body; }
     color: #fff;
     background: linear-gradient(
       135deg,
-      rgba(t.$slate,  0.8) 0%,
+      rgba(t.$slate, 0.8) 0%,
       rgba(t.$purple, 0.4) 55%,
-      rgba(t.$teal,   0.55) 100%
+      rgba(t.$teal, 0.55) 100%
     );
   }
 }

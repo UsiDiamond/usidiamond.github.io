@@ -1,77 +1,81 @@
 <div class="row justify-content-center mb-3">
   <div class="col-12">
-    <h2 tabindex="0">{{ 'menu.introduction' | translate }}</h2>
+    <h2 tabindex="0">{{ "menu.introduction" | translate }}</h2>
   </div>
 </div>
 <div class="row justify-content-center gy-5 gx-4">
-  <div class="col-10 col-md-6 col-lg-6"><div class="card diamond-card home-section shadow-sm rounded-4 h-100">
-    <h2 tabindex="0">{{ 'home.whatIsAnUsi' | translate }}</h2>
-    <p tabindex="0">{{ 'home.aboutP1' | translate }}</p>
-    <p tabindex="0">{{ 'home.aboutP2' | translate }}</p>
-    <p tabindex="0">{{ 'home.aboutP3' | translate }}</p>
-  </div></div>
-  <div class="col-10 col-md-6 col-lg-6"><div class="card diamond-card home-section shadow-sm rounded-4 h-100">
-    <h2 tabindex="0">{{ 'home.pronouns' | translate }}</h2>
-    <p tabindex="0" [innerHTML]="'home.pronounsP1' | translate"></p>
-    <p tabindex="0" [innerHTML]="'home.pronounsP2' | translate"></p>
-    <p tabindex="-1" class="text-center">
-      {{ 'home.pronounsPage' | translate }}:
-      <br />
-      <a
-        tabindex="0"
-        target="_blank"
-        class="text-diamond-muted"
-        [title]="'home.pronounsPage' | translate"
-        href="https://en.pronouns.page/@usiia"
-      >
-        <svg
-          width="100"
-          class="pronouns-svg"
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 650 650"
+  <div class="col-10 col-md-6 col-lg-6">
+    <div class="card diamond-card home-section shadow-sm rounded-4 h-100">
+      <h2 tabindex="0">{{ "home.whatIsAnUsi" | translate }}</h2>
+      <p tabindex="0">{{ "home.aboutP1" | translate }}</p>
+      <p tabindex="0">{{ "home.aboutP2" | translate }}</p>
+      <p tabindex="0">{{ "home.aboutP3" | translate }}</p>
+    </div>
+  </div>
+  <div class="col-10 col-md-6 col-lg-6">
+    <div class="card diamond-card home-section shadow-sm rounded-4 h-100">
+      <h2 tabindex="0">{{ "home.pronouns" | translate }}</h2>
+      <p tabindex="0" [innerHTML]="'home.pronounsP1' | translate"></p>
+      <p tabindex="0" [innerHTML]="'home.pronounsP2' | translate"></p>
+      <p tabindex="-1" class="text-center">
+        {{ "home.pronounsPage" | translate }}:
+        <br />
+        <a
+          tabindex="0"
+          target="_blank"
+          class="text-diamond-muted"
+          [title]="'home.pronounsPage' | translate"
+          href="https://en.pronouns.page/@usiia"
         >
-          <path
-            d="M396.52 174.35c1.35-2.4.21-4.35-2.54-4.35l-48.2.03c-2.75 0-6.15 1.94-7.54 4.31l-118.1 199.77c-16.48 27.15-39.48 33.15-61.58 30.47-37.94-4.6-58.34-32.45-58.34-69.54 0-37.25 30.31-67.56 67.56-67.56h75c2.75 0 6.12-1.95 7.48-4.34l27.03-47.2c1.37-2.39.23-4.34-2.52-4.34h-107c-68.06 0-123.44 55.37-123.44 123.44 0 32.89 12.85 68.36 36.22 91.54 23.03 22.84 53.8 31.21 86.64 31.89 18.54.21 69.46-.21 93.33-42.68 26.73-47.57 136-241.44 136-241.44zM571.94 244.44c-23.03-22.84-53.8-31.21-86.64-31.89-18.54-.21-69.46.21-93.33 42.68-26.72 47.55-136 241.42-136 241.42-1.35 2.4-.21 4.35 2.54 4.35l48.2-.03c2.75 0 6.15-1.94 7.54-4.31l118.1-199.77c16.48-27.15 39.48-33.15 61.58-30.47 37.94 4.6 58.34 32.45 58.34 69.54 0 37.25-30.31 67.56-67.56 67.56h-75c-2.75 0-6.12 1.95-7.48 4.34l-27.03 47.2c-1.37 2.39-.23 4.34 2.52 4.34h107c68.06 0 123.44-55.37 123.44-123.44 0-32.87-12.85-68.34-36.22-91.52z"
-            fill="darkgrey"
-          />
-        </svg>
-      </a>
-    </p>
-  </div></div>
+          <svg
+            width="100"
+            class="pronouns-svg"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 650 650"
+          >
+            <path
+              d="M396.52 174.35c1.35-2.4.21-4.35-2.54-4.35l-48.2.03c-2.75 0-6.15 1.94-7.54 4.31l-118.1 199.77c-16.48 27.15-39.48 33.15-61.58 30.47-37.94-4.6-58.34-32.45-58.34-69.54 0-37.25 30.31-67.56 67.56-67.56h75c2.75 0 6.12-1.95 7.48-4.34l27.03-47.2c1.37-2.39.23-4.34-2.52-4.34h-107c-68.06 0-123.44 55.37-123.44 123.44 0 32.89 12.85 68.36 36.22 91.54 23.03 22.84 53.8 31.21 86.64 31.89 18.54.21 69.46-.21 93.33-42.68 26.73-47.57 136-241.44 136-241.44zM571.94 244.44c-23.03-22.84-53.8-31.21-86.64-31.89-18.54-.21-69.46.21-93.33 42.68-26.72 47.55-136 241.42-136 241.42-1.35 2.4-.21 4.35 2.54 4.35l48.2-.03c2.75 0 6.15-1.94 7.54-4.31l118.1-199.77c16.48-27.15 39.48-33.15 61.58-30.47 37.94 4.6 58.34 32.45 58.34 69.54 0 37.25-30.31 67.56-67.56 67.56h-75c-2.75 0-6.12 1.95-7.48 4.34l-27.03 47.2c-1.37 2.39-.23 4.34 2.52 4.34h107c68.06 0 123.44-55.37 123.44-123.44 0-32.87-12.85-68.34-36.22-91.52z"
+              fill="darkgrey"
+            />
+          </svg>
+        </a>
+      </p>
+    </div>
+  </div>
 </div>
 
 <div class="row mx-auto justify-content-center mt-4">
   <div section>
-    <div question>{{ 'home.questionMusic' | translate }}</div>
+    <div question>{{ "home.questionMusic" | translate }}</div>
     <div content>
-      <p>{{ 'home.musicP1' | translate }}</p>
-      <p>{{ 'home.musicP2' | translate }}</p>
+      <p>{{ "home.musicP1" | translate }}</p>
+      <p>{{ "home.musicP2" | translate }}</p>
     </div>
   </div>
   <div section>
-    <div question>{{ 'home.questionCauses' | translate }}</div>
+    <div question>{{ "home.questionCauses" | translate }}</div>
     <div content>
-      <p>{{ 'home.causesIntro' | translate }}</p>
+      <p>{{ "home.causesIntro" | translate }}</p>
       <ul>
-        <li>{{ 'home.causesB1' | translate }}</li>
-        <li>{{ 'home.causesB2' | translate }}</li>
-        <li>{{ 'home.causesB3' | translate }}</li>
-        <li>{{ 'home.causesB4' | translate }}</li>
-        <li>{{ 'home.causesB5' | translate }}</li>
-        <li>{{ 'home.causesB6' | translate }}</li>
+        <li>{{ "home.causesB1" | translate }}</li>
+        <li>{{ "home.causesB2" | translate }}</li>
+        <li>{{ "home.causesB3" | translate }}</li>
+        <li>{{ "home.causesB4" | translate }}</li>
+        <li>{{ "home.causesB5" | translate }}</li>
+        <li>{{ "home.causesB6" | translate }}</li>
       </ul>
-      <p>{{ 'home.causesOutro' | translate }}</p>
+      <p>{{ "home.causesOutro" | translate }}</p>
     </div>
   </div>
   <div section>
-    <div question>{{ 'home.questionGames' | translate }}</div>
+    <div question>{{ "home.questionGames" | translate }}</div>
     <div content>
-      <p>{{ 'home.gamesIntro' | translate }}</p>
+      <p>{{ "home.gamesIntro" | translate }}</p>
       <ul>
-        <li>{{ 'home.gamesB1' | translate }}</li>
-        <li>{{ 'home.gamesB2' | translate }}</li>
+        <li>{{ "home.gamesB1" | translate }}</li>
+        <li>{{ "home.gamesB2" | translate }}</li>
         <li>
-          {{ 'home.gamesB3' | translate }}
+          {{ "home.gamesB3" | translate }}
           <ul>
             <li>D&D</li>
             <ul>
@@ -85,24 +89,24 @@
             <li>Star Wars 5e.</li>
           </ul>
         </li>
-        <li>{{ 'home.gamesB4' | translate }}</li>
-        <li>{{ 'home.gamesB5' | translate }}</li>
+        <li>{{ "home.gamesB4" | translate }}</li>
+        <li>{{ "home.gamesB5" | translate }}</li>
       </ul>
-      <p>{{ 'home.gamesFavorite' | translate }}</p>
-      <p>{{ 'home.gamesOutro' | translate }}</p>
+      <p>{{ "home.gamesFavorite" | translate }}</p>
+      <p>{{ "home.gamesOutro" | translate }}</p>
     </div>
   </div>
   <div section>
-    <div question>{{ 'home.questionMoney' | translate }}</div>
+    <div question>{{ "home.questionMoney" | translate }}</div>
     <div content>
-      <p>{{ 'home.moneyIntro' | translate }}</p>
+      <p>{{ "home.moneyIntro" | translate }}</p>
       <ul>
-        <li>{{ 'home.moneyB1' | translate }}</li>
-        <li>{{ 'home.moneyB2' | translate }}</li>
-        <li>{{ 'home.moneyB3' | translate }}</li>
-        <li>{{ 'home.moneyB4' | translate }}</li>
-        <li>{{ 'home.moneyB5' | translate }}</li>
-        <li>{{ 'home.moneyB6' | translate }}</li>
+        <li>{{ "home.moneyB1" | translate }}</li>
+        <li>{{ "home.moneyB2" | translate }}</li>
+        <li>{{ "home.moneyB3" | translate }}</li>
+        <li>{{ "home.moneyB4" | translate }}</li>
+        <li>{{ "home.moneyB5" | translate }}</li>
+        <li>{{ "home.moneyB6" | translate }}</li>
       </ul>
     </div>
   </div>
@@ -110,7 +114,7 @@
 
 <div class="row mx-auto justify-content-center mt-4">
   <div class="col-10">
-    <h2 tabindex="0">{{ 'home.socialLinks' | translate }}</h2>
+    <h2 tabindex="0">{{ "home.socialLinks" | translate }}</h2>
     <div links-grid></div>
   </div>
 </div>

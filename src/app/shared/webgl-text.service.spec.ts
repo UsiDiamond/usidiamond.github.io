@@ -17,10 +17,15 @@ describe('WebglTextService isEligible', () => {
   });
 
   afterEach(() => {
-    document.body.querySelectorAll('[data-test-heading]').forEach((n) => n.remove());
+    document.body
+      .querySelectorAll('[data-test-heading]')
+      .forEach((n) => n.remove());
   });
 
-  function makeHeading(inner: string, opts?: { maxWidth?: string }): HTMLElement {
+  function makeHeading(
+    inner: string,
+    opts?: { maxWidth?: string },
+  ): HTMLElement {
     const h = document.createElement('h2');
     h.setAttribute('data-test-heading', '');
     h.innerHTML = inner;

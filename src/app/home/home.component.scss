@@ -1,8 +1,12 @@
-@use 'tokens' as t;
-@use 'mixins' as m;
+@use "tokens" as t;
+@use "mixins" as m;
 
-p { @include m.italic-body; }
-h2 { @include m.centered-heading; }
+p {
+  @include m.italic-body;
+}
+h2 {
+  @include m.centered-heading;
+}
 
 .home-section {
   padding: t.$card-padding;

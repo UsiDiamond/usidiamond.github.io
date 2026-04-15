@@ -1,7 +1,9 @@
-@use 'tokens' as t;
-@use 'mixins' as m;
+@use "tokens" as t;
+@use "mixins" as m;
 
-h1 { color: t.$lavender; }
+h1 {
+  color: t.$lavender;
+}
 
 .header-toolbar {
   display: flex;

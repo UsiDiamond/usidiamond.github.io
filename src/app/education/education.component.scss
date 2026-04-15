@@ -1,15 +1,24 @@
-@use 'tokens' as t;
-@use 'mixins' as m;
+@use "tokens" as t;
+@use "mixins" as m;
 
-h2 { @include m.centered-heading; }
-p, li { @include m.italic-body; }
+h2 {
+  @include m.centered-heading;
+}
+p,
+li {
+  @include m.italic-body;
+}
 
 .education-degree {
   @include m.label(t.$lavender);
   font-size: 0.95em;
 }
-.education-date { @include m.label(t.$purple); }
-.education-org  { @include m.label(t.$gray-mid); }
+.education-date {
+  @include m.label(t.$purple);
+}
+.education-org {
+  @include m.label(t.$gray-mid);
+}
 
 .education-skills {
   display: flex;
@@ -31,4 +40,6 @@ p, li { @include m.italic-body; }
   }
 }
 
-.education-section { padding: t.$card-padding; }
+.education-section {
+  padding: t.$card-padding;
+}

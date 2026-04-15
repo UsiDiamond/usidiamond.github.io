@@ -1,6 +1,8 @@
-@use 'tokens' as t;
+@use "tokens" as t;
 
-a { color: white; }
+a {
+  color: white;
+}
 
 .github {
   color: t.$gray;

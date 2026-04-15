@@ -1,10 +1,21 @@
-@use 'tokens' as t;
-@use 'mixins' as m;
+@use "tokens" as t;
+@use "mixins" as m;
 
-h2 { @include m.centered-heading; }
-p, li { @include m.italic-body; }
+h2 {
+  @include m.centered-heading;
+}
+p,
+li {
+  @include m.italic-body;
+}
 
-.project-date { @include m.label(t.$purple); }
-.project-org  { @include m.label(t.$gray-mid); }
+.project-date {
+  @include m.label(t.$purple);
+}
+.project-org {
+  @include m.label(t.$gray-mid);
+}
 
-.project-section { padding: t.$card-padding; }
+.project-section {
+  padding: t.$card-padding;
+}
