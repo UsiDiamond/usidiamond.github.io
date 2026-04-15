@@ -10,10 +10,6 @@ Feature: Home Page
       | What is an Usi?                 |
       | Pronouns                        |
       | Social Links                    |
-      | What music does it like?        |
-      | What causes does it care about? |
-      | What games does it like?        |
-      | What does the Usi do for money? |
 
   Scenario: Home page has a LinkedIn link
     Given I go to "http://localhost:8080/#/home"
