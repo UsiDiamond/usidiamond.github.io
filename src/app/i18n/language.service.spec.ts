@@ -1,50 +1,66 @@
+import { DOCUMENT } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { LanguageService } from './language.service';
 import { SUPPORTED_LANGUAGES } from './supported-languages';
 
+/**
+ * Builds a Proxy over the real document whose defaultView.navigator reports
+ * the given locale(s). All other document methods (querySelectorAll,
+ * createElement, etc.) pass through to the real document, which Angular's
+ * DOMTestComponentRenderer calls during createComponent.
+ *
+ * Going through a DI-provided fake Document — instead of poking
+ * Object.defineProperty on the real window.navigator — avoids the
+ * non-configurable-property headache on the CI Chrome Headless build, where
+ * redefining navigator.languages silently loses the override.
+ */
+function makeFakeDocument(languages: string[]): Document {
+  const realDoc = window.document;
+  const realWin = window;
+  const realNav = realWin.navigator;
+  const fakeNavigator = new Proxy(realNav, {
+    get(target, prop) {
+      if (prop === 'language') return languages[0] ?? '';
+      if (prop === 'languages') return languages;
+      const val = Reflect.get(target, prop);
+      return typeof val === 'function' ? val.bind(target) : val;
+    },
+  }) as Navigator;
+  const fakeWindow = new Proxy(realWin, {
+    get(target, prop) {
+      if (prop === 'navigator') return fakeNavigator;
+      // Always invoke getters with the REAL target as `this` so DOM getters
+      // (window.document, etc.) don't throw "Illegal invocation".
+      const val = Reflect.get(target, prop, target);
+      return typeof val === 'function' ? val.bind(target) : val;
+    },
+  }) as unknown as Window;
+  return new Proxy(realDoc, {
+    get(target, prop) {
+      if (prop === 'defaultView') return fakeWindow;
+      const val = Reflect.get(target, prop, target);
+      return typeof val === 'function' ? val.bind(target) : val;
+    },
+  }) as Document;
+}
+
+function configureWith(languages: string[]): void {
+  TestBed.configureTestingModule({
+    imports: [TranslateModule.forRoot()],
+    providers: [
+      { provide: DOCUMENT, useValue: makeFakeDocument(languages) },
+    ],
+  });
+}
+
 describe('LanguageService', () => {
-  // Freeze navigator to an unsupported language across the top-level suite so
-  // "defaults to English" tests aren't perturbed by whatever locale the test
-  // browser happens to report. The nested browser-preference describe block
-  // overrides this within its own afterEach-bounded scope.
-  const savedLanguages = Object.getOwnPropertyDescriptor(
-    window.navigator,
-    'languages',
-  );
-  const savedLanguage = Object.getOwnPropertyDescriptor(
-    window.navigator,
-    'language',
-  );
-
-  beforeAll(() => {
-    Object.defineProperty(window.navigator, 'languages', {
-      configurable: true,
-      get: () => ['xx-YY'],
-    });
-    Object.defineProperty(window.navigator, 'language', {
-      configurable: true,
-      get: () => 'xx-YY',
-    });
-  });
-
-  afterAll(() => {
-    if (savedLanguages) {
-      Object.defineProperty(window.navigator, 'languages', savedLanguages);
-    }
-    if (savedLanguage) {
-      Object.defineProperty(window.navigator, 'language', savedLanguage);
-    }
-  });
-
   beforeEach(() => {
     localStorage.removeItem('usidiamond.lang');
-    TestBed.configureTestingModule({
-      imports: [TranslateModule.forRoot()],
-    });
   });
 
   it('should register every supported language with the translate service', () => {
+    configureWith(['xx-YY']);
     const svc = TestBed.inject(LanguageService);
     const translate = TestBed.inject(TranslateService);
     const langs = translate.getLangs();
@@ -54,18 +70,21 @@ describe('LanguageService', () => {
     expect(svc.supported.length).toBe(SUPPORTED_LANGUAGES.length);
   });
 
-  it('should default to English when no preference is stored', () => {
+  it('should default to English when no preference is stored and browser locale is unsupported', () => {
+    configureWith(['xx-YY']);
     const svc = TestBed.inject(LanguageService);
     expect(svc.current.code).toBe('en');
   });
 
   it('should apply a stored language on init', () => {
     localStorage.setItem('usidiamond.lang', 'es');
+    configureWith(['xx-YY']);
     const svc = TestBed.inject(LanguageService);
     expect(svc.current.code).toBe('es');
   });
 
   it('use(code) should switch the active language and persist it', () => {
+    configureWith(['xx-YY']);
     const svc = TestBed.inject(LanguageService);
     svc.use('fr');
     expect(svc.current.code).toBe('fr');
@@ -73,6 +92,7 @@ describe('LanguageService', () => {
   });
 
   it('use(code) should ignore unsupported codes', () => {
+    configureWith(['xx-YY']);
     const svc = TestBed.inject(LanguageService);
     const before = svc.current.code;
     svc.use('zz');
@@ -80,6 +100,7 @@ describe('LanguageService', () => {
   });
 
   it('should set <html lang> and <html dir> when the language changes', () => {
+    configureWith(['xx-YY']);
     const svc = TestBed.inject(LanguageService);
     svc.use('ar');
     const html = document.documentElement;
@@ -92,6 +113,7 @@ describe('LanguageService', () => {
   });
 
   it('current$ should emit the active language', (done) => {
+    configureWith(['xx-YY']);
     const svc = TestBed.inject(LanguageService);
     svc.current$.subscribe((lang) => {
       if (lang.code === 'de') {
@@ -103,76 +125,39 @@ describe('LanguageService', () => {
   });
 
   describe('browser-preference detection (no stored language)', () => {
-    const originalLanguages = Object.getOwnPropertyDescriptor(
-      window.navigator,
-      'languages',
-    );
-    const originalLanguage = Object.getOwnPropertyDescriptor(
-      window.navigator,
-      'language',
-    );
-
-    function installNavigatorLanguages(...tags: string[]) {
-      // Provide both navigator.languages (preference-ordered) and
-      // navigator.language (single) so pickInitialLanguage can consult either.
-      Object.defineProperty(window.navigator, 'languages', {
-        configurable: true,
-        get: () => tags,
-      });
-      Object.defineProperty(window.navigator, 'language', {
-        configurable: true,
-        get: () => tags[0],
-      });
-    }
-
-    afterEach(() => {
-      // Restore the real navigator properties so these stubs don't leak into
-      // the surrounding suite's "defaults to English" expectations.
-      if (originalLanguages) {
-        Object.defineProperty(
-          window.navigator,
-          'languages',
-          originalLanguages,
-        );
-      }
-      if (originalLanguage) {
-        Object.defineProperty(window.navigator, 'language', originalLanguage);
-      }
-    });
-
     it('should pick browser exact-match (French fr)', () => {
-      installNavigatorLanguages('fr');
+      configureWith(['fr']);
       const svc = TestBed.inject(LanguageService);
       expect(svc.current.code).toBe('fr');
     });
 
     it('should pick base-subtag match (en-GB -> en)', () => {
-      installNavigatorLanguages('en-GB');
+      configureWith(['en-GB']);
       const svc = TestBed.inject(LanguageService);
       expect(svc.current.code).toBe('en');
     });
 
     it('should map zh-CN onto the supported zh-Hans entry', () => {
-      installNavigatorLanguages('zh-CN');
+      configureWith(['zh-CN']);
       const svc = TestBed.inject(LanguageService);
       expect(svc.current.code).toBe('zh-Hans');
     });
 
     it('should honour preference order (es-MX before en)', () => {
-      installNavigatorLanguages('es-MX', 'en-US');
+      configureWith(['es-MX', 'en-US']);
       const svc = TestBed.inject(LanguageService);
       expect(svc.current.code).toBe('es');
     });
 
     it('should fall back to English for an unsupported language list', () => {
-      installNavigatorLanguages('xx', 'yy');
+      configureWith(['xx', 'yy']);
       const svc = TestBed.inject(LanguageService);
       expect(svc.current.code).toBe('en');
     });
 
     it('a stored language still wins over the browser preference', () => {
       localStorage.setItem('usidiamond.lang', 'de');
-      installNavigatorLanguages('fr', 'es');
+      configureWith(['fr', 'es']);
       const svc = TestBed.inject(LanguageService);
       expect(svc.current.code).toBe('de');
     });

@@ -1,49 +1,56 @@
+import { DOCUMENT } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { TranslateModule } from '@ngx-translate/core';
 import { LanguageSwitcherComponent } from './language-switcher.component';
 import { LanguageService } from '../language.service';
 import { SUPPORTED_LANGUAGES } from '../supported-languages';
 
+/**
+ * Provide a Proxy-wrapped DOCUMENT whose defaultView.navigator reports an
+ * unsupported locale so LanguageService's browser-preference detection lands
+ * deterministically on the English fallback, regardless of what the real
+ * Chrome reports. All other document methods pass through to the real
+ * document (required by Angular's DOMTestComponentRenderer).
+ */
+function makeFakeDocument(): Document {
+  const realDoc = window.document;
+  const realWin = window;
+  const realNav = realWin.navigator;
+  const fakeNavigator = new Proxy(realNav, {
+    get(target, prop) {
+      if (prop === 'language') return 'xx-YY';
+      if (prop === 'languages') return ['xx-YY'];
+      const val = Reflect.get(target, prop);
+      return typeof val === 'function' ? val.bind(target) : val;
+    },
+  }) as Navigator;
+  const fakeWindow = new Proxy(realWin, {
+    get(target, prop) {
+      if (prop === 'navigator') return fakeNavigator;
+      // Always invoke getters with the REAL target as `this` so DOM getters
+      // (window.document, etc.) don't throw "Illegal invocation".
+      const val = Reflect.get(target, prop, target);
+      return typeof val === 'function' ? val.bind(target) : val;
+    },
+  }) as unknown as Window;
+  return new Proxy(realDoc, {
+    get(target, prop) {
+      if (prop === 'defaultView') return fakeWindow;
+      const val = Reflect.get(target, prop, target);
+      return typeof val === 'function' ? val.bind(target) : val;
+    },
+  }) as Document;
+}
+
 describe('LanguageSwitcherComponent', () => {
   let component: LanguageSwitcherComponent;
   let fixture: ComponentFixture<LanguageSwitcherComponent>;
-
-  // Freeze navigator to an unsupported language so the switcher's initial
-  // value is reliably the English fallback regardless of what the test
-  // browser reports.
-  const savedLanguages = Object.getOwnPropertyDescriptor(
-    window.navigator,
-    'languages',
-  );
-  const savedLanguage = Object.getOwnPropertyDescriptor(
-    window.navigator,
-    'language',
-  );
-
-  beforeAll(() => {
-    Object.defineProperty(window.navigator, 'languages', {
-      configurable: true,
-      get: () => ['xx-YY'],
-    });
-    Object.defineProperty(window.navigator, 'language', {
-      configurable: true,
-      get: () => 'xx-YY',
-    });
-  });
-
-  afterAll(() => {
-    if (savedLanguages) {
-      Object.defineProperty(window.navigator, 'languages', savedLanguages);
-    }
-    if (savedLanguage) {
-      Object.defineProperty(window.navigator, 'language', savedLanguage);
-    }
-  });
 
   beforeEach(async () => {
     localStorage.removeItem('usidiamond.lang');
     await TestBed.configureTestingModule({
       imports: [LanguageSwitcherComponent, TranslateModule.forRoot()],
+      providers: [{ provide: DOCUMENT, useValue: makeFakeDocument() }],
     }).compileComponents();
 
     fixture = TestBed.createComponent(LanguageSwitcherComponent);
@@ -93,7 +100,7 @@ describe('LanguageSwitcherComponent', () => {
     expect(selectEl().hasAttribute('aria-label')).toBe(true);
   });
 
-  it('should initialise to English by default', () => {
+  it('should initialise to English when the browser locale is unsupported', () => {
     expect(selectEl().value).toBe('en');
   });
 
