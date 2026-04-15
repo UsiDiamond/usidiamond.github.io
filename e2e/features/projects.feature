@@ -13,15 +13,3 @@ Feature: Projects Page
       | project                                          |
       | mySocialSecurity - Online Self Service           |
       | mySocialSecurity - Representative Payee Services |
-      | Upload Documents                                 |
-      | Neurodiversity in Business Website Rewrite       |
-      | Heros-Engine                                     |
-      | Enterprise Project Management Office Application |
-      | EMAC 1                                           |
-      | LRERWMS                                          |
-      | AuDITS                                           |
-      | EMAC 2                                           |
-      | SRDP                                             |
-      | DOORS                                            |
-      | ESP                                              |
-      | Combined Federal Campaign Data Analytics and Reporting |

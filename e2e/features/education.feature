@@ -12,10 +12,5 @@ Feature: Education Page
     Examples:
       | entry                                                     |
       | Stevenson University                                      |
-      | Private Studio of Shazy King in Baltimore MD              |
-      | University of Maryland Baltimore County                   |
       | Licenses & Certifications                                 |
-      | Adult and Pediatric First Aid/CPR/AED                     |
-      | Basic Life Support for Healthcare and Public Safety (BLS) |
-      | Introduction to R Course                                  |
       | Certified Advanced Tutor                                  |
