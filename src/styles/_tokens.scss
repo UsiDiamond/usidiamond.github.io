@@ -1,0 +1,18 @@
+// Design tokens — single source of truth for palette + typography.
+// Consumed by src/styles.scss (which maps them to Bootstrap theme vars)
+// and by every component stylesheet via `@use 'tokens' as t;`.
+
+$lavender:  rgb(222, 187, 255);
+$purple:    rgb(181, 111, 216);
+$violet:    rgb(151, 39, 255);
+$accent:    rgb(206, 154, 255);
+$gray:      rgb(190, 190, 190);
+$gray-mid:  rgb(180, 180, 180);
+$gray-dim:  rgb(131, 131, 131);
+$charcoal:  rgb(71, 71, 71);
+$slate:     rgb(107, 107, 107);
+$teal:      rgb(68, 114, 126);
+
+$font-fancy: MoreSugar;
+$card-radius: 15px;
+$card-padding: 0.75em;

@@ -1,25 +1,10 @@
-h2 {
-  text-align: center;
-  color: rgb(222, 187, 255);
-}
+@use 'tokens' as t;
+@use 'mixins' as m;
 
-p,
-li {
-  font-family: MoreSugar;
-  font-style: italic;
-  font-weight: 700;
-}
+h2 { @include m.centered-heading; }
+p, li { @include m.italic-body; }
 
-.project-date {
-  text-align: center;
-  color: rgb(181, 111, 216);
-}
+.project-date { @include m.label(t.$purple); }
+.project-org  { @include m.label(t.$gray-mid); }
 
-.project-org {
-  text-align: center;
-  color: rgb(180, 180, 180);
-}
-
-.project-section {
-  padding: 0.75em;
-}
+.project-section { padding: t.$card-padding; }

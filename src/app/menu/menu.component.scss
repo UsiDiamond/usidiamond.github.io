@@ -1,36 +1,32 @@
-:host .nav-link {
-  min-width: 170px;
-  text-align: start;
-  color: rgb(206, 154, 255);
-}
+@use 'tokens' as t;
 
-:host li {
-  font-size: larger;
-  font-weight: bolder;
-}
+:host {
+  li {
+    font-size: larger;
+    font-weight: bolder;
+  }
 
-:host .nav-link:not(.navbar-toggler)::after {
-  content: " UwU";
-}
+  .nav-link {
+    min-width: 170px;
+    text-align: start;
+    color: t.$accent;
 
-:host .nav-link:not(.navbar-toggler):not(.active):hover,
-:host .nav-link:not(.navbar-toggler):not(.active):focus {
-  color: #0cf;
-}
+    &:not(.navbar-toggler)::after { content: " UwU"; }
 
-:host .nav-link:not(.navbar-toggler):not(.active):hover::after,
-:host .nav-link:not(.navbar-toggler):not(.active):focus::after {
-  content: " UwO";
-}
+    &:not(.navbar-toggler):not(.active) {
+      &:hover,
+      &:focus {
+        color: #0cf;
 
-:host .nav-link.active {
-  color: rgb(151, 39, 255);
-}
+        &::after { content: " UwO"; }
+      }
+    }
 
-:host .nav-link.active::after {
-  content: " OwO";
-}
+    &.active {
+      color: t.$violet;
+      &::after { content: " OwO"; }
+    }
 
-:host .nav-link.disabled {
-  color: rgba(222, 187, 255, 0.411);
+    &.disabled { color: rgba(t.$lavender, 0.411); }
+  }
 }

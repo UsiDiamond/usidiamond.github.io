@@ -1,21 +1,19 @@
-p {
-  font-family: MoreSugar;
-  font-style: italic;
-  font-weight: 600;
-}
+@use 'tokens' as t;
+@use 'mixins' as m;
+
+p { @include m.italic-body(600); }
 
 .link-item {
   margin: 2em;
   text-align: center;
   min-height: 12em;
   min-width: 12em;
-  padding: 0.75em;
-  border-radius: 15px;
-  background: rgba(163, 163, 163);
+  padding: t.$card-padding;
+  border-radius: t.$card-radius;
   background: linear-gradient(
     90deg,
-    rgba(152, 73, 255, 0.2) 0%,
-    rgb(68, 114, 126, 0.2) 100%
+    rgba(t.$violet, 0.2) 0%,
+    rgba(t.$teal,   0.2) 100%
   );
 }
 

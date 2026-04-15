@@ -1,0 +1,47 @@
+// Shared mixins for the site. Import via `@use 'mixins' as m;`.
+
+@use 'tokens' as t;
+
+@mixin italic-body($weight: 700) {
+  font-family: t.$font-fancy;
+  font-style: italic;
+  font-weight: $weight;
+}
+
+@mixin centered-heading {
+  text-align: center;
+  color: t.$lavender;
+}
+
+@mixin label($color) {
+  text-align: center;
+  color: $color;
+}
+
+@mixin card-gradient(
+  $start:  t.$slate,
+  $start-a: 1,
+  $mid:    t.$purple,
+  $mid-a:  0.2,
+  $end:    t.$teal,
+  $end-a:  0.5
+) {
+  background: linear-gradient(
+    90deg,
+    rgba($start, $start-a) 0%,
+    rgba($mid,   $mid-a) 47%,
+    rgba($end,   $end-a) 100%
+  );
+}
+
+@mixin diamond-pill {
+  padding: 0.2rem 0.7rem;
+  border-radius: 999px;
+  background: rgba(t.$purple, 0.25);
+  border: 1px solid rgba(t.$purple, 0.5);
+  color: t.$lavender;
+  @include italic-body(700);
+  font-size: 0.82rem;
+  text-align: center;
+  white-space: nowrap;
+}

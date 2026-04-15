@@ -1,18 +1,12 @@
-h2 {
-  text-align: center;
-  color: rgb(222, 187, 255);
-}
+@use 'tokens' as t;
+@use 'mixins' as m;
 
-p,
-li {
-  font-family: MoreSugar;
-  font-style: italic;
-  font-weight: 700;
-}
+h2 { @include m.centered-heading; }
+p, li { @include m.italic-body; }
 
-/* Sections flow left-to-right and wrap. Basis 480px lets a section stand alone
-   on narrow screens and pair up on wide ones; max-width 50% caps the layout at
-   two sections per row even on very wide viewports. */
+// Sections flow left-to-right and wrap. Basis 480px lets a section stand alone
+// on narrow screens and pair up on wide ones; max-width 50% caps the layout at
+// two sections per row even on very wide viewports.
 .reading-sections {
   display: flex;
   flex-wrap: wrap;
@@ -24,10 +18,8 @@ li {
   flex: 1 1 480px;
   min-width: 0;
   max-width: 100%;
-}
 
-@media (min-width: 1100px) {
-  .reading-section {
+  @media (min-width: 1100px) {
     max-width: calc(50% - 0.5rem);
   }
 }
@@ -37,28 +29,22 @@ li {
   padding: 0.4rem 0.75rem;
   border-radius: 12px;
   margin-bottom: 0.5rem;
-  background: linear-gradient(
-    90deg,
-    rgb(107, 107, 107, 1) 0%,
-    rgba(181, 111, 216, 0.35) 47%,
-    rgb(68, 114, 126, 0.5) 100%
-  );
+  @include m.card-gradient($mid-a: 0.35);
 }
 
 .reading-subject-pane {
-  padding: 0.75em;
-  border-radius: 15px;
-  background: linear-gradient(
-    90deg,
-    rgba(107, 107, 107, 0.6) 0%,
-    rgba(181, 111, 216, 0.15) 47%,
-    rgba(68, 114, 126, 0.35) 100%
+  padding: t.$card-padding;
+  border-radius: t.$card-radius;
+  @include m.card-gradient(
+    $start-a: 0.6,
+    $mid-a:   0.15,
+    $end-a:   0.35
   );
 }
 
-/* Floating-card grid: cards flow left-to-right, top-to-bottom, wrapping at the
-   pane edge. Fixed min-width keeps the grid tidy at any viewport width while
-   allowing flex-grow so the last row doesn't stretch awkwardly. */
+// Floating-card grid: cards flow left-to-right, top-to-bottom, wrapping at the
+// pane edge. Fixed min-width keeps the grid tidy at any viewport width while
+// allowing flex-grow so the last row doesn't stretch awkwardly.
 .reading-card-grid {
   display: flex;
   flex-wrap: wrap;
@@ -73,68 +59,63 @@ li {
   padding: 0.6rem 0.75rem;
   border-radius: 12px;
   text-decoration: none;
-  background: linear-gradient(
-    135deg,
-    rgba(107, 107, 107, 0.6) 0%,
-    rgba(181, 111, 216, 0.25) 55%,
-    rgba(68, 114, 126, 0.4) 100%
-  );
-  border: 1px solid rgba(181, 111, 216, 0.35);
-  color: rgb(222, 187, 255);
+  border: 1px solid rgba(t.$purple, 0.35);
+  color: t.$lavender;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
   transition:
     border-color 0.15s ease,
     background 0.15s ease,
     transform 0.12s ease;
-  display: flex;
-  flex-direction: column;
-  gap: 0.15rem;
-}
 
-.reading-card:hover,
-.reading-card:focus {
-  border-color: rgb(181, 111, 216);
   background: linear-gradient(
     135deg,
-    rgba(107, 107, 107, 0.8) 0%,
-    rgba(181, 111, 216, 0.4) 55%,
-    rgba(68, 114, 126, 0.55) 100%
+    rgba(t.$slate,  0.6) 0%,
+    rgba(t.$purple, 0.25) 55%,
+    rgba(t.$teal,   0.4) 100%
   );
-  transform: translateY(-1px);
-  outline: none;
-  text-decoration: none;
-  color: #fff;
+
+  &:hover,
+  &:focus {
+    border-color: t.$purple;
+    transform: translateY(-1px);
+    outline: none;
+    text-decoration: none;
+    color: #fff;
+    background: linear-gradient(
+      135deg,
+      rgba(t.$slate,  0.8) 0%,
+      rgba(t.$purple, 0.4) 55%,
+      rgba(t.$teal,   0.55) 100%
+    );
+  }
 }
 
 .reading-card-title {
-  font-family: MoreSugar;
-  font-style: italic;
-  font-weight: 700;
+  @include m.italic-body;
   font-size: 0.95rem;
   line-height: 1.2;
-  color: rgb(222, 187, 255);
+  color: t.$lavender;
   margin: 0;
 }
 
 .reading-card-author {
-  font-family: MoreSugar;
-  font-style: italic;
-  font-weight: 700;
+  @include m.italic-body;
   font-size: 0.8rem;
-  color: rgb(181, 111, 216);
+  color: t.$purple;
   margin: 0;
 }
 
 .reading-card-series {
-  font-family: MoreSugar;
-  font-style: italic;
-  font-weight: 400;
+  @include m.italic-body(400);
   font-size: 0.72rem;
-  color: rgb(180, 180, 180);
+  color: t.$gray-mid;
   margin: 0;
 }
 
 .reading-card-vols {
-  color: rgb(181, 111, 216);
+  color: t.$purple;
   font-style: normal;
   font-weight: 400;
   font-size: 0.78rem;

@@ -1,20 +1,12 @@
-h2 {
-  text-align: center;
-  color: rgb(222, 187, 255);
-}
+@use 'tokens' as t;
+@use 'mixins' as m;
 
-p,
-a {
-  font-family: MoreSugar;
-  font-style: italic;
-  font-weight: 700;
-}
+h2 { @include m.centered-heading; }
+p, a { @include m.italic-body; }
 
-.contact-section {
-  padding: 0.75em;
-}
+.contact-section { padding: t.$card-padding; }
 
 .contact-email {
-  color: rgb(222, 187, 255);
+  color: t.$lavender;
   font-size: 1.1em;
 }

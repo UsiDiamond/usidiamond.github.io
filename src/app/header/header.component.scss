@@ -1,32 +1,29 @@
-h1 {
-  color: rgb(222, 187, 255);
-}
+@use 'tokens' as t;
+@use 'mixins' as m;
 
-/* Toolbar above the title: holds the language switcher (and room for future
-   header controls). Right-aligned on wide screens, centre on narrow. */
+h1 { color: t.$lavender; }
+
+// Toolbar above the title: holds the language switcher (and room for future
+// header controls). Right-aligned on wide screens, centre on narrow.
 .header-toolbar {
   display: flex;
   justify-content: flex-end;
   align-items: center;
   padding: 0 0.5rem;
   min-height: 2rem;
-}
 
-@media (max-width: 576px) {
-  .header-toolbar {
+  @media (max-width: 576px) {
     justify-content: center;
   }
 }
 
 .contact-link a {
-  color: rgb(181, 111, 216);
-  font-family: MoreSugar;
-  font-style: italic;
-  font-weight: 700;
+  color: t.$purple;
+  @include m.italic-body;
   text-decoration: none;
-}
 
-.contact-link a:hover {
-  color: rgb(222, 187, 255);
-  text-decoration: underline;
+  &:hover {
+    color: t.$lavender;
+    text-decoration: underline;
+  }
 }
