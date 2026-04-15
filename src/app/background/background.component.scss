@@ -5,7 +5,7 @@
   inset: 0;
   z-index: 0;
   display: block;
-  background: t.$charcoal;
+  background: #050208;
 }
 
 .vanta-host {
@@ -15,11 +15,12 @@
   height: 100%;
 }
 
-.vanta-mist-back  { z-index: 0; }
-.vanta-net        { z-index: 1; }
+.vanta-mist-back { z-index: 0; }
+.vanta-net       { z-index: 1; }
+
 .vanta-mist-front {
   z-index: 2;
   pointer-events: none;
-  mix-blend-mode: screen;
+  mix-blend-mode: multiply;
   opacity: 0.55;
 }

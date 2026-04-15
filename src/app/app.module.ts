@@ -21,6 +21,7 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { createTranslationLoader } from './i18n/translation-loader';
 import { LanguageService } from './i18n/language.service';
 import { LanguageSwitcherComponent } from './i18n/language-switcher/language-switcher.component';
+import { WebglTextService } from './shared/webgl-text.service';
 
 @NgModule({
   declarations: [
@@ -60,5 +61,5 @@ import { LanguageSwitcherComponent } from './i18n/language-switcher/language-swi
   bootstrap: [AppComponent],
 })
 export class AppModule {
-  constructor(_language: LanguageService) {}
+  constructor(_language: LanguageService, _webglText: WebglTextService) {}
 }

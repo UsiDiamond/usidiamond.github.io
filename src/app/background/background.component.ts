@@ -17,12 +17,11 @@ type VantaEffect = {
 };
 
 const THEME = {
-  netLine: 0xdebbff,
-  netBackground: 0x1a0e2a,
-  fogHighlight: 0xb56fd8,
-  fogMidtone:   0x6a3a8a,
-  fogLowlight:  0x1a0e2a,
-  fogBase:      0x0a0614,
+  netLine:        0x8d5ba8,
+  fogHighlight:   0x4a2670,
+  fogMidtone:     0x2a1540,
+  fogLowlight:    0x0a0514,
+  fogBase:        0x04020a,
 };
 
 @Component({
@@ -125,8 +124,8 @@ export class BackgroundComponent implements AfterViewInit, OnDestroy {
       midtoneColor:   THEME.fogMidtone,
       lowlightColor:  0x000000,
       baseColor:      0x000000,
-      blurFactor: 0.85,
-      speed: 1.4,
+      blurFactor: 0.9,
+      speed: 1.1,
       zoom: 0.6,
     });
   }
