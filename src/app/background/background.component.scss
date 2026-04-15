@@ -1,0 +1,18 @@
+@use 'tokens' as t;
+
+:host {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  display: block;
+  // Solid fallback so there's never a flash of white before GL initialises,
+  // and so the page is usable if WebGL is unavailable.
+  background: t.$charcoal;
+}
+
+canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
