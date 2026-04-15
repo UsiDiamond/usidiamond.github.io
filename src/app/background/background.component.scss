@@ -4,15 +4,23 @@
   position: fixed;
   inset: 0;
   z-index: 0;
-  pointer-events: none;
   display: block;
-  
-  
-  background: t.$charcoal;
+  background: #050208;
 }
 
-canvas {
+.vanta-host {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
-  display: block;
+}
+
+.vanta-mist-back { z-index: 0; }
+.vanta-net       { z-index: 1; }
+
+.vanta-mist-front {
+  z-index: 2;
+  pointer-events: none;
+  mix-blend-mode: multiply;
+  opacity: 0.55;
 }

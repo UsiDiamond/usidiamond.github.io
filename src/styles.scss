@@ -82,13 +82,31 @@ main {
 }
 
 app-background { z-index: 0; }
-header, [menu], .container-xl, footer { position: relative; z-index: 1; }
+header, .container-xl, footer { position: relative; z-index: 1; }
+[menu] { position: relative; z-index: 5; }
+
+h1, h2 {
+  position: relative;
+  display: block;
+  width: fit-content;
+  max-width: 100%;
+  margin-inline: auto;
+  padding: 0.28em 0.85em;
+  border-radius: 0.85rem;
+  background: rgba(42, 36, 60, 0.62);
+  backdrop-filter: blur(10px) saturate(1.4);
+  -webkit-backdrop-filter: blur(10px) saturate(1.4);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.10),
+    0 4px 18px rgba(0, 0, 0, 0.30);
+}
 
 .diamond-card {
-  @include m.card-gradient;
+  @include m.card-glass;
   color: t.$gray;
   border-radius: t.$card-radius;
-  border: 1px solid rgba(t.$purple, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.18);
   overflow-wrap: anywhere;
   min-width: 0;
 
