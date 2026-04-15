@@ -1,16 +1,24 @@
 import { TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { AppComponent } from './app.component';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 describe('AppComponent', () => {
-  beforeEach(() =>
+  beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [RouterTestingModule],
+      imports: [RouterTestingModule, TranslateModule.forRoot()],
       declarations: [AppComponent],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
-    }),
-  );
+    });
+    const translate = TestBed.inject(TranslateService);
+    translate.setTranslation(
+      'en',
+      { common: { skipToMainContent: 'Skip to main content' } },
+      true,
+    );
+    translate.use('en');
+  });
 
   it('should create the app', () => {
     const fixture = TestBed.createComponent(AppComponent);

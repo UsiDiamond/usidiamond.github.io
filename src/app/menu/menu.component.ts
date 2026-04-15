@@ -10,12 +10,13 @@ import {
   RouterLink,
   RouterLinkActive,
 } from '@angular/router';
+import { TranslateModule } from '@ngx-translate/core';
 import { filter } from 'rxjs';
 import { MENU_ITEMS, MenuItem } from '../app-routing.module';
 
 @Component({
   selector: '[menu]',
-  imports: [RouterLink, RouterLinkActive],
+  imports: [RouterLink, RouterLinkActive, TranslateModule],
   host: {
     id: 'menu',
     class: 'container-fluid',
