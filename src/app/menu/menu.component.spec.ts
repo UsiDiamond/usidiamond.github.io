@@ -1,7 +1,31 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MenuComponent } from './menu.component';
 import { RouterModule } from '@angular/router';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { routes, MENU_ITEMS } from '../app-routing.module';
+
+/**
+ * Small English dictionary matching src/assets/i18n/en/menu.json so the
+ * translate pipe in the template resolves to English text inside unit tests
+ * (which don't spin up the HTTP-based MultiNamespaceTranslationLoader).
+ */
+const EN_MENU = {
+  menu: {
+    toggleNavigation: 'Toggle navigation',
+    introduction: 'Introduction',
+    projects: 'Projects',
+    education: 'Education',
+    volunteering: 'Volunteering',
+    reading: 'Reading',
+    contact: 'Contact',
+  },
+};
+
+/** Resolve the English label for a MenuItem via its labelKey. */
+function labelOf(item: (typeof MENU_ITEMS)[number]): string {
+  const [ns, key] = item.labelKey.split('.');
+  return (EN_MENU as Record<string, Record<string, string>>)[ns][key];
+}
 
 describe('MenuComponent', () => {
   let component: MenuComponent;
@@ -9,8 +33,16 @@ describe('MenuComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [MenuComponent, RouterModule.forRoot(routes)],
+      imports: [
+        MenuComponent,
+        RouterModule.forRoot(routes),
+        TranslateModule.forRoot(),
+      ],
     }).compileComponents();
+
+    const translate = TestBed.inject(TranslateService);
+    translate.setTranslation('en', EN_MENU, true);
+    translate.use('en');
 
     fixture = TestBed.createComponent(MenuComponent);
     component = fixture.componentInstance;
@@ -42,7 +74,7 @@ describe('MenuComponent', () => {
   it('should render nav buttons in the declared order', () => {
     const expected = [...MENU_ITEMS]
       .sort((a, b) => a.order - b.order)
-      .map((m) => m.label);
+      .map(labelOf);
     const actual = navButtons().map((b) => b.textContent?.trim());
     expect(actual).toEqual(expected);
   });
@@ -85,7 +117,7 @@ describe('MenuComponent', () => {
   it('should render a disabled button for every MENU_ITEMS entry flagged disabled', () => {
     const disabledItems = MENU_ITEMS.filter((m) => m.disabled);
     for (const item of disabledItems) {
-      const btn = buttonByLabel(item.label);
+      const btn = buttonByLabel(labelOf(item));
       expect(btn).toBeTruthy();
       expect(btn?.hasAttribute('disabled')).toBe(true);
       expect(btn?.getAttribute('aria-disabled')).toBe('true');
@@ -99,10 +131,16 @@ describe('MenuComponent', () => {
   it('should not render disabled buttons for MENU_ITEMS entries flagged enabled', () => {
     const enabledItems = MENU_ITEMS.filter((m) => !m.disabled);
     for (const item of enabledItems) {
-      const btn = buttonByLabel(item.label);
+      const btn = buttonByLabel(labelOf(item));
       expect(btn).toBeTruthy();
       expect(btn?.hasAttribute('disabled')).toBe(false);
     }
+  });
+
+  it('should localise the aria-label on the mobile navbar toggler', () => {
+    const el: HTMLElement = fixture.nativeElement;
+    const toggler = el.querySelector('.navbar-toggler');
+    expect(toggler?.getAttribute('aria-label')).toBe('Toggle navigation');
   });
 
   it('should have a mobile navbar toggler for responsive collapse', () => {

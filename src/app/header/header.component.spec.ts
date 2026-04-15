@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { HeaderComponent } from './header.component';
 
 describe('HeaderComponent', () => {
@@ -8,6 +9,10 @@ describe('HeaderComponent', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [HeaderComponent],
+      // Header now embeds <div language-switcher> which is a standalone
+      // component not declared here; CUSTOM_ELEMENTS_SCHEMA lets the stub
+      // element pass through without requiring its full setup.
+      schemas: [CUSTOM_ELEMENTS_SCHEMA],
     });
     fixture = TestBed.createComponent(HeaderComponent);
     component = fixture.componentInstance;
@@ -38,5 +43,11 @@ describe('HeaderComponent', () => {
   it('host element should have the personal-header id', () => {
     const el: HTMLElement = fixture.nativeElement;
     expect(el.getAttribute('id')).toBe('personal-header');
+  });
+
+  it('should mount the language switcher in the header toolbar', () => {
+    const el: HTMLElement = fixture.nativeElement;
+    const switcher = el.querySelector('.header-toolbar [language-switcher]');
+    expect(switcher).toBeTruthy();
   });
 });

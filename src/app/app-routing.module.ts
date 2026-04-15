@@ -15,8 +15,11 @@ import { ReadingComponent } from './reading/reading.component';
  * their paths to /home — edit `disabled: true` on an item to turn it off.
  */
 export interface MenuItem {
-  /** Visible label on the nav button. */
-  readonly label: string;
+  /**
+   * ngx-translate key resolved for the visible nav label — see
+   * assets/i18n/<lang>/menu.json for the per-language dictionaries.
+   */
+  readonly labelKey: string;
   /** Route path segment (no leading slash). */
   readonly route: string;
   /** Ordering within the nav menu. Lower numbers appear first. */
@@ -33,42 +36,42 @@ export interface MenuItem {
  */
 export const MENU_ITEMS: readonly MenuItem[] = [
   {
-    label: 'Introduction',
+    labelKey: 'menu.introduction',
     route: 'home',
     order: 1,
     disabled: false,
     component: HomeComponent,
   },
   {
-    label: 'Projects',
+    labelKey: 'menu.projects',
     route: 'projects',
     order: 2,
     disabled: false,
     component: ProjectsComponent,
   },
   {
-    label: 'Education',
+    labelKey: 'menu.education',
     route: 'education',
     order: 3,
     disabled: false,
     component: EducationComponent,
   },
   {
-    label: 'Volunteering',
+    labelKey: 'menu.volunteering',
     route: 'volunteering',
     order: 4,
     disabled: false,
     component: VolunteeringComponent,
   },
   {
-    label: 'Reading',
+    labelKey: 'menu.reading',
     route: 'reading',
     order: 5,
     disabled: true,
     component: ReadingComponent,
   },
   {
-    label: 'Contact',
+    labelKey: 'menu.contact',
     route: 'contact',
     order: 6,
     disabled: false,

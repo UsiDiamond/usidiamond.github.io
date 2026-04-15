@@ -1,0 +1,18 @@
+{
+  "educationAndTraining": "Bildung & Ausbildung",
+  "licensesAndCertifications": "Lizenzen & Zertifizierungen",
+  "skills": "Fähigkeiten",
+  "stevenson": {
+    "degree": "B.S. Interdisziplinäre Studien (CIS/Angewandte Mathematik), mathematische Modellierung und Informationsbeschaffung",
+    "activities": "Aktivitäten und Gesellschaften: Tutor, internationale Wettbewerbe für mathematische Modellierung (erfolgreicher Teilnehmer mit Honorable Mention) und genehmigte erweiterte Grundstudiumsforschung zu Suchalgorithmen und Informationsbeschaffung. Tenor-Solist im Greenspring Valley Orchestra.",
+    "program": "Absolvierte einen klassischen Ingenieur- und angewandten Mathematiklehrplan mit Fokus auf Unternehmensanwendungen, mit grundlegenden Programmierkursen, Themen der höheren Mathematik und einem begutachteten gemeinsamen Abschlussprojekt in Mathematik und CIS."
+  },
+  "shazy": {
+    "degree": "Traditionelle Ausbildung in der Melocchi-Methode und Coaching für Tenorwerke aus dem großen Repertoire, Stimme und Oper",
+    "description": "Mehr als 15 Jahre Gesangsausbildung nach der Melocchi-Methode mit Coaching im Tenorrepertoire, mit Schwerpunkt auf lyrischen und Spinto-Rollen. Schwerpunkt auf Opern von Verdi, Bellini, Donizetti, Puccini und Mozart."
+  },
+  "umbc": {
+    "degree": "Computer-Softwaretechnik",
+    "activities": "Aktivitäten und Gesellschaften: professionelle Ausbildung in Enterprise-Java-Entwicklung in einer Mainframe-Umgebung."
+  }
+}

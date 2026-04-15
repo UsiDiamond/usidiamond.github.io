@@ -1,0 +1,102 @@
+{
+  "title": "Was hat der Usi gebaut?",
+  "common": {
+    "leadDeveloperNote": "*Leitender Entwickler"
+  },
+  "mySssOss": {
+    "heading": "An folgenden Initiativen und Funktionen gearbeitet:",
+    "bullets": {
+      "planning": "Planung, Vorbereitung und Einreichung des Nutzer-Workspaces.",
+      "personalized": "Personalisierte Schätzungen der Rentenleistungen.",
+      "spouse": "Sofortige Schätzungen der Ehepartnerleistungen.",
+      "noBenefits": "Sofortiger Nachweis, keine Leistungen zu erhalten.",
+      "tracker": "Statusverfolgung für Leistungsanträge.",
+      "onDemand": "Auf Abruf erstellte Social-Security-Erklärung.",
+      "survivors": "Schätzungen von Invaliden- und Hinterbliebenenleistungen.",
+      "replacementCard": "Ersatz der Social-Security-Karte.",
+      "specialNotice": "Sonderbenachrichtigungsanfrage für behinderte Mitglieder der Öffentlichkeit.",
+      "beneficiaryWorkspace": "Aktueller Leistungsempfänger-Workspace.",
+      "verificationLetter": "Sofortiges Erstellen einer Leistungsbescheinigung.",
+      "form1099": "Sofortiger Ersatz des Formulars SSA-1099/SSA-1042.",
+      "benefitStatement": "Erstellung der Social-Security-Leistungserklärung.",
+      "directDeposit": "Änderung der Direktüberweisung des Leistungsempfängers.",
+      "address": "Adressänderung des Leistungsempfängers.",
+      "reportWages": "Ermöglicht Leistungsempfängern, Einkünfte zu melden, falls sie arbeiten und Invaliditätsleistungen oder SSI erhalten.",
+      "medicare": "Selbstbedienung zum Ersatz der Medicare-Karte für Leistungsempfänger.",
+      "requestCard": "Ersatz der Social-Security-Karte beantragen."
+    }
+  },
+  "mySssRps": {
+    "heading": "Architektur umgesetzt und an folgenden Funktionen gearbeitet:",
+    "bullets": {
+      "portal": "Portal für den gesetzlichen Vertreter des Leistungsempfängers.",
+      "taxForms": "Steuerformulare 1099.",
+      "letters": "Online-Bescheinigungen der Empfängerleistungen.",
+      "accounting": "Jährliche Abrechnung des gesetzlichen Vertreters.",
+      "verificationLetter": "Sofortiges Erstellen einer Leistungsbescheinigung."
+    }
+  },
+  "uploadDocs": {
+    "description": "Eine zentrale Anlaufstelle, über die die Öffentlichkeit (telefonisch, persönlich oder online über einen Sachbearbeiter) die erforderlichen SSA-Formulare anfordern, ausfüllen (falls zutreffend), sicher hochladen und den entsprechenden Schriftwechseln mit der SSA zuordnen kann."
+  },
+  "nibRewrite": {
+    "description": "Neurodiversity in Business ist eine internationale, im Vereinigten Königreich ansässige Wohltätigkeitsorganisation, die autistische und andere neurodivergente Personen mit Arbeitgebern vernetzt, die dieses Talentreservoir erschließen möchten."
+  },
+  "mySssCloud": {
+    "description": "Git-Vorlagen für Angular-UI- und Spring-API-Templates entworfen, um grundlegende Sicherheits-, Last-, Logging-, Bibliotheks-Upgrade- und Konfigurationstests durchzuführen; Dokumentation erstellt, wie ein Projekt auf den aktuellen MySSA-Target-Architecture-Standard gestartet oder migriert wird, und die Vorlage selbst in kritischen Projekten mit komplexeren Anforderungen eingesetzt."
+  },
+  "heroEngine": {
+    "p1": "The Hero Engine möchte eine quelloffene HTML5-Engine zur Erstellung von Adventure-Spielen sein, basierend auf Tiled und Phaser3.",
+    "p2": "Wir nennen sie Meta-Engine, weil sie keine vollständige Spiel-Engine für sich ist, sondern eine Schicht über Phaser3, die das Erstellen von Adventure-Spielen erleichtert. Die Engine bietet Entwicklern eine Integration zwischen Tiled und Phaser3 für einfache Levelerstellung sowie gemeinsame Funktionen und UI-Elemente, wie sie in Adventure-Spielen üblich sind.",
+    "p3": "Die Engine wird zur Erstellung von \"Command Line Heroes: The Game\" verwendet, angekündigt in Episode 1 der zweiten Staffel des Command Line Heroes Podcasts."
+  },
+  "epmo": {
+    "description": "System zur Anfrage zertifizierter Projektmanager."
+  },
+  "cetCustomerView": {
+    "description": "Eine Lösung entworfen, intern \"Skynet für die Erstantwort in der Kundeninteraktion\" genannt — eine Abfrage, die viele Legacy-Datenbanken anspricht, eingebettet in eine Progressive Web App. Mehrere Behörden sind Partner bei der Nutzung dieses Werkzeugs.",
+    "bullets": {
+      "modernized": "Modernisierung der Legacy-Software (Mainframe und Web) zur Einsicht von Empfängerakten hin zu einer serviceorientierten Web-Architektur.",
+      "lookup": "Vollständige Kunden- und Familiensuche über Dutzende von Backend-Behördendiensten und Mainframe-Ressourcen hinweg.",
+      "tree": "Baum-Navigation von Leistungsempfängern, ihren Angehörigen und Unterhaltsberechtigten.",
+      "alerts": "Spezielle Korrespondenzwarnungen für Telefon und Vor-Ort-Kontakt.",
+      "filters": "Warnungen und Filter für die Suche nach Personen von außerordentlicher nationaler Bedeutung.",
+      "liveUi": "Live-UI-Änderungen als Reaktion auf neue Daten, basierend auf reaktiver und NoSQL-basierter Dokumentenerstellung.",
+      "crossComponent": "Komponentenübergreifende Kampagne für eine einheitliche technische Richtung bei der Umsetzung eines verteilten On-Demand-Kundendaten-Crawls."
+    }
+  },
+  "cetDynamicHelp": {
+    "description": "Chatbot- und Rückruffunktion für mySSA-Nutzer."
+  },
+  "cetClickToChat": {
+    "description": "Live-Chat-Anwendung auf der mySSA-Kontoseite für Live-Chat mit Sachbearbeiter- und Management-Suite. (Start ausstehend)"
+  },
+  "emac1": {
+    "description": "Korrespondenzanwendung zur Verwaltung und Dokumentation von Anfragen der Öffentlichkeit, des Kongresses und des Weißen Hauses."
+  },
+  "lrerwms": {
+    "subtitle": "Arbeitsverwaltungssystem für Arbeitsbeziehungen und Mitarbeiterbeziehungen",
+    "description": "Verwaltung des HR-Workflows für Disziplinarmaßnahmen, rechtliche Maßnahmen und sonstige Mitarbeiterangelegenheiten."
+  },
+  "audits": {
+    "description": "Verwaltung des Workflows interner Behörden-Audits sowie von Audits auf Anforderung des OIG und anderer Behörden."
+  },
+  "emac2": {
+    "description": "Steuerungsanwendung zum Versenden Top-down-Aufgaben und zur Verwaltung von Ablehnungen, Abschlüssen und interner Behördenkorrespondenz."
+  },
+  "srdp": {
+    "subtitle": "Sicherheitsanfrage-Prozesssystem",
+    "description": "Verwaltung des Workflows und Archivierung von Sicherheitsanfragen für privilegierte Behördenressourcen."
+  },
+  "doors": {
+    "subtitle": "Detailliertes Büro-/Organisationsressourcensystem",
+    "description": "Behörden-Verzeichnis-Mainframe-Anwendung. COBOL-JCL-Backend; beratend tätig bei der Entwicklung eines Java-WebSphere-Frontends mit JS-Client für einen RESTful-Service."
+  },
+  "esp": {
+    "subtitle": "Mitarbeiter-Vorschlagsprogramm",
+    "description": "Annahme und Bearbeitung von Mitarbeitervorschlägen."
+  },
+  "cfc": {
+    "description": "Nachverfolgung der Abzüge von CFC-Kampagnenbeiträgen an registrierte Non-Profit-Organisationen durch Bundesbedienstete."
+  }
+}

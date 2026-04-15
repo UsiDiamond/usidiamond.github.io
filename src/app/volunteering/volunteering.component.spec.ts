@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { VolunteeringComponent } from './volunteering.component';
 
 describe('VolunteeringComponent', () => {
@@ -7,8 +8,24 @@ describe('VolunteeringComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [VolunteeringComponent],
+      imports: [VolunteeringComponent, TranslateModule.forRoot()],
     }).compileComponents();
+
+    const translate = TestBed.inject(TranslateService);
+    translate.setTranslation(
+      'en',
+      {
+        volunteering: {
+          title: 'Where does the Usi give back?',
+          civilRightsAndSocialAction: 'Civil Rights and Social Action',
+          economicEmpowerment: 'Economic Empowerment',
+          scienceAndTechnology: 'Science and Technology',
+          artsAndCulture: 'Arts and Culture',
+        },
+      },
+      true,
+    );
+    translate.use('en');
 
     fixture = TestBed.createComponent(VolunteeringComponent);
     component = fixture.componentInstance;

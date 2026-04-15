@@ -6,7 +6,7 @@
     data-bs-target="#navbarSupportedContent"
     aria-controls="navbarSupportedContent"
     aria-expanded="false"
-    aria-label="Toggle navigation"
+    [attr.aria-label]="'menu.toggleNavigation' | translate"
   >
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -24,7 +24,7 @@
               aria-disabled="true"
               disabled
             >
-              {{ item.label }}
+              {{ item.labelKey | translate }}
             </button>
           } @else {
             <button
@@ -36,7 +36,7 @@
               routerLinkActive="active"
               ariaCurrentWhenActive="page"
             >
-              {{ item.label }}
+              {{ item.labelKey | translate }}
             </button>
           }
         </li>
