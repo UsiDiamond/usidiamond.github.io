@@ -2,6 +2,7 @@ import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 
 import { AppRoutingModule, routes } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { BackgroundComponent } from './background/background.component';
 import { BrowserModule } from '@angular/platform-browser';
 import {
   provideHttpClient,
@@ -22,7 +23,13 @@ import { LanguageService } from './i18n/language.service';
 import { LanguageSwitcherComponent } from './i18n/language-switcher/language-switcher.component';
 
 @NgModule({
-  declarations: [AppComponent, FooterComponent, HomeComponent, HeaderComponent],
+  declarations: [
+    AppComponent,
+    BackgroundComponent,
+    FooterComponent,
+    HomeComponent,
+    HeaderComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
