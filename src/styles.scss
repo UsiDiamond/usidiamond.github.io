@@ -34,11 +34,66 @@ $navbar-dark-disabled-color: rgba(t.$lavender, 0.41);
 
 @import "bootstrap/scss/bootstrap";
 
+// -- Mobile defensive rules --------------------------------------------------
+// Prevent stray horizontal overflow on narrow viewports and force long strings
+// (tech stacks, URLs, hyphenated words) to wrap inside cards.
+html, body {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
+img, svg {
+  max-width: 100%;
+  height: auto;
+}
+
+// -- Responsive / a11y baselines ---------------------------------------------
+// Honour OS-level reduced-motion preference: the animated background runs for
+// 10s and repeats indefinitely, which can trigger vestibular discomfort.
+@media (prefers-reduced-motion: reduce) {
+  main {
+    animation: none !important;
+  }
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+// Fluid heading sizes: clamp() keeps headings readable on 320px phones
+// without looking oversized on 1440px desktops.
+h1 { font-size: clamp(1.75rem, 4vw + 1rem, 3rem); }
+h2 { font-size: clamp(1.25rem, 1.5vw + 0.75rem, 1.75rem); }
+
+// Mobile form controls: font-size >=16px prevents iOS Safari's auto-zoom
+// on focus — a well-known mobile UX footgun.
+@media (max-width: 576px) {
+  .form-select,
+  .form-control,
+  input,
+  select,
+  textarea {
+    font-size: 16px;
+  }
+}
+
+// Interactive touch targets: WCAG 2.5.5 (Target Size) recommends >=44px on
+// pointer:coarse inputs. Navbar links and card links are our main offenders.
+@media (pointer: coarse) {
+  .nav-link,
+  .navbar-toggler {
+    min-height: 44px;
+  }
+}
+
 // -- Animated background on <main app-root> ----------------------------------
 main {
   top: 0;
   position: absolute;
-  min-width: 100%;
+  width: 100%;
+  max-width: 100%;
   min-height: 100%;
   color: t.$gray;
   background: t.$charcoal;
@@ -71,6 +126,8 @@ main {
   color: t.$gray;
   border-radius: t.$card-radius;
   border: 1px solid rgba(t.$purple, 0.35);
+  overflow-wrap: anywhere;
+  min-width: 0;
 
   h2 { @include m.centered-heading; }
   p, li, a { @include m.italic-body; }
