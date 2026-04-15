@@ -7,20 +7,13 @@
   <div class="col-12 col-md-10 col-lg-5 education-section">
     <h2 tabindex="0">Stevenson University</h2>
     <p class="education-degree" tabindex="0">
-      B.S. Interdisciplinary Studies (CIS/Applied Mathematics), Mathematical
-      Modeling and Information Retrieval
+      {{ 'education.stevenson.degree' | translate }}
     </p>
     <p tabindex="0">
-      Activities and societies: Tutor, International mathematical modeling
-      competitions (successful participant and honorable mention), and approved
-      extended undergrad research on search algorithms and information
-      retrieval. Greenspring Valley Orchestra Tenor Soloist
+      {{ 'education.stevenson.activities' | translate }}
     </p>
     <p tabindex="0">
-      Followed a traditional engineering and applied mathematics curriculum
-      towards business applications with core programming courses, topics in
-      advanced mathematics, and an extended joint Mathematics &amp; CIS
-      adjudicated thesis project.
+      {{ 'education.stevenson.program' | translate }}
     </p>
     <div class="education-skills" tabindex="0" [attr.aria-label]="'education.skills' | translate">
       <span class="education-skill">Mathematical Modeling</span>
@@ -55,14 +48,11 @@
   <div class="col-12 col-md-10 col-lg-5 education-section">
     <h2 tabindex="0">Private Studio of Shazy King in Baltimore MD</h2>
     <p class="education-degree" tabindex="0">
-      Traditional Training in the Melocchi Method and Coaching in Tenor Works in
-      The Grand Repertoire, Voice and Opera
+      {{ 'education.shazy.degree' | translate }}
     </p>
     <p class="education-date" tabindex="0">2005 – 2022</p>
     <p tabindex="0">
-      15+ years of vocal training in the method of Melocchi with coaching in the
-      tenor repertoire focused on lyric and spinto roles. Focused on Verdi,
-      Bellini, Donizetti, Puccini, and Mozart operas.
+      {{ 'education.shazy.description' | translate }}
     </p>
     <div class="education-skills" tabindex="0" [attr.aria-label]="'education.skills' | translate">
       <span class="education-skill">Music Performance</span>
@@ -72,11 +62,12 @@
 
   <div class="col-12 col-md-10 col-lg-5 education-section">
     <h2 tabindex="0">University of Maryland Baltimore County</h2>
-    <p class="education-degree" tabindex="0">Computer Software Engineering</p>
+    <p class="education-degree" tabindex="0">
+      {{ 'education.umbc.degree' | translate }}
+    </p>
     <p class="education-date" tabindex="0">2015 – 2018</p>
     <p tabindex="0">
-      Activities and societies: Professional level training in Enterprise Java
-      Development in a Mainframe environment.
+      {{ 'education.umbc.activities' | translate }}
     </p>
     <div class="education-skills" tabindex="0" [attr.aria-label]="'education.skills' | translate">
       <span class="education-skill">WebSphere Application Server</span>

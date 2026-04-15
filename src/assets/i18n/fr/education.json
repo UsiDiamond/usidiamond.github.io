@@ -1,5 +1,18 @@
 {
   "educationAndTraining": "Éducation et formation",
   "licensesAndCertifications": "Licences et certifications",
-  "skills": "Compétences"
+  "skills": "Compétences",
+  "stevenson": {
+    "degree": "Licence en études interdisciplinaires (CIS / mathématiques appliquées), modélisation mathématique et recherche d'information",
+    "activities": "Activités et sociétés : tuteur, concours internationaux de modélisation mathématique (participant distingué et mention honorable), et recherche de premier cycle prolongée et approuvée sur les algorithmes de recherche et la recherche d'information. Ténor soliste au Greenspring Valley Orchestra.",
+    "program": "A suivi un cursus classique d'ingénierie et de mathématiques appliquées orienté vers les applications professionnelles, avec des cours fondamentaux de programmation, des sujets de mathématiques avancées et un projet de thèse conjoint Mathématiques et CIS évalué."
+  },
+  "shazy": {
+    "degree": "Formation traditionnelle à la méthode Melocchi et coaching dans le répertoire de ténor du Grand Répertoire, voix et opéra",
+    "description": "Plus de 15 ans de formation vocale selon la méthode Melocchi avec coaching dans le répertoire de ténor, axé sur les rôles lyriques et spinto. Accent mis sur les opéras de Verdi, Bellini, Donizetti, Puccini et Mozart."
+  },
+  "umbc": {
+    "degree": "Génie logiciel informatique",
+    "activities": "Activités et sociétés : formation de niveau professionnel au développement Java d'entreprise en environnement mainframe."
+  }
 }
