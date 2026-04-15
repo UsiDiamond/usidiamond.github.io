@@ -34,11 +34,25 @@ $navbar-dark-disabled-color: rgba(t.$lavender, 0.41);
 
 @import "bootstrap/scss/bootstrap";
 
+// -- Mobile defensive rules --------------------------------------------------
+// Prevent any stray overflow on narrow viewports and force long strings
+// (tech stacks, URLs, hyphenated words) to wrap inside cards.
+html, body {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
+img, svg {
+  max-width: 100%;
+  height: auto;
+}
+
 // -- Animated background on <main app-root> ----------------------------------
 main {
   top: 0;
   position: absolute;
-  min-width: 100%;
+  width: 100%;
+  max-width: 100%;
   min-height: 100%;
   color: t.$gray;
   background: t.$charcoal;
@@ -71,6 +85,8 @@ main {
   color: t.$gray;
   border-radius: t.$card-radius;
   border: 1px solid rgba(t.$purple, 0.35);
+  overflow-wrap: anywhere;
+  min-width: 0;
 
   h2 { @include m.centered-heading; }
   p, li, a { @include m.italic-body; }

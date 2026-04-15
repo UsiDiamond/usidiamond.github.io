@@ -24,7 +24,14 @@ p, li { @include m.italic-body; }
 
 .education-skill {
   flex: 0 1 auto;
+  max-width: 100%;
   @include m.diamond-pill;
+
+  // Allow chip labels to wrap on narrow viewports — "Software Development
+  // Life Cycle (SDLC)" would otherwise push the card width past the column.
+  @media (max-width: 576px) {
+    white-space: normal;
+  }
 }
 
 .education-section { padding: t.$card-padding; }

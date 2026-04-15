@@ -4,10 +4,12 @@
 p { @include m.italic-body(600); }
 
 .link-item {
-  margin: 2em;
+  margin: 1em;
   text-align: center;
-  min-height: 12em;
-  min-width: 12em;
+  min-height: 10em;
+  min-width: 0;
+  flex: 1 1 10em;
+  max-width: 14em;
   padding: t.$card-padding;
   border-radius: t.$card-radius;
   background: linear-gradient(
@@ -15,18 +17,17 @@ p { @include m.italic-body(600); }
     rgba(t.$violet, 0.2) 0%,
     rgba(t.$teal,   0.2) 100%
   );
+
+  @media (min-width: 715px) {
+    margin: 2em;
+    min-height: 12em;
+  }
 }
 
-@media screen and (max-width: 714px) {
-  .links-grid {
-    justify-content: center;
-    align-items: center;
-    display: grid;
-    grid-template-areas:
-      " link "
-      " link "
-      " link ";
-    grid-gap: 1em;
-    padding-bottom: 2em;
-  }
+:host {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: stretch;
+  gap: 0.5rem;
 }
