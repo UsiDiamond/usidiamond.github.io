@@ -85,9 +85,6 @@ app-background { z-index: 0; }
 header, .container-xl, footer { position: relative; z-index: 1; }
 [menu] { position: relative; z-index: 5; }
 
-// Glass chip behind every heading — dark silver tint with backdrop blur
-// so both the CSS-rendered text and the WebGL text overlay stay legible
-// against the pastel wave layer behind the cards.
 h1, h2 {
   position: relative;
   display: block;

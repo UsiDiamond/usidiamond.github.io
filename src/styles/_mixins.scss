@@ -33,11 +33,6 @@
   );
 }
 
-// Glass morphism surface for .diamond-card — a subtle purple-tinted wash
-// over heavy backdrop blur so the WebGL pastel wave layer behind the card
-// reads through as a soft diffuse gradient without washing out text.
-// The glass fades in gently on first render to hide the "pop" that
-// happens when the browser first resolves the expensive backdrop-filter.
 @mixin card-glass {
   background:
     linear-gradient(
