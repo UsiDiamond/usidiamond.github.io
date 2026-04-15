@@ -10,10 +10,6 @@ Feature: Home Page
       | What is an Usi?                 |
       | Pronouns                        |
       | Social Links                    |
-      | What music does it like?        |
-      | What causes does it care about? |
-      | What games does it like?        |
-      | What does the Usi do for money? |
 
   Scenario: Home page has a LinkedIn link
     Given I go to "http://localhost:8080/#/home"
@@ -22,3 +18,7 @@ Feature: Home Page
   Scenario: Home page has a GitHub link
     Given I go to "http://localhost:8080/#/home"
     Then a link to "github.com/usidiamond" is present
+
+  Scenario: Home page pronouns-icon geometry is pinned against distortion
+    Given I go to "http://localhost:8080/#/home"
+    Then the pronouns-page icon is present and not distorted

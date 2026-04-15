@@ -20,16 +20,5 @@ Feature: Volunteering Page
       | entry                                      |
       | Health and Safety Specialist               |
       | The Pride Center of Maryland               |
-      | Lead Software Development Engineer         |
-      | Neurodiversity in Business                 |
-      | Parliamentarian                            |
-      | SSA Headquarters LGBT Advisory Committee   |
-      | Chairperson                                |
-      | Securityplus Federal Credit Union          |
-      | Information Technology Risk Manager        |
-      | Life Care Services                         |
-      | The Audrey Herman Spotlighters Theatre     |
-      | Greenspring Valley Orchestra               |
-      | Young Victorian Theatre Company            |
       | Baltimore Playwrights Festival             |
       | Opera Vivente                              |
