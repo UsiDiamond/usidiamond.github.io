@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: '[education]',
@@ -7,7 +8,7 @@ import { Component } from '@angular/core';
     class: 'container mt-1 mb-5',
     style: 'background-color: rgba(255, 255, 255, 0.096); border-radius: 25px;',
   },
-  imports: [],
+  imports: [TranslateModule],
   templateUrl: './education.component.html',
   styleUrl: './education.component.css',
 })

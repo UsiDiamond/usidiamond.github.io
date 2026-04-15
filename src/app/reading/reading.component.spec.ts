@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { TranslateModule } from '@ngx-translate/core';
 import { ReadingComponent } from './reading.component';
 import { BOOKS } from './books.data';
 
@@ -11,7 +12,7 @@ describe('ReadingComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ReadingComponent],
+      imports: [ReadingComponent, TranslateModule.forRoot()],
     }).compileComponents();
 
     fixture = TestBed.createComponent(ReadingComponent);

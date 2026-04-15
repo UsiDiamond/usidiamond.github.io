@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { TranslateModule } from '@ngx-translate/core';
 import { BOOKS, Book } from './books.data';
 
 export interface AuthorGroup {
@@ -75,7 +76,7 @@ function groupBySubjectAndAuthor(books: readonly Book[]): SubjectGroup[] {
     class: 'container mt-1 mb-5',
     style: 'background-color: rgba(255, 255, 255, 0.096); border-radius: 25px;',
   },
-  imports: [],
+  imports: [TranslateModule],
   templateUrl: './reading.component.html',
   styleUrl: './reading.component.css',
 })

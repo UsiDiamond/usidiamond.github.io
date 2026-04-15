@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { EducationComponent } from './education.component';
 
 describe('EducationComponent', () => {
@@ -7,8 +8,22 @@ describe('EducationComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [EducationComponent],
+      imports: [EducationComponent, TranslateModule.forRoot()],
     }).compileComponents();
+
+    const translate = TestBed.inject(TranslateService);
+    translate.setTranslation(
+      'en',
+      {
+        education: {
+          educationAndTraining: 'Education & Training',
+          licensesAndCertifications: 'Licenses & Certifications',
+          skills: 'Skills',
+        },
+      },
+      true,
+    );
+    translate.use('en');
 
     fixture = TestBed.createComponent(EducationComponent);
     component = fixture.componentInstance;
