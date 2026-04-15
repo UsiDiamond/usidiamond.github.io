@@ -13,69 +13,58 @@ const FS = `precision highp float;
 uniform vec2 u_res;
 uniform float u_t;
 
-float hash(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453);}
-
-vec2 cmul(vec2 a, vec2 b){return vec2(a.x*b.x-a.y*b.y, a.x*b.y+a.y*b.x);}
-
-float glyph(vec2 cell, vec2 uv){
-  float seed = hash(cell + floor(u_t*3.0));
-  vec2 g = floor(uv * 5.0);
-  if(g.x < 0.0 || g.y < 0.0 || g.x > 4.0 || g.y > 4.0) return 0.0;
-  float bit = hash(cell*0.31 + g*0.07 + seed);
-  return step(0.55, bit);
-}
+#define ITER 14
+#define VOLSTEPS 16
+#define FORMUPARAM 0.53
+#define STEPSIZE 0.1
+#define ZOOM 0.8
+#define TILE 0.85
+#define SPEED 0.006
+#define BRIGHTNESS 0.0015
+#define DARKMATTER 0.30
+#define DISTFADING 0.73
+#define SATURATION 0.85
 
 void main(){
-  vec2 uv = gl_FragCoord.xy / u_res;
-  vec2 p = (gl_FragCoord.xy*2.0 - u_res) / u_res.y;
+  vec2 uv = gl_FragCoord.xy / u_res - 0.5;
+  uv.y *= u_res.y / u_res.x;
+  vec3 dir = vec3(uv * ZOOM, 1.0);
+  float time = u_t * SPEED + 0.25;
 
-  float r = length(p);
-  float theta = atan(p.y, p.x) + u_t*0.05 + r*0.6;
-  vec2 z = vec2(cos(theta), sin(theta)) * pow(r, 0.85);
+  float a1 = 0.5 + 0.18 * sin(u_t * 0.07);
+  float a2 = 0.8 + 0.14 * cos(u_t * 0.09);
+  mat2 rot1 = mat2(cos(a1), sin(a1), -sin(a1), cos(a1));
+  mat2 rot2 = mat2(cos(a2), sin(a2), -sin(a2), cos(a2));
+  dir.xz *= rot1;
+  dir.xy *= rot2;
 
-  z = cmul(z, vec2(cos(u_t*0.03), sin(u_t*0.03)));
+  vec3 from = vec3(1.0, 0.5, 0.5);
+  from += vec3(time * 2.0, time, -2.0);
+  from.xz *= rot1;
+  from.xy *= rot2;
 
-  vec2 w = (z + 1.2) * vec2(0.5, 0.5);
-
-  float cols = 42.0;
-  float rows = 60.0;
-  vec2 grid = w * vec2(cols, rows);
-  vec2 cellId = floor(grid);
-  vec2 cellUV = fract(grid);
-
-  float h = hash(vec2(cellId.x, 17.0));
-  float speed = 2.5 + h*6.0;
-  float phase = h*100.0;
-  float head = u_t*speed + phase;
-  float trail = head - cellId.y;
-
-  float inTrail = step(0.0, trail) * step(trail, 18.0);
-  float fade = exp(-trail*0.18) * inTrail;
-  float flicker = 0.55 + 0.45*hash(cellId + floor(u_t*6.0));
-
-  float g = glyph(cellId, cellUV) * (fade*flicker);
-
-  float edge = smoothstep(0.0, 0.02, cellUV.x)
-             * smoothstep(1.0, 0.98, cellUV.x)
-             * smoothstep(0.0, 0.02, cellUV.y)
-             * smoothstep(1.0, 0.98, cellUV.y);
-  g *= edge;
-
-  vec3 bg = mix(vec3(0.04,0.03,0.06), vec3(0.12,0.07,0.18), pow(r, 1.2));
-  vec3 trailCol = vec3(0.710, 0.435, 0.847);
-  vec3 headCol = vec3(0.95, 0.85, 1.0);
-  float isHead = smoothstep(1.0, 0.0, trail);
-  vec3 glyphCol = mix(trailCol, headCol, isHead);
-
-  vec3 c = bg;
-  c += glyphCol * g * 1.25;
-
-  float ring = abs(fract(r*3.0 - u_t*0.2) - 0.5);
-  c += vec3(0.4, 0.25, 0.65) * smoothstep(0.48, 0.5, ring) * 0.12 * exp(-r*0.8);
-
-  c *= mix(0.6, 1.0, smoothstep(1.4, 0.2, r));
-
-  gl_FragColor = vec4(c, 1.0);
+  float s = 0.1, fade = 1.0;
+  vec3 v = vec3(0.0);
+  for(int r = 0; r < VOLSTEPS; r++){
+    vec3 p = from + s * dir * 0.5;
+    p = abs(vec3(TILE) - mod(p, vec3(TILE * 2.0)));
+    float pa = 0.0, a = 0.0;
+    for(int i = 0; i < ITER; i++){
+      p = abs(p) / dot(p, p) - FORMUPARAM;
+      a += abs(length(p) - pa);
+      pa = length(p);
+    }
+    float dm = max(0.0, DARKMATTER - a * a * 0.001);
+    a = a * a * a;
+    if(r > 6) fade *= 1.0 - dm;
+    v += fade;
+    v += vec3(s, s * s, s * s * s * s) * a * BRIGHTNESS * fade;
+    fade *= DISTFADING;
+    s += STEPSIZE;
+  }
+  v = mix(vec3(length(v)), v, SATURATION);
+  v *= vec3(0.9, 0.75, 1.05);
+  gl_FragColor = vec4(v * 0.01, 1.0);
 }`;
 
 @Component({
