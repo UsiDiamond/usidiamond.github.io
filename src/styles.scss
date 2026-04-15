@@ -82,7 +82,8 @@ main {
 }
 
 app-background { z-index: 0; }
-header, [menu], .container-xl, footer { position: relative; z-index: 1; }
+header, .container-xl, footer { position: relative; z-index: 1; }
+[menu] { position: relative; z-index: 5; }
 
 // Glass chip behind every heading — dark silver tint with backdrop blur
 // so both the CSS-rendered text and the WebGL text overlay stay legible

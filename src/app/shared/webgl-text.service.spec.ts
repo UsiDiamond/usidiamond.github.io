@@ -39,9 +39,9 @@ describe('WebglTextService isEligible', () => {
     expect(service.isEligible(h)).toBe(false);
   });
 
-  it('rejects a heading containing a <br> tag', () => {
+  it('accepts a heading containing a <br> tag (multi-line supported)', () => {
     const h = makeHeading('Line one<br>Line two');
-    expect(service.isEligible(h)).toBe(false);
+    expect(service.isEligible(h)).toBe(true);
   });
 
   it('rejects a heading containing a child element', () => {
@@ -49,12 +49,12 @@ describe('WebglTextService isEligible', () => {
     expect(service.isEligible(h)).toBe(false);
   });
 
-  it('rejects a heading that visually wraps to multiple lines', () => {
+  it('accepts a long heading that visually wraps (multi-line supported)', () => {
     const h = makeHeading(
       'A sufficiently long heading string that will definitely wrap onto multiple visual lines',
       { maxWidth: '120px' },
     );
-    expect(service.isEligible(h)).toBe(false);
+    expect(service.isEligible(h)).toBe(true);
   });
 
   it('rejects when any ancestor has data-no-webgl-text', () => {

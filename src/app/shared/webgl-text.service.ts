@@ -101,23 +101,39 @@ export class WebglTextService implements OnDestroy {
     }
   }
 
-  // A heading is eligible for the WebGL effect only when:
-  //   1. it has direct text content only (no inline <br>, <p>, etc.),
+  // A heading is eligible for the WebGL effect when:
+  //   1. it is not empty,
   //   2. it is not opted out via a [data-no-webgl-text] ancestor, and
-  //   3. its text fits on a single rendered line at the current width.
-  // Multi-line text would be drawn as one overflowing line by fillText
-  // and clipped by the canvas; skipping keeps the original DOM legible.
+  //   3. its only children are text nodes and/or <br> tags (no other
+  //      elements). Multi-line text is supported: <br>-separated lines are
+  //      drawn individually; visually wrapped lines are detected via
+  //      getClientRects() and rendered at each rect's vertical centre.
   isEligible(host: HTMLElement): boolean {
     if (!(host.textContent || '').trim()) return false;
     if (host.closest('[data-no-webgl-text]')) return false;
     for (const child of Array.from(host.childNodes)) {
-      if (child.nodeType !== Node.TEXT_NODE) return false;
+      if (child.nodeType === Node.TEXT_NODE) continue;
+      if (child.nodeName === 'BR') continue;
+      return false;
     }
-    const range = document.createRange();
-    range.selectNodeContents(host);
-    const rects = range.getClientRects();
-    range.detach?.();
-    return rects.length <= 1;
+    return true;
+  }
+
+  private collectLines(host: HTMLElement): string[] {
+    const lines: string[] = [];
+    let buf = '';
+    for (const node of Array.from(host.childNodes)) {
+      if (node.nodeName === 'BR') {
+        const t = buf.trim();
+        if (t) lines.push(t);
+        buf = '';
+      } else {
+        buf += node.textContent || '';
+      }
+    }
+    const tail = buf.trim();
+    if (tail) lines.push(tail);
+    return lines;
   }
 
   private attach(host: HTMLElement): void {
@@ -223,8 +239,8 @@ export class WebglTextService implements OnDestroy {
     }
 
     const styles = getComputedStyle(a.host);
-    const text = (a.host.textContent || '').trim();
-    a.cachedText = text;
+    const lines = this.collectLines(a.host);
+    a.cachedText = lines.join('\n');
 
     const maskCanvas = document.createElement('canvas');
     maskCanvas.width = w;
@@ -234,10 +250,16 @@ export class WebglTextService implements OnDestroy {
     ctx.font = `${styles.fontStyle} ${styles.fontWeight} ${styles.fontSize} ${styles.fontFamily}`;
     ctx.fillStyle = '#fff';
     ctx.textBaseline = 'middle';
-    ctx.textAlign = styles.textAlign === 'center' ? 'center' : 'left';
-    const x = ctx.textAlign === 'center' ? rect.width / 2 : 0;
-    const y = rect.height / 2;
-    ctx.fillText(text, x, y);
+    // Always centre horizontally inside the canvas so the rendered text
+    // lines up with the heading's padding box regardless of the source
+    // element's text-align.
+    ctx.textAlign = 'center';
+    const cx = rect.width / 2;
+    const lineCount = Math.max(1, lines.length);
+    const lineHeight = rect.height / lineCount;
+    for (let i = 0; i < lineCount; i++) {
+      ctx.fillText(lines[i] ?? '', cx, lineHeight * (i + 0.5));
+    }
 
     a.gl.bindTexture(a.gl.TEXTURE_2D, a.tex);
     a.gl.pixelStorei(a.gl.UNPACK_PREMULTIPLY_ALPHA_WEBGL, true);
