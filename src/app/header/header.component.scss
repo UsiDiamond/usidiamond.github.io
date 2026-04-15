@@ -3,8 +3,6 @@
 
 h1 { color: t.$lavender; }
 
-// Toolbar above the title: holds the language switcher (and room for future
-// header controls). Right-aligned on wide screens, centre on narrow.
 .header-toolbar {
   display: flex;
   justify-content: flex-end;

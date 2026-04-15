@@ -13,10 +13,6 @@ void main() {
   gl_Position = vec4(a_position, 0.0, 1.0);
 }`;
 
-// Mist + lattice fragment shader. Mist is a 2-pass warped fBm sampled in the
-// charcoal→purple→teal palette; lattice is a signed-distance grid that breathes
-// with slow time drift. Designed to feel cohesive with the diamond-card
-// palette rather than flashy.
 const FRAGMENT_SHADER = `#version 100
 precision highp float;
 
@@ -122,9 +118,7 @@ export class BackgroundComponent implements AfterViewInit, OnDestroy {
       (canvas.getContext('experimental-webgl') as WebGLRenderingContext | null);
 
     if (!gl) {
-      // Graceful fallback: leave the canvas empty; a static CSS background
-      // colour on <body> covers the viewport so the site remains usable.
-      return;
+                  return;
     }
     this.gl = gl;
 
@@ -134,8 +128,7 @@ export class BackgroundComponent implements AfterViewInit, OnDestroy {
 
     const buffer = gl.createBuffer();
     gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
-    // Full-screen triangle (covers the clip-space viewport in one draw call)
-    gl.bufferData(
+        gl.bufferData(
       gl.ARRAY_BUFFER,
       new Float32Array([-1, -1, 3, -1, -1, 3]),
       gl.STATIC_DRAW,
@@ -162,8 +155,7 @@ export class BackgroundComponent implements AfterViewInit, OnDestroy {
     this.motionListener = () => {
       cancelAnimationFrame(this.rafId);
       if (!this.motionQuery?.matches) this.startLoop();
-      else this.renderFrame(0); // one static frame
-    };
+      else this.renderFrame(0);     };
     this.motionQuery.addEventListener?.('change', this.motionListener);
 
     if (this.motionQuery.matches) {
@@ -183,9 +175,7 @@ export class BackgroundComponent implements AfterViewInit, OnDestroy {
   }
 
   private startLoop(): void {
-    // Run the raf loop outside NgZone so it doesn't trigger change detection
-    // on every frame.
-    this.zone.runOutsideAngular(() => {
+            this.zone.runOutsideAngular(() => {
       const tick = () => {
         const t = (performance.now() - this.startTime) / 1000;
         this.renderFrame(t);
@@ -206,9 +196,7 @@ export class BackgroundComponent implements AfterViewInit, OnDestroy {
     const gl = this.gl;
     const canvas = this.canvasRef?.nativeElement;
     if (!gl || !canvas) return;
-    // Cap DPR at 1.5 — the shader looks fine at lower density and saves
-    // meaningful GPU work on high-DPI phones/tablets.
-    const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+            const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
     const w = Math.floor(canvas.clientWidth * dpr);
     const h = Math.floor(canvas.clientHeight * dpr);
     if (canvas.width !== w || canvas.height !== h) {

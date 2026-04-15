@@ -1,7 +1,3 @@
-// =============================================================================
-// Global stylesheet: theme Bootstrap with design tokens, expose shared classes,
-// drive the animated background.
-// =============================================================================
 
 @use "sass:color";
 @use "sass:list";
@@ -14,7 +10,6 @@
   src: url("assets/MoreSugar-Thin.ttf") format("truetype");
 }
 
-// -- Bootstrap theme overrides (must precede the Bootstrap import) -----------
 $primary:            t.$lavender;
 $secondary:          t.$purple;
 $body-bg:            t.$charcoal;
@@ -34,9 +29,6 @@ $navbar-dark-disabled-color: rgba(t.$lavender, 0.41);
 
 @import "bootstrap/scss/bootstrap";
 
-// -- Mobile defensive rules --------------------------------------------------
-// Prevent stray horizontal overflow on narrow viewports and force long strings
-// (tech stacks, URLs, hyphenated words) to wrap inside cards.
 html, body {
   overflow-x: hidden;
   max-width: 100%;
@@ -47,9 +39,6 @@ img, svg {
   height: auto;
 }
 
-// -- Responsive / a11y baselines ---------------------------------------------
-// Honour OS-level reduced-motion preference: the animated background runs for
-// 10s and repeats indefinitely, which can trigger vestibular discomfort.
 @media (prefers-reduced-motion: reduce) {
   main {
     animation: none !important;
@@ -62,13 +51,9 @@ img, svg {
   }
 }
 
-// Fluid heading sizes: clamp() keeps headings readable on 320px phones
-// without looking oversized on 1440px desktops.
 h1 { font-size: clamp(1.75rem, 4vw + 1rem, 3rem); }
 h2 { font-size: clamp(1.25rem, 1.5vw + 0.75rem, 1.75rem); }
 
-// Mobile form controls: font-size >=16px prevents iOS Safari's auto-zoom
-// on focus — a well-known mobile UX footgun.
 @media (max-width: 576px) {
   .form-select,
   .form-control,
@@ -79,8 +64,6 @@ h2 { font-size: clamp(1.25rem, 1.5vw + 0.75rem, 1.75rem); }
   }
 }
 
-// Interactive touch targets: WCAG 2.5.5 (Target Size) recommends >=44px on
-// pointer:coarse inputs. Navbar links and card links are our main offenders.
 @media (pointer: coarse) {
   .nav-link,
   .navbar-toggler {
@@ -88,9 +71,6 @@ h2 { font-size: clamp(1.25rem, 1.5vw + 0.75rem, 1.75rem); }
   }
 }
 
-// -- App shell ---------------------------------------------------------------
-// Background art now lives in <app-background> (WebGL canvas, fixed, z-index 0)
-// so <main> is transparent over it.
 main {
   top: 0;
   position: absolute;
@@ -101,11 +81,9 @@ main {
   background: transparent;
 }
 
-// Content sits above the fixed WebGL canvas
 app-background { z-index: 0; }
 header, [menu], .container-xl, footer { position: relative; z-index: 1; }
 
-// -- Shared page-card surface ------------------------------------------------
 .diamond-card {
   @include m.card-gradient;
   color: t.$gray;
@@ -118,7 +96,6 @@ header, [menu], .container-xl, footer { position: relative; z-index: 1; }
   p, li, a { @include m.italic-body; }
 }
 
-// -- Inline-style-replacement utility classes --------------------------------
 $text-utils: (
   "muted":  t.$gray-dim,
   "accent": t.$lavender,
@@ -133,4 +110,3 @@ $text-utils: (
   display: inline-block;
   @include m.diamond-pill;
 }
-
