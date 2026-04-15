@@ -58,15 +58,26 @@
         </button>
       </li>
       <li class="nav-item">
-        <button
-          tabindex="0"
-          class="nav-link"
-          routerLink="reading"
-          routerLinkActive="active"
-          ariaCurrentWhenActive="page"
-        >
-          Reading
-        </button>
+        @if (isRouteDisabled('reading')) {
+          <button
+            tabindex="-1"
+            class="nav-link disabled"
+            aria-disabled="true"
+            disabled
+          >
+            Reading
+          </button>
+        } @else {
+          <button
+            tabindex="0"
+            class="nav-link"
+            routerLink="reading"
+            routerLinkActive="active"
+            ariaCurrentWhenActive="page"
+          >
+            Reading
+          </button>
+        }
       </li>
       <li class="nav-item">
         <button

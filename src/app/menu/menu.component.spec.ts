@@ -2,6 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MenuComponent } from './menu.component';
 import { RouterModule } from '@angular/router';
 import { routes } from '../app-routing.module';
+import { DISABLED_ROUTES } from '../disabled-routes';
 
 describe('MenuComponent', () => {
   let component: MenuComponent;
@@ -68,10 +69,34 @@ describe('MenuComponent', () => {
     });
   });
 
-  it('no nav link should be disabled', () => {
+  it('should render the Reading button as disabled (route is in DISABLED_ROUTES)', () => {
+    expect(DISABLED_ROUTES).toContain('reading');
     const el: HTMLElement = fixture.nativeElement;
-    const disabledBtns = el.querySelectorAll('button[aria-disabled="true"]');
-    expect(disabledBtns.length).toBe(0);
+    // Disabled variant has no routerLink and carries aria-disabled="true"
+    const activeReadingBtn = el.querySelector('button[routerLink="reading"]');
+    expect(activeReadingBtn).toBeNull();
+    const disabledBtns = Array.from(
+      el.querySelectorAll('button[aria-disabled="true"]'),
+    );
+    const readingBtn = disabledBtns.find(
+      (b) => b.textContent?.trim() === 'Reading',
+    );
+    expect(readingBtn).toBeTruthy();
+    expect(readingBtn?.classList.contains('disabled')).toBe(true);
+    expect(readingBtn?.getAttribute('tabindex')).toBe('-1');
+  });
+
+  it('no nav link outside DISABLED_ROUTES should be disabled', () => {
+    const el: HTMLElement = fixture.nativeElement;
+    const disabledBtns = Array.from(
+      el.querySelectorAll('button[aria-disabled="true"]'),
+    );
+    disabledBtns.forEach((btn) => {
+      const label = (btn.textContent ?? '').trim().toLowerCase();
+      // Each disabled button's label should map to a disabled route (case-insensitive).
+      const matches = DISABLED_ROUTES.some((r) => r.toLowerCase() === label);
+      expect(matches).toBe(true);
+    });
   });
 
   it('should have a mobile navbar toggler for responsive collapse', () => {

@@ -6,6 +6,7 @@ import {
   RouterLinkActive,
 } from '@angular/router';
 import { filter } from 'rxjs';
+import { isRouteDisabled } from '../disabled-routes';
 
 @Component({
   selector: '[menu]',
@@ -18,6 +19,8 @@ import { filter } from 'rxjs';
   styleUrl: './menu.component.css',
 })
 export class MenuComponent {
+  readonly isRouteDisabled = isRouteDisabled;
+
   constructor(private router: Router) {
     this.router.events
       .pipe(filter((event) => event instanceof NavigationEnd))
