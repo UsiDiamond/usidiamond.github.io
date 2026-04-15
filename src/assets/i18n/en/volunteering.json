@@ -3,5 +3,56 @@
   "civilRightsAndSocialAction": "Civil Rights and Social Action",
   "economicEmpowerment": "Economic Empowerment",
   "scienceAndTechnology": "Science and Technology",
-  "artsAndCulture": "Arts and Culture"
+  "artsAndCulture": "Arts and Culture",
+  "pride": {
+    "intro": "2024 Baltimore City Pride Week Safety and Wellness Volunteer Staff",
+    "b1": "Attended orientation.",
+    "b2": "Worked two approximately six-hour shifts in Safety and Wellness.",
+    "b3": "Patrolled grounds.",
+    "b4": "Took participant safety complaint reports.",
+    "b5": "Worked with hired security and Baltimore City Police to resolve safety concerns.",
+    "b6": "Triaged minor health concerns.",
+    "b7": "Monitored the area for illicit drug use and for adult-oriented activity from a safety perspective, to anticipate needs, provide hydration, and keep adult-oriented activity in areas away from minors and non-consensual or unwitting observation.",
+    "b8": "Gave directions.",
+    "b9": "Couriered emergency aid equipment and materials.",
+    "b10": "Observed press policy."
+  },
+  "nib": {
+    "p1": "NiB is a business-led forum functioning as an industry group for organisations to share industry good practice on neurodivergent recruitment, retention, and empowerment.",
+    "p2": "The vision is to foster a corporate environment where neurodivergent people are understood and form an invaluable part of the work culture."
+  },
+  "lgbtac": {
+    "p1": "The Lesbian Gay Bisexual Transgender Advisory Committee (LGBTAC) provides assistance and advice to the Commissioner regarding discrimination against the LGBT communities, advocates for the civil rights of persons with AIDS/HIV, and educates the LGBT communities about a diverse range of issues that impact their communities.",
+    "p2": "The parliamentarian advises the HQ LGBTAC Chair on proceedings according to Robert's Rules of Order."
+  },
+  "fcuChair": {
+    "p1": "Supervisory Committee Member at Security Plus Federal Credit Union. Part 715 of the NCUA Rules and Regulations defines a supervisory committee consistent with Section 111(b) of the Federal Credit Union Act, 12 U.S.C. 1786(r).",
+    "b1": "Reviewed internal controls.",
+    "b2": "Hired and worked with an internal auditor.",
+    "b3": "Hired and worked with the external auditor.",
+    "b4": "Reviewed examination and audit findings and followed up to ensure that management took the necessary corrective action.",
+    "b5": "Met with the federal examiner as requested.",
+    "b6": "Researched member complaints.",
+    "b7": "Completed other procedures recommended by the SC and board.",
+    "b8": "Sat in on board meetings, reported on SC motions to the board, and reported to the internal auditor on board meeting motions."
+  },
+  "fcuIt": {
+    "p1": "The purpose of the committee is to serve as an extension of the Credit Union Board of Directors in matters related to information systems technology; and to provide feedback to the board and management on matters which may need to be evaluated, and in the case of risks, mitigated and/or monitored, in accordance with NCUA rules and regulations.",
+    "p2": "The SC representative reports to the SFCU internal auditor as to relevant discussions conducted and motions passed by the ISRMC."
+  },
+  "lifeCare": {
+    "description": "Performed a collection of lieder, arias, and musical theater works centering around Schubert, Bernstein, Verdi, Leoncavallo, and other popular tunes for residents."
+  },
+  "spotlighters": {
+    "description": "Performed a variety of lead, supporting, and chorister roles and occasionally did non-musical acting."
+  },
+  "greenspring": {
+    "description": "The orchestra is one of the most respected amateur organizations of its type in the Baltimore area, performing winter and spring concerts as well as a popular outdoor summer series — an advanced ensemble specializing in standard classics and pop favorites."
+  },
+  "youngVictorian": {
+    "description": "Small seasonal opera company performing Victorian Era Operetta. Served as Tenor I for their seasonal performance of Gilbert and Sullivan's Pirates of Penzance."
+  },
+  "bpfHammarskjold": {
+    "intro": "— Directed by veteran director Lynn Morton, Fr. McKinney's Hammarskjold tells the story of a man who awakens after a beating in Central Park convinced he is Dag Hammarskjold and suspected by the police of murder."
+  }
 }

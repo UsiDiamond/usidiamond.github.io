@@ -27,6 +27,7 @@ export const SUPPORTED_LANGUAGES: readonly SupportedLanguage[] = [
   { code: 'ko', englishName: 'Korean', nativeName: '한국어', dir: 'ltr' },
   { code: 'ru', englishName: 'Russian', nativeName: 'Русский', dir: 'ltr' },
   { code: 'de', englishName: 'German', nativeName: 'Deutsch', dir: 'ltr' },
+  { code: 'yi', englishName: 'Yiddish', nativeName: 'ייִדיש', dir: 'rtl' },
 ];
 
 export const DEFAULT_LANGUAGE_CODE = 'en';

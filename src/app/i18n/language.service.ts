@@ -67,14 +67,34 @@ export class LanguageService {
   private pickInitialLanguage(): SupportedLanguage {
     const stored = this.readStoredLanguage();
     if (stored) return stored;
-    const nav = this.document.defaultView?.navigator?.language;
+
+    // Walk navigator.languages (preference-ordered) first, then fall back to
+    // the single navigator.language. For each candidate try (in order):
+    //   1. exact match on the full tag,
+    //   2. exact match on the base subtag,
+    //   3. any supported language whose base subtag matches the candidate's
+    //      base subtag — this is how e.g. browser 'zh-CN' or 'zh-TW' maps
+    //      onto the supported 'zh-Hans' entry, and 'en-GB' onto 'en'.
+    const nav = this.document.defaultView?.navigator;
+    const candidates: string[] = [];
     if (nav) {
-      const exact = findSupportedLanguage(nav);
-      if (exact) return exact;
-      const prefix = nav.split('-')[0];
-      const byPrefix = findSupportedLanguage(prefix);
-      if (byPrefix) return byPrefix;
+      if (Array.isArray(nav.languages)) candidates.push(...nav.languages);
+      if (nav.language) candidates.push(nav.language);
     }
+
+    for (const tag of candidates) {
+      if (!tag) continue;
+      const exact = findSupportedLanguage(tag);
+      if (exact) return exact;
+      const base = tag.split('-')[0];
+      const byBase = findSupportedLanguage(base);
+      if (byBase) return byBase;
+      const bySupportedBase = SUPPORTED_LANGUAGES.find(
+        (l) => l.code.split('-')[0] === base,
+      );
+      if (bySupportedBase) return bySupportedBase;
+    }
+
     return findSupportedLanguage(DEFAULT_LANGUAGE_CODE)!;
   }
 

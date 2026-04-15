@@ -8,6 +8,38 @@ describe('LanguageSwitcherComponent', () => {
   let component: LanguageSwitcherComponent;
   let fixture: ComponentFixture<LanguageSwitcherComponent>;
 
+  // Freeze navigator to an unsupported language so the switcher's initial
+  // value is reliably the English fallback regardless of what the test
+  // browser reports.
+  const savedLanguages = Object.getOwnPropertyDescriptor(
+    window.navigator,
+    'languages',
+  );
+  const savedLanguage = Object.getOwnPropertyDescriptor(
+    window.navigator,
+    'language',
+  );
+
+  beforeAll(() => {
+    Object.defineProperty(window.navigator, 'languages', {
+      configurable: true,
+      get: () => ['xx-YY'],
+    });
+    Object.defineProperty(window.navigator, 'language', {
+      configurable: true,
+      get: () => 'xx-YY',
+    });
+  });
+
+  afterAll(() => {
+    if (savedLanguages) {
+      Object.defineProperty(window.navigator, 'languages', savedLanguages);
+    }
+    if (savedLanguage) {
+      Object.defineProperty(window.navigator, 'language', savedLanguage);
+    }
+  });
+
   beforeEach(async () => {
     localStorage.removeItem('usidiamond.lang');
     await TestBed.configureTestingModule({

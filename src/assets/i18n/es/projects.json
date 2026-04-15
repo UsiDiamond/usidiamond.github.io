@@ -1,3 +1,102 @@
 {
-  "title": "¿Qué ha construido el Usi?"
+  "title": "¿Qué ha construido el Usi?",
+  "common": {
+    "leadDeveloperNote": "*Desarrollador principal"
+  },
+  "mySssOss": {
+    "heading": "Trabajé en los siguientes esfuerzos y funcionalidades:",
+    "bullets": {
+      "planning": "Planificación, preparación y presentación del espacio de trabajo del usuario.",
+      "personalized": "Estimaciones personalizadas de prestaciones de jubilación.",
+      "spouse": "Estimaciones instantáneas de las prestaciones del cónyuge.",
+      "noBenefits": "Prueba instantánea de que no se reciben prestaciones.",
+      "tracker": "Seguimiento del estado de la solicitud de prestaciones.",
+      "onDemand": "Declaración de la Seguridad Social bajo demanda.",
+      "survivors": "Estimaciones de prestaciones por discapacidad y sobrevivientes.",
+      "replacementCard": "Tarjeta de reemplazo de la Seguridad Social.",
+      "specialNotice": "Solicitud de aviso especial para personas con discapacidad.",
+      "beneficiaryWorkspace": "Espacio de trabajo actual del beneficiario.",
+      "verificationLetter": "Generar una carta de verificación de prestaciones al instante.",
+      "form1099": "Generar un reemplazo instantáneo del formulario SSA-1099/SSA-1042.",
+      "benefitStatement": "Generar la declaración de prestaciones de la Seguridad Social.",
+      "directDeposit": "Cambio de depósito directo del beneficiario.",
+      "address": "Cambio de dirección del beneficiario.",
+      "reportWages": "Permitir a los beneficiarios reportar salarios si trabajan y reciben prestaciones por discapacidad o SSI.",
+      "medicare": "Autoservicio de tarjeta de reemplazo de Medicare para beneficiarios.",
+      "requestCard": "Solicitar una tarjeta de reemplazo de la Seguridad Social."
+    }
+  },
+  "mySssRps": {
+    "heading": "Implementé la arquitectura y trabajé en las siguientes funcionalidades:",
+    "bullets": {
+      "portal": "Portal del beneficiario representante.",
+      "taxForms": "Formularios fiscales 1099.",
+      "letters": "Cartas de verificación de prestaciones del beneficiario en línea.",
+      "accounting": "Contabilidad anual del beneficiario representante.",
+      "verificationLetter": "Generar una carta de verificación de prestaciones al instante."
+    }
+  },
+  "uploadDocs": {
+    "description": "Un servicio integral para que el público (mediante una solicitud telefónica, presencial o en línea a un técnico) obtenga los formularios SSA requeridos, los complete (si corresponde), los suba de forma segura y los adjunte a la correspondencia relevante con la SSA."
+  },
+  "nibRewrite": {
+    "description": "Neurodiversity in Business es una organización benéfica internacional con sede en el Reino Unido que pone en contacto a personas autistas y neurodiversas con empleadores interesados en aprovechar este talento."
+  },
+  "mySssCloud": {
+    "description": "Formulé plantillas de git para crear plantillas de UI Angular y de API Spring destinadas a pruebas de seguridad fundamentales, pruebas de carga, registro, actualización de librerías y cambios de configuración; y creé documentación sobre cómo iniciar o migrar un proyecto al estándar de arquitectura objetivo de MySSA, así como el uso de la propia plantilla en proyectos críticos con necesidades arquitectónicas más complejas."
+  },
+  "heroEngine": {
+    "p1": "The Hero Engine aspira a ser un motor de código abierto para creación de juegos de aventuras en HTML5, basado en Tiled y Phaser3.",
+    "p2": "Lo llamamos meta-motor porque no es un motor de juego completo por sí mismo, sino una capa sobre Phaser3 que facilita la creación de juegos de aventuras. El motor ofrecerá a los desarrolladores una integración entre Tiled y Phaser3 que permitirá crear fácilmente niveles de tipo aventura, así como funciones comunes y elementos de interfaz habituales en todos los juegos de aventuras.",
+    "p3": "Este motor se utilizará para crear \"Command Line Heroes: The Game\", anunciado en el Episodio 1 de la Temporada 2 del podcast Command Line Heroes."
+  },
+  "epmo": {
+    "description": "Sistema para solicitar gestores de proyecto certificados."
+  },
+  "cetCustomerView": {
+    "description": "Diseñé una solución llamada internamente \"Skynet para la primera respuesta de interacción de atención al cliente\": una búsqueda que consulta numerosas bases de datos heredadas, envuelta en una Progressive Web App. Varias agencias colaboran en el uso de esta herramienta.",
+    "bullets": {
+      "modernized": "Modernización del software heredado de consulta de registros de beneficiarios (mainframe y web) hacia una arquitectura orientada a servicios web.",
+      "lookup": "Búsqueda completa de cliente y familia a través de docenas de servicios de agencia backend y recursos de mainframe.",
+      "tree": "Navegación en árbol de beneficiarios, familiares y personas a cargo.",
+      "alerts": "Alertas de correspondencia especial para atención telefónica y presencial.",
+      "filters": "Alertas y filtros para la consulta de personas de gran relevancia nacional.",
+      "liveUi": "Cambios en la interfaz en vivo como respuesta a nuevos datos obtenidos mediante construcción de documentos reactiva y basada en NoSQL.",
+      "crossComponent": "Campaña entre componentes para una dirección técnica unificada en la implementación de un rastreo distribuido de datos de cliente bajo demanda."
+    }
+  },
+  "cetDynamicHelp": {
+    "description": "Chatbot y función de devolución de llamada para usuarios de mySSA."
+  },
+  "cetClickToChat": {
+    "description": "Aplicación de chat en vivo disponible en la página de cuenta de mySSA para chatear con el conjunto de representantes y gestión. (Lanzamiento pendiente)"
+  },
+  "emac1": {
+    "description": "Aplicación de correspondencia para gestionar y documentar solicitudes del público, el Congreso y la Casa Blanca."
+  },
+  "lrerwms": {
+    "subtitle": "Sistema de gestión de trabajo de relaciones laborales y con empleados",
+    "description": "Gestionar el flujo de trabajo de RR. HH. para acciones disciplinarias, acciones legales y diversas actuaciones sobre empleados."
+  },
+  "audits": {
+    "description": "Gestionar el flujo de trabajo de auditorías de agencia, tanto internas como solicitadas por la OIG y otras agencias."
+  },
+  "emac2": {
+    "description": "Aplicación de control para enviar tareas jerárquicas y gestionar rechazos, finalizaciones y correspondencia interna de la agencia."
+  },
+  "srdp": {
+    "subtitle": "Sistema de proceso de solicitudes de seguridad",
+    "description": "Gestionar el flujo de trabajo y archivar las solicitudes de seguridad de recursos privilegiados de la agencia."
+  },
+  "doors": {
+    "subtitle": "Sistema detallado de recursos de oficina/organización",
+    "description": "Aplicación de directorio de agencia en mainframe. Backend COBOL-JCL; asesoré en el desarrollo de un front-end Java WebSphere con cliente JS para servicios RESTful."
+  },
+  "esp": {
+    "subtitle": "Programa de sugerencias para empleados",
+    "description": "Aceptación y procesamiento de sugerencias de empleados."
+  },
+  "cfc": {
+    "description": "Seguimiento de las deducciones de las contribuciones de la campaña CFC por parte de empleados federales a organizaciones sin ánimo de lucro registradas."
+  }
 }

@@ -1,3 +1,102 @@
 {
-  "title": "What has the Usi built?"
+  "title": "What has the Usi built?",
+  "common": {
+    "leadDeveloperNote": "*Lead Developer"
+  },
+  "mySssOss": {
+    "heading": "Worked on the following efforts and features:",
+    "bullets": {
+      "planning": "Planning, preparing, filing users Workspace.",
+      "personalized": "Personalized retirement benefit estimates.",
+      "spouse": "Instant estimates for spouse's benefits.",
+      "noBenefits": "Instant proof that you do not receive benefits.",
+      "tracker": "Benefit application status tracker.",
+      "onDemand": "On demand Social Security Statement.",
+      "survivors": "Disability and survivors benefit estimates.",
+      "replacementCard": "Replacement Social Security card.",
+      "specialNotice": "Special Notice Request for disabled members of the public.",
+      "beneficiaryWorkspace": "Current Beneficiary Workspace.",
+      "verificationLetter": "Generate an instant benefit verification letter.",
+      "form1099": "Generate an instant replacement Form SSA-1099/SSA-1042.",
+      "benefitStatement": "Generate Social Security Benefit Statement.",
+      "directDeposit": "Beneficiary direct deposit change.",
+      "address": "Beneficiary Change your address.",
+      "reportWages": "Allow Beneficiaries to report wages if you are working and receiving disability benefits or SSI.",
+      "medicare": "Beneficiary Replacement Medicare card self-service.",
+      "requestCard": "Request a replacement Social Security card."
+    }
+  },
+  "mySssRps": {
+    "heading": "Implemented architecture as well as worked on the following features:",
+    "bullets": {
+      "portal": "Representative Payee portal.",
+      "taxForms": "1099 tax forms.",
+      "letters": "Payee benefit verification letters online.",
+      "accounting": "Annual Rep Payee Accounting.",
+      "verificationLetter": "Generate an instant benefit verification letter."
+    }
+  },
+  "uploadDocs": {
+    "description": "A one stop shop for the public to be able to (through a phone, in-person, or online technician request) get document requests for required SSA forms, fill them out (if applicable), upload them securely, and have them attached to relevant correspondences with SSA."
+  },
+  "nibRewrite": {
+    "description": "Neurodiversity in Business is an international UK-based charity for networking autistic and other neurodiverse persons with employers looking to tap into this talent pool."
+  },
+  "mySssCloud": {
+    "description": "Formulated git templates for forming Angular UI and Spring API templates for testing core security, load testing, logging, library upgrade and configuration changes and create documentation on how to start or migrate a current project to the latest MySSA Target Architecture standard as well as utilizing that template itself on critical projects with more complex architectural needs."
+  },
+  "heroEngine": {
+    "p1": "The Hero Engine aims to be an open-source HTML5 adventure game creation engine based on Tiled and Phaser3.",
+    "p2": "We're calling it a meta-engine because it is not a full game engine on its own, but a layer on top of Phaser3 that makes it easy to create Adventure Games. The engine will provide game developers with an integration between Tiled and Phaser3 that will allow for easy adventure-game-like level creation. As well as common functions and UI elements that are common among all adventure games.",
+    "p3": "This engine will be used to create \"Command Line Heroes: The Game\" announced on Episode 1 of Season 2 of the Command Line Heroes Podcast."
+  },
+  "epmo": {
+    "description": "System for Requesting Certified Project Managers."
+  },
+  "cetCustomerView": {
+    "description": "Architected a solution internally called \"Skynet for customer service interaction first response\" — a lookup touching many legacy databases wrapped in a Progressive Web App. Multiple agencies are partners in using this tool.",
+    "bullets": {
+      "modernized": "Modernized mainframe and web-based legacy beneficiary records viewing software to a web service-oriented architecture.",
+      "lookup": "Complete customer and family lookup across dozens of backend agency services and mainframe resources.",
+      "tree": "Tree Navigation of Beneficiaries, their relatives, and their dependents.",
+      "alerts": "Special correspondence alerts for phone and in person.",
+      "filters": "Alerts and filters for lookup of Individuals of Extraordinary National Prominence.",
+      "liveUi": "Live UI changes in response to new data gathered based on reactive and NoSQL based document building.",
+      "crossComponent": "Cross Component campaigning for unified technical direction in implementing a distributed on-demand customer data crawl."
+    }
+  },
+  "cetDynamicHelp": {
+    "description": "Chatbot and call back feature for mySSA users."
+  },
+  "cetClickToChat": {
+    "description": "Live chat application available on mySSA account page for live chat with representative and management suite. (Launch Pending)"
+  },
+  "emac1": {
+    "description": "Correspondence application to manage and document requests from the public, congress, and the white house."
+  },
+  "lrerwms": {
+    "subtitle": "Labor Relation Employee Relation Work Management System",
+    "description": "Manage HR workflow for disciplinary action, legal actions, and miscellaneous employee actions."
+  },
+  "audits": {
+    "description": "Manage workflow of agency audits internal and requested from OIG and other agencies."
+  },
+  "emac2": {
+    "description": "Control application for sending top down tasks and managing rejection, completion, and internal agency correspondence."
+  },
+  "srdp": {
+    "subtitle": "Security Request Process System",
+    "description": "Manage workflow and archive security requests for privileged agency resources."
+  },
+  "doors": {
+    "subtitle": "Detailed Office/Organization Resource System",
+    "description": "Agency directory mainframe application. COBOL-JCL backend; consulted on developing Java WebSphere front-end with JS client for restful service."
+  },
+  "esp": {
+    "subtitle": "Employee Suggestion Program",
+    "description": "Accepted and processed employee suggestions."
+  },
+  "cfc": {
+    "description": "Track deductions of CFC campaign contributions to registered non-profits by federal employees."
+  }
 }

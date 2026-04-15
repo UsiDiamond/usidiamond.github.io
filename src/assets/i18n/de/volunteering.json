@@ -3,5 +3,56 @@
   "civilRightsAndSocialAction": "Bürgerrechte und soziales Engagement",
   "economicEmpowerment": "Wirtschaftliche Ermächtigung",
   "scienceAndTechnology": "Wissenschaft und Technologie",
-  "artsAndCulture": "Kunst und Kultur"
+  "artsAndCulture": "Kunst und Kultur",
+  "pride": {
+    "intro": "Freiwilliges Sicherheits- und Wohlfahrtspersonal der Baltimore City Pride Week 2024",
+    "b1": "Orientierung besucht.",
+    "b2": "Zwei Schichten von jeweils etwa sechs Stunden in Sicherheit und Wohlfahrt gearbeitet.",
+    "b3": "Das Gelände patrouilliert.",
+    "b4": "Sicherheitsbeschwerden von Teilnehmenden entgegengenommen.",
+    "b5": "Mit angestelltem Sicherheitspersonal und der Polizei von Baltimore zusammengearbeitet, um Sicherheitsbedenken zu klären.",
+    "b6": "Leichte gesundheitliche Probleme triagiert.",
+    "b7": "Das Gelände aus Sicherheitsperspektive auf illegalen Drogenkonsum und erwachsenenorientierte Aktivitäten überwacht, um Bedürfnisse zu antizipieren, Hydratation bereitzustellen und erwachsenenorientierte Aktivitäten fernab von Minderjährigen und einvernehmensloser oder unfreiwilliger Beobachtung zu halten.",
+    "b8": "Wegauskünfte gegeben.",
+    "b9": "Notfall-Hilfsausrüstung und -materialien transportiert.",
+    "b10": "Presserichtlinie eingehalten."
+  },
+  "nib": {
+    "p1": "NiB ist ein unternehmensgeleitetes Forum, das als Branchengruppe dient, in der Organisationen Best Practices zu Rekrutierung, Bindung und Empowerment neurodivergenter Menschen austauschen.",
+    "p2": "Die Vision ist, ein Unternehmensumfeld zu schaffen, in dem neurodivergente Menschen verstanden werden und einen unschätzbaren Teil der Arbeitskultur bilden."
+  },
+  "lgbtac": {
+    "p1": "Der Beirat für Lesben, Schwule, Bisexuelle und Transgender (LGBTAC) unterstützt und berät den Commissioner in Fragen der Diskriminierung gegenüber LGBT-Gemeinschaften, setzt sich für die Bürgerrechte von Menschen mit AIDS/HIV ein und informiert die LGBT-Gemeinschaften über eine Vielzahl von Themen, die ihre Gemeinschaften betreffen.",
+    "p2": "Der Parlamentarier berät den Vorsitzenden des LGBTAC in Verfahrensfragen gemäß Robert's Rules of Order."
+  },
+  "fcuChair": {
+    "p1": "Mitglied des Aufsichtsausschusses der Security Plus Federal Credit Union. Teil 715 der NCUA-Regeln und -Vorschriften definiert einen Aufsichtsausschuss im Einklang mit Abschnitt 111(b) des Federal Credit Union Act, 12 U.S.C. 1786(r).",
+    "b1": "Interne Kontrollen überprüft.",
+    "b2": "Einen internen Prüfer eingestellt und mit ihm zusammengearbeitet.",
+    "b3": "Den externen Prüfer eingestellt und mit ihm zusammengearbeitet.",
+    "b4": "Ergebnisse der Prüfung und des Audits überprüft und nachverfolgt, damit die Geschäftsführung die erforderlichen Korrekturmaßnahmen ergreift.",
+    "b5": "Den Bundesprüfer auf Anfrage getroffen.",
+    "b6": "Mitgliederbeschwerden untersucht.",
+    "b7": "Weitere vom SC und vom Vorstand empfohlene Verfahren durchgeführt.",
+    "b8": "An Vorstandssitzungen teilgenommen, SC-Anträge an den Vorstand berichtet und dem internen Prüfer über die Anträge der Sitzungen Bericht erstattet."
+  },
+  "fcuIt": {
+    "p1": "Der Ausschuss dient als Erweiterung des Verwaltungsrats der Credit Union in Angelegenheiten der Informationssystemtechnologie und liefert dem Vorstand und der Geschäftsführung Rückmeldungen zu Themen, die bewertet und im Falle von Risiken gemindert und/oder überwacht werden müssen, im Einklang mit den Regeln und Vorschriften der NCUA.",
+    "p2": "Der SC-Vertreter berichtet dem internen Prüfer der SFCU über die geführten relevanten Diskussionen und die vom ISRMC verabschiedeten Anträge."
+  },
+  "lifeCare": {
+    "description": "Aufführte eine Sammlung von Liedern, Arien und Musiktheaterwerken rund um Schubert, Bernstein, Verdi, Leoncavallo und andere beliebte Melodien für die Bewohner."
+  },
+  "spotlighters": {
+    "description": "Eine Vielzahl von Haupt-, Neben- und Chorrollen verkörpert und gelegentlich nichtmusikalisches Schauspiel betrieben."
+  },
+  "greenspring": {
+    "description": "Das Orchester zählt zu den angesehensten Amateurorganisationen seiner Art in der Region Baltimore, gibt Winter- und Frühlingskonzerte sowie eine beliebte Open-Air-Sommerreihe — ein fortgeschrittenes Ensemble mit Schwerpunkt auf klassischen Standardwerken und populären Favoriten."
+  },
+  "youngVictorian": {
+    "description": "Kleine saisonale Operngesellschaft, die Operette aus viktorianischer Zeit aufführt. Tenor I in ihrer saisonalen Aufführung von Gilbert und Sullivans Pirates of Penzance."
+  },
+  "bpfHammarskjold": {
+    "intro": "— Unter der Regie des erfahrenen Regisseurs Lynn Morton erzählt Hammarskjold von Fr. McKinney die Geschichte eines Mannes, der nach einer Prügelattacke im Central Park erwacht und überzeugt ist, Dag Hammarskjöld zu sein, und von der Polizei des Mordes verdächtigt wird."
+  }
 }

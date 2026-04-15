@@ -3,5 +3,56 @@
   "civilRightsAndSocialAction": "Derechos civiles y acción social",
   "economicEmpowerment": "Empoderamiento económico",
   "scienceAndTechnology": "Ciencia y tecnología",
-  "artsAndCulture": "Arte y cultura"
+  "artsAndCulture": "Arte y cultura",
+  "pride": {
+    "intro": "Personal voluntario de Seguridad y Bienestar de la Pride Week 2024 de la ciudad de Baltimore",
+    "b1": "Asistí a la orientación.",
+    "b2": "Trabajé dos turnos de aproximadamente seis horas en Seguridad y Bienestar.",
+    "b3": "Patrullé el recinto.",
+    "b4": "Atendí informes de quejas de seguridad de los participantes.",
+    "b5": "Colaboré con la seguridad contratada y la policía de la ciudad de Baltimore para resolver problemas de seguridad.",
+    "b6": "Gestioné triaje de problemas menores de salud.",
+    "b7": "Monitoreé la zona en busca de consumo ilícito de drogas y de actividad para adultos desde una perspectiva de seguridad, a fin de anticipar necesidades, proporcionar hidratación y mantener la actividad adulta en áreas alejadas de menores y de observación no consentida o involuntaria.",
+    "b8": "Di indicaciones.",
+    "b9": "Transporté equipo y materiales de emergencia.",
+    "b10": "Respeté la política de prensa."
+  },
+  "nib": {
+    "p1": "NiB es un foro liderado por empresas que funciona como grupo sectorial para que las organizaciones compartan buenas prácticas en reclutamiento, retención y empoderamiento de personas neurodivergentes.",
+    "p2": "La visión es fomentar un entorno corporativo donde las personas neurodivergentes sean comprendidas y formen parte invaluable de la cultura de trabajo."
+  },
+  "lgbtac": {
+    "p1": "El Comité Asesor de Lesbianas, Gays, Bisexuales y Transgénero (LGBTAC) presta asistencia y asesora al Comisionado en materia de discriminación contra las comunidades LGBT, aboga por los derechos civiles de personas con SIDA/VIH y educa a las comunidades LGBT sobre diversos asuntos que impactan a dichas comunidades.",
+    "p2": "El parlamentario asesora al presidente del LGBTAC sobre los procedimientos conforme a las Reglas de Robert (Robert's Rules of Order)."
+  },
+  "fcuChair": {
+    "p1": "Miembro del Comité de Supervisión en Security Plus Federal Credit Union. La Parte 715 de las Reglas y Regulaciones de la NCUA define el comité de supervisión conforme a la Sección 111(b) de la Federal Credit Union Act, 12 U.S.C. 1786(r).",
+    "b1": "Revisé los controles internos.",
+    "b2": "Contraté y trabajé con un auditor interno.",
+    "b3": "Contraté y trabajé con el auditor externo.",
+    "b4": "Revisé los hallazgos de examen y auditoría y realicé seguimiento para asegurar que la dirección tomara las medidas correctivas necesarias.",
+    "b5": "Me reuní con el examinador federal cuando fue requerido.",
+    "b6": "Investigué quejas de miembros.",
+    "b7": "Completé otros procedimientos recomendados por el SC y la junta.",
+    "b8": "Asistí a reuniones de la junta, reporté las mociones del SC a la junta e informé al auditor interno sobre las mociones de dichas reuniones."
+  },
+  "fcuIt": {
+    "p1": "El propósito del comité es servir como extensión de la Junta Directiva de la Cooperativa de Crédito en asuntos relacionados con la tecnología de sistemas de información, y brindar retroalimentación a la junta y a la dirección sobre asuntos que puedan requerir evaluación y, en caso de riesgos, mitigación o supervisión, conforme a las reglas y regulaciones de la NCUA.",
+    "p2": "El representante del SC informa al auditor interno de la SFCU sobre las discusiones relevantes mantenidas y las mociones aprobadas por el ISRMC."
+  },
+  "lifeCare": {
+    "description": "Interpreté una colección de lieder, arias y obras de teatro musical en torno a Schubert, Bernstein, Verdi, Leoncavallo y otras melodías populares para los residentes."
+  },
+  "spotlighters": {
+    "description": "Interpreté una variedad de papeles protagónicos, de reparto y de coro, y ocasionalmente realicé actuación no musical."
+  },
+  "greenspring": {
+    "description": "La orquesta es una de las organizaciones amateurs más respetadas de su tipo en el área de Baltimore, realizando conciertos de invierno y primavera, así como una popular serie al aire libre en verano — un conjunto avanzado especializado en clásicos estándar y favoritos populares."
+  },
+  "youngVictorian": {
+    "description": "Pequeña compañía de ópera de temporada que interpreta opereta de la época victoriana. Participé como Tenor I en su función de temporada de Pirates of Penzance de Gilbert y Sullivan."
+  },
+  "bpfHammarskjold": {
+    "intro": "— Dirigida por el director veterano Lynn Morton, Hammarskjold del padre McKinney cuenta la historia de un hombre que despierta tras una paliza en Central Park convencido de ser Dag Hammarskjöld y sospechoso de asesinato por la policía."
+  }
 }
