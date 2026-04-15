@@ -1,8 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MenuComponent } from './menu.component';
 import { RouterModule } from '@angular/router';
-import { routes } from '../app-routing.module';
-import { DISABLED_ROUTES } from '../disabled-routes';
+import { routes, MENU_ITEMS } from '../app-routing.module';
 
 describe('MenuComponent', () => {
   let component: MenuComponent;
@@ -18,6 +17,15 @@ describe('MenuComponent', () => {
     fixture.detectChanges();
   });
 
+  /** Nav buttons as resolved by the component's @ViewChildren('navBtn'). */
+  function navButtons(): HTMLButtonElement[] {
+    return component.navButtonRefs.map((ref) => ref.nativeElement);
+  }
+
+  function buttonByLabel(label: string): HTMLButtonElement | undefined {
+    return navButtons().find((b) => b.textContent?.trim() === label);
+  }
+
   it('should create', () => {
     expect(component).toBeTruthy();
   });
@@ -27,76 +35,74 @@ describe('MenuComponent', () => {
     expect(el.querySelector('nav')).toBeTruthy();
   });
 
+  it('should render one nav button per MENU_ITEMS entry', () => {
+    expect(navButtons().length).toBe(MENU_ITEMS.length);
+  });
+
+  it('should render nav buttons in the declared order', () => {
+    const expected = [...MENU_ITEMS]
+      .sort((a, b) => a.order - b.order)
+      .map((m) => m.label);
+    const actual = navButtons().map((b) => b.textContent?.trim());
+    expect(actual).toEqual(expected);
+  });
+
   it('should have an Introduction link pointing to home', () => {
-    const el: HTMLElement = fixture.nativeElement;
-    const btn = el.querySelector('button[routerLink="home"]');
+    const btn = buttonByLabel('Introduction');
     expect(btn).toBeTruthy();
-    expect(btn?.textContent?.trim()).toBe('Introduction');
+    expect(btn?.getAttribute('routerlink')).toBe('home');
   });
 
   it('should have a Projects link pointing to projects', () => {
-    const el: HTMLElement = fixture.nativeElement;
-    const btn = el.querySelector('button[routerLink="projects"]');
+    const btn = buttonByLabel('Projects');
     expect(btn).toBeTruthy();
-    expect(btn?.textContent?.trim()).toBe('Projects');
+    expect(btn?.getAttribute('routerlink')).toBe('projects');
   });
 
   it('should have an Education link pointing to education', () => {
-    const el: HTMLElement = fixture.nativeElement;
-    const btn = el.querySelector('button[routerLink="education"]');
+    const btn = buttonByLabel('Education');
     expect(btn).toBeTruthy();
-    expect(btn?.textContent?.trim()).toBe('Education');
+    expect(btn?.getAttribute('routerlink')).toBe('education');
   });
 
   it('should not have an About link (About content lives on Home)', () => {
-    const el: HTMLElement = fixture.nativeElement;
-    const btn = el.querySelector('button[routerLink="about"]');
-    expect(btn).toBeNull();
+    expect(buttonByLabel('About')).toBeUndefined();
   });
 
   it('should have a Contact link pointing to contact', () => {
-    const el: HTMLElement = fixture.nativeElement;
-    const btn = el.querySelector('button[routerLink="contact"]');
+    const btn = buttonByLabel('Contact');
     expect(btn).toBeTruthy();
-    expect(btn?.textContent?.trim()).toBe('Contact');
+    expect(btn?.getAttribute('routerlink')).toBe('contact');
   });
 
-  it('all nav links should be keyboard accessible', () => {
-    const el: HTMLElement = fixture.nativeElement;
-    const navBtns = el.querySelectorAll('button[routerLink]');
-    navBtns.forEach((btn) => {
+  it('all enabled nav links should be keyboard accessible', () => {
+    for (const btn of navButtons()) {
+      if (btn.hasAttribute('disabled')) continue;
       expect(btn.getAttribute('tabindex')).not.toBe('-1');
-    });
+    }
   });
 
-  it('should render the Reading button as disabled (route is in DISABLED_ROUTES)', () => {
-    expect(DISABLED_ROUTES).toContain('reading');
-    const el: HTMLElement = fixture.nativeElement;
-    // Disabled variant has no routerLink and carries aria-disabled="true"
-    const activeReadingBtn = el.querySelector('button[routerLink="reading"]');
-    expect(activeReadingBtn).toBeNull();
-    const disabledBtns = Array.from(
-      el.querySelectorAll('button[aria-disabled="true"]'),
-    );
-    const readingBtn = disabledBtns.find(
-      (b) => b.textContent?.trim() === 'Reading',
-    );
-    expect(readingBtn).toBeTruthy();
-    expect(readingBtn?.classList.contains('disabled')).toBe(true);
-    expect(readingBtn?.getAttribute('tabindex')).toBe('-1');
+  it('should render a disabled button for every MENU_ITEMS entry flagged disabled', () => {
+    const disabledItems = MENU_ITEMS.filter((m) => m.disabled);
+    for (const item of disabledItems) {
+      const btn = buttonByLabel(item.label);
+      expect(btn).toBeTruthy();
+      expect(btn?.hasAttribute('disabled')).toBe(true);
+      expect(btn?.getAttribute('aria-disabled')).toBe('true');
+      expect(btn?.classList.contains('disabled')).toBe(true);
+      expect(btn?.getAttribute('tabindex')).toBe('-1');
+      // Disabled buttons intentionally carry no routerLink attribute.
+      expect(btn?.getAttribute('routerlink')).toBeNull();
+    }
   });
 
-  it('no nav link outside DISABLED_ROUTES should be disabled', () => {
-    const el: HTMLElement = fixture.nativeElement;
-    const disabledBtns = Array.from(
-      el.querySelectorAll('button[aria-disabled="true"]'),
-    );
-    disabledBtns.forEach((btn) => {
-      const label = (btn.textContent ?? '').trim().toLowerCase();
-      // Each disabled button's label should map to a disabled route (case-insensitive).
-      const matches = DISABLED_ROUTES.some((r) => r.toLowerCase() === label);
-      expect(matches).toBe(true);
-    });
+  it('should not render disabled buttons for MENU_ITEMS entries flagged enabled', () => {
+    const enabledItems = MENU_ITEMS.filter((m) => !m.disabled);
+    for (const item of enabledItems) {
+      const btn = buttonByLabel(item.label);
+      expect(btn).toBeTruthy();
+      expect(btn?.hasAttribute('disabled')).toBe(false);
+    }
   });
 
   it('should have a mobile navbar toggler for responsive collapse', () => {
