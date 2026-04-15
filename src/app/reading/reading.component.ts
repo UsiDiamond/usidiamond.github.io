@@ -10,18 +10,11 @@ export interface AuthorGroup {
 export interface SubjectGroup {
   subject: string;
   authors: AuthorGroup[];
-  /** Flattened, ordered list: authors alphabetical, titles alphabetical within each author. */
   books: Book[];
 }
 
-/** Subjects that should not render at all. */
 const HIDDEN_SUBJECTS: ReadonlySet<string> = new Set(['Biology & Medicine']);
 
-/**
- * Group books by subject, then by author within each subject.
- * Subjects are sorted by book count descending so the largest collections
- * surface first; authors and titles sort alphabetically within their group.
- */
 function groupBySubjectAndAuthor(books: readonly Book[]): SubjectGroup[] {
   const bySubject = new Map<string, Book[]>();
   for (const b of books) {

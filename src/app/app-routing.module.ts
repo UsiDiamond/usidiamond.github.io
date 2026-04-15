@@ -7,33 +7,14 @@ import { ContactComponent } from './contact/contact.component';
 import { VolunteeringComponent } from './volunteering/volunteering.component';
 import { ReadingComponent } from './reading/reading.component';
 
-/**
- * A single menu entry. This is the source of truth for both the nav menu
- * (label, ordering, disabled state) and the router's route table
- * (route path + component). Disabled items stay in the list so the menu
- * can still render them (greyed out) and the router can still redirect
- * their paths to /home — edit `disabled: true` on an item to turn it off.
- */
 export interface MenuItem {
-  /**
-   * ngx-translate key resolved for the visible nav label — see
-   * assets/i18n/<lang>/menu.json for the per-language dictionaries.
-   */
   readonly labelKey: string;
-  /** Route path segment (no leading slash). */
   readonly route: string;
-  /** Ordering within the nav menu. Lower numbers appear first. */
   readonly order: number;
-  /** When true, the nav button is rendered inert and the path redirects to /home. */
   readonly disabled: boolean;
-  /** Component to mount when this route is active (ignored when disabled). */
   readonly component: Type<unknown>;
 }
 
-/**
- * Every nav item lives here. The order field controls display order;
- * the disabled flag controls both nav rendering and routing behaviour.
- */
 export const MENU_ITEMS: readonly MenuItem[] = [
   {
     labelKey: 'menu.introduction',
@@ -79,7 +60,6 @@ export const MENU_ITEMS: readonly MenuItem[] = [
   },
 ];
 
-// Derived routes: active items mount their component; disabled items redirect to /home.
 const activeRoutes: Routes = MENU_ITEMS.filter((m) => !m.disabled).map((m) => ({
   path: m.route,
   component: m.component,
@@ -92,7 +72,6 @@ const disabledRedirects: Routes = MENU_ITEMS.filter((m) => m.disabled).map(
 export const routes: Routes = [
   ...activeRoutes,
   ...disabledRedirects,
-  // Legacy /about redirects to the merged Home page.
   { path: 'about', redirectTo: 'home', pathMatch: 'full' },
   { path: '', redirectTo: 'home', pathMatch: 'full' },
 ];

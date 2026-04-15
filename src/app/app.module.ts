@@ -53,8 +53,5 @@ import { LanguageSwitcherComponent } from './i18n/language-switcher/language-swi
   bootstrap: [AppComponent],
 })
 export class AppModule {
-  // Force LanguageService to initialise on app startup so it can read the
-  // stored/browser-preferred language and set <html lang>/<html dir> before
-  // any component reads translations.
   constructor(_language: LanguageService) {}
 }

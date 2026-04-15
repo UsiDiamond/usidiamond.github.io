@@ -11,7 +11,6 @@ p, li { @include m.italic-body; }
 .education-date { @include m.label(t.$purple); }
 .education-org  { @include m.label(t.$gray-mid); }
 
-// Skills row: equidistant chips pinned to the bottom of each card.
 .education-skills {
   display: flex;
   flex-wrap: wrap;
@@ -27,8 +26,6 @@ p, li { @include m.italic-body; }
   max-width: 100%;
   @include m.diamond-pill;
 
-  // Allow chip labels to wrap on narrow viewports — "Software Development
-  // Life Cycle (SDLC)" would otherwise push the card width past the column.
   @media (max-width: 576px) {
     white-space: normal;
   }

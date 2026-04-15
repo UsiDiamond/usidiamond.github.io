@@ -25,15 +25,10 @@ import { MENU_ITEMS, MenuItem } from '../app-routing.module';
   styleUrl: './menu.component.scss',
 })
 export class MenuComponent {
-  /** Nav items sorted by their declared order; drives the template loop. */
   readonly menuItems: readonly MenuItem[] = [...MENU_ITEMS].sort(
     (a, b) => a.order - b.order,
   );
 
-  /**
-   * Rendered nav buttons (one per menuItems entry). Exposed for tests so
-   * they can inspect disabled state and routing without dom-querying.
-   */
   @ViewChildren('navBtn', { read: ElementRef })
   navButtonRefs!: QueryList<ElementRef<HTMLButtonElement>>;
 

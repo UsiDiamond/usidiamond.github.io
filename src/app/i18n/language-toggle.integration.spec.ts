@@ -1,12 +1,3 @@
-/**
- * Integration spec: verifies that toggling the active language at runtime
- * re-renders content in a router-loaded component (ProjectsComponent here
- * stands in for all the route-mounted ones — they share the same pattern).
- *
- * If this spec fails while the unit specs pass, the bug is in how the
- * TranslateService singleton reaches child components, not in any one
- * component's template.
- */
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { ProjectsComponent } from '../projects/projects.component';

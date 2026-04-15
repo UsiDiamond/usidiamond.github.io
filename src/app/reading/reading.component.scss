@@ -4,9 +4,6 @@
 h2 { @include m.centered-heading; }
 p, li { @include m.italic-body; }
 
-// Sections flow left-to-right and wrap. Basis 480px lets a section stand alone
-// on narrow screens and pair up on wide ones; max-width 50% caps the layout at
-// two sections per row even on very wide viewports.
 .reading-sections {
   display: flex;
   flex-wrap: wrap;
@@ -42,9 +39,6 @@ p, li { @include m.italic-body; }
   );
 }
 
-// Floating-card grid: cards flow left-to-right, top-to-bottom, wrapping at the
-// pane edge. Fixed min-width keeps the grid tidy at any viewport width while
-// allowing flex-grow so the last row doesn't stretch awkwardly.
 .reading-card-grid {
   display: flex;
   flex-wrap: wrap;

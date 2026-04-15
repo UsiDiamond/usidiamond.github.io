@@ -4,11 +4,6 @@ import { RouterModule } from '@angular/router';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { routes, MENU_ITEMS } from '../app-routing.module';
 
-/**
- * Small English dictionary matching src/assets/i18n/en/menu.json so the
- * translate pipe in the template resolves to English text inside unit tests
- * (which don't spin up the HTTP-based MultiNamespaceTranslationLoader).
- */
 const EN_MENU = {
   menu: {
     toggleNavigation: 'Toggle navigation',
@@ -21,7 +16,6 @@ const EN_MENU = {
   },
 };
 
-/** Resolve the English label for a MenuItem via its labelKey. */
 function labelOf(item: (typeof MENU_ITEMS)[number]): string {
   const [ns, key] = item.labelKey.split('.');
   return (EN_MENU as Record<string, Record<string, string>>)[ns][key];
@@ -49,7 +43,6 @@ describe('MenuComponent', () => {
     fixture.detectChanges();
   });
 
-  /** Nav buttons as resolved by the component's @ViewChildren('navBtn'). */
   function navButtons(): HTMLButtonElement[] {
     return component.navButtonRefs.map((ref) => ref.nativeElement);
   }
@@ -123,7 +116,6 @@ describe('MenuComponent', () => {
       expect(btn?.getAttribute('aria-disabled')).toBe('true');
       expect(btn?.classList.contains('disabled')).toBe(true);
       expect(btn?.getAttribute('tabindex')).toBe('-1');
-      // Disabled buttons intentionally carry no routerLink attribute.
       expect(btn?.getAttribute('routerlink')).toBeNull();
     }
   });
