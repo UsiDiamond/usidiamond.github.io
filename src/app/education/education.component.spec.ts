@@ -38,6 +38,12 @@ describe('EducationComponent', () => {
             activities:
               'Activities and societies: Professional level training in Enterprise Java Development in a Mainframe environment.',
           },
+          cert: {
+            firstAidAndCPR: 'Adult and Pediatric First Aid/CPR/AED',
+            bls: 'Basic Life Support for Healthcare and Public Safety (BLS)',
+            introToR: 'Introduction to R Course',
+            advancedTutor: 'Certified Advanced Tutor',
+          },
         },
       },
       true,
