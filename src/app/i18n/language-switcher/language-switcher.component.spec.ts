@@ -5,13 +5,6 @@ import { LanguageSwitcherComponent } from './language-switcher.component';
 import { LanguageService } from '../language.service';
 import { SUPPORTED_LANGUAGES } from '../supported-languages';
 
-/**
- * Provide a Proxy-wrapped DOCUMENT whose defaultView.navigator reports an
- * unsupported locale so LanguageService's browser-preference detection lands
- * deterministically on the English fallback, regardless of what the real
- * Chrome reports. All other document methods pass through to the real
- * document (required by Angular's DOMTestComponentRenderer).
- */
 function makeFakeDocument(): Document {
   const realDoc = window.document;
   const realWin = window;
@@ -27,8 +20,6 @@ function makeFakeDocument(): Document {
   const fakeWindow = new Proxy(realWin, {
     get(target, prop) {
       if (prop === 'navigator') return fakeNavigator;
-      // Always invoke getters with the REAL target as `this` so DOM getters
-      // (window.document, etc.) don't throw "Illegal invocation".
       const val = Reflect.get(target, prop, target);
       return typeof val === 'function' ? val.bind(target) : val;
     },

@@ -4,17 +4,6 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { LanguageService } from './language.service';
 import { SUPPORTED_LANGUAGES } from './supported-languages';
 
-/**
- * Builds a Proxy over the real document whose defaultView.navigator reports
- * the given locale(s). All other document methods (querySelectorAll,
- * createElement, etc.) pass through to the real document, which Angular's
- * DOMTestComponentRenderer calls during createComponent.
- *
- * Going through a DI-provided fake Document — instead of poking
- * Object.defineProperty on the real window.navigator — avoids the
- * non-configurable-property headache on the CI Chrome Headless build, where
- * redefining navigator.languages silently loses the override.
- */
 function makeFakeDocument(languages: string[]): Document {
   const realDoc = window.document;
   const realWin = window;
@@ -30,8 +19,6 @@ function makeFakeDocument(languages: string[]): Document {
   const fakeWindow = new Proxy(realWin, {
     get(target, prop) {
       if (prop === 'navigator') return fakeNavigator;
-      // Always invoke getters with the REAL target as `this` so DOM getters
-      // (window.document, etc.) don't throw "Illegal invocation".
       const val = Reflect.get(target, prop, target);
       return typeof val === 'function' ? val.bind(target) : val;
     },

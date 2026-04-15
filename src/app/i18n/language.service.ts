@@ -10,12 +10,6 @@ import {
 
 const STORAGE_KEY = 'usidiamond.lang';
 
-/**
- * Owns the active site language: chooses an initial value (localStorage →
- * browser preference → default), tells ngx-translate to load it, updates the
- * `<html lang>` and `<html dir>` attributes for RTL/LTR layouts, and lets
- * callers subscribe to changes.
- */
 @Injectable({ providedIn: 'root' })
 export class LanguageService {
   readonly supported: readonly SupportedLanguage[] = SUPPORTED_LANGUAGES;
@@ -34,17 +28,14 @@ export class LanguageService {
     this.applyLanguage(initial);
   }
 
-  /** Observable emitting the currently active SupportedLanguage. */
   get current$(): Observable<SupportedLanguage> {
     return this.currentSubject.asObservable();
   }
 
-  /** The currently active SupportedLanguage (snapshot). */
   get current(): SupportedLanguage {
     return this.currentSubject.value;
   }
 
-  /** Change the active language. Silently ignored if `code` isn't supported. */
   use(code: string): void {
     const found = findSupportedLanguage(code);
     if (!found) return;
@@ -68,13 +59,6 @@ export class LanguageService {
     const stored = this.readStoredLanguage();
     if (stored) return stored;
 
-    // Walk navigator.languages (preference-ordered) first, then fall back to
-    // the single navigator.language. For each candidate try (in order):
-    //   1. exact match on the full tag,
-    //   2. exact match on the base subtag,
-    //   3. any supported language whose base subtag matches the candidate's
-    //      base subtag — this is how e.g. browser 'zh-CN' or 'zh-TW' maps
-    //      onto the supported 'zh-Hans' entry, and 'en-GB' onto 'en'.
     const nav = this.document.defaultView?.navigator;
     const candidates: string[] = [];
     if (nav) {

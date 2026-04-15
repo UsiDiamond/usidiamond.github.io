@@ -1,12 +1,9 @@
-// Auto-generated from the reading list. Do not edit by hand — regenerate via
-// tmp/parse-books.js if the source list changes.
 
 export interface Book {
   title: string;
   author: string;
   subject: string;
   series?: string;
-  /** Number of volumes consolidated under this entry (>= 1). */
   parts: number;
   amazonUrl: string;
 }

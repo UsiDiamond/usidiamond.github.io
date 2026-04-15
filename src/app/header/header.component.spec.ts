@@ -9,9 +9,6 @@ describe('HeaderComponent', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [HeaderComponent],
-      // Header now embeds <div language-switcher> which is a standalone
-      // component not declared here; CUSTOM_ELEMENTS_SCHEMA lets the stub
-      // element pass through without requiring its full setup.
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
     });
     fixture = TestBed.createComponent(HeaderComponent);

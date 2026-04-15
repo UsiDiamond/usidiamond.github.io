@@ -10,9 +10,6 @@
     text-align: start;
     color: t.$accent;
 
-    // Fixed min-width on very narrow viewports was pushing the collapsed
-    // navbar past 100vw and causing horizontal scroll. Apply it only
-    // once we're past the collapse breakpoint.
     @media (min-width: 992px) {
       min-width: 170px;
     }

@@ -1,14 +1,3 @@
-/**
- * The list of languages the site supports, in the order they should appear in
- * the header switcher. The order roughly mirrors the ten most-spoken languages
- * in US homes per recent American Community Survey data.
- *
- * - code: BCP-47-style tag used both as the translate module lang and as the
- *         directory name under src/assets/i18n/
- * - englishName: neutral English label (used for aria-label and fallback)
- * - nativeName: endonym shown in the switcher UI
- * - dir: 'rtl' for right-to-left scripts so the switcher can flip direction
- */
 export interface SupportedLanguage {
   readonly code: string;
   readonly englishName: string;
