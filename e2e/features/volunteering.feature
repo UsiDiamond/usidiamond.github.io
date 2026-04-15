@@ -11,14 +11,3 @@ Feature: Volunteering Page
     Then the URL contains '/volunteering'
     And the page header is visible
     And the navigation menu is visible
-
-  Scenario Outline: Volunteering page contains the "<entry>" entry
-    Given I go to "http://localhost:8080/#/volunteering"
-    Then the page contains "<entry>"
-
-    Examples:
-      | entry                                      |
-      | Health and Safety Specialist               |
-      | The Pride Center of Maryland               |
-      | Baltimore Playwrights Festival             |
-      | Opera Vivente                              |

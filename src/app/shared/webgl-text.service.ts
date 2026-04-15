@@ -49,7 +49,10 @@ export class WebglTextService implements OnDestroy {
   private navSub?: Subscription;
   private motion = matchMedia('(prefers-reduced-motion: reduce)');
 
-  constructor(private zone: NgZone, router: Router) {
+  constructor(
+    private zone: NgZone,
+    router: Router,
+  ) {
     this.navSub = router.events
       .pipe(filter((e) => e instanceof NavigationEnd))
       .subscribe(() => this.scheduleScan());
@@ -85,7 +88,8 @@ export class WebglTextService implements OnDestroy {
   private scan(): void {
     if (this.motion.matches) return;
     document.querySelectorAll<HTMLElement>('h1, h2').forEach((host) => {
-      if (!this.attachments.has(host) && this.isEligible(host)) this.attach(host);
+      if (!this.attachments.has(host) && this.isEligible(host))
+        this.attach(host);
     });
     for (const [host] of Array.from(this.attachments)) {
       if (!host.isConnected || !this.isEligible(host)) this.detach(host);
@@ -130,7 +134,11 @@ export class WebglTextService implements OnDestroy {
 
     const buf = gl.createBuffer();
     gl.bindBuffer(gl.ARRAY_BUFFER, buf);
-    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 3, -1, -1, 3]), gl.STATIC_DRAW);
+    gl.bufferData(
+      gl.ARRAY_BUFFER,
+      new Float32Array([-1, -1, 3, -1, -1, 3]),
+      gl.STATIC_DRAW,
+    );
     const a = gl.getAttribLocation(program, 'a');
     gl.enableVertexAttribArray(a);
     gl.vertexAttribPointer(a, 2, gl.FLOAT, false, 0, 0);
@@ -148,7 +156,8 @@ export class WebglTextService implements OnDestroy {
 
     const prevColor = host.style.color;
     const prevPosition = host.style.position;
-    if (getComputedStyle(host).position === 'static') host.style.position = 'relative';
+    if (getComputedStyle(host).position === 'static')
+      host.style.position = 'relative';
     host.style.color = 'transparent';
     host.appendChild(canvas);
 
@@ -160,14 +169,19 @@ export class WebglTextService implements OnDestroy {
       uTime: gl.getUniformLocation(program, 'u_t'),
       ro: new ResizeObserver(() => this.refresh(attachment)),
       mo: new MutationObserver(() => {
-        if ((host.textContent || '').trim() !== attachment.cachedText) this.refresh(attachment);
+        if ((host.textContent || '').trim() !== attachment.cachedText)
+          this.refresh(attachment);
       }),
       prevColor,
       prevPosition,
       cachedText: '',
     };
     attachment.ro.observe(host);
-    attachment.mo.observe(host, { childList: true, characterData: true, subtree: true });
+    attachment.mo.observe(host, {
+      childList: true,
+      characterData: true,
+      subtree: true,
+    });
     this.attachments.set(host, attachment);
     this.refresh(attachment);
   }
@@ -214,7 +228,14 @@ export class WebglTextService implements OnDestroy {
 
     a.gl.bindTexture(a.gl.TEXTURE_2D, a.tex);
     a.gl.pixelStorei(a.gl.UNPACK_PREMULTIPLY_ALPHA_WEBGL, true);
-    a.gl.texImage2D(a.gl.TEXTURE_2D, 0, a.gl.RGBA, a.gl.RGBA, a.gl.UNSIGNED_BYTE, mask);
+    a.gl.texImage2D(
+      a.gl.TEXTURE_2D,
+      0,
+      a.gl.RGBA,
+      a.gl.RGBA,
+      a.gl.UNSIGNED_BYTE,
+      mask,
+    );
   }
 
   private compile(gl: WebGLRenderingContext): WebGLProgram | null {

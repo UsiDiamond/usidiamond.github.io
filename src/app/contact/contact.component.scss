@@ -1,10 +1,17 @@
-@use 'tokens' as t;
-@use 'mixins' as m;
+@use "tokens" as t;
+@use "mixins" as m;
 
-h2 { @include m.centered-heading; }
-p, a { @include m.italic-body; }
+h2 {
+  @include m.centered-heading;
+}
+p,
+a {
+  @include m.italic-body;
+}
 
-.contact-section { padding: t.$card-padding; }
+.contact-section {
+  padding: t.$card-padding;
+}
 
 .contact-email {
   color: t.$lavender;

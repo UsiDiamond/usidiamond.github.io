@@ -71,14 +71,6 @@ Then("the pronouns-page icon is present and not distorted", function () {
   browser.waitForElementVisible("svg.pronouns-svg");
   browser.assert.elementPresent("svg.pronouns-svg path");
   browser.assert.attributeEquals("svg.pronouns-svg", "width", "100");
-  browser.assert.attributeEquals(
-    "svg.pronouns-svg path",
-    "fill",
-    "darkgrey",
-  );
-  browser.assert.attributeEquals(
-    "svg.pronouns-svg path",
-    "d",
-    PRONOUNS_PATH_D,
-  );
+  browser.assert.attributeEquals("svg.pronouns-svg path", "fill", "darkgrey");
+  browser.assert.attributeEquals("svg.pronouns-svg path", "d", PRONOUNS_PATH_D);
 });

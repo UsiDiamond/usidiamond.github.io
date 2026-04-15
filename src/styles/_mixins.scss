@@ -1,5 +1,4 @@
-
-@use 'tokens' as t;
+@use "tokens" as t;
 
 @mixin italic-body($weight: 700) {
   font-family: t.$font-fancy;
@@ -18,18 +17,18 @@
 }
 
 @mixin card-gradient(
-  $start:  t.$slate,
+  $start: t.$slate,
   $start-a: 0.95,
-  $mid:    t.$purple,
-  $mid-a:  0.75,
-  $end:    t.$teal,
-  $end-a:  0.90
+  $mid: t.$purple,
+  $mid-a: 0.75,
+  $end: t.$teal,
+  $end-a: 0.9
 ) {
   background: linear-gradient(
     90deg,
     rgba($start, $start-a) 0%,
-    rgba($mid,   $mid-a) 47%,
-    rgba($end,   $end-a) 100%
+    rgba($mid, $mid-a) 47%,
+    rgba($end, $end-a) 100%
   );
 }
 
@@ -38,13 +37,13 @@
     linear-gradient(
       135deg,
       rgba(40, 20, 65, 0.35) 0%,
-      rgba(30, 15, 50, 0.40) 55%,
-      rgba(20, 10, 40, 0.50) 100%
+      rgba(30, 15, 50, 0.4) 55%,
+      rgba(20, 10, 40, 0.5) 100%
     ),
     rgba(255, 255, 255, 0.04);
   backdrop-filter: blur(22px) saturate(1.5);
   -webkit-backdrop-filter: blur(22px) saturate(1.5);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.10);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
   animation: card-glass-in 900ms cubic-bezier(0.2, 0.65, 0.3, 1) both;
 
   @media (prefers-reduced-motion: reduce) {

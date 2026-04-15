@@ -1,4 +1,4 @@
-@use 'tokens' as t;
+@use "tokens" as t;
 
 :host {
   display: block;
@@ -23,9 +23,12 @@
     -webkit-backdrop-filter: blur(10px) saturate(1.4);
     border: 1px solid rgba(255, 255, 255, 0.14);
     box-shadow:
-      inset 0 1px 0 rgba(255, 255, 255, 0.10),
-      0 4px 18px rgba(0, 0, 0, 0.30);
-    transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+      inset 0 1px 0 rgba(255, 255, 255, 0.1),
+      0 4px 18px rgba(0, 0, 0, 0.3);
+    transition:
+      background 0.15s ease,
+      color 0.15s ease,
+      border-color 0.15s ease;
 
     @media (min-width: 992px) {
       min-width: 170px;
@@ -37,22 +40,30 @@
       border-color: rgba(255, 255, 255, 0.22);
     }
 
-    &:not(.navbar-toggler)::after { content: " UwU"; }
+    &:not(.navbar-toggler)::after {
+      content: " UwU";
+    }
 
     &:not(.navbar-toggler):not(.active) {
       &:hover,
       &:focus {
         color: #0cf;
 
-        &::after { content: " UwO"; }
+        &::after {
+          content: " UwO";
+        }
       }
     }
 
     &.active {
       color: t.$violet;
-      &::after { content: " OwO"; }
+      &::after {
+        content: " OwO";
+      }
     }
 
-    &.disabled { color: rgba(t.$lavender, 0.411); }
+    &.disabled {
+      color: rgba(t.$lavender, 0.411);
+    }
   }
 }
