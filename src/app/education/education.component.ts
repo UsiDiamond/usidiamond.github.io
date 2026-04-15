@@ -10,6 +10,6 @@ import { TranslateModule } from '@ngx-translate/core';
   },
   imports: [TranslateModule],
   templateUrl: './education.component.html',
-  styleUrl: './education.component.css',
+  styleUrl: './education.component.scss',
 })
 export class EducationComponent {}

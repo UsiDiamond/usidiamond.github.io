@@ -9,7 +9,7 @@ import { Component } from '@angular/core';
     class: 'container mt-1 mb-5',
   },
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css'],
+  styleUrls: ['./home.component.scss'],
   standalone: false,
 })
 export class HomeComponent {}

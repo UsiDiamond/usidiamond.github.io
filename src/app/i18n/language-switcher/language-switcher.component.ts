@@ -22,7 +22,7 @@ import { SupportedLanguage } from '../supported-languages';
   imports: [TranslateModule],
   host: { class: 'language-switcher' },
   templateUrl: './language-switcher.component.html',
-  styleUrl: './language-switcher.component.css',
+  styleUrl: './language-switcher.component.scss',
 })
 export class LanguageSwitcherComponent {
   readonly supported: readonly SupportedLanguage[];
