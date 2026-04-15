@@ -22,3 +22,7 @@ Feature: Home Page
   Scenario: Home page has a GitHub link
     Given I go to "http://localhost:8080/#/home"
     Then a link to "github.com/usidiamond" is present
+
+  Scenario: Home page pronouns-icon geometry is pinned against distortion
+    Given I go to "http://localhost:8080/#/home"
+    Then the pronouns-page icon is present and not distorted
