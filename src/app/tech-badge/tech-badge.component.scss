@@ -1,19 +1,19 @@
 :host {
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   flex-wrap: wrap;
   gap: 0.5rem;
   padding-bottom: 0.75rem;
-  min-height: 3.5rem;
+  min-height: 5.5rem;
 }
 
 .tech-badge-link {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 48px;
-  height: 48px;
-  border-radius: 10px;
+  width: 80px;
+  height: 80px;
+  border-radius: 14px;
   background: rgba(255, 255, 255, 0.12);
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
@@ -29,9 +29,10 @@
 
   img {
     display: block;
-    width: 32px;
-    height: 32px;
+    width: 56px;
+    height: 56px;
     object-fit: contain;
+    mix-blend-mode: multiply;
     filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.7));
   }
 }

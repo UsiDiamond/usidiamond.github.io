@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 56 56">
+  <!-- Speech bubble shape: circle + tail at bottom-left -->
+  <path d="
+    M 28 3
+    A 24 24 0 1 1 10 43
+    L 5 53
+    L 18 45
+    A 24 24 0 0 1 28 3
+    Z
+  " fill="#23A55A"/>
+
+  <!-- 8 white seed teardrops arranged radially around center (28, 26) -->
+  <!-- Seeds sit at radius ~10, each is an ellipse rx=2.8 ry=5 -->
+  <ellipse cx="28" cy="16" rx="2.8" ry="5" fill="white" transform="rotate(0,   28, 26)"/>
+  <ellipse cx="28" cy="16" rx="2.8" ry="5" fill="white" transform="rotate(45,  28, 26)"/>
+  <ellipse cx="28" cy="16" rx="2.8" ry="5" fill="white" transform="rotate(90,  28, 26)"/>
+  <ellipse cx="28" cy="16" rx="2.8" ry="5" fill="white" transform="rotate(135, 28, 26)"/>
+  <ellipse cx="28" cy="16" rx="2.8" ry="5" fill="white" transform="rotate(180, 28, 26)"/>
+  <ellipse cx="28" cy="16" rx="2.8" ry="5" fill="white" transform="rotate(225, 28, 26)"/>
+  <ellipse cx="28" cy="16" rx="2.8" ry="5" fill="white" transform="rotate(270, 28, 26)"/>
+  <ellipse cx="28" cy="16" rx="2.8" ry="5" fill="white" transform="rotate(315, 28, 26)"/>
+</svg>
