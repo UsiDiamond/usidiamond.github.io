@@ -20,7 +20,7 @@ function getRoot(request, response) {
   response.sendFile(path.resolve(distDir + "index.html"));
 }
 
-app.get("*", getRoot);
+app.get("/{*path}", getRoot);
 
 app.listen(port, () =>
   console.log(`Example app listening on port 
