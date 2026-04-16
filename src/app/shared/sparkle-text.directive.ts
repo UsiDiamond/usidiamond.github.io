@@ -70,6 +70,7 @@ export class SparkleTextDirective implements AfterViewInit, OnDestroy {
     if (!text) return;
 
     this.motion = matchMedia('(prefers-reduced-motion: reduce)');
+    if (this.motion.matches) return;
     this.motion.addEventListener('change', this.onMotion);
 
     this.canvas = document.createElement('canvas');
@@ -137,8 +138,14 @@ export class SparkleTextDirective implements AfterViewInit, OnDestroy {
 
   private syncState(): void {
     cancelAnimationFrame(this.raf);
+    if (this.motion?.matches) {
+      const host = this.hostRef.nativeElement;
+      if (this.canvas?.parentElement === host) host.removeChild(this.canvas);
+      host.style.color = this.prevColor;
+      host.style.position = this.prevPosition;
+      return;
+    }
     this.render();
-    if (this.motion?.matches) return;
     this.zone.runOutsideAngular(() => {
       const loop = () => {
         this.render();
