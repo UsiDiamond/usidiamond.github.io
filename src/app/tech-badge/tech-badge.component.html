@@ -1,0 +1,22 @@
+@for (badge of badges; track badge.key) {
+  <a
+    [href]="badge.releaseUrl"
+    target="_blank"
+    rel="noopener noreferrer"
+    class="tech-badge-link"
+    [title]="badge.displayName"
+    [attr.aria-label]="badge.displayName + ' — release notes (opens in new tab)'"
+  >
+    @if (badge.iconSlug) {
+      <img
+        [src]="'https://cdn.simpleicons.org/' + badge.iconSlug + '/' + badge.iconColor"
+        [alt]="badge.displayName"
+        width="20"
+        height="20"
+        loading="lazy"
+      />
+    } @else {
+      <span class="tech-text-badge" aria-hidden="true">{{ badge.initials }}</span>
+    }
+  </a>
+}
