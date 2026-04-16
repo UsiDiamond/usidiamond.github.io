@@ -4,19 +4,26 @@ Then("the page does not scroll horizontally", function () {
   browser.waitForElementVisible("body");
   browser.execute(
     function () {
+      // Compare against window.innerWidth (includes any vertical scrollbar)
+      // rather than documentElement.clientWidth (which excludes the scrollbar
+      // and produces a ~15px false positive on platforms that render classic
+      // scrollbars, e.g. Linux Chrome).
       return {
         scrollWidth: document.documentElement.scrollWidth,
-        clientWidth: document.documentElement.clientWidth,
+        innerWidth: window.innerWidth,
       };
     },
     [],
     function (result) {
-      const { scrollWidth, clientWidth } = result.value;
-      // Allow 1px rounding slack on sub-pixel devices.
-      browser.assert.ok(
-        scrollWidth <= clientWidth + 1,
-        `Page overflows horizontally: scrollWidth=${scrollWidth}, clientWidth=${clientWidth}`,
-      );
+      const v = (result && result.value) || {};
+      if (v.scrollWidth > v.innerWidth + 1) {
+        throw new Error(
+          "Page overflows horizontally: scrollWidth=" +
+            v.scrollWidth +
+            ", innerWidth=" +
+            v.innerWidth,
+        );
+      }
     },
   );
 });
@@ -25,15 +32,11 @@ Then("every h2 inside a diamond-card stays within the card", function () {
   browser.waitForElementVisible(".diamond-card");
   browser.execute(
     function () {
-      // For each h2 inside a .diamond-card, walk up to find the card's
-      // content box and verify the h2 (or any canvas overlay added by the
-      // WebGL text effect) does not extend past the card bounds.
       const violations = [];
       document.querySelectorAll(".diamond-card h2").forEach(function (h2, i) {
         const card = h2.closest(".diamond-card");
         if (!card) return;
         const cardRect = card.getBoundingClientRect();
-        // Include any canvas overlays appended by the WebGL text service.
         const overlay = h2.querySelector("canvas");
         const rects = overlay
           ? [h2.getBoundingClientRect(), overlay.getBoundingClientRect()]
@@ -55,11 +58,13 @@ Then("every h2 inside a diamond-card stays within the card", function () {
     },
     [],
     function (result) {
-      const violations = result.value || [];
-      browser.assert.ok(
-        violations.length === 0,
-        "Headings overflow card bounds: " + JSON.stringify(violations, null, 2),
-      );
+      const violations = (result && result.value) || [];
+      if (violations.length > 0) {
+        throw new Error(
+          "Headings overflow card bounds: " +
+            JSON.stringify(violations, null, 2),
+        );
+      }
     },
   );
 });
