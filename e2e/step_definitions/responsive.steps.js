@@ -8,7 +8,7 @@ Then("every h1 and h2 stays within the viewport", function () {
   browser.execute(
     function () {
       const out = [];
-      const vw = document.documentElement.clientWidth;
+      const vw = window.innerWidth;
       document.querySelectorAll("h1, h2").forEach(function (h, i) {
         const r = h.getBoundingClientRect();
         if (r.left < -1 || r.right > vw + 1) {
@@ -75,7 +75,7 @@ Then("the first page-title heading is horizontally centred", function () {
       const title = document.querySelector(".row .col-12 h2");
       if (!title) return { skipped: true };
       const r = title.getBoundingClientRect();
-      const vw = document.documentElement.clientWidth;
+      const vw = window.innerWidth;
       const titleMid = r.left + r.width / 2;
       return { offset: Math.abs(titleMid - vw / 2), vw: vw };
     },

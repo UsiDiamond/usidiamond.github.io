@@ -4,20 +4,24 @@ Then("the page does not scroll horizontally", function () {
   browser.waitForElementVisible("body");
   browser.execute(
     function () {
+      // Compare against window.innerWidth (includes any vertical scrollbar)
+      // rather than documentElement.clientWidth (which excludes the scrollbar
+      // and produces a ~15px false positive on platforms that render classic
+      // scrollbars, e.g. Linux Chrome).
       return {
         scrollWidth: document.documentElement.scrollWidth,
-        clientWidth: document.documentElement.clientWidth,
+        innerWidth: window.innerWidth,
       };
     },
     [],
     function (result) {
       const v = (result && result.value) || {};
-      if (v.scrollWidth > v.clientWidth + 1) {
+      if (v.scrollWidth > v.innerWidth + 1) {
         throw new Error(
           "Page overflows horizontally: scrollWidth=" +
             v.scrollWidth +
-            ", clientWidth=" +
-            v.clientWidth,
+            ", innerWidth=" +
+            v.innerWidth,
         );
       }
     },
