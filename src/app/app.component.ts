@@ -1,4 +1,5 @@
-import { Component, Inject, DOCUMENT } from '@angular/core';
+import { Component, Inject } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
 
 @Component({
   selector: '[app-root]',
@@ -7,7 +8,18 @@ import { Component, Inject, DOCUMENT } from '@angular/core';
   standalone: false,
 })
 export class AppComponent {
-  @Inject(DOCUMENT) document: Document;
-  constructor() {}
   title = "Usi Diamond's Website";
+
+  constructor(@Inject(DOCUMENT) private doc: Document) {}
+
+  skipToMain(event: Event): void {
+    event.preventDefault();
+    const target = this.doc.getElementById('maincontent');
+    if (!target) return;
+    if (target.getAttribute('tabindex') === null) {
+      target.setAttribute('tabindex', '-1');
+    }
+    target.focus({ preventScroll: false });
+    target.scrollIntoView({ block: 'start' });
+  }
 }
