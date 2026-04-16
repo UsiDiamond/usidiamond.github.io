@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
+import { TechBadgeComponent } from '../tech-badge/tech-badge.component';
 
 @Component({
   selector: '[projects]',
-  imports: [TranslateModule],
+  imports: [TranslateModule, TechBadgeComponent],
   host: {
     id: 'maincontent',
     tabindex: '-1',
