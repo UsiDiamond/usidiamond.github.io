@@ -35,7 +35,10 @@ function truncate(str, max = 180) {
 }
 
 function esc(str) {
-  return (str || "").replace(/\|/g, "\\|").replace(/`/g, "'");
+  return (str || "")
+    .replace(/\\/g, "\\\\")
+    .replace(/\|/g, "\\|")
+    .replace(/`/g, "'");
 }
 
 // ── load report ──────────────────────────────────────────────────────────────
