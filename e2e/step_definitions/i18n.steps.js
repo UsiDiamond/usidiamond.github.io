@@ -12,8 +12,8 @@ When("the language is set to {string}", function (lang) {
 });
 
 Then("the bg-toggle label reads {string}", function (expectedText) {
-  browser.waitForElementVisible(".bg-toggle__label");
-  browser.getText(".bg-toggle__label", function (result) {
+  browser.waitForElementVisible('[data-testid="bg-toggle-label"]');
+  browser.getText('[data-testid="bg-toggle-label"]', function (result) {
     const actual = (result.value || "").trim();
     browser.assert.ok(
       actual === expectedText,
@@ -23,7 +23,7 @@ Then("the bg-toggle label reads {string}", function (expectedText) {
 });
 
 Then("the bg-toggle label does not contain {string}", function (forbidden) {
-  browser.getText(".bg-toggle__label", function (result) {
+  browser.getText('[data-testid="bg-toggle-label"]', function (result) {
     const actual = result.value || "";
     browser.assert.ok(
       !actual.includes(forbidden),
@@ -33,8 +33,8 @@ Then("the bg-toggle label does not contain {string}", function (forbidden) {
 });
 
 Then("the skip link reads {string}", function (expectedText) {
-  browser.waitForElementVisible(".skip");
-  browser.getText(".skip", function (result) {
+  browser.waitForElementVisible('[data-testid="skip-link"]');
+  browser.getText('[data-testid="skip-link"]', function (result) {
     const actual = (result.value || "").trim();
     browser.assert.ok(
       actual === expectedText,

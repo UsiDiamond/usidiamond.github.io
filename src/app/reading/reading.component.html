@@ -8,7 +8,7 @@
   @for (subject of subjectGroups; track subject.subject) {
   <section class="reading-section">
     <h2 tabindex="0" class="reading-subject">{{ subject.subject }}</h2>
-    <div class="reading-subject-pane">
+    <div class="reading-subject-pane" data-testid="reading-pane">
       <div class="reading-card-grid">
         @for (book of subject.books; track $index) {
         <a

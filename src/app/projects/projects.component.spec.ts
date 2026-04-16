@@ -27,7 +27,7 @@ describe('ProjectsComponent', () => {
 
   it('should render project section cards', () => {
     const el: HTMLElement = fixture.nativeElement;
-    const sections = el.querySelectorAll('.project-section');
+    const sections = el.querySelectorAll('[data-testid="project-card"]');
     expect(sections.length).toBeGreaterThan(0);
   });
 

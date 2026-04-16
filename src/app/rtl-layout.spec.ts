@@ -102,7 +102,7 @@ describe('AppComponent — bg-toggle position in RTL', () => {
   });
 
   it('bg-toggle button is present', () => {
-    expect(el.querySelector('.bg-toggle')).toBeTruthy();
+    expect(el.querySelector('[data-testid="bg-toggle"]')).toBeTruthy();
   });
 
   it('bg-toggle does not use hard-coded left or right physical properties', () => {
@@ -235,7 +235,7 @@ describe('AppComponent — bg-toggle label translation', () => {
     it(`shows translated pause label in ${code}`, () => {
       langSvc.use(code);
       fixture.detectChanges();
-      const label = el.querySelector('.bg-toggle__label');
+      const label = el.querySelector('[data-testid="bg-toggle-label"]');
       expect(label).withContext(`bg-toggle__label missing for ${code}`).toBeTruthy();
       expect(label!.textContent?.trim())
         .withContext(`Wrong pause label for ${code}`)
@@ -245,7 +245,7 @@ describe('AppComponent — bg-toggle label translation', () => {
     it(`never renders the raw key in ${code}`, () => {
       langSvc.use(code);
       fixture.detectChanges();
-      const label = el.querySelector('.bg-toggle__label');
+      const label = el.querySelector('[data-testid="bg-toggle-label"]');
       expect(label!.textContent)
         .withContext(`Raw key shown for ${code}`)
         .not.toContain('common.');
@@ -254,7 +254,7 @@ describe('AppComponent — bg-toggle label translation', () => {
     it(`shows translated skip link text in ${code}`, () => {
       langSvc.use(code);
       fixture.detectChanges();
-      const skip = el.querySelector<HTMLElement>('a.skip');
+      const skip = el.querySelector<HTMLElement>('[data-testid="skip-link"]');
       expect(skip).withContext(`skip link missing for ${code}`).toBeTruthy();
       expect(skip!.textContent?.trim())
         .withContext(`Wrong skip text for ${code}`)
