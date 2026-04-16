@@ -7,10 +7,7 @@ h1 {
   font-size: clamp(1.1rem, 4vw + 0.5rem, 3.8rem);
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  text-shadow:
-    0 0 12px rgba(t.$purple, 0.6),
-    0 0 40px rgba(t.$purple, 0.3),
-    0 2px 4px rgba(0, 0, 0, 0.5);
+  text-shadow: none;
   line-height: 1.15;
   word-break: break-word;
   overflow-wrap: anywhere;
