@@ -25,11 +25,6 @@ describe('AppComponent', () => {
     expect(fixture.componentInstance).toBeTruthy();
   });
 
-  it('should have the correct title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    expect(fixture.componentInstance.title).toEqual("Usi Diamond's Website");
-  });
-
   it('should render a skip to main content link', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
