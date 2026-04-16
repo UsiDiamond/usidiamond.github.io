@@ -3,6 +3,28 @@
 
 h1 {
   color: t.$lavender;
+  font-weight: 900;
+  font-size: clamp(2rem, 5vw + 1rem, 3.8rem);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-shadow:
+    0 0 12px rgba(t.$purple, 0.6),
+    0 0 40px rgba(t.$purple, 0.3),
+    0 2px 4px rgba(0, 0, 0, 0.5);
+  line-height: 1.15;
+
+  .title-prefix {
+    display: block;
+    font-size: 0.45em;
+    letter-spacing: 0.25em;
+    font-weight: 600;
+    opacity: 0.85;
+    margin-bottom: 0.1em;
+  }
+
+  .title-name {
+    display: block;
+  }
 }
 
 .header-toolbar {

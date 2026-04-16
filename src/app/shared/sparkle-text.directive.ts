@@ -27,7 +27,18 @@ void main(){
   float wave = 0.5 + 0.5 * sin(v.x * 3.2 + u_t * 1.1 + noise * 1.4);
   vec3 col = mix(vec3(0.87, 0.73, 1.00), vec3(0.71, 0.44, 0.85), smoothstep(0.2, 0.7, wave));
   col = mix(col, vec3(0.56, 0.28, 0.98), smoothstep(0.6, 1.0, wave) * 0.7);
-  col += vec3(1.0) * pow(smoothstep(0.82, 1.0, wave), 3.0) * 0.55;
+  float shimmer = pow(smoothstep(0.82, 1.0, wave), 3.0) * 0.55;
+  col += vec3(1.0) * shimmer;
+
+  float pulse = 0.85 + 0.15 * sin(u_t * 2.0);
+  col *= pulse;
+
+  float sparkle = pow(n(v * 18.0 + u_t * 0.5), 12.0) * 1.8;
+  col += vec3(1.0, 0.9, 1.0) * sparkle * mask.a;
+
+  float edgeGlow = smoothstep(0.5, 0.01, mask.a) * mask.a * 0.35;
+  col += vec3(0.80, 0.60, 1.0) * edgeGlow;
+
   gl_FragColor = vec4(col * mask.a, mask.a);
 }`;
 
