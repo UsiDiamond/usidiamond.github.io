@@ -17,6 +17,14 @@ module.exports = function (config) {
       outputDir: require("path").join(__dirname, "./coverage/usidiamond/"),
       outputFile: "test-results.xml",
     },
+    coverageReporter: {
+      dir: require("path").join(__dirname, "./coverage/usidiamond/"),
+      reporters: [
+        { type: "html", subdir: "html" },
+        { type: "lcovonly", subdir: ".", file: "lcov.info" },
+        { type: "json-summary", subdir: ".", file: "coverage-summary.json" },
+      ],
+    },
     reporters: ["progress", "junit", "coverage"],
     port: 9876,
     colors: true,
