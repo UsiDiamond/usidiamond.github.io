@@ -57,13 +57,13 @@ describe('MENU_ITEMS', () => {
   });
 
   it('should have unique order values', () => {
-    const orders = Array.from(MENU_ITEMS).map((m) => m.order);
+    const orders = MENU_ITEMS.map((m) => m.order);
     const unique = new Set(orders);
     expect(unique.size).toBe(MENU_ITEMS.length);
   });
 
   it('should have unique routes', () => {
-    const routes = Array.from(MENU_ITEMS).map((m) => m.route);
+    const routes = MENU_ITEMS.map((m) => m.route);
     const unique = new Set(routes);
     expect(unique.size).toBe(MENU_ITEMS.length);
   });
@@ -76,7 +76,7 @@ describe('MENU_ITEMS', () => {
   });
 
   it('should have only one disabled item', () => {
-    const disabledItems = Array.from(MENU_ITEMS).filter((m) => m.disabled);
+    const disabledItems = MENU_ITEMS.filter((m) => m.disabled);
     expect(disabledItems.length).toBe(1);
   });
 });
