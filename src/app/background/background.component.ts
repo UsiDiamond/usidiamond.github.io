@@ -1,9 +1,11 @@
 import {
-  AfterViewInit,
+  afterNextRender,
   Component,
+  DestroyRef,
   ElementRef,
+  inject,
   NgZone,
-  OnDestroy,
+  signal,
   ViewChild,
 } from '@angular/core';
 import * as THREE from 'three';
@@ -13,7 +15,6 @@ import FOG from 'vanta/dist/vanta.fog.min';
 
 type VantaEffect = {
   destroy: () => void;
-  setOptions?: (o: Record<string, unknown>) => void;
 };
 
 const THEME = {
@@ -30,7 +31,7 @@ const THEME = {
   styleUrl: './background.component.scss',
   standalone: false,
 })
-export class BackgroundComponent implements AfterViewInit, OnDestroy {
+export class BackgroundComponent {
   @ViewChild('mistBackHost', { static: true })
   private mistBackRef!: ElementRef<HTMLDivElement>;
 
@@ -40,34 +41,37 @@ export class BackgroundComponent implements AfterViewInit, OnDestroy {
   @ViewChild('mistFrontHost', { static: true })
   private mistFrontRef!: ElementRef<HTMLDivElement>;
 
-  paused = false;
+  readonly paused = signal(false);
 
   private mistBack: VantaEffect | null = null;
   private net: VantaEffect | null = null;
   private mistFront: VantaEffect | null = null;
   private motion?: MediaQueryList;
   private onMotion = () => this.syncState();
+  private zone = inject(NgZone);
 
-  constructor(private zone: NgZone) {}
+  constructor() {
+    const destroyRef = inject(DestroyRef);
 
-  ngAfterViewInit(): void {
-    this.motion = matchMedia('(prefers-reduced-motion: reduce)');
-    this.motion.addEventListener('change', this.onMotion);
-    this.syncState();
-  }
+    afterNextRender(() => {
+      this.motion = matchMedia('(prefers-reduced-motion: reduce)');
+      this.motion.addEventListener('change', this.onMotion);
+      this.syncState();
+    });
 
-  ngOnDestroy(): void {
-    this.teardown();
-    this.motion?.removeEventListener('change', this.onMotion);
+    destroyRef.onDestroy(() => {
+      this.teardown();
+      this.motion?.removeEventListener('change', this.onMotion);
+    });
   }
 
   toggle(): void {
-    this.paused = !this.paused;
+    this.paused.update((v) => !v);
     this.syncState();
   }
 
   private syncState(): void {
-    const shouldRun = !this.paused && !this.motion?.matches;
+    const shouldRun = !this.paused() && !this.motion?.matches;
     if (shouldRun && !this.net) {
       this.zone.runOutsideAngular(() => this.startEffects());
     } else if (!shouldRun && this.net) {

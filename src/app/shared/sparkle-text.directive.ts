@@ -1,9 +1,10 @@
 import {
-  AfterViewInit,
+  afterNextRender,
+  DestroyRef,
   Directive,
   ElementRef,
+  inject,
   NgZone,
-  OnDestroy,
 } from '@angular/core';
 
 const VS = `attribute vec2 a;varying vec2 v;void main(){v=(a+1.)*.5;gl_Position=vec4(a,0.,1.);}`;
@@ -46,7 +47,7 @@ void main(){
   selector: '[sparkle]',
   standalone: false,
 })
-export class SparkleTextDirective implements AfterViewInit, OnDestroy {
+export class SparkleTextDirective {
   private canvas?: HTMLCanvasElement;
   private gl?: WebGLRenderingContext;
   private tex?: WebGLTexture;
@@ -59,12 +60,26 @@ export class SparkleTextDirective implements AfterViewInit, OnDestroy {
   private prevColor = '';
   private prevPosition = '';
 
-  constructor(
-    private hostRef: ElementRef<HTMLElement>,
-    private zone: NgZone,
-  ) {}
+  private hostRef = inject(ElementRef<HTMLElement>);
+  private zone = inject(NgZone);
 
-  ngAfterViewInit(): void {
+  constructor() {
+    const destroyRef = inject(DestroyRef);
+
+    afterNextRender(() => this.init());
+
+    destroyRef.onDestroy(() => {
+      cancelAnimationFrame(this.raf);
+      this.ro?.disconnect();
+      this.motion?.removeEventListener('change', this.onMotion);
+      const host = this.hostRef.nativeElement;
+      if (this.canvas?.parentElement === host) host.removeChild(this.canvas);
+      host.style.color = this.prevColor;
+      host.style.position = this.prevPosition;
+    });
+  }
+
+  private init(): void {
     const host = this.hostRef.nativeElement;
     const text = (host.textContent || '').trim();
     if (!text) return;
@@ -126,16 +141,6 @@ export class SparkleTextDirective implements AfterViewInit, OnDestroy {
     this.syncState();
   }
 
-  ngOnDestroy(): void {
-    cancelAnimationFrame(this.raf);
-    this.ro?.disconnect();
-    this.motion?.removeEventListener('change', this.onMotion);
-    const host = this.hostRef.nativeElement;
-    if (this.canvas?.parentElement === host) host.removeChild(this.canvas);
-    host.style.color = this.prevColor;
-    host.style.position = this.prevPosition;
-  }
-
   private syncState(): void {
     cancelAnimationFrame(this.raf);
     if (this.motion?.matches) {
@@ -184,7 +189,7 @@ export class SparkleTextDirective implements AfterViewInit, OnDestroy {
     const styles = getComputedStyle(host);
     const lines: string[] = [];
     let buf = '';
-    for (const node of Array.from(host.childNodes)) {
+    for (const node of Array.from(host.childNodes) as ChildNode[]) {
       if (node === canvas) continue;
       if (node.nodeName === 'BR') {
         if (buf.trim()) lines.push(buf.trim());

@@ -1,10 +1,6 @@
-import { Component, ElementRef, QueryList, ViewChildren } from '@angular/core';
-import {
-  NavigationEnd,
-  Router,
-  RouterLink,
-  RouterLinkActive,
-} from '@angular/router';
+import { Component, DestroyRef, ElementRef, QueryList, ViewChildren, inject } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { NavigationEnd, Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { filter } from 'rxjs';
 import { MENU_ITEMS, MenuItem } from '../app-routing.module';
@@ -27,16 +23,18 @@ export class MenuComponent {
   @ViewChildren('navBtn', { read: ElementRef })
   navButtonRefs!: QueryList<ElementRef<HTMLButtonElement>>;
 
-  constructor(private router: Router) {
-    this.router.events
-      .pipe(filter((event) => event instanceof NavigationEnd))
+  constructor() {
+    const router = inject(Router);
+    const destroyRef = inject(DestroyRef);
+
+    router.events
+      .pipe(
+        filter((event) => event instanceof NavigationEnd),
+        takeUntilDestroyed(destroyRef),
+      )
       .subscribe(() => {
-        const mainContent = document.querySelector(
-          '#maincontent',
-        ) as HTMLElement;
-        if (mainContent) {
-          mainContent.focus();
-        }
+        const el = document.getElementById('maincontent');
+        el?.focus();
       });
   }
 }
