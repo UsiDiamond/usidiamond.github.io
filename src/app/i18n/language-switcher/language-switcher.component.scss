@@ -5,6 +5,8 @@
   align-items: center;
   gap: 0.4rem;
   font-family: t.$font-fancy, Arial, sans-serif;
+  max-width: 100%;
+  min-width: 0;
 }
 
 .language-switcher-label {
@@ -13,6 +15,10 @@
   font-style: italic;
   font-weight: 700;
   user-select: none;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-width: 0;
 }
 
 .language-switcher-select {
