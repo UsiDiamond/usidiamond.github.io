@@ -39,6 +39,58 @@ h1 {
   }
 }
 
+.title-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.title-reflection {
+  display: block;
+  width: fit-content;
+  max-width: 100%;
+  margin-inline: auto;
+  font-weight: 900;
+  font-size: clamp(1.1rem, 4vw + 0.5rem, 3.8rem);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  line-height: 1.15;
+  text-align: center;
+  color: t.$lavender;
+  transform: scaleY(-1);
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.25), transparent 65%);
+  -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.25), transparent 65%);
+  opacity: 0.3;
+  filter: blur(1.5px);
+  pointer-events: none;
+  user-select: none;
+  margin-top: -0.15em;
+  height: 2.2em;
+  overflow: hidden;
+
+  .title-prefix {
+    display: block;
+    font-size: 0.45em;
+    letter-spacing: 0.25em;
+    font-weight: 600;
+  }
+
+  .title-name {
+    display: block;
+  }
+
+  @media (max-width: 576px) {
+    letter-spacing: 0.02em;
+    height: 1.8em;
+
+    .title-prefix {
+      letter-spacing: 0.12em;
+      font-size: 0.5em;
+    }
+  }
+}
+
 .header-toolbar {
   display: flex;
   justify-content: flex-end;
