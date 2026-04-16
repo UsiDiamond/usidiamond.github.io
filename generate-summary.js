@@ -1,13 +1,15 @@
 #!/usr/bin/env node
 /**
- * Generates a GitHub Actions job summary from the Cucumber JSON report.
- * Writes a markdown table of pass/fail results per scenario, with a link
- * to the uploaded artifact that contains the HTML report with embedded screenshots.
+ * Generates a GitHub Actions job summary and sticky PR comment from the
+ * Cucumber JSON report produced by Nightwatch + Cucumber.
  *
- * Usage: node e2e/generate-summary.js
- * Env:   GITHUB_STEP_SUMMARY - path to the GitHub Actions summary file
- *        ARTIFACT_URL        - direct URL to the uploaded test report artifact
+ * Env:
+ *   GITHUB_STEP_SUMMARY  – path provided automatically by GitHub Actions
+ *   ARTIFACT_URL         – direct URL to the uploaded artifact (optional)
+ *   RUN_URL              – link back to the Actions run (optional)
  */
+
+"use strict";
 
 const fs = require("fs");
 const path = require("path");
@@ -17,6 +19,29 @@ const SUMMARY_FILE = process.env.GITHUB_STEP_SUMMARY;
 const PR_COMMENT_FILE = "integration-tests-report/pr-comment.md";
 const ARTIFACT_URL = process.env.ARTIFACT_URL || "";
 const RUN_URL = process.env.RUN_URL || "";
+
+// ── helpers ──────────────────────────────────────────────────────────────────
+
+function ns2s(ns) {
+  if (!ns || ns === 0) return "";
+  return (ns / 1e9).toFixed(2) + "s";
+}
+
+/** Truncate a string and replace newlines for display in a table cell. */
+function truncate(str, max = 180) {
+  if (!str) return "";
+  const flat = str.replace(/\r?\n|\r/g, " ").trim();
+  return flat.length > max ? flat.slice(0, max) + "…" : flat;
+}
+
+function esc(str) {
+  return (str || "")
+    .replace(/\\/g, "\\\\")
+    .replace(/\|/g, "\\|")
+    .replace(/`/g, "'");
+}
+
+// ── load report ──────────────────────────────────────────────────────────────
 
 if (!fs.existsSync(REPORT_PATH)) {
   console.log("No cucumber report found at", REPORT_PATH);
@@ -31,100 +56,137 @@ try {
   process.exit(1);
 }
 
-const lines = [];
-lines.push("## Integration Test Results\n");
+// ── aggregate counts ──────────────────────────────────────────────────────────
 
 let totalPassed = 0;
 let totalFailed = 0;
 let totalSkipped = 0;
 
 for (const feature of features) {
-  const featureFailed = feature.elements.some((scenario) =>
-    scenario.steps.some(
-      (step) => step.result && step.result.status === "failed"
-    )
-  );
-  const featureIcon = featureFailed ? "❌" : "✅";
-
-  lines.push(`### ${featureIcon} ${feature.name}\n`);
-  lines.push("| Scenario | Status | Screenshot |");
-  lines.push("|----------|--------|------------|");
-
   for (const scenario of feature.elements) {
     const failed = scenario.steps.some(
-      (step) => step.result && step.result.status === "failed"
+      (s) => s.result && s.result.status === "failed"
     );
     const skipped =
       !failed &&
-      scenario.steps.some(
-        (step) => step.result && step.result.status === "skipped"
-      );
+      scenario.steps.some((s) => s.result && s.result.status === "skipped");
+    if (failed) totalFailed++;
+    else if (skipped) totalSkipped++;
+    else totalPassed++;
+  }
+}
 
-    let statusIcon, statusLabel;
-    if (failed) {
-      statusIcon = "❌";
-      statusLabel = "Failed";
-      totalFailed++;
+const totalScenarios = totalPassed + totalFailed + totalSkipped;
+const allPassed = totalFailed === 0;
+
+// ── build markdown ────────────────────────────────────────────────────────────
+
+const out = [];
+
+// ── banner ──
+const bannerIcon = allPassed ? "✅" : "❌";
+const bannerTitle = allPassed
+  ? `All ${totalScenarios} scenarios passed`
+  : `${totalFailed} of ${totalScenarios} scenarios failed`;
+
+out.push(`## ${bannerIcon} Integration Tests — ${bannerTitle}\n`);
+out.push(
+  `> **${totalPassed}** passed &nbsp;·&nbsp; **${totalFailed}** failed &nbsp;·&nbsp; **${totalSkipped}** skipped &nbsp;·&nbsp; **${features.length}** feature${features.length === 1 ? "" : "s"}\n`
+);
+out.push("");
+
+// ── per-feature details ──
+for (const feature of features) {
+  const featureFailed = feature.elements.some((sc) =>
+    sc.steps.some((s) => s.result && s.result.status === "failed")
+  );
+  const featureIcon = featureFailed ? "❌" : "✅";
+  const passed = feature.elements.filter(
+    (sc) => !sc.steps.some((s) => s.result && s.result.status === "failed")
+  ).length;
+  const failed = feature.elements.length - passed;
+  const subtitle = featureFailed
+    ? ` — ${failed} failed`
+    : ` — ${passed} passed`;
+
+  // Failing features are open by default; passing ones are collapsed.
+  const openAttr = featureFailed ? " open" : "";
+  out.push(
+    `<details${openAttr}><summary>${featureIcon} <strong>${esc(feature.name)}</strong>${subtitle} (${feature.elements.length} scenario${feature.elements.length === 1 ? "" : "s"})</summary>\n`
+  );
+  out.push("");
+  out.push("| Scenario | Status | Duration |");
+  out.push("|----------|--------|----------|");
+
+  for (const scenario of feature.elements) {
+    const failedStep = scenario.steps.find(
+      (s) => s.result && s.result.status === "failed"
+    );
+    const skipped =
+      !failedStep &&
+      scenario.steps.some((s) => s.result && s.result.status === "skipped");
+
+    let statusCell;
+    if (failedStep) {
+      const errMsg = truncate(failedStep.result.error_message);
+      statusCell = errMsg
+        ? `❌ Failed<br><sub><code>${esc(errMsg)}</code></sub>`
+        : "❌ Failed";
     } else if (skipped) {
-      statusIcon = "⏭️";
-      statusLabel = "Skipped";
-      totalSkipped++;
+      statusCell = "⏭️ Skipped";
     } else {
-      statusIcon = "✅";
-      statusLabel = "Passed";
-      totalPassed++;
+      statusCell = "✅ Passed";
     }
 
-    // Check if a screenshot was attached to any step
-    const hasScreenshot = scenario.steps.some(
-      (step) =>
-        step.embeddings &&
-        step.embeddings.some((e) => e.mime_type === "image/png")
+    // Total duration = sum of all step durations
+    const durationNs = scenario.steps.reduce(
+      (acc, s) => acc + (s.result && s.result.duration ? s.result.duration : 0),
+      0
     );
-    const screenshotNote = hasScreenshot ? "📸 In report" : "—";
+    const durationCell = ns2s(durationNs) || "—";
 
-    lines.push(
-      `| ${scenario.name} | ${statusIcon} ${statusLabel} | ${screenshotNote} |`
+    out.push(
+      `| ${esc(scenario.name)} | ${statusCell} | ${durationCell} |`
     );
   }
 
-  lines.push("");
+  out.push("");
+  out.push("</details>\n");
 }
 
-lines.push("\n---\n");
-lines.push(
-  `**Summary:** ✅ ${totalPassed} passed &nbsp; ❌ ${totalFailed} failed &nbsp; ⏭️ ${totalSkipped} skipped\n`
-);
+// ── footer ──
+out.push("---\n");
 
 if (ARTIFACT_URL) {
-  lines.push(
-    `> 📥 [Download the integration-test-report artifact](${ARTIFACT_URL}) to view the HTML report with screenshots embedded for each scenario.`
+  out.push(
+    `📥 [Download HTML report with screenshots](${ARTIFACT_URL})`
   );
 } else {
-  lines.push(
-    `> 📥 Download the \`integration-test-report\` artifact from this workflow run to view the HTML report with screenshots embedded for each scenario.`
+  out.push(
+    `📥 Download the \`integration-test-report\` artifact from this run for the full HTML report with screenshots.`
   );
 }
 
 if (RUN_URL) {
-  lines.push(`\n[View full workflow run ↗](${RUN_URL})`);
+  out.push(`\n[View workflow run ↗](${RUN_URL})`);
 }
 
-const summary = lines.join("\n");
+const markdown = out.join("\n");
+
+// ── write outputs ─────────────────────────────────────────────────────────────
 
 if (SUMMARY_FILE) {
-  fs.appendFileSync(SUMMARY_FILE, summary + "\n");
+  fs.appendFileSync(SUMMARY_FILE, markdown + "\n");
   console.log("Summary written to GITHUB_STEP_SUMMARY");
 } else {
   console.log("GITHUB_STEP_SUMMARY not set — preview:");
-  console.log(summary);
+  console.log(markdown);
 }
 
-// Always write a file copy so the workflow can post it as a PR comment.
 try {
   fs.mkdirSync(path.dirname(PR_COMMENT_FILE), { recursive: true });
-  fs.writeFileSync(PR_COMMENT_FILE, summary + "\n");
-  console.log(`PR comment body written to ${PR_COMMENT_FILE}`);
+  fs.writeFileSync(PR_COMMENT_FILE, markdown + "\n");
+  console.log("PR comment written to", PR_COMMENT_FILE);
 } catch (e) {
   console.error("Failed to write PR comment file:", e.message);
 }
