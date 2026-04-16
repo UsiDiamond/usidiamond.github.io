@@ -193,8 +193,8 @@ const ALL_LANG_TRANSLATIONS: Record<
     skipToMainContent: 'Chuyển đến nội dung chính',
   },
   yi: {
-    pauseAnimation: 'פּויזירן ענימאַציע',
-    resumeAnimation: 'ווידעראויפנעמען ענימאַציע',
+    pauseAnimation: 'פּויזירן אַנימאַציע',
+    resumeAnimation: 'ווידעראויפנעמען אַנימאַציע',
     skipToMainContent: 'שפּרינג צום הויפּט־אינהאַלט',
   },
   'zh-Hans': {
