@@ -50,7 +50,7 @@ export const TECH_REGISTRY: Record<string, TechConfig> = {
   javascript:  { displayName: 'JavaScript',      iconSlug: 'javascript',         iconColor: 'F7DF1E', releaseUrl: 'https://tc39.es/ecma262/' },
   azure:       { displayName: 'Microsoft Azure', iconSlug: 'microsoftazure',     iconColor: '0078D4', releaseUrl: 'https://azure.microsoft.com/en-us/updates/' },
   githubpages: { displayName: 'GitHub Pages',    iconSlug: 'github',             iconColor: '181717', releaseUrl: 'https://github.blog/changelog/' },
-  pegasystems: { displayName: 'Pega Systems',    iconSlug: 'pegasystems',        iconColor: '003D6B', releaseUrl: 'https://docs.pega.com/bundle/platform/page/platform/get-started/release-notes.html' },
+  pegasystems: { displayName: 'Pega Systems',    iconSlug: null,                 iconColor: '003D6B', iconUrl: 'https://images.seeklogo.com/logo-png/33/1/pega-logo-png_seeklogo-333758.png',                                                                                                                                         releaseUrl: 'https://docs.pega.com/bundle/platform/page/platform/get-started/release-notes.html' },
   cobol:       { displayName: 'COBOL',           iconSlug: null,                 iconColor: '003D6B', releaseUrl: 'https://www.ibm.com/docs/en/cobol-zos' },
   jcl:         { displayName: 'JCL',             iconSlug: null,                 iconColor: '052FAD', iconUrl: 'https://www.clipartmax.com/png/middle/45-455233_jcl-services-logo-jcl-logo.png',                                                                                                                                    releaseUrl: 'https://www.ibm.com/docs/en/zos/2.5.0?topic=programming-jcl-concepts' },
 };
