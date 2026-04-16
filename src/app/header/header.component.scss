@@ -102,13 +102,3 @@ h1 {
   }
 }
 
-.contact-link a {
-  color: t.$purple;
-  @include m.italic-body;
-  text-decoration: none;
-
-  &:hover {
-    color: t.$lavender;
-    text-decoration: underline;
-  }
-}

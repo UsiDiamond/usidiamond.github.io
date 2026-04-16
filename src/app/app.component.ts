@@ -8,8 +8,6 @@ import { DOCUMENT } from '@angular/common';
   standalone: false,
 })
 export class AppComponent {
-  title = "Usi Diamond's Website";
-
   constructor(@Inject(DOCUMENT) private doc: Document) {}
 
   skipToMain(event: Event): void {

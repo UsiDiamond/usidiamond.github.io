@@ -15,11 +15,6 @@ li {
 .volunteering-org {
   @include m.label(t.$gray-mid);
 }
-.volunteering-cause {
-  @include m.label(t.$gray-mid);
-  font-size: 0.9em;
-}
-
 .volunteering-section {
   padding: t.$card-padding;
 }
