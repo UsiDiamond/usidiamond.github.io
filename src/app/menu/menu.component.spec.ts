@@ -134,4 +134,82 @@ describe('MenuComponent', () => {
     const el: HTMLElement = fixture.nativeElement;
     expect(el.querySelector('.navbar-toggler')).toBeTruthy();
   });
+
+  describe('onMenuKeydown — keyboard navigation', () => {
+    function dispatchKey(key: string): void {
+      component.onMenuKeydown(new KeyboardEvent('keydown', { key, bubbles: true }));
+    }
+
+    /**
+     * Enabled item indices after sort-by-order:
+     *   0: home, 1: projects, 2: education, 3: volunteering,
+     *   4: reading (disabled), 5: contact
+     * enabledIndices = [0, 1, 2, 3, 5]
+     */
+
+    beforeEach(() => {
+      component.activeIndex = 0;
+    });
+
+    it('ArrowRight should advance to the next enabled item', () => {
+      dispatchKey('ArrowRight');
+      expect(component.activeIndex).toBe(1);
+    });
+
+    it('ArrowDown should advance to the next enabled item', () => {
+      dispatchKey('ArrowDown');
+      expect(component.activeIndex).toBe(1);
+    });
+
+    it('ArrowLeft from the first item should wrap to the last enabled item', () => {
+      dispatchKey('ArrowLeft');
+      expect(component.activeIndex).toBe(5);
+    });
+
+    it('ArrowUp from the first item should wrap to the last enabled item', () => {
+      dispatchKey('ArrowUp');
+      expect(component.activeIndex).toBe(5);
+    });
+
+    it('Home should jump to the first enabled item', () => {
+      component.activeIndex = 3;
+      dispatchKey('Home');
+      expect(component.activeIndex).toBe(0);
+    });
+
+    it('End should jump to the last enabled item', () => {
+      dispatchKey('End');
+      expect(component.activeIndex).toBe(5);
+    });
+
+    it('ArrowRight should skip the disabled item and land on contact (index 5)', () => {
+      component.activeIndex = 3;
+      dispatchKey('ArrowRight');
+      expect(component.activeIndex).toBe(5);
+    });
+
+    it('ArrowLeft from contact (index 5) should skip the disabled item and land on volunteering (index 3)', () => {
+      component.activeIndex = 5;
+      dispatchKey('ArrowLeft');
+      expect(component.activeIndex).toBe(3);
+    });
+
+    it('ArrowRight from the last enabled item should wrap back to the first', () => {
+      component.activeIndex = 5;
+      dispatchKey('ArrowRight');
+      expect(component.activeIndex).toBe(0);
+    });
+
+    it('unrecognised keys (e.g. Tab) should not change activeIndex', () => {
+      component.activeIndex = 2;
+      dispatchKey('Tab');
+      expect(component.activeIndex).toBe(2);
+    });
+
+    it('Enter should not change activeIndex', () => {
+      component.activeIndex = 2;
+      dispatchKey('Enter');
+      expect(component.activeIndex).toBe(2);
+    });
+  });
 });
