@@ -70,7 +70,6 @@ export class WebglTextService implements OnDestroy {
 
   isEligible(host: HTMLElement): boolean {
     if (!(host.textContent || '').trim()) return false;
-    if (host.closest('[data-no-webgl-text]')) return false;
     return Array.from(host.childNodes).every(
       (c) => c.nodeType === Node.TEXT_NODE || c.nodeName === 'BR',
     );
@@ -87,7 +86,7 @@ export class WebglTextService implements OnDestroy {
 
   private scan(): void {
     if (this.motion.matches) return;
-    document.querySelectorAll<HTMLElement>('h1, h2').forEach((host) => {
+    document.querySelectorAll<HTMLElement>('[data-webgl-text]').forEach((host) => {
       if (!this.attachments.has(host) && this.isEligible(host))
         this.attach(host);
     });

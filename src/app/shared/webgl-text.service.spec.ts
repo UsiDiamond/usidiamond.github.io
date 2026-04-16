@@ -62,14 +62,4 @@ describe('WebglTextService isEligible', () => {
     expect(service.isEligible(h)).toBe(true);
   });
 
-  it('rejects when any ancestor has data-no-webgl-text', () => {
-    const wrap = document.createElement('div');
-    wrap.setAttribute('data-no-webgl-text', '');
-    wrap.setAttribute('data-test-heading', '');
-    const h = document.createElement('h2');
-    h.textContent = 'Skipped';
-    wrap.appendChild(h);
-    document.body.appendChild(wrap);
-    expect(service.isEligible(h)).toBe(false);
-  });
 });
