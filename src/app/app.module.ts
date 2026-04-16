@@ -22,6 +22,7 @@ import { createTranslationLoader } from './i18n/translation-loader';
 import { LanguageService } from './i18n/language.service';
 import { LanguageSwitcherComponent } from './i18n/language-switcher/language-switcher.component';
 import { WebglTextService } from './shared/webgl-text.service';
+import { SparkleTextDirective } from './shared/sparkle-text.directive';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { WebglTextService } from './shared/webgl-text.service';
     FooterComponent,
     HomeComponent,
     HeaderComponent,
+    SparkleTextDirective,
   ],
   imports: [
     BrowserModule,
