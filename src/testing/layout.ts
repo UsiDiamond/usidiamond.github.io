@@ -46,3 +46,45 @@ export function expectNoHorizontalOverflow(root: Element = document.documentElem
 export function hostRect(fixtureEl: HTMLElement): DOMRect {
   return fixtureEl.getBoundingClientRect();
 }
+
+export function expectMinTapSize(el: Element, minPx = 44): void {
+  const r = el.getBoundingClientRect();
+  if (r.width === 0 && r.height === 0) return;
+  expect(Math.max(r.width, r.height)).toBeGreaterThanOrEqual(minPx - 1);
+}
+
+export function expectNoInternalOverflow(el: HTMLElement, tolerance = PX_TOLERANCE): void {
+  if (el.clientWidth === 0) return;
+  expect(el.scrollWidth).toBeLessThanOrEqual(el.clientWidth + tolerance);
+}
+
+export function expectAllStayWithin(root: Element, selector: string, parentSelector?: string): void {
+  root.querySelectorAll(selector).forEach((child) => {
+    const parent = parentSelector
+      ? child.closest(parentSelector)
+      : child.parentElement;
+    if (!parent) return;
+    expectStaysWithin(child, parent);
+  });
+}
+
+export function isVisuallyHidden(el: Element): boolean {
+  const s = getComputedStyle(el);
+  return (
+    s.display === 'none' ||
+    s.visibility === 'hidden' ||
+    parseFloat(s.opacity || '1') === 0 ||
+    (el.getBoundingClientRect().width === 0 && el.getBoundingClientRect().height === 0)
+  );
+}
+
+export async function forEachBreakpoint(
+  fn: (name: BreakpointName, width: number, height: number) => void | Promise<void>,
+): Promise<void> {
+  for (const name of Object.keys(BREAKPOINTS) as BreakpointName[]) {
+    const { width, height } = BREAKPOINTS[name];
+    setViewport(width, height);
+    await fn(name, width, height);
+  }
+  resetViewport();
+}
