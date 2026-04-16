@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 56 56">
+  <rect width="56" height="56" rx="10" fill="#009688"/>
+  <text
+    x="28"
+    y="28"
+    font-family="Arial, sans-serif"
+    font-size="13"
+    font-weight="bold"
+    fill="white"
+    text-anchor="middle"
+    dominant-baseline="middle"
+  >COBOL</text>
+</svg>

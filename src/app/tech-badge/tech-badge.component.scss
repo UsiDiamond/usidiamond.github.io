@@ -1,0 +1,50 @@
+:host {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding-bottom: 0.75rem;
+  min-height: 5.5rem;
+}
+
+.tech-badge-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  transition: background-color 0.2s ease;
+  text-decoration: none;
+
+  &:hover,
+  &:focus-visible {
+    background: rgba(255, 255, 255, 0.28);
+    outline: 2px solid rgba(255, 255, 255, 0.5);
+    outline-offset: 2px;
+  }
+
+  img {
+    display: block;
+    width: 56px;
+    height: 56px;
+    object-fit: contain;
+    mix-blend-mode: multiply;
+    filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.7));
+  }
+}
+
+.tech-text-badge {
+  font-size: 0.6rem;
+  font-weight: 800;
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1;
+  text-align: center;
+  letter-spacing: 0.03em;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
+  max-width: 44px;
+  word-break: break-all;
+}
