@@ -38,7 +38,7 @@ jobs:
           RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
 
       - name: Post unit test summary as PR comment
-        if: always() && github.event_name == 'pull_request'
+        if: always() && github.event_name == 'pull_request' && hashFiles('coverage/usidiamond/pr-comment.md') != ''
         uses: marocchino/sticky-pull-request-comment@v2
         with:
           header: unit-tests

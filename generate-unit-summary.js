@@ -13,7 +13,33 @@
 const fs = require("fs");
 const path = require("path");
 
-const JUNIT_PATH = "coverage/usidiamond/test-results.xml";
+const JUNIT_DIR  = "coverage/usidiamond";
+const JUNIT_FILE = "test-results.xml";
+
+/** Find the JUnit XML by exact path first, then by recursive search. */
+function findJUnit() {
+  const exact = path.join(JUNIT_DIR, JUNIT_FILE);
+  if (fs.existsSync(exact)) return exact;
+  // karma-junit-reporter may place the file inside a browser-named subdir.
+  if (!fs.existsSync(JUNIT_DIR)) return null;
+  const found = walkFind(JUNIT_DIR, JUNIT_FILE);
+  return found || null;
+}
+
+function walkFind(dir, name) {
+  for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+    const full = path.join(dir, entry.name);
+    if (entry.isDirectory()) {
+      const hit = walkFind(full, name);
+      if (hit) return hit;
+    } else if (entry.name === name) {
+      return full;
+    }
+  }
+  return null;
+}
+
+const JUNIT_PATH = findJUnit();
 const COVERAGE_PATH = "coverage/usidiamond/coverage-summary.json";
 const SUMMARY_FILE = process.env.GITHUB_STEP_SUMMARY;
 const PR_COMMENT_FILE = "coverage/usidiamond/pr-comment.md";

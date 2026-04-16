@@ -16,6 +16,7 @@ module.exports = function (config) {
     junitReporter: {
       outputDir: require("path").join(__dirname, "./coverage/usidiamond/"),
       outputFile: "test-results.xml",
+      useBrowserName: false,
     },
     coverageReporter: {
       dir: require("path").join(__dirname, "./coverage/usidiamond/"),
