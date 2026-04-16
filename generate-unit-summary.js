@@ -132,6 +132,7 @@ if (failedTests.length > 0) {
   for (const t of failedTests) {
     const label = t.classname ? `${t.classname}` : t.name;
     const msg = (t.message || "")
+      .replace(/\\/g, "\\\\")
       .replace(/\r?\n/g, " ")
       .replace(/\|/g, "\\|")
       .slice(0, 200);
