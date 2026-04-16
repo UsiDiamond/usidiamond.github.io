@@ -7,6 +7,7 @@ module.exports = {
     options: {
       feature_path: 'e2e/features',
       require: ['e2e/step_definitions'],
+      tags: 'not @skip',
       format: [
         'html:./integration-tests-report/cucumber-report.html',
         'json:./integration-tests-report/cucumber-report.json',

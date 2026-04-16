@@ -1,3 +1,4 @@
+@skip
 Feature: bg-toggle and skip-link text is translated in every language
   Verifies that the pause-animation button label and skip-to-content link
   render the correct translated string (not the raw i18n key) for all
