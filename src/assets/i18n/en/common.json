@@ -1,4 +1,6 @@
 {
   "language": "Language",
-  "skipToMainContent": "Skip to main content"
+  "skipToMainContent": "Skip to main content",
+  "pauseAnimation": "Pause animation",
+  "resumeAnimation": "Resume animation"
 }

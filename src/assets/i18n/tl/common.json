@@ -1,4 +1,6 @@
 {
   "language": "Wika",
-  "skipToMainContent": "Laktawan ang pangunahing nilalaman"
+  "skipToMainContent": "Laktawan ang pangunahing nilalaman",
+  "pauseAnimation": "I-pause ang animasyon",
+  "resumeAnimation": "Ipagpatuloy ang animasyon"
 }

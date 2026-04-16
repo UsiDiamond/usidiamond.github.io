@@ -31,7 +31,7 @@
 .bg-toggle {
   position: fixed;
   top: max(1rem, env(safe-area-inset-top));
-  left: max(1rem, env(safe-area-inset-left));
+  inset-inline-start: max(1rem, env(safe-area-inset-left));
   z-index: 100;
   display: inline-flex;
   align-items: center;
@@ -53,7 +53,7 @@
 
   @media (max-width: 576px) {
     top: auto;
-    left: max(1rem, env(safe-area-inset-left));
+    inset-inline-start: max(1rem, env(safe-area-inset-left));
     bottom: max(1rem, env(safe-area-inset-bottom));
     width: 48px;
     min-width: 48px;

@@ -18,10 +18,14 @@
   [class.is-paused]="bg.paused()"
   [attr.aria-pressed]="bg.paused()"
   [attr.aria-label]="
-    bg.paused() ? 'Resume background animation' : 'Pause background animation'
+    bg.paused()
+      ? ('common.resumeAnimation' | translate)
+      : ('common.pauseAnimation' | translate)
   "
   [title]="
-    bg.paused() ? 'Resume background animation' : 'Pause background animation'
+    bg.paused()
+      ? ('common.resumeAnimation' | translate)
+      : ('common.pauseAnimation' | translate)
   "
   (click)="bg.toggle()"
 >
@@ -47,6 +51,8 @@
     </svg>
   }
   <span class="bg-toggle__label">{{
-    bg.paused() ? "Resume animation" : "Pause animation"
+    bg.paused()
+      ? ("common.resumeAnimation" | translate)
+      : ("common.pauseAnimation" | translate)
   }}</span>
 </button>

@@ -94,11 +94,17 @@ h1 {
   align-items: center;
   flex-wrap: wrap;
   gap: 0.5rem;
-  padding: 0 0.5rem;
+  padding-block: 0;
+  padding-inline: 0.5rem;
   min-height: 2rem;
+  // Leave room for the fixed bg-toggle button on both sides to avoid overlap
+  // in both LTR (button at inline-start) and RTL (button at inline-end).
+  padding-inline-start: max(5.5rem, calc(env(safe-area-inset-left) + 0.5rem));
+  padding-inline-end: max(5.5rem, calc(env(safe-area-inset-right) + 0.5rem));
 
   @media (max-width: 576px) {
     justify-content: center;
+    padding-inline: 0.5rem;
   }
 }
 
