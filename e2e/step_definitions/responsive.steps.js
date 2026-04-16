@@ -25,11 +25,12 @@ Then("every h1 and h2 stays within the viewport", function () {
     },
     [],
     function (result) {
-      const violations = result.value || [];
-      browser.assert.ok(
-        violations.length === 0,
-        "Headings exceed viewport: " + JSON.stringify(violations, null, 2),
-      );
+      const violations = (result && result.value) || [];
+      if (violations.length > 0) {
+        throw new Error(
+          "Headings exceed viewport: " + JSON.stringify(violations, null, 2),
+        );
+      }
     },
   );
 });
@@ -57,11 +58,13 @@ Then("every diamond-card stays within its column", function () {
     },
     [],
     function (result) {
-      const violations = result.value || [];
-      browser.assert.ok(
-        violations.length === 0,
-        "Cards overflow their columns: " + JSON.stringify(violations, null, 2),
-      );
+      const violations = (result && result.value) || [];
+      if (violations.length > 0) {
+        throw new Error(
+          "Cards overflow their columns: " +
+            JSON.stringify(violations, null, 2),
+        );
+      }
     },
   );
 });
@@ -78,12 +81,18 @@ Then("the first page-title heading is horizontally centred", function () {
     },
     [],
     function (result) {
-      const v = result.value || {};
+      const v = (result && result.value) || {};
       if (v.skipped) return;
-      browser.assert.ok(
-        v.offset <= Math.max(10, v.vw * 0.05),
-        "Title is not centred: offset " + v.offset + "px from viewport mid",
-      );
+      const tolerance = Math.max(10, v.vw * 0.05);
+      if (v.offset > tolerance) {
+        throw new Error(
+          "Title is not centred: offset " +
+            v.offset +
+            "px from viewport mid (tolerance " +
+            tolerance +
+            "px)",
+        );
+      }
     },
   );
 });
