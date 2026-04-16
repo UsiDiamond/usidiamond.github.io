@@ -7,12 +7,12 @@
     [title]="badge.displayName"
     [attr.aria-label]="badge.displayName + ' — release notes (opens in new tab)'"
   >
-    @if (badge.iconSlug) {
+    @if (badge.resolvedIconUrl) {
       <img
-        [src]="'https://cdn.simpleicons.org/' + badge.iconSlug + '/' + badge.iconColor"
+        [src]="badge.resolvedIconUrl"
         [alt]="badge.displayName"
-        width="26"
-        height="26"
+        width="32"
+        height="32"
         loading="lazy"
       />
     } @else {

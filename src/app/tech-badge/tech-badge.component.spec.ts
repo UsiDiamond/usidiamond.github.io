@@ -1,6 +1,13 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { TechBadgeComponent, TECH_REGISTRY } from './tech-badge.component';
 
+/** Mirror the component's resolveIconUrl logic so tests stay in sync */
+function resolveIconUrl(cfg: (typeof TECH_REGISTRY)[string]): string | null {
+  if (cfg.iconUrl) return cfg.iconUrl;
+  if (cfg.iconSlug) return `https://cdn.simpleicons.org/${cfg.iconSlug}/${cfg.iconColor}`;
+  return null;
+}
+
 describe('TechBadgeComponent', () => {
   let component: TechBadgeComponent;
   let fixture: ComponentFixture<TechBadgeComponent>;
@@ -21,36 +28,36 @@ describe('TechBadgeComponent', () => {
   it('renders nothing when techs is empty', () => {
     component.techs = [];
     fixture.detectChanges();
-    const links = fixture.nativeElement.querySelectorAll('a');
-    expect(links.length).toBe(0);
+    expect(fixture.nativeElement.querySelectorAll('a').length).toBe(0);
   });
 
   it('silently ignores unknown tech keys', () => {
     component.techs = ['angular', 'not-a-real-tech'];
     fixture.detectChanges();
-    const links = fixture.nativeElement.querySelectorAll('a');
-    expect(links.length).toBe(1);
+    expect(fixture.nativeElement.querySelectorAll('a').length).toBe(1);
   });
 
-  describe('icon-based badges', () => {
+  describe('icon-based badges (CDN and custom URL)', () => {
     beforeEach(() => {
-      component.techs = ['angular', 'spring', 'openshift'];
+      // angular → CDN, coldfusion → custom iconUrl, websphere → custom iconUrl
+      component.techs = ['angular', 'coldfusion', 'websphere'];
       fixture.detectChanges();
     });
 
     it('renders one badge link per tech', () => {
-      const links = fixture.nativeElement.querySelectorAll('a.tech-badge-link');
-      expect(links.length).toBe(3);
+      expect(fixture.nativeElement.querySelectorAll('a.tech-badge-link').length).toBe(3);
     });
 
-    it('each img src matches the Simple Icons CDN pattern', () => {
+    it('each img src matches the resolved icon URL', () => {
       const imgs: NodeListOf<HTMLImageElement> =
         fixture.nativeElement.querySelectorAll('img');
       expect(imgs.length).toBe(3);
-      imgs.forEach(img => {
-        expect(img.src).toMatch(
-          /^https:\/\/cdn\.simpleicons\.org\/[a-z0-9]+\/[0-9A-Fa-f]{6}$/,
-        );
+
+      const expectedUrls = ['angular', 'coldfusion', 'websphere'].map(k =>
+        resolveIconUrl(TECH_REGISTRY[k]),
+      );
+      imgs.forEach((img, i) => {
+        expect(img.getAttribute('src')).toBe(expectedUrls[i]);
       });
     });
 
@@ -82,7 +89,7 @@ describe('TechBadgeComponent', () => {
     it('each badge links to the correct release URL', () => {
       const links: NodeListOf<HTMLAnchorElement> =
         fixture.nativeElement.querySelectorAll('a');
-      const expected = ['angular', 'spring', 'openshift'].map(
+      const expected = ['angular', 'coldfusion', 'websphere'].map(
         k => TECH_REGISTRY[k].releaseUrl,
       );
       links.forEach((link, i) => {
@@ -91,23 +98,23 @@ describe('TechBadgeComponent', () => {
     });
   });
 
-  describe('text-only badges (no iconSlug)', () => {
+  describe('text-only badges (no resolved icon URL)', () => {
     beforeEach(() => {
-      component.techs = ['phaser', 'apachecamel', 'cobol', 'jcl'];
+      component.techs = ['cobol', 'phaser'];
       fixture.detectChanges();
     });
 
     it('renders a .tech-text-badge span for each text-only tech', () => {
-      const spans = fixture.nativeElement.querySelectorAll('.tech-text-badge');
-      expect(spans.length).toBe(4);
+      expect(
+        fixture.nativeElement.querySelectorAll('.tech-text-badge').length,
+      ).toBe(2);
     });
 
-    it('does not render any img elements', () => {
-      const imgs = fixture.nativeElement.querySelectorAll('img');
-      expect(imgs.length).toBe(0);
+    it('does not render img elements for text-only techs', () => {
+      expect(fixture.nativeElement.querySelectorAll('img').length).toBe(0);
     });
 
-    it('text badges still have accessible aria-label and safe link attrs', () => {
+    it('text-only badges still have accessible aria-label and safe link attrs', () => {
       const links: NodeListOf<HTMLAnchorElement> =
         fixture.nativeElement.querySelectorAll('a');
       links.forEach(link => {
@@ -119,20 +126,20 @@ describe('TechBadgeComponent', () => {
   });
 
   // ---------------------------------------------------------------------------
-  // CDN availability — each test issues a real HTTP request to verify the icon
-  // exists at cdn.simpleicons.org. These are network-dependent integration tests.
+  // Icon availability — one real HTTP HEAD request per tech that has an icon URL.
+  // Covers both Simple Icons CDN entries and all custom hosted images.
+  // Network-dependent; runs inside the Karma browser sandbox.
   // ---------------------------------------------------------------------------
-  describe('icon CDN availability', () => {
-    const iconEntries = Object.entries(TECH_REGISTRY).filter(
-      ([, cfg]) => cfg.iconSlug !== null,
-    );
+  describe('icon URL availability (network)', () => {
+    const iconEntries = Object.entries(TECH_REGISTRY)
+      .map(([key, cfg]) => ({ key, url: resolveIconUrl(cfg) }))
+      .filter((e): e is { key: string; url: string } => e.url !== null);
 
-    iconEntries.forEach(([key, cfg]) => {
-      it(`${key} (${cfg.iconSlug}): cdn.simpleicons.org responds 200`, async () => {
-        const url = `https://cdn.simpleicons.org/${cfg.iconSlug}/${cfg.iconColor}`;
-        const res = await fetch(url);
+    iconEntries.forEach(({ key, url }) => {
+      it(`${key}: icon URL responds 200`, async () => {
+        const res = await fetch(url, { method: 'HEAD' });
         expect(res.status)
-          .withContext(`${key}: GET ${url} → ${res.status}`)
+          .withContext(`${key}: ${url} → HTTP ${res.status}`)
           .toBe(200);
       }, 15000);
     });
