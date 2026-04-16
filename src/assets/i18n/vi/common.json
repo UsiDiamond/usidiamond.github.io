@@ -1,4 +1,6 @@
 {
   "language": "Ngôn ngữ",
-  "skipToMainContent": "Chuyển đến nội dung chính"
+  "skipToMainContent": "Chuyển đến nội dung chính",
+  "pauseAnimation": "Tạm dừng hoạt ảnh",
+  "resumeAnimation": "Tiếp tục hoạt ảnh"
 }

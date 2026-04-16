@@ -1,4 +1,6 @@
 {
   "language": "语言",
-  "skipToMainContent": "跳至主要内容"
+  "skipToMainContent": "跳至主要内容",
+  "pauseAnimation": "暂停动画",
+  "resumeAnimation": "继续动画"
 }

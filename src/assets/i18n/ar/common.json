@@ -1,4 +1,6 @@
 {
   "language": "اللغة",
-  "skipToMainContent": "تخطي إلى المحتوى الرئيسي"
+  "skipToMainContent": "تخطي إلى المحتوى الرئيسي",
+  "pauseAnimation": "إيقاف الحركة مؤقتاً",
+  "resumeAnimation": "استئناف الحركة"
 }

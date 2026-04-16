@@ -74,8 +74,11 @@ describe('AppComponent — bg-toggle position in RTL', () => {
   let langSvc: LanguageService;
 
   const translations = {
-    common: { skipToMainContent: 'Skip to main content' },
-    bg: { pause: 'Pause animation', resume: 'Resume animation' },
+    common: {
+      skipToMainContent: 'Skip to main content',
+      pauseAnimation: 'Pause animation',
+      resumeAnimation: 'Resume animation',
+    },
   };
 
   beforeEach(() => {
@@ -87,7 +90,13 @@ describe('AppComponent — bg-toggle position in RTL', () => {
     });
     const translate = TestBed.inject(TranslateService);
     translate.setTranslation('en', translations, true);
-    translate.setTranslation('ar', translations, true);
+    translate.setTranslation('ar', {
+      common: {
+        skipToMainContent: 'تخطي إلى المحتوى الرئيسي',
+        pauseAnimation: 'إيقاف الحركة مؤقتاً',
+        resumeAnimation: 'استئناف الحركة',
+      },
+    }, true);
     translate.use('en');
 
     langSvc = TestBed.inject(LanguageService);

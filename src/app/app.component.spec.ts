@@ -15,7 +15,13 @@ describe('AppComponent', () => {
     const translate = TestBed.inject(TranslateService);
     translate.setTranslation(
       'en',
-      { common: { skipToMainContent: 'Skip to main content' } },
+      {
+        common: {
+          skipToMainContent: 'Skip to main content',
+          pauseAnimation: 'Pause animation',
+          resumeAnimation: 'Resume animation',
+        },
+      },
       true,
     );
     translate.use('en');

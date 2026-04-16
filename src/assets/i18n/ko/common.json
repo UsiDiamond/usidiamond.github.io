@@ -1,4 +1,6 @@
 {
   "language": "언어",
-  "skipToMainContent": "본문으로 건너뛰기"
+  "skipToMainContent": "본문으로 건너뛰기",
+  "pauseAnimation": "애니메이션 일시정지",
+  "resumeAnimation": "애니메이션 재개"
 }

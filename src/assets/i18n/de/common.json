@@ -1,4 +1,6 @@
 {
   "language": "Sprache",
-  "skipToMainContent": "Zum Hauptinhalt springen"
+  "skipToMainContent": "Zum Hauptinhalt springen",
+  "pauseAnimation": "Animation pausieren",
+  "resumeAnimation": "Animation fortsetzen"
 }
