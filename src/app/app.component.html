@@ -1,4 +1,4 @@
-<a href="#maincontent" class="skip visually-hidden-focusable" (click)="skipToMain($event)">
+<a href="#maincontent" class="skip visually-hidden-focusable" data-testid="skip-link" (click)="skipToMain($event)">
   {{ "common.skipToMainContent" | translate }}
 </a>
 
@@ -12,6 +12,7 @@
 <button
   type="button"
   class="bg-toggle"
+  data-testid="bg-toggle"
   [class.is-paused]="bg.paused()"
   [attr.aria-pressed]="bg.paused()"
   [attr.aria-label]="
@@ -35,7 +36,7 @@
     <path d="M6 5h4v14H6zm8 0h4v14h-4z" fill="currentColor" />
   </svg>
   }
-  <span class="bg-toggle__label">{{
+  <span class="bg-toggle__label" data-testid="bg-toggle-label">{{
     bg.paused()
       ? ("common.resumeAnimation" | translate)
       : ("common.pauseAnimation" | translate)

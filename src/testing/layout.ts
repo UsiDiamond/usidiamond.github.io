@@ -6,7 +6,7 @@ export const BREAKPOINTS = {
 
 export type BreakpointName = keyof typeof BREAKPOINTS;
 
-const PX_TOLERANCE = 1;
+const PX_TOLERANCE = 2;
 
 export function setViewport(width: number, height: number): void {
   const style =

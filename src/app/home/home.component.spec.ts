@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { HomeComponent } from './home.component';
+import { PRONOUNS_PATH_D } from '../../testing/constants';
 describe('HomeComponent', () => {
   let component: HomeComponent;
   let fixture: ComponentFixture<HomeComponent>;
@@ -106,9 +107,6 @@ describe('HomeComponent', () => {
   });
 
   describe('pronouns-page icon', () => {
-    const EXPECTED_PATH_D =
-      'M396.52 174.35c1.35-2.4.21-4.35-2.54-4.35l-48.2.03c-2.75 0-6.15 1.94-7.54 4.31l-118.1 199.77c-16.48 27.15-39.48 33.15-61.58 30.47-37.94-4.6-58.34-32.45-58.34-69.54 0-37.25 30.31-67.56 67.56-67.56h75c2.75 0 6.12-1.95 7.48-4.34l27.03-47.2c1.37-2.39.23-4.34-2.52-4.34h-107c-68.06 0-123.44 55.37-123.44 123.44 0 32.89 12.85 68.36 36.22 91.54 23.03 22.84 53.8 31.21 86.64 31.89 18.54.21 69.46-.21 93.33-42.68 26.73-47.57 136-241.44 136-241.44zM571.94 244.44c-23.03-22.84-53.8-31.21-86.64-31.89-18.54-.21-69.46.21-93.33 42.68-26.72 47.55-136 241.42-136 241.42-1.35 2.4-.21 4.35 2.54 4.35l48.2-.03c2.75 0 6.15-1.94 7.54-4.31l118.1-199.77c16.48-27.15 39.48-33.15 61.58-30.47 37.94 4.6 58.34 32.45 58.34 69.54 0 37.25-30.31 67.56-67.56 67.56h-75c-2.75 0-6.12 1.95-7.48 4.34l-27.03 47.2c-1.37 2.39-.23 4.34 2.52 4.34h107c68.06 0 123.44-55.37 123.44-123.44 0-32.87-12.85-68.34-36.22-91.52z';
-
     function svg(): SVGSVGElement | null {
       const el: HTMLElement = fixture.nativeElement;
       return el.querySelector<SVGSVGElement>('svg.pronouns-svg');
@@ -139,7 +137,7 @@ describe('HomeComponent', () => {
       expect(el).toBeTruthy();
       const paths = el!.querySelectorAll('path');
       expect(paths.length).toBe(1);
-      expect(paths[0].getAttribute('d')).toBe(EXPECTED_PATH_D);
+      expect(paths[0].getAttribute('d')).toBe(PRONOUNS_PATH_D);
     });
 
     it('path should carry the canonical fill colour', () => {

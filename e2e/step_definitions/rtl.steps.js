@@ -39,7 +39,7 @@ Then(
   function () {
     browser.execute(
       function () {
-        const btn = document.querySelector(".bg-toggle");
+        const btn = document.querySelector('[data-testid="bg-toggle"]');
         const switcher = document.querySelector(".language-switcher");
         if (!btn || !switcher) return { skipped: true };
         const bR = btn.getBoundingClientRect();

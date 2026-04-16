@@ -14,10 +14,10 @@ When("I click on the Skip to Content link", function () {
   // The skip link is visually hidden (off-screen at 0,0) so a pointer-based
   // click is intercepted by the element on top. Use JS click instead.
   browser.execute(function () {
-    document.querySelector(".skip").click();
+    document.querySelector('[data-testid="skip-link"]').click();
   });
 });
 
 Then("a skip to content link is present", function () {
-  browser.assert.elementPresent(".skip");
+  browser.assert.elementPresent('[data-testid="skip-link"]');
 });
