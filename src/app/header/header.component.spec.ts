@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { TranslateModule } from '@ngx-translate/core';
 import { HeaderComponent } from './header.component';
 
 describe('HeaderComponent', () => {
@@ -8,8 +8,7 @@ describe('HeaderComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [HeaderComponent],
-      schemas: [CUSTOM_ELEMENTS_SCHEMA],
+      imports: [HeaderComponent, TranslateModule.forRoot()],
     });
     fixture = TestBed.createComponent(HeaderComponent);
     component = fixture.componentInstance;

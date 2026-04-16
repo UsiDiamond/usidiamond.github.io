@@ -1,6 +1,6 @@
 export const BREAKPOINTS = {
-  mobile:  { width: 375,  height: 700 },
-  tablet:  { width: 768,  height: 900 },
+  mobile: { width: 375, height: 700 },
+  tablet: { width: 768, height: 900 },
   desktop: { width: 1440, height: 900 },
 } as const;
 
@@ -9,11 +9,12 @@ export type BreakpointName = keyof typeof BREAKPOINTS;
 const PX_TOLERANCE = 1;
 
 export function setViewport(width: number, height: number): void {
-  const style = document.getElementById('__test-viewport-style') as HTMLStyleElement | null
-    ?? Object.assign(document.createElement('style'), { id: '__test-viewport-style' });
+  const style =
+    (document.getElementById('__test-viewport-style') as HTMLStyleElement | null) ??
+    Object.assign(document.createElement('style'), { id: '__test-viewport-style' });
   if (!style.isConnected) document.head.appendChild(style);
   style.textContent = `html, body { width: ${width}px !important; height: ${height}px !important; margin: 0; padding: 0; overflow-x: hidden; }`;
-  Object.defineProperty(window, 'innerWidth',  { configurable: true, value: width });
+  Object.defineProperty(window, 'innerWidth', { configurable: true, value: width });
   Object.defineProperty(window, 'innerHeight', { configurable: true, value: height });
   window.dispatchEvent(new Event('resize'));
 }
@@ -58,11 +59,13 @@ export function expectNoInternalOverflow(el: HTMLElement, tolerance = PX_TOLERAN
   expect(el.scrollWidth).toBeLessThanOrEqual(el.clientWidth + tolerance);
 }
 
-export function expectAllStayWithin(root: Element, selector: string, parentSelector?: string): void {
+export function expectAllStayWithin(
+  root: Element,
+  selector: string,
+  parentSelector?: string,
+): void {
   root.querySelectorAll(selector).forEach((child) => {
-    const parent = parentSelector
-      ? child.closest(parentSelector)
-      : child.parentElement;
+    const parent = parentSelector ? child.closest(parentSelector) : child.parentElement;
     if (!parent) return;
     expectStaysWithin(child, parent);
   });

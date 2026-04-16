@@ -1,6 +1,4 @@
-<label for="language-switcher-select" class="language-switcher-label">
-  {{ "common.language" | translate }}
-</label>
+<label for="language-switcher-select" class="language-switcher-label">{{ "common.language" | translate }}</label>
 <select
   id="language-switcher-select"
   class="language-switcher-select form-select form-select-sm"
@@ -9,13 +7,8 @@
   (change)="onChange($event)"
 >
   @for (lang of supported; track lang.code) {
-    <option
-      [value]="lang.code"
-      [selected]="lang.code === currentCode()"
-      [attr.lang]="lang.code"
-      [attr.dir]="lang.dir"
-    >
-      {{ lang.nativeName }}
-    </option>
+  <option [value]="lang.code" [selected]="lang.code === currentCode()" [attr.lang]="lang.code" [attr.dir]="lang.dir">
+    {{ lang.nativeName }}
+  </option>
   }
 </select>

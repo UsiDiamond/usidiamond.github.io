@@ -30,16 +30,14 @@ export const BOOKS: Book[] = [
     author: 'William Dalrymple',
     subject: 'History & Society',
     parts: 1,
-    amazonUrl:
-      'https://www.amazon.com/s?k=The%20Anarchy%20William%20Dalrymple&i=stripbooks',
+    amazonUrl: 'https://www.amazon.com/s?k=The%20Anarchy%20William%20Dalrymple&i=stripbooks',
   },
   {
     title: 'The Frozen River',
     author: 'Ariel Lawhon',
     subject: 'Literature & Fiction',
     parts: 1,
-    amazonUrl:
-      'https://www.amazon.com/s?k=The%20Frozen%20River%20Ariel%20Lawhon&i=stripbooks',
+    amazonUrl: 'https://www.amazon.com/s?k=The%20Frozen%20River%20Ariel%20Lawhon&i=stripbooks',
   },
   {
     title: 'Shadows of the Empire: Star Wars Legends',
@@ -174,16 +172,14 @@ export const BOOKS: Book[] = [
     author: 'Francis Barret',
     subject: 'Occult, Hermetic, & Western Magick',
     parts: 1,
-    amazonUrl:
-      'https://www.amazon.com/s?k=The%20Magus%20Francis%20Barret&i=stripbooks',
+    amazonUrl: 'https://www.amazon.com/s?k=The%20Magus%20Francis%20Barret&i=stripbooks',
   },
   {
     title: 'Flatland',
     author: 'Edwin A. Abbott',
     subject: 'Literature & Fiction',
     parts: 1,
-    amazonUrl:
-      'https://www.amazon.com/s?k=Flatland%20Edwin%20A.%20Abbott&i=stripbooks',
+    amazonUrl: 'https://www.amazon.com/s?k=Flatland%20Edwin%20A.%20Abbott&i=stripbooks',
   },
   {
     title: 'Broken Promises, Broken Dreams',
@@ -210,8 +206,7 @@ export const BOOKS: Book[] = [
       'https://www.amazon.com/s?k=Michael%20Crichton%20Jurassic%20Park%202%20Books%20Collection%20Pack%20Set%20Jurassic%20Park%20By%20Micheal%20Crichton&i=stripbooks',
   },
   {
-    title:
-      'The Long Earth Series 5 Books Collection Terry Pratchett and Stephen Baxter Box Set',
+    title: 'The Long Earth Series 5 Books Collection Terry Pratchett and Stephen Baxter Box Set',
     author: 'Terry Pratchett',
     subject: 'Fantasy & Science Fiction',
     parts: 1,
@@ -223,8 +218,7 @@ export const BOOKS: Book[] = [
     author: 'Baxter Stephen',
     subject: 'Fantasy & Science Fiction',
     parts: 1,
-    amazonUrl:
-      'https://www.amazon.com/s?k=Xeelee%20An%20Omnibus%20baxter-stephen&i=stripbooks',
+    amazonUrl: 'https://www.amazon.com/s?k=Xeelee%20An%20Omnibus%20baxter-stephen&i=stripbooks',
   },
   {
     title: "Frank Herbert's Dune Saga 6-Book Boxed Set",
@@ -288,12 +282,10 @@ export const BOOKS: Book[] = [
     author: 'Stephen King',
     subject: 'Memoir & Biography',
     parts: 1,
-    amazonUrl:
-      'https://www.amazon.com/s?k=On%20Writing%20Stephen%20King&i=stripbooks',
+    amazonUrl: 'https://www.amazon.com/s?k=On%20Writing%20Stephen%20King&i=stripbooks',
   },
   {
-    title:
-      'The Dark Tower Series Complete 8 Books Collection Box Set by Stephen King',
+    title: 'The Dark Tower Series Complete 8 Books Collection Box Set by Stephen King',
     author: 'Stephen King',
     subject: 'Fantasy & Science Fiction',
     parts: 1,
@@ -305,16 +297,14 @@ export const BOOKS: Book[] = [
     author: 'Gene Reeves',
     subject: 'Religion & Philosophy',
     parts: 1,
-    amazonUrl:
-      'https://www.amazon.com/s?k=The%20Lotus%20Sutra%20Gene%20Reeves&i=stripbooks',
+    amazonUrl: 'https://www.amazon.com/s?k=The%20Lotus%20Sutra%20Gene%20Reeves&i=stripbooks',
   },
   {
     title: 'The Diamond Sutra',
     author: 'Red Pine',
     subject: 'Religion & Philosophy',
     parts: 1,
-    amazonUrl:
-      'https://www.amazon.com/s?k=The%20Diamond%20Sutra%20Red%20Pine&i=stripbooks',
+    amazonUrl: 'https://www.amazon.com/s?k=The%20Diamond%20Sutra%20Red%20Pine&i=stripbooks',
   },
   {
     title: 'The Cambridge History of Japan',
@@ -330,16 +320,14 @@ export const BOOKS: Book[] = [
     subject: 'Kabbalah & Jewish Mysticism',
     series: 'Goldstein-Goren in American Jewish History',
     parts: 1,
-    amazonUrl:
-      'https://www.amazon.com/s?k=All%20Together%20Different%20Daniel%20Katz&i=stripbooks',
+    amazonUrl: 'https://www.amazon.com/s?k=All%20Together%20Different%20Daniel%20Katz&i=stripbooks',
   },
   {
     title: 'Emma Goldman',
     author: 'Vivian Gornick',
     subject: 'Kabbalah & Jewish Mysticism',
     parts: 1,
-    amazonUrl:
-      'https://www.amazon.com/s?k=Emma%20Goldman%20Vivian%20Gornick&i=stripbooks',
+    amazonUrl: 'https://www.amazon.com/s?k=Emma%20Goldman%20Vivian%20Gornick&i=stripbooks',
   },
   {
     title: 'Radical Antiquity',
@@ -378,8 +366,7 @@ export const BOOKS: Book[] = [
     author: 'Kai Zuber',
     subject: 'Physics',
     parts: 1,
-    amazonUrl:
-      'https://www.amazon.com/s?k=Neutrino%20Physics%20Kai%20Zuber&i=stripbooks',
+    amazonUrl: 'https://www.amazon.com/s?k=Neutrino%20Physics%20Kai%20Zuber&i=stripbooks',
   },
   {
     title: 'Quantum Chromodynamics',
@@ -411,8 +398,7 @@ export const BOOKS: Book[] = [
     subject: 'Mathematics',
     series: 'Graduate Texts in Mathematics',
     parts: 1,
-    amazonUrl:
-      'https://www.amazon.com/s?k=Algebra%20Manfred%20Einsiedler&i=stripbooks',
+    amazonUrl: 'https://www.amazon.com/s?k=Algebra%20Manfred%20Einsiedler&i=stripbooks',
   },
   {
     title: 'The Mists of Avalon',
@@ -452,32 +438,28 @@ export const BOOKS: Book[] = [
     author: 'Scott Alexander',
     subject: 'Fantasy & Science Fiction',
     parts: 1,
-    amazonUrl:
-      'https://www.amazon.com/s?k=Unsong%20Scott%20Alexander&i=stripbooks',
+    amazonUrl: 'https://www.amazon.com/s?k=Unsong%20Scott%20Alexander&i=stripbooks',
   },
   {
     title: 'Mystical Dragon Magick',
     author: 'D.J. Conway',
     subject: 'Occult, Hermetic, & Western Magick',
     parts: 1,
-    amazonUrl:
-      'https://www.amazon.com/s?k=Mystical%20Dragon%20Magick%20D.J.%20Conway&i=stripbooks',
+    amazonUrl: 'https://www.amazon.com/s?k=Mystical%20Dragon%20Magick%20D.J.%20Conway&i=stripbooks',
   },
   {
     title: 'Dragon Magick',
     author: 'D.J. Conway',
     subject: 'Occult, Hermetic, & Western Magick',
     parts: 1,
-    amazonUrl:
-      'https://www.amazon.com/s?k=Dragon%20Magick%20D.J.%20Conway&i=stripbooks',
+    amazonUrl: 'https://www.amazon.com/s?k=Dragon%20Magick%20D.J.%20Conway&i=stripbooks',
   },
   {
     title: 'Dancing with Dragons',
     author: 'D.J. Conway',
     subject: 'Occult, Hermetic, & Western Magick',
     parts: 1,
-    amazonUrl:
-      'https://www.amazon.com/s?k=Dancing%20with%20Dragons%20D.J.%20Conway&i=stripbooks',
+    amazonUrl: 'https://www.amazon.com/s?k=Dancing%20with%20Dragons%20D.J.%20Conway&i=stripbooks',
   },
   {
     title: 'Dragonflight',
@@ -485,8 +467,7 @@ export const BOOKS: Book[] = [
     subject: 'Fantasy & Science Fiction',
     series: 'Pern',
     parts: 1,
-    amazonUrl:
-      'https://www.amazon.com/s?k=Dragonflight%20Anne%20McCaffrey&i=stripbooks',
+    amazonUrl: 'https://www.amazon.com/s?k=Dragonflight%20Anne%20McCaffrey&i=stripbooks',
   },
   {
     title: 'The Sorrows of Young Werther',
@@ -525,24 +506,21 @@ export const BOOKS: Book[] = [
     author: 'Elisheva Nesher',
     subject: 'Kabbalah & Jewish Mysticism',
     parts: 1,
-    amazonUrl:
-      'https://www.amazon.com/s?k=Casting%20Lots%20Elisheva%20Nesher&i=stripbooks',
+    amazonUrl: 'https://www.amazon.com/s?k=Casting%20Lots%20Elisheva%20Nesher&i=stripbooks',
   },
   {
     title: 'Ashkenazi Herbalism',
     author: 'Deatra Cohen',
     subject: 'Kabbalah & Jewish Mysticism',
     parts: 1,
-    amazonUrl:
-      'https://www.amazon.com/s?k=Ashkenazi%20Herbalism%20Deatra%20Cohen&i=stripbooks',
+    amazonUrl: 'https://www.amazon.com/s?k=Ashkenazi%20Herbalism%20Deatra%20Cohen&i=stripbooks',
   },
   {
     title: 'Woven Roots',
     author: 'Deatra Cohen',
     subject: 'Occult, Hermetic, & Western Magick',
     parts: 1,
-    amazonUrl:
-      'https://www.amazon.com/s?k=Woven%20Roots%20Deatra%20Cohen&i=stripbooks',
+    amazonUrl: 'https://www.amazon.com/s?k=Woven%20Roots%20Deatra%20Cohen&i=stripbooks',
   },
   {
     title: 'CHASING DRAGONS BETWEEN DIMENSIONS',
@@ -565,8 +543,7 @@ export const BOOKS: Book[] = [
     author: 'Leoni',
     subject: 'Fencing & Historical Martial Arts',
     parts: 1,
-    amazonUrl:
-      'https://www.amazon.com/s?k=Venetian%20Rapier%20Leoni&i=stripbooks',
+    amazonUrl: 'https://www.amazon.com/s?k=Venetian%20Rapier%20Leoni&i=stripbooks',
   },
   {
     title: 'The Flower of Battle: MS Ludwig XV13',
@@ -589,8 +566,7 @@ export const BOOKS: Book[] = [
     author: 'Sigmund Ainring',
     subject: 'Fencing & Historical Martial Arts',
     parts: 1,
-    amazonUrl:
-      'https://www.amazon.com/s?k=Pieces%20of%20Ringeck%20Sigmund%20Ainring&i=stripbooks',
+    amazonUrl: 'https://www.amazon.com/s?k=Pieces%20of%20Ringeck%20Sigmund%20Ainring&i=stripbooks',
   },
   {
     title: 'Risk and Insurance: A Graduate Text',
@@ -605,16 +581,14 @@ export const BOOKS: Book[] = [
     author: 'Reinhard Diestel',
     subject: 'Mathematics',
     parts: 1,
-    amazonUrl:
-      'https://www.amazon.com/s?k=Graph%20Theory%20Reinhard%20Diestel&i=stripbooks',
+    amazonUrl: 'https://www.amazon.com/s?k=Graph%20Theory%20Reinhard%20Diestel&i=stripbooks',
   },
   {
     title: 'Optimal Transport',
     author: 'Gero Friesecke',
     subject: 'Mathematics',
     parts: 1,
-    amazonUrl:
-      'https://www.amazon.com/s?k=Optimal%20Transport%20Gero%20Friesecke&i=stripbooks',
+    amazonUrl: 'https://www.amazon.com/s?k=Optimal%20Transport%20Gero%20Friesecke&i=stripbooks',
   },
   {
     title: 'Foundational Description of the Art of Fencing',
@@ -637,8 +611,7 @@ export const BOOKS: Book[] = [
     author: 'Donald Tyson',
     subject: 'Occult, Hermetic, & Western Magick',
     parts: 1,
-    amazonUrl:
-      'https://www.amazon.com/s?k=New%20Millennium%20Magic%20Donald%20Tyson&i=stripbooks',
+    amazonUrl: 'https://www.amazon.com/s?k=New%20Millennium%20Magic%20Donald%20Tyson&i=stripbooks',
   },
   {
     title: 'The Koren Illustrated Tehillim, the Magerman Edition',
@@ -718,8 +691,7 @@ export const BOOKS: Book[] = [
     subject: 'Mathematics',
     series: 'Cambridge Mathematical Library',
     parts: 1,
-    amazonUrl:
-      'https://www.amazon.com/s?k=Inequalities%20G.%20H.%20Hardy&i=stripbooks',
+    amazonUrl: 'https://www.amazon.com/s?k=Inequalities%20G.%20H.%20Hardy&i=stripbooks',
   },
   {
     title: 'The Lion Cub of Prague',
@@ -734,20 +706,17 @@ export const BOOKS: Book[] = [
     author: 'Rabbi Yosef Ergas',
     subject: 'Kabbalah & Jewish Mysticism',
     parts: 1,
-    amazonUrl:
-      'https://www.amazon.com/s?k=Shomer%20Emunim%20Rabbi%20Yosef%20Ergas&i=stripbooks',
+    amazonUrl: 'https://www.amazon.com/s?k=Shomer%20Emunim%20Rabbi%20Yosef%20Ergas&i=stripbooks',
   },
   {
     title: 'Shemot in Context',
     author: 'Elia Benamozegh',
     subject: 'Kabbalah & Jewish Mysticism',
     parts: 1,
-    amazonUrl:
-      'https://www.amazon.com/s?k=Shemot%20in%20Context%20Elia%20Benamozegh&i=stripbooks',
+    amazonUrl: 'https://www.amazon.com/s?k=Shemot%20in%20Context%20Elia%20Benamozegh&i=stripbooks',
   },
   {
-    title:
-      'Perek Shirah - The Song of the Universe Pocket Size Deluxe Embossed Cover',
+    title: 'Perek Shirah - The Song of the Universe Pocket Size Deluxe Embossed Cover',
     author: 'Rabbi Nosson Scherman',
     subject: 'Kabbalah & Jewish Mysticism',
     parts: 1,
@@ -784,8 +753,7 @@ export const BOOKS: Book[] = [
     subject: 'Kabbalah & Jewish Mysticism',
     series: "Sha'ar Hapesukim - Gate of Verses",
     parts: 1,
-    amazonUrl:
-      'https://www.amazon.com/s?k=Gate%20of%20Verses%20Pinchas%20Winston&i=stripbooks',
+    amazonUrl: 'https://www.amazon.com/s?k=Gate%20of%20Verses%20Pinchas%20Winston&i=stripbooks',
   },
   {
     title: 'Pardes Rimonim - Pomegranate Orchard',
@@ -959,8 +927,7 @@ export const BOOKS: Book[] = [
       'https://www.amazon.com/s?k=The%20Talmud%20Of%20Jerusalem%2C%20Tr.%20By%20M.%20Schwab%20Talmud%20Yerushalmi&i=stripbooks',
   },
   {
-    title:
-      'Classic Yiddish Stories of S. Y. Abramovitsh, Sholem Aleichem, and I. L. Peretz',
+    title: 'Classic Yiddish Stories of S. Y. Abramovitsh, Sholem Aleichem, and I. L. Peretz',
     author: 'Ken Frieden',
     subject: 'Kabbalah & Jewish Mysticism',
     parts: 1,
@@ -972,8 +939,7 @@ export const BOOKS: Book[] = [
     author: 'Sol Steinmetz',
     subject: 'Kabbalah & Jewish Mysticism',
     parts: 1,
-    amazonUrl:
-      'https://www.amazon.com/s?k=Yiddish%20%26%20English%20Sol%20Steinmetz&i=stripbooks',
+    amazonUrl: 'https://www.amazon.com/s?k=Yiddish%20%26%20English%20Sol%20Steinmetz&i=stripbooks',
   },
   {
     title: 'Yiddish Rhyming Dictionary: Yidisher Gramen-Leksikon',
@@ -988,8 +954,7 @@ export const BOOKS: Book[] = [
     author: 'Uriel Weinreich',
     subject: 'Kabbalah & Jewish Mysticism',
     parts: 1,
-    amazonUrl:
-      'https://www.amazon.com/s?k=College%20Yiddish%20Uriel%20Weinreich&i=stripbooks',
+    amazonUrl: 'https://www.amazon.com/s?k=College%20Yiddish%20Uriel%20Weinreich&i=stripbooks',
   },
   {
     title: 'Bacterial and Bacteriophage Genetics',
@@ -1036,8 +1001,7 @@ export const BOOKS: Book[] = [
     author: 'R Nathan of Gaza',
     subject: 'Kabbalah & Jewish Mysticism',
     parts: 1,
-    amazonUrl:
-      'https://www.amazon.com/s?k=Sefer%20HaBriyah%20R%20Nathan%20of%20Gaza&i=stripbooks',
+    amazonUrl: 'https://www.amazon.com/s?k=Sefer%20HaBriyah%20R%20Nathan%20of%20Gaza&i=stripbooks',
   },
   {
     title: 'Sefer Etz Chayim',
@@ -1092,8 +1056,7 @@ export const BOOKS: Book[] = [
     author: 'F.J. de Bruijn',
     subject: 'Biology & Medicine',
     parts: 1,
-    amazonUrl:
-      'https://www.amazon.com/s?k=Bacterial%20Genomes%20F.J.%20de%20Bruijn&i=stripbooks',
+    amazonUrl: 'https://www.amazon.com/s?k=Bacterial%20Genomes%20F.J.%20de%20Bruijn&i=stripbooks',
   },
   {
     title: 'Molecular and Cellular Biology of Viruses',
@@ -1142,8 +1105,7 @@ export const BOOKS: Book[] = [
     author: 'Charles W. Misner',
     subject: 'Physics',
     parts: 1,
-    amazonUrl:
-      'https://www.amazon.com/s?k=Gravitation%20Charles%20W.%20Misner&i=stripbooks',
+    amazonUrl: 'https://www.amazon.com/s?k=Gravitation%20Charles%20W.%20Misner&i=stripbooks',
   },
   {
     title: 'The True Confessions of Charlotte Doyle',
@@ -1158,8 +1120,7 @@ export const BOOKS: Book[] = [
     author: 'H. D. Carlton',
     subject: 'Literature & Fiction',
     parts: 1,
-    amazonUrl:
-      'https://www.amazon.com/s?k=Does%20It%20Hurt%3F%20H.%20D.%20Carlton&i=stripbooks',
+    amazonUrl: 'https://www.amazon.com/s?k=Does%20It%20Hurt%3F%20H.%20D.%20Carlton&i=stripbooks',
   },
   {
     title: 'Apprentice to the Villain',
@@ -1175,8 +1136,7 @@ export const BOOKS: Book[] = [
     author: 'Ravi Vakil',
     subject: 'Mathematics',
     parts: 1,
-    amazonUrl:
-      'https://www.amazon.com/s?k=The%20Rising%20Sea%20Ravi%20Vakil&i=stripbooks',
+    amazonUrl: 'https://www.amazon.com/s?k=The%20Rising%20Sea%20Ravi%20Vakil&i=stripbooks',
   },
   {
     title: 'Physics of Shock Waves and High-Temperature Hydrodynamic Phenomena',
@@ -1199,16 +1159,14 @@ export const BOOKS: Book[] = [
     author: 'Donald E. Carlucci',
     subject: 'Engineering & Applied Science',
     parts: 1,
-    amazonUrl:
-      'https://www.amazon.com/s?k=Ballistics%20Donald%20E.%20Carlucci&i=stripbooks',
+    amazonUrl: 'https://www.amazon.com/s?k=Ballistics%20Donald%20E.%20Carlucci&i=stripbooks',
   },
   {
     title: 'Dragonlance Chronicles and Legends and Second Generation',
     author: 'Margaret Weis and Tracy Hickman',
     subject: 'Fantasy & Science Fiction',
     parts: 1,
-    amazonUrl:
-      'https://www.amazon.com/s?k=Dragonlance%20Chronicles%20Margaret%20Weis&i=stripbooks',
+    amazonUrl: 'https://www.amazon.com/s?k=Dragonlance%20Chronicles%20Margaret%20Weis&i=stripbooks',
   },
   {
     title: 'Sefer Shimushei Sarim Shel Ma‘alah',
@@ -1223,8 +1181,7 @@ export const BOOKS: Book[] = [
     author: 'Avraham Yaakov Finkel',
     subject: 'Kabbalah & Jewish Mysticism',
     parts: 1,
-    amazonUrl:
-      'https://www.amazon.com/s?k=Ein%20Yaakov%20Avraham%20Yaakov%20Finkel&i=stripbooks',
+    amazonUrl: 'https://www.amazon.com/s?k=Ein%20Yaakov%20Avraham%20Yaakov%20Finkel&i=stripbooks',
   },
   {
     title: 'The Old Testament Pseudepigrapha, Two-Volume Set',
@@ -1248,8 +1205,7 @@ export const BOOKS: Book[] = [
     subject: 'Kabbalah & Jewish Mysticism',
     series: 'Nefesh HaTzimtzum',
     parts: 1,
-    amazonUrl:
-      'https://www.amazon.com/s?k=Nefesh%20HaTzimtzum%20Avinoam%20Fraenkel&i=stripbooks',
+    amazonUrl: 'https://www.amazon.com/s?k=Nefesh%20HaTzimtzum%20Avinoam%20Fraenkel&i=stripbooks',
   },
   {
     title: 'Nefesh Hachaim',
@@ -1288,8 +1244,7 @@ export const BOOKS: Book[] = [
     author: 'Timothy J. Stephany',
     subject: 'Ancient Languages & Near East',
     parts: 1,
-    amazonUrl:
-      'https://www.amazon.com/s?k=Enuma%20Elish%20Timothy%20J.%20Stephany&i=stripbooks',
+    amazonUrl: 'https://www.amazon.com/s?k=Enuma%20Elish%20Timothy%20J.%20Stephany&i=stripbooks',
   },
   {
     title: 'Meditation and Kabbalah',
@@ -1320,8 +1275,7 @@ export const BOOKS: Book[] = [
     author: 'Mark Shoulson',
     subject: 'Kabbalah & Jewish Mysticism',
     parts: 1,
-    amazonUrl:
-      'https://www.amazon.com/s?k=The%20Torah%20Mark%20Shoulson&i=stripbooks',
+    amazonUrl: 'https://www.amazon.com/s?k=The%20Torah%20Mark%20Shoulson&i=stripbooks',
   },
   {
     title: 'The Magical Books Of Solomon',
@@ -1344,16 +1298,14 @@ export const BOOKS: Book[] = [
     author: 'Howard Schwartz',
     subject: 'Occult, Hermetic, & Western Magick',
     parts: 1,
-    amazonUrl:
-      "https://www.amazon.com/s?k=Lilith's%20Cave%20Howard%20Schwartz&i=stripbooks",
+    amazonUrl: "https://www.amazon.com/s?k=Lilith's%20Cave%20Howard%20Schwartz&i=stripbooks",
   },
   {
     title: 'Yiddish Folktales',
     author: 'Beatrice Weinreich',
     subject: 'Kabbalah & Jewish Mysticism',
     parts: 1,
-    amazonUrl:
-      'https://www.amazon.com/s?k=Yiddish%20Folktales%20Beatrice%20Weinreich&i=stripbooks',
+    amazonUrl: 'https://www.amazon.com/s?k=Yiddish%20Folktales%20Beatrice%20Weinreich&i=stripbooks',
   },
   {
     title: 'Jewish Magic and Superstition: A Study in Folk Religion',
@@ -1441,8 +1393,7 @@ export const BOOKS: Book[] = [
     title: 'Fundamentals of Chemical Engineering Thermodynamics',
     author: 'David Himmelblau',
     subject: 'Physics',
-    series:
-      'International Series in the Physical and Chemical Engineering Sciences',
+    series: 'International Series in the Physical and Chemical Engineering Sciences',
     parts: 1,
     amazonUrl:
       'https://www.amazon.com/s?k=Fundamentals%20of%20Chemical%20Engineering%20Thermodynamics%20David%20Himmelblau&i=stripbooks',
@@ -1524,20 +1475,17 @@ export const BOOKS: Book[] = [
     author: 'Aryeh Kaplan',
     subject: 'Kabbalah & Jewish Mysticism',
     parts: 1,
-    amazonUrl:
-      'https://www.amazon.com/s?k=The%20Bahir%20Aryeh%20Kaplan&i=stripbooks',
+    amazonUrl: 'https://www.amazon.com/s?k=The%20Bahir%20Aryeh%20Kaplan&i=stripbooks',
   },
   {
     title: 'The Chumash',
     author: 'Nosson Scherman',
     subject: 'Kabbalah & Jewish Mysticism',
     parts: 1,
-    amazonUrl:
-      'https://www.amazon.com/s?k=The%20Chumash%20Nosson%20Scherman&i=stripbooks',
+    amazonUrl: 'https://www.amazon.com/s?k=The%20Chumash%20Nosson%20Scherman&i=stripbooks',
   },
   {
-    title:
-      'Siddur Transliterated Linear - Sabbath and Festivals - Seif Edition - Nusach Ashkenaz',
+    title: 'Siddur Transliterated Linear - Sabbath and Festivals - Seif Edition - Nusach Ashkenaz',
     author: 'Nosson Scherman',
     subject: 'Kabbalah & Jewish Mysticism',
     parts: 1,
@@ -1557,16 +1505,14 @@ export const BOOKS: Book[] = [
     author: 'Aryeh Kaplan',
     subject: 'Kabbalah & Jewish Mysticism',
     parts: 1,
-    amazonUrl:
-      'https://www.amazon.com/s?k=Sefer%20Habahir%20Aryeh%20Kaplan&i=stripbooks',
+    amazonUrl: 'https://www.amazon.com/s?k=Sefer%20Habahir%20Aryeh%20Kaplan&i=stripbooks',
   },
   {
     title: 'TAILORING',
     author: 'Quarry Books',
     subject: 'Craft & Making',
     parts: 1,
-    amazonUrl:
-      'https://www.amazon.com/s?k=TAILORING%20Quarry%20Books&i=stripbooks',
+    amazonUrl: 'https://www.amazon.com/s?k=TAILORING%20Quarry%20Books&i=stripbooks',
   },
   {
     title: 'Handmade Renaissance Faire Fashion',
@@ -1613,8 +1559,7 @@ export const BOOKS: Book[] = [
     author: 'James Q. Wilson',
     subject: 'History & Society',
     parts: 1,
-    amazonUrl:
-      'https://www.amazon.com/s?k=Bureaucracy%20James%20Q.%20Wilson&i=stripbooks',
+    amazonUrl: 'https://www.amazon.com/s?k=Bureaucracy%20James%20Q.%20Wilson&i=stripbooks',
   },
   {
     title: "The Presidential Appointee's Handbook",
@@ -1669,8 +1614,7 @@ export const BOOKS: Book[] = [
     author: 'Rabbi Nosson Scherman',
     subject: 'Kabbalah & Jewish Mysticism',
     parts: 1,
-    amazonUrl:
-      'https://www.amazon.com/s?k=Tanach%20Rabbi%20Nosson%20Scherman&i=stripbooks',
+    amazonUrl: 'https://www.amazon.com/s?k=Tanach%20Rabbi%20Nosson%20Scherman&i=stripbooks',
   },
   {
     title: 'Was Yosef on the Spectrum?',
@@ -1701,8 +1645,7 @@ export const BOOKS: Book[] = [
     author: 'Akiba ben Joseph',
     subject: 'Kabbalah & Jewish Mysticism',
     parts: 1,
-    amazonUrl:
-      'https://www.amazon.com/s?k=Sefer%20Yetzirah%20Akiba%20ben%20Joseph&i=stripbooks',
+    amazonUrl: 'https://www.amazon.com/s?k=Sefer%20Yetzirah%20Akiba%20ben%20Joseph&i=stripbooks',
   },
   {
     title: 'Handbook to Biblical Hebrew',
@@ -1742,12 +1685,10 @@ export const BOOKS: Book[] = [
     author: 'Henri Cartan',
     subject: 'Mathematics',
     parts: 1,
-    amazonUrl:
-      'https://www.amazon.com/s?k=Differential%20Forms%20Henri%20Cartan&i=stripbooks',
+    amazonUrl: 'https://www.amazon.com/s?k=Differential%20Forms%20Henri%20Cartan&i=stripbooks',
   },
   {
-    title:
-      'Elementary Theory of Analytic Functions of One or Several Complex Variables',
+    title: 'Elementary Theory of Analytic Functions of One or Several Complex Variables',
     author: 'Henri Cartan',
     subject: 'Mathematics',
     parts: 1,
@@ -1767,24 +1708,21 @@ export const BOOKS: Book[] = [
     author: 'Gary Paulsen',
     subject: 'Fantasy & Science Fiction',
     parts: 1,
-    amazonUrl:
-      'https://www.amazon.com/s?k=The%20Transall%20Saga%20Gary%20Paulsen&i=stripbooks',
+    amazonUrl: 'https://www.amazon.com/s?k=The%20Transall%20Saga%20Gary%20Paulsen&i=stripbooks',
   },
   {
     title: 'Hatchet',
     author: 'Gary Paulsen',
     subject: 'Fantasy & Science Fiction',
     parts: 1,
-    amazonUrl:
-      'https://www.amazon.com/s?k=Hatchet%20Gary%20Paulsen&i=stripbooks',
+    amazonUrl: 'https://www.amazon.com/s?k=Hatchet%20Gary%20Paulsen&i=stripbooks',
   },
   {
     title: 'Dragons of Deceit',
     author: 'Margaret Weis and Tracy Hickman',
     subject: 'Fantasy & Science Fiction',
     parts: 1,
-    amazonUrl:
-      'https://www.amazon.com/s?k=Dragons%20of%20Deceit%20Margaret%20Weis&i=stripbooks',
+    amazonUrl: 'https://www.amazon.com/s?k=Dragons%20of%20Deceit%20Margaret%20Weis&i=stripbooks',
   },
   {
     title: 'Introduction to Electrodynamics',
@@ -1833,16 +1771,14 @@ export const BOOKS: Book[] = [
     author: 'Margaret Weis and Tracy Hickman',
     subject: 'Fantasy & Science Fiction',
     parts: 1,
-    amazonUrl:
-      'https://www.amazon.com/s?k=Age%20of%20Mortals%20Margaret%20Weis&i=stripbooks',
+    amazonUrl: 'https://www.amazon.com/s?k=Age%20of%20Mortals%20Margaret%20Weis&i=stripbooks',
   },
   {
     title: 'Neverland',
     author: 'Andrew Kolb',
     subject: 'Fantasy & Science Fiction',
     parts: 1,
-    amazonUrl:
-      'https://www.amazon.com/s?k=Neverland%20Andrew%20Kolb&i=stripbooks',
+    amazonUrl: 'https://www.amazon.com/s?k=Neverland%20Andrew%20Kolb&i=stripbooks',
   },
   {
     title: 'Fusion Plasma Physics',
@@ -1853,8 +1789,7 @@ export const BOOKS: Book[] = [
       'https://www.amazon.com/s?k=Fusion%20Plasma%20Physics%20Weston%20M.%20Stacey&i=stripbooks',
   },
   {
-    title:
-      'Silkworms Bombyx Mori explained. From Silkworm Eggs To Silk. How to make silk at home.',
+    title: 'Silkworms Bombyx Mori explained. From Silkworm Eggs To Silk. How to make silk at home.',
     author: 'Elliott Lang',
     subject: 'Biology & Medicine',
     parts: 1,
@@ -1898,8 +1833,7 @@ export const BOOKS: Book[] = [
     author: 'Avner Ash',
     subject: 'Mathematics',
     parts: 1,
-    amazonUrl:
-      'https://www.amazon.com/s?k=Elliptic%20Tales%20Avner%20Ash&i=stripbooks',
+    amazonUrl: 'https://www.amazon.com/s?k=Elliptic%20Tales%20Avner%20Ash&i=stripbooks',
   },
   {
     title: 'Principles of Mathematical Analysis',
@@ -1914,24 +1848,21 @@ export const BOOKS: Book[] = [
     author: 'Kazuo Ishiguro',
     subject: 'Literature & Fiction',
     parts: 1,
-    amazonUrl:
-      'https://www.amazon.com/s?k=The%20Buried%20Giant%20Kazuo%20Ishiguro&i=stripbooks',
+    amazonUrl: 'https://www.amazon.com/s?k=The%20Buried%20Giant%20Kazuo%20Ishiguro&i=stripbooks',
   },
   {
     title: 'Behave',
     author: 'Robert M. Sapolsky',
     subject: 'History & Society',
     parts: 1,
-    amazonUrl:
-      'https://www.amazon.com/s?k=Behave%20Robert%20M.%20Sapolsky&i=stripbooks',
+    amazonUrl: 'https://www.amazon.com/s?k=Behave%20Robert%20M.%20Sapolsky&i=stripbooks',
   },
   {
     title: 'Data and Goliath',
     author: 'Bruce Schneier',
     subject: 'Cyber Security',
     parts: 1,
-    amazonUrl:
-      'https://www.amazon.com/s?k=Data%20and%20Goliath%20Bruce%20Schneier&i=stripbooks',
+    amazonUrl: 'https://www.amazon.com/s?k=Data%20and%20Goliath%20Bruce%20Schneier&i=stripbooks',
   },
   {
     title: 'An Introduction to Mathematical Cryptography',
@@ -1994,8 +1925,7 @@ export const BOOKS: Book[] = [
     author: 'Adam Gazzaley',
     subject: 'History & Society',
     parts: 1,
-    amazonUrl:
-      'https://www.amazon.com/s?k=The%20Distracted%20Mind%20Adam%20Gazzaley&i=stripbooks',
+    amazonUrl: 'https://www.amazon.com/s?k=The%20Distracted%20Mind%20Adam%20Gazzaley&i=stripbooks',
   },
   {
     title: 'Modeling Infectious Diseases in Humans and Animals',
@@ -2010,8 +1940,7 @@ export const BOOKS: Book[] = [
     author: 'Ernest Nagel',
     subject: 'Mathematics',
     parts: 1,
-    amazonUrl:
-      "https://www.amazon.com/s?k=G%C3%B6del's%20Proof%20Ernest%20Nagel&i=stripbooks",
+    amazonUrl: "https://www.amazon.com/s?k=G%C3%B6del's%20Proof%20Ernest%20Nagel&i=stripbooks",
   },
   {
     title: 'Category Theory for the Sciences',
@@ -2034,8 +1963,7 @@ export const BOOKS: Book[] = [
     author: 'Noam Chomsky',
     subject: 'History & Society',
     parts: 1,
-    amazonUrl:
-      'https://www.amazon.com/s?k=Profit%20Over%20People%20Noam%20Chomsky&i=stripbooks',
+    amazonUrl: 'https://www.amazon.com/s?k=Profit%20Over%20People%20Noam%20Chomsky&i=stripbooks',
   },
   {
     title: 'God Created The Integers',
@@ -2102,8 +2030,7 @@ export const BOOKS: Book[] = [
       'https://www.amazon.com/s?k=Proof%20Theory%3A%20Second%20Edition%20Gaisi%20Takeuti&i=stripbooks',
   },
   {
-    title:
-      'Introduction to Tensor Analysis and the Calculus of Moving Surfaces',
+    title: 'Introduction to Tensor Analysis and the Calculus of Moving Surfaces',
     author: 'Pavel Grinfeld',
     subject: 'Mathematics',
     parts: 1,
@@ -2123,8 +2050,7 @@ export const BOOKS: Book[] = [
     author: 'Sadri Hassani',
     subject: 'Mathematics',
     parts: 1,
-    amazonUrl:
-      'https://www.amazon.com/s?k=Mathematical%20Physics%20Sadri%20Hassani&i=stripbooks',
+    amazonUrl: 'https://www.amazon.com/s?k=Mathematical%20Physics%20Sadri%20Hassani&i=stripbooks',
   },
   {
     title: 'The Adventure Time Encyclopaedia',

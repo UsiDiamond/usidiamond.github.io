@@ -18,9 +18,9 @@ type PageCase = {
 };
 
 const PAGES: PageCase[] = [
-  { name: 'contact',      component: ContactComponent },
-  { name: 'education',    component: EducationComponent },
-  { name: 'projects',     component: ProjectsComponent },
+  { name: 'contact', component: ContactComponent },
+  { name: 'education', component: EducationComponent },
+  { name: 'projects', component: ProjectsComponent },
   { name: 'volunteering', component: VolunteeringComponent },
 ];
 
@@ -72,9 +72,9 @@ describe('Responsive layout', () => {
           it('row columns do not exceed their row container', () => {
             const rows = host.querySelectorAll('.row');
             rows.forEach((row) => {
-              row.querySelectorAll(':scope > [class*="col-"]').forEach((col) =>
-                expectStaysWithin(col, row),
-              );
+              row
+                .querySelectorAll(':scope > [class*="col-"]')
+                .forEach((col) => expectStaysWithin(col, row));
             });
           });
         });

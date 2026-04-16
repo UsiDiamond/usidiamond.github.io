@@ -1,12 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { FooterComponent } from './footer.component';
-import {
-  BREAKPOINTS,
-  expectStaysWithin,
-  resetViewport,
-  setViewport,
-} from '../../testing/layout';
+import { BREAKPOINTS, expectStaysWithin, resetViewport, setViewport } from '../../testing/layout';
 
 describe('FooterComponent responsive', () => {
   let fixture: ComponentFixture<FooterComponent>;
@@ -14,8 +9,7 @@ describe('FooterComponent responsive', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [TranslateModule.forRoot()],
-      declarations: [FooterComponent],
+      imports: [FooterComponent, TranslateModule.forRoot()],
     }).compileComponents();
     TestBed.inject(TranslateService).use('en');
   });

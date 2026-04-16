@@ -14,34 +14,34 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav" role="menubar" aria-label="Site navigation" (keydown)="onMenuKeydown($event)">
       @for (item of menuItems; track item.route; let i = $index) {
-        <li class="nav-item" role="none">
-          @if (item.disabled) {
-            <button
-              #navBtn
-              tabindex="-1"
-              class="nav-link disabled"
-              role="menuitem"
-              [attr.data-route]="item.route"
-              aria-disabled="true"
-              disabled
-            >
-              {{ item.labelKey | translate }}
-            </button>
-          } @else {
-            <button
-              #navBtn
-              [tabindex]="i === activeIndex ? 0 : -1"
-              class="nav-link"
-              role="menuitem"
-              [attr.routerlink]="item.route"
-              [routerLink]="item.route"
-              routerLinkActive="active"
-              ariaCurrentWhenActive="page"
-            >
-              {{ item.labelKey | translate }}
-            </button>
-          }
-        </li>
+      <li class="nav-item" role="none">
+        @if (item.disabled) {
+        <button
+          #navBtn
+          tabindex="-1"
+          class="nav-link disabled"
+          role="menuitem"
+          [attr.data-route]="item.route"
+          aria-disabled="true"
+          disabled
+        >
+          {{ item.labelKey | translate }}
+        </button>
+        } @else {
+        <button
+          #navBtn
+          [tabindex]="i === activeIndex ? 0 : -1"
+          class="nav-link"
+          role="menuitem"
+          [attr.routerlink]="item.route"
+          [routerLink]="item.route"
+          routerLinkActive="active"
+          ariaCurrentWhenActive="page"
+        >
+          {{ item.labelKey | translate }}
+        </button>
+        }
+      </li>
       }
     </ul>
   </div>

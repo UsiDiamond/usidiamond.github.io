@@ -15,66 +15,62 @@ export interface SubjectGroup {
 
 const HIDDEN_SUBJECTS: ReadonlySet<string> = new Set(['Biology & Medicine']);
 
+const PINNED_ORDER = ['Fantasy & Science Fiction', 'Literature & Fiction'];
+
+function pinnedRank(subject: string): number {
+  const i = PINNED_ORDER.indexOf(subject);
+  return i === -1 ? Number.POSITIVE_INFINITY : i;
+}
+
 function groupBySubjectAndAuthor(books: readonly Book[]): SubjectGroup[] {
   const bySubject = new Map<string, Book[]>();
-  for (const b of books) {
-    if (HIDDEN_SUBJECTS.has(b.subject)) continue;
-    const list = bySubject.get(b.subject) ?? [];
-    list.push(b);
-    bySubject.set(b.subject, list);
+  for (const book of books) {
+    if (HIDDEN_SUBJECTS.has(book.subject)) continue;
+    const list = bySubject.get(book.subject) ?? [];
+    list.push(book);
+    bySubject.set(book.subject, list);
   }
 
   const groups: SubjectGroup[] = [];
   for (const [subject, subjectBooks] of bySubject) {
     const byAuthor = new Map<string, Book[]>();
-    for (const b of subjectBooks) {
-      const list = byAuthor.get(b.author) ?? [];
-      list.push(b);
-      byAuthor.set(b.author, list);
+    for (const book of subjectBooks) {
+      const list = byAuthor.get(book.author) ?? [];
+      list.push(book);
+      byAuthor.set(book.author, list);
     }
-    const authors: AuthorGroup[] = [];
-    for (const [author, authorBooks] of byAuthor) {
-      authors.push({
+    const authors: AuthorGroup[] = [...byAuthor.entries()]
+      .map(([author, authorBooks]) => ({
         author,
         books: [...authorBooks].sort((a, b) => a.title.localeCompare(b.title)),
-      });
-    }
-    authors.sort((a, b) => a.author.localeCompare(b.author));
-    const books = authors.flatMap((a) => a.books);
-    groups.push({ subject, authors, books });
+      }))
+      .sort((a, b) => a.author.localeCompare(b.author));
+
+    groups.push({ subject, authors, books: authors.flatMap((a) => a.books) });
   }
 
-  const PINNED_ORDER = ['Fantasy & Science Fiction', 'Literature & Fiction'];
-  const pinnedRank = (s: string) => {
-    const i = PINNED_ORDER.indexOf(s);
-    return i === -1 ? Number.POSITIVE_INFINITY : i;
-  };
-  groups.sort((a, b) => {
+  return groups.sort((a, b) => {
     const ra = pinnedRank(a.subject);
     const rb = pinnedRank(b.subject);
     if (ra !== rb) return ra - rb;
-    const countA = a.authors.reduce((sum, g) => sum + g.books.length, 0);
-    const countB = b.authors.reduce((sum, g) => sum + g.books.length, 0);
-    if (countA !== countB) return countB - countA;
-    return a.subject.localeCompare(b.subject);
+    const countDiff =
+      b.authors.reduce((sum, g) => sum + g.books.length, 0) -
+      a.authors.reduce((sum, g) => sum + g.books.length, 0);
+    return countDiff !== 0 ? countDiff : a.subject.localeCompare(b.subject);
   });
-
-  return groups;
 }
 
 @Component({
   selector: '[reading]',
+  imports: [TranslateModule],
   host: {
     id: 'maincontent',
     tabindex: '-1',
     class: 'container mt-1 mb-5',
-    style: 'background-color: rgba(255, 255, 255, 0.096); border-radius: 25px;',
   },
-  imports: [TranslateModule],
   templateUrl: './reading.component.html',
   styleUrl: './reading.component.scss',
 })
 export class ReadingComponent {
-  readonly subjectGroups: readonly SubjectGroup[] =
-    groupBySubjectAndAuthor(BOOKS);
+  readonly subjectGroups: readonly SubjectGroup[] = groupBySubjectAndAuthor(BOOKS);
 }

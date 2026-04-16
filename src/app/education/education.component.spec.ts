@@ -112,9 +112,7 @@ describe('EducationComponent', () => {
 
   it('should contain the BLS certification', () => {
     const el: HTMLElement = fixture.nativeElement;
-    expect(el.textContent).toContain(
-      'Basic Life Support for Healthcare and Public Safety (BLS)',
-    );
+    expect(el.textContent).toContain('Basic Life Support for Healthcare and Public Safety (BLS)');
   });
 
   it('should contain the Introduction to R Course certification', () => {

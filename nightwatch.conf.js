@@ -1,4 +1,3 @@
-
 module.exports = {
   src_folders: ['e2e'],
   output_folder: './integration-tests-report/',
@@ -11,15 +10,15 @@ module.exports = {
       format: [
         'html:./integration-tests-report/cucumber-report.html',
         'json:./integration-tests-report/cucumber-report.json',
-        'junit:./integration-tests-report/cucumber-junit.xml'
-      ]
-    }
+        'junit:./integration-tests-report/cucumber-junit.xml',
+      ],
+    },
   },
 
   globals_path: '',
 
   test_workers: {
-    enabled: false
+    enabled: false,
   },
 
   test_settings: {
@@ -30,18 +29,17 @@ module.exports = {
       screenshots: {
         enabled: true,
         path: 'integration-tests-report/screenshots',
-        on_failure: true
+        on_failure: true,
       },
 
       desiredCapabilities: {
-        browserName: 'chrome'
+        browserName: 'chrome',
       },
 
       webdriver: {
         start_process: true,
-        server_path: ''
+        server_path: '',
       },
-
     },
 
     chrome: {
@@ -55,9 +53,9 @@ module.exports = {
             '--ignore-certificate-errors',
             '--allow-insecure-localhost',
             '--headless=new',
-            '--window-size=1280,1024'
-          ]
-        }
+            '--window-size=1280,1024',
+          ],
+        },
       },
 
       webdriver: {
@@ -65,22 +63,22 @@ module.exports = {
         server_path: '',
         cli_args: [
           // --verbose
-        ]
-      }
+        ],
+      },
     },
 
     firefox: {
       desiredCapabilities: {
         browserName: 'firefox',
         'moz:firefoxOptions': {
-          args: ['--headless', '--width=1280', '--height=1024']
-        }
+          args: ['--headless', '--width=1280', '--height=1024'],
+        },
       },
 
       webdriver: {
         start_process: true,
-        server_path: ''
-      }
+        server_path: '',
+      },
     },
 
     edge: {
@@ -93,28 +91,28 @@ module.exports = {
             '--disable-dev-shm-usage',
             '--ignore-certificate-errors',
             '--allow-insecure-localhost',
-            '--window-size=1280,1024'
-          ]
-        }
+            '--window-size=1280,1024',
+          ],
+        },
       },
 
       webdriver: {
         start_process: true,
-        server_path: ''
-      }
+        server_path: '',
+      },
     },
 
     safari: {
       // Safari requires macOS and safaridriver to be enabled via:
       //   sudo safaridriver --enable
       desiredCapabilities: {
-        browserName: 'safari'
+        browserName: 'safari',
       },
 
       webdriver: {
         start_process: true,
-        server_path: '/usr/bin/safaridriver'
-      }
+        server_path: '/usr/bin/safaridriver',
+      },
     },
 
     'android.real.chrome': {
@@ -132,8 +130,8 @@ module.exports = {
         server_path: '',
         cli_args: [
           // --verbose
-        ]
-      }
+        ],
+      },
     },
 
     'android.emulator.chrome': {
@@ -143,14 +141,14 @@ module.exports = {
         browserName: 'chrome',
         'goog:chromeOptions': {
           w3c: true,
-          androidPackage: 'com.android.chrome'
+          androidPackage: 'com.android.chrome',
         },
       },
 
       webdriver: {
         start_process: true,
         server_path: 'chromedriver-mobile/chromedriver',
-      }
+      },
     },
   },
 };

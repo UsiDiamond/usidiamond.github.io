@@ -1,9 +1,11 @@
+import { DOCUMENT } from '@angular/common';
 import { Component, DestroyRef, ElementRef, QueryList, ViewChildren, inject } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { NavigationEnd, Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { filter } from 'rxjs';
-import { MENU_ITEMS, MenuItem } from '../app-routing.module';
+
+import { MENU_ITEMS, MenuItem } from '../menu-items';
 
 @Component({
   selector: '[menu]',
@@ -16,18 +18,16 @@ import { MENU_ITEMS, MenuItem } from '../app-routing.module';
   styleUrl: './menu.component.scss',
 })
 export class MenuComponent {
-  readonly menuItems: readonly MenuItem[] = [...MENU_ITEMS].sort(
-    (a, b) => a.order - b.order,
-  );
+  readonly menuItems: readonly MenuItem[] = [...MENU_ITEMS].sort((a, b) => a.order - b.order);
   activeIndex = 0;
 
   @ViewChildren('navBtn', { read: ElementRef })
   navButtonRefs!: QueryList<ElementRef<HTMLButtonElement>>;
 
+  private readonly doc = inject(DOCUMENT);
+
   private get enabledIndices(): number[] {
-    return this.menuItems
-      .map((item, i) => (item.disabled ? -1 : i))
-      .filter((i) => i !== -1);
+    return this.menuItems.map((item, i) => (item.disabled ? -1 : i)).filter((i) => i !== -1);
   }
 
   constructor() {
@@ -36,13 +36,10 @@ export class MenuComponent {
 
     router.events
       .pipe(
-        filter((event) => event instanceof NavigationEnd),
+        filter((e) => e instanceof NavigationEnd),
         takeUntilDestroyed(destroyRef),
       )
-      .subscribe(() => {
-        const el = document.getElementById('maincontent');
-        el?.focus();
-      });
+      .subscribe(() => this.doc.getElementById('maincontent')?.focus());
   }
 
   onMenuKeydown(event: KeyboardEvent): void {

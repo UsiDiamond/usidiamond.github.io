@@ -1,16 +1,13 @@
 import { TestBed } from '@angular/core/testing';
-import { RouterTestingModule } from '@angular/router/testing';
+import { provideRouter } from '@angular/router';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { AppComponent } from './app.component';
-import { BackgroundComponent } from './background/background.component';
-import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 describe('AppComponent', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [RouterTestingModule, TranslateModule.forRoot()],
-      declarations: [AppComponent, BackgroundComponent],
-      schemas: [CUSTOM_ELEMENTS_SCHEMA],
+      imports: [AppComponent, TranslateModule.forRoot()],
+      providers: [provideRouter([])],
     });
     const translate = TestBed.inject(TranslateService);
     translate.setTranslation(
@@ -46,9 +43,7 @@ describe('AppComponent', () => {
     fixture.detectChanges();
     const el: HTMLElement = fixture.nativeElement;
     const skipLink = el.querySelector('a.skip');
-    expect(
-      skipLink?.classList.contains('visually-hidden-focusable'),
-    ).toBeTrue();
+    expect(skipLink?.classList.contains('visually-hidden-focusable')).toBeTrue();
   });
 
   it('should render a router outlet', () => {

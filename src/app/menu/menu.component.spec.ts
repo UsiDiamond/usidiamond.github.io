@@ -2,7 +2,8 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MenuComponent } from './menu.component';
 import { RouterModule } from '@angular/router';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
-import { routes, MENU_ITEMS } from '../app-routing.module';
+import { appRoutes as routes } from '../app.routes';
+import { MENU_ITEMS } from '../menu-items';
 
 const EN_MENU = {
   menu: {
@@ -27,11 +28,7 @@ describe('MenuComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [
-        MenuComponent,
-        RouterModule.forRoot(routes),
-        TranslateModule.forRoot(),
-      ],
+      imports: [MenuComponent, RouterModule.forRoot(routes), TranslateModule.forRoot()],
     }).compileComponents();
 
     const translate = TestBed.inject(TranslateService);
@@ -65,9 +62,7 @@ describe('MenuComponent', () => {
   });
 
   it('should render nav buttons in the declared order', () => {
-    const expected = [...MENU_ITEMS]
-      .sort((a, b) => a.order - b.order)
-      .map(labelOf);
+    const expected = [...MENU_ITEMS].sort((a, b) => a.order - b.order).map(labelOf);
     const actual = navButtons().map((b) => b.textContent?.trim());
     expect(actual).toEqual(expected);
   });

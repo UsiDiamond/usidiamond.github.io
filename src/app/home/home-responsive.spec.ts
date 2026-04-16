@@ -1,14 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { HomeComponent } from './home.component';
-import { LinksComponent } from './links/links.component';
-import { SectionComponent } from './section/section.component';
-import {
-  BREAKPOINTS,
-  expectStaysWithin,
-  resetViewport,
-  setViewport,
-} from '../../testing/layout';
+import { BREAKPOINTS, expectStaysWithin, resetViewport, setViewport } from '../../testing/layout';
 
 describe('HomeComponent responsive', () => {
   let fixture: ComponentFixture<HomeComponent>;
@@ -16,8 +9,7 @@ describe('HomeComponent responsive', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [TranslateModule.forRoot(), LinksComponent, SectionComponent],
-      declarations: [HomeComponent],
+      imports: [HomeComponent, TranslateModule.forRoot()],
     }).compileComponents();
     TestBed.inject(TranslateService).use('en');
   });
@@ -44,22 +36,18 @@ describe('HomeComponent responsive', () => {
       });
 
       it('keeps every .home-section card within the host', () => {
-        host.querySelectorAll('.home-section').forEach((card) =>
-          expectStaysWithin(card, host),
-        );
+        host.querySelectorAll('.home-section').forEach((card) => expectStaysWithin(card, host));
       });
 
       it('keeps each [section] widget within the host', () => {
-        host.querySelectorAll('[section]').forEach((el) =>
-          expectStaysWithin(el, host),
-        );
+        host.querySelectorAll('[section]').forEach((el) => expectStaysWithin(el, host));
       });
 
       it('every grid column stays within its row', () => {
         host.querySelectorAll('.row').forEach((row) => {
-          row.querySelectorAll(':scope > [class*="col-"]').forEach((col) =>
-            expectStaysWithin(col, row),
-          );
+          row
+            .querySelectorAll(':scope > [class*="col-"]')
+            .forEach((col) => expectStaysWithin(col, row));
         });
       });
     });
