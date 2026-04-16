@@ -1,24 +1,14 @@
-/**
- * RTL layout tests: verify that switching to a right-to-left language
- * correctly updates the document direction and does not cause element
- * overlap or text overflow.
- */
-import { DOCUMENT } from '@angular/common';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { RouterTestingModule } from '@angular/router/testing';
+import { provideRouter } from '@angular/router';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
-import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { BackgroundComponent } from './background/background.component';
 import { LanguageService } from './i18n/language.service';
 import { SUPPORTED_LANGUAGES } from './i18n/supported-languages';
 import { setViewport, resetViewport, BREAKPOINTS } from '../testing/layout';
 
 const RTL_LANGS = SUPPORTED_LANGUAGES.filter((l) => l.dir === 'rtl');
 const LTR_LANGS = SUPPORTED_LANGUAGES.filter((l) => l.dir === 'ltr');
-
-// ─── LanguageService: dir attribute ──────────────────────────────────────────
 
 describe('LanguageService — RTL direction', () => {
   let svc: LanguageService;
@@ -48,7 +38,6 @@ describe('LanguageService — RTL direction', () => {
   });
 
   it('sets dir="ltr" for every LTR language', () => {
-    // Start in RTL so we can confirm the reset.
     svc.use(RTL_LANGS[0].code);
     for (const lang of LTR_LANGS) {
       svc.use(lang.code);
@@ -66,8 +55,6 @@ describe('LanguageService — RTL direction', () => {
   });
 });
 
-// ─── AppComponent: bg-toggle uses logical positioning ────────────────────────
-
 describe('AppComponent — bg-toggle position in RTL', () => {
   let fixture: ComponentFixture<AppComponent>;
   let el: HTMLElement;
@@ -84,19 +71,22 @@ describe('AppComponent — bg-toggle position in RTL', () => {
   beforeEach(() => {
     localStorage.removeItem('usidiamond.lang');
     TestBed.configureTestingModule({
-      imports: [RouterTestingModule, TranslateModule.forRoot()],
-      declarations: [AppComponent, BackgroundComponent],
-      schemas: [CUSTOM_ELEMENTS_SCHEMA],
+      imports: [AppComponent, TranslateModule.forRoot()],
+      providers: [provideRouter([])],
     });
     const translate = TestBed.inject(TranslateService);
     translate.setTranslation('en', translations, true);
-    translate.setTranslation('ar', {
-      common: {
-        skipToMainContent: 'تخطي إلى المحتوى الرئيسي',
-        pauseAnimation: 'إيقاف الحركة مؤقتاً',
-        resumeAnimation: 'استئناف الحركة',
+    translate.setTranslation(
+      'ar',
+      {
+        common: {
+          skipToMainContent: 'تخطي إلى المحتوى الرئيسي',
+          pauseAnimation: 'إيقاف الحركة مؤقتاً',
+          resumeAnimation: 'استئناف الحركة',
+        },
       },
-    }, true);
+      true,
+    );
     translate.use('en');
 
     langSvc = TestBed.inject(LanguageService);
@@ -118,8 +108,7 @@ describe('AppComponent — bg-toggle position in RTL', () => {
   it('bg-toggle does not use hard-coded left or right physical properties', () => {
     const btn = el.querySelector<HTMLElement>('.bg-toggle');
     expect(btn).toBeTruthy();
-    // The button must not have physical 'left' or 'right' as inline styles
-    // (positioning should come from the stylesheet using inset-inline-start).
+
     expect(btn!.style.left).toBe('');
     expect(btn!.style.right).toBe('');
   });
@@ -130,8 +119,7 @@ describe('AppComponent — bg-toggle position in RTL', () => {
     const btn = el.querySelector<HTMLElement>('.bg-toggle');
     if (!btn) return;
     const r = btn.getBoundingClientRect();
-    // In a JSDOM environment getBoundingClientRect returns zeros for fixed elements;
-    // we verify the element exists and has no explicit overflow-causing inline styles.
+
     expect(r.width).toBeGreaterThanOrEqual(0);
   });
 
@@ -155,22 +143,132 @@ describe('AppComponent — bg-toggle position in RTL', () => {
   });
 });
 
-// ─── Nav links: no overflow in translated text ───────────────────────────────
+const ALL_LANG_TRANSLATIONS: Record<
+  string,
+  { pauseAnimation: string; resumeAnimation: string; skipToMainContent: string }
+> = {
+  en: {
+    pauseAnimation: 'Pause animation',
+    resumeAnimation: 'Resume animation',
+    skipToMainContent: 'Skip to main content',
+  },
+  ar: {
+    pauseAnimation: 'إيقاف الحركة مؤقتاً',
+    resumeAnimation: 'استئناف الحركة',
+    skipToMainContent: 'تخطي إلى المحتوى الرئيسي',
+  },
+  de: {
+    pauseAnimation: 'Animation pausieren',
+    resumeAnimation: 'Animation fortsetzen',
+    skipToMainContent: 'Zum Hauptinhalt springen',
+  },
+  es: {
+    pauseAnimation: 'Pausar animación',
+    resumeAnimation: 'Reanudar animación',
+    skipToMainContent: 'Saltar al contenido principal',
+  },
+  fr: {
+    pauseAnimation: 'Mettre en pause',
+    resumeAnimation: 'Reprendre',
+    skipToMainContent: 'Aller au contenu principal',
+  },
+  ko: {
+    pauseAnimation: '애니메이션 일시정지',
+    resumeAnimation: '애니메이션 재개',
+    skipToMainContent: '본문으로 건너뛰기',
+  },
+  ru: {
+    pauseAnimation: 'Пауза анимации',
+    resumeAnimation: 'Возобновить анимацию',
+    skipToMainContent: 'Перейти к основному содержимому',
+  },
+  tl: {
+    pauseAnimation: 'I-pause ang animasyon',
+    resumeAnimation: 'Ipagpatuloy ang animasyon',
+    skipToMainContent: 'Laktawan ang pangunahing nilalaman',
+  },
+  vi: {
+    pauseAnimation: 'Tạm dừng hoạt ảnh',
+    resumeAnimation: 'Tiếp tục hoạt ảnh',
+    skipToMainContent: 'Chuyển đến nội dung chính',
+  },
+  yi: {
+    pauseAnimation: 'פּויזירן אַנימאַציע',
+    resumeAnimation: 'ווידעראויפנעמען אַנימאַציע',
+    skipToMainContent: 'שפּרינג צום הויפּט־אינהאַלט',
+  },
+  'zh-Hans': {
+    pauseAnimation: '暂停动画',
+    resumeAnimation: '继续动画',
+    skipToMainContent: '跳至主要内容',
+  },
+};
+
+describe('AppComponent — bg-toggle label translation', () => {
+  let fixture: ComponentFixture<AppComponent>;
+  let el: HTMLElement;
+  let langSvc: LanguageService;
+
+  beforeEach(() => {
+    localStorage.removeItem('usidiamond.lang');
+    TestBed.configureTestingModule({
+      imports: [AppComponent, TranslateModule.forRoot()],
+      providers: [provideRouter([])],
+    });
+    const translate = TestBed.inject(TranslateService);
+    for (const [code, t] of Object.entries(ALL_LANG_TRANSLATIONS)) {
+      translate.setTranslation(code, { common: t }, true);
+    }
+    translate.use('en');
+    langSvc = TestBed.inject(LanguageService);
+    fixture = TestBed.createComponent(AppComponent);
+    fixture.detectChanges();
+    el = fixture.nativeElement;
+  });
+
+  afterEach(() => {
+    document.documentElement.setAttribute('dir', 'ltr');
+    document.documentElement.setAttribute('lang', 'en');
+  });
+
+  for (const [code, t] of Object.entries(ALL_LANG_TRANSLATIONS)) {
+    it(`shows translated pause label in ${code}`, () => {
+      langSvc.use(code);
+      fixture.detectChanges();
+      const label = el.querySelector('.bg-toggle__label');
+      expect(label).withContext(`bg-toggle__label missing for ${code}`).toBeTruthy();
+      expect(label!.textContent?.trim())
+        .withContext(`Wrong pause label for ${code}`)
+        .toBe(t.pauseAnimation);
+    });
+
+    it(`never renders the raw key in ${code}`, () => {
+      langSvc.use(code);
+      fixture.detectChanges();
+      const label = el.querySelector('.bg-toggle__label');
+      expect(label!.textContent)
+        .withContext(`Raw key shown for ${code}`)
+        .not.toContain('common.');
+    });
+
+    it(`shows translated skip link text in ${code}`, () => {
+      langSvc.use(code);
+      fixture.detectChanges();
+      const skip = el.querySelector<HTMLElement>('a.skip');
+      expect(skip).withContext(`skip link missing for ${code}`).toBeTruthy();
+      expect(skip!.textContent?.trim())
+        .withContext(`Wrong skip text for ${code}`)
+        .toBe(t.skipToMainContent);
+    });
+  }
+});
 
 describe('MenuComponent — nav link text does not overflow at narrow widths', () => {
-  // This relies on the .nav-link CSS having overflow-wrap: anywhere; max-width: 100%.
-  // We verify the styles on a real element in JSDOM using getComputedStyle.
   it('overflow-wrap: anywhere is applied to nav links via stylesheet', () => {
-    // Create a mock element and apply the class to check that the global
-    // stylesheet injects the expected property.  In a Karma/JSDOM test, full
-    // CSS cascade is not available, so we verify the property is declared in
-    // the component's compiled styles by checking that no hard overflow is set
-    // via inline style.
     const div = document.createElement('button');
     div.className = 'nav-link';
     document.body.appendChild(div);
-    // Inline style must be clear — no forced overflow behavior that would
-    // override the stylesheet rule.
+
     expect(div.style.overflow).toBe('');
     document.body.removeChild(div);
   });

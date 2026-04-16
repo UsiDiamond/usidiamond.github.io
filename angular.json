@@ -22,30 +22,16 @@
               "base": "public/usidiamond.github.io"
             },
             "index": "src/index.html",
-            "polyfills": [
-              "src/polyfills.ts"
-            ],
+            "polyfills": ["src/polyfills.ts"],
             "tsConfig": "tsconfig.app.json",
-            "assets": [
-              "src/favicon.ico",
-              "src/assets",
-              "src/robots.txt",
-              "src/sitemap.xml"
-            ],
-            "styles": [
-              "src/styles.scss"
-            ],
+            "assets": ["src/favicon.ico", "src/assets", "src/robots.txt", "src/sitemap.xml"],
+            "styles": ["src/styles.scss"],
             "stylePreprocessorOptions": {
               "includePaths": ["src/styles"]
             },
-            "scripts": [ 
-                "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
-            ],
+            "scripts": ["node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"],
             "browser": "src/main.ts",
-            "allowedCommonJsDependencies": [
-              "vanta/dist/vanta.net.min",
-              "vanta/dist/vanta.fog.min"
-            ]
+            "allowedCommonJsDependencies": ["vanta/dist/vanta.net.min", "vanta/dist/vanta.fog.min"]
           },
           "configurations": {
             "production": {

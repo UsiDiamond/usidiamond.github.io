@@ -29,7 +29,6 @@ const THEME = {
   selector: 'app-background',
   templateUrl: './background.component.html',
   styleUrl: './background.component.scss',
-  standalone: false,
 })
 export class BackgroundComponent {
   @ViewChild('mistBackHost', { static: true })

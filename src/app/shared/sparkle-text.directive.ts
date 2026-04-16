@@ -1,11 +1,4 @@
-import {
-  afterNextRender,
-  DestroyRef,
-  Directive,
-  ElementRef,
-  inject,
-  NgZone,
-} from '@angular/core';
+import { afterNextRender, DestroyRef, Directive, ElementRef, inject, NgZone } from '@angular/core';
 
 const VS = `attribute vec2 a;varying vec2 v;void main(){v=(a+1.)*.5;gl_Position=vec4(a,0.,1.);}`;
 
@@ -45,7 +38,6 @@ void main(){
 
 @Directive({
   selector: '[sparkle]',
-  standalone: false,
 })
 export class SparkleTextDirective {
   private canvas?: HTMLCanvasElement;

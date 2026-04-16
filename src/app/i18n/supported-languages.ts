@@ -31,8 +31,6 @@ export const SUPPORTED_LANGUAGES: readonly SupportedLanguage[] = [
 
 export const DEFAULT_LANGUAGE_CODE = 'en';
 
-export function findSupportedLanguage(
-  code: string,
-): SupportedLanguage | undefined {
+export function findSupportedLanguage(code: string): SupportedLanguage | undefined {
   return SUPPORTED_LANGUAGES.find((l) => l.code === code);
 }

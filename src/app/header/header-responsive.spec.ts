@@ -1,7 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { HeaderComponent } from './header.component';
-import { LanguageSwitcherComponent } from '../i18n/language-switcher/language-switcher.component';
 import {
   BREAKPOINTS,
   expectCenteredWithin,
@@ -16,8 +15,7 @@ describe('HeaderComponent responsive', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [LanguageSwitcherComponent, TranslateModule.forRoot()],
-      declarations: [HeaderComponent],
+      imports: [HeaderComponent, TranslateModule.forRoot()],
     }).compileComponents();
     TestBed.inject(TranslateService).use('en');
   });

@@ -6,38 +6,33 @@
 
 <div class="reading-sections">
   @for (subject of subjectGroups; track subject.subject) {
-    <section class="reading-section">
-      <h2 tabindex="0" class="reading-subject">{{ subject.subject }}</h2>
-      <div class="reading-subject-pane">
-        <div class="reading-card-grid">
-          @for (book of subject.books; track $index) {
-            <a
-              class="reading-card"
-              [attr.href]="book.amazonUrl"
-              target="_blank"
-              rel="noopener noreferrer"
-              [attr.title]="
+  <section class="reading-section">
+    <h2 tabindex="0" class="reading-subject">{{ subject.subject }}</h2>
+    <div class="reading-subject-pane">
+      <div class="reading-card-grid">
+        @for (book of subject.books; track $index) {
+        <a
+          class="reading-card"
+          [attr.href]="book.amazonUrl"
+          target="_blank"
+          rel="noopener noreferrer"
+          [attr.title]="
                 book.series ? book.title + ' — ' + book.series : book.title
               "
-            >
-              <p class="reading-card-title" tabindex="0">
-                {{ book.title }}
-                @if (book.parts > 1) {
-                  <span class="reading-card-vols">
-                    ({{ book.parts }} vols)</span
-                  >
-                }
-              </p>
-              <p class="reading-card-author" tabindex="0">{{ book.author }}</p>
-              @if (book.series) {
-                <p class="reading-card-series" tabindex="0">
-                  {{ book.series }}
-                </p>
-              }
-            </a>
+        >
+          <p class="reading-card-title" tabindex="0">
+            {{ book.title }} @if (book.parts > 1) {
+            <span class="reading-card-vols">({{ book.parts }} vols)</span>
+            }
+          </p>
+          <p class="reading-card-author" tabindex="0">{{ book.author }}</p>
+          @if (book.series) {
+          <p class="reading-card-series" tabindex="0">{{ book.series }}</p>
           }
-        </div>
+        </a>
+        }
       </div>
-    </section>
+    </div>
+  </section>
   }
 </div>

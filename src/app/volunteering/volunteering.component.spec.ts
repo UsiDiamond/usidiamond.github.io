@@ -95,9 +95,7 @@ describe('VolunteeringComponent', () => {
   it('should contain the SSA LGBTAC parliamentarian role', () => {
     const el: HTMLElement = fixture.nativeElement;
     expect(el.textContent).toContain('Parliamentarian');
-    expect(el.textContent).toContain(
-      'SSA Headquarters LGBT Advisory Committee',
-    );
+    expect(el.textContent).toContain('SSA Headquarters LGBT Advisory Committee');
   });
 
   it('should contain the Securityplus Federal Credit Union roles', () => {

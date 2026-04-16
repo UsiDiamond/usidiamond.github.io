@@ -1,5 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { toSignal } from '@angular/core/rxjs-interop';
 import { TranslateModule } from '@ngx-translate/core';
+import { map } from 'rxjs';
+
 import { LanguageService } from '../language.service';
 import { SupportedLanguage } from '../supported-languages';
 
@@ -11,16 +14,14 @@ import { SupportedLanguage } from '../supported-languages';
   styleUrl: './language-switcher.component.scss',
 })
 export class LanguageSwitcherComponent {
-  readonly supported: readonly SupportedLanguage[];
-  readonly currentCode: () => string;
+  private readonly languageService = inject(LanguageService);
 
-  constructor(private readonly languageService: LanguageService) {
-    this.supported = languageService.supported;
-    this.currentCode = () => languageService.current.code;
-  }
+  readonly supported: readonly SupportedLanguage[] = this.languageService.supported;
+  readonly currentCode = toSignal(this.languageService.current$.pipe(map((l) => l.code)), {
+    initialValue: this.languageService.current.code,
+  });
 
   onChange(event: Event): void {
-    const code = (event.target as HTMLSelectElement).value;
-    this.languageService.use(code);
+    this.languageService.use((event.target as HTMLSelectElement).value);
   }
 }

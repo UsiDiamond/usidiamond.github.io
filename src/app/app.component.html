@@ -1,9 +1,6 @@
-<a
-  href="#maincontent"
-  class="skip visually-hidden-focusable"
-  (click)="skipToMain($event)"
-  >{{ "common.skipToMainContent" | translate }}</a
->
+<a href="#maincontent" class="skip visually-hidden-focusable" (click)="skipToMain($event)">
+  {{ "common.skipToMainContent" | translate }}
+</a>
 
 <app-background #bg></app-background>
 <header personal-header></header>
@@ -30,25 +27,13 @@
   (click)="bg.toggle()"
 >
   @if (bg.paused()) {
-    <svg
-      aria-hidden="true"
-      focusable="false"
-      width="18"
-      height="18"
-      viewBox="0 0 24 24"
-    >
-      <path d="M8 5v14l11-7z" fill="currentColor" />
-    </svg>
+  <svg aria-hidden="true" focusable="false" width="18" height="18" viewBox="0 0 24 24">
+    <path d="M8 5v14l11-7z" fill="currentColor" />
+  </svg>
   } @else {
-    <svg
-      aria-hidden="true"
-      focusable="false"
-      width="18"
-      height="18"
-      viewBox="0 0 24 24"
-    >
-      <path d="M6 5h4v14H6zm8 0h4v14h-4z" fill="currentColor" />
-    </svg>
+  <svg aria-hidden="true" focusable="false" width="18" height="18" viewBox="0 0 24 24">
+    <path d="M6 5h4v14H6zm8 0h4v14h-4z" fill="currentColor" />
+  </svg>
   }
   <span class="bg-toggle__label">{{
     bg.paused()

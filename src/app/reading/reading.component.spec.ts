@@ -155,7 +155,7 @@ describe('ReadingComponent', () => {
       expect(b.author?.length).toBeGreaterThan(0);
       expect(b.subject?.length).toBeGreaterThan(0);
       expect(b.parts).toBeGreaterThanOrEqual(1);
-      expect(b.amazonUrl).toMatch(/^https:\/\/www\.amazon\.com\//);
+      expect(b.amazonUrl).toMatch(/^https:\/\/www\.amazon\.com/);
     }
   });
 

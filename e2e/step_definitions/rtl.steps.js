@@ -1,17 +1,4 @@
-const { When, Then } = require("@cucumber/cucumber");
-
-// ── Set language via LocalStorage (faster than interacting with the select) ──
-When("the language is set to {string}", function (langCode) {
-  browser.execute(
-    function (code) {
-      localStorage.setItem("usidiamond.lang", code);
-    },
-    [langCode],
-  );
-  // Reload so Angular picks up the stored preference on init.
-  browser.refresh();
-  browser.waitForElementVisible("body");
-});
+const { Then } = require("@cucumber/cucumber");
 
 // ── Every nav-link button text must not overflow its own bounding box ─────────
 Then("every nav link text stays within its button", function () {

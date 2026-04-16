@@ -1,14 +1,28 @@
-import { Component, Inject } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
+import { RouterOutlet } from '@angular/router';
+import { TranslateModule } from '@ngx-translate/core';
+
+import { BackgroundComponent } from './background/background.component';
+import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
+import { MenuComponent } from './menu/menu.component';
 
 @Component({
   selector: '[app-root]',
+  imports: [
+    RouterOutlet,
+    TranslateModule,
+    BackgroundComponent,
+    HeaderComponent,
+    FooterComponent,
+    MenuComponent,
+  ],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
-  standalone: false,
 })
 export class AppComponent {
-  constructor(@Inject(DOCUMENT) private doc: Document) {}
+  private readonly doc = inject(DOCUMENT);
 
   skipToMain(event: Event): void {
     event.preventDefault();

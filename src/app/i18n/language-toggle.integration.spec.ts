@@ -12,16 +12,8 @@ describe('Runtime language toggle', () => {
     }).compileComponents();
 
     translate = TestBed.inject(TranslateService);
-    translate.setTranslation(
-      'en',
-      { projects: { title: 'What has the Usi built?' } },
-      true,
-    );
-    translate.setTranslation(
-      'es',
-      { projects: { title: '¿Qué ha construido el Usi?' } },
-      true,
-    );
+    translate.setTranslation('en', { projects: { title: 'What has the Usi built?' } }, true);
+    translate.setTranslation('es', { projects: { title: '¿Qué ha construido el Usi?' } }, true);
     translate.use('en');
 
     fixture = TestBed.createComponent(ProjectsComponent);

@@ -1,5 +1,9 @@
 @use "tokens" as t;
 @use "mixins" as m;
+:host {
+  background-color: rgba(255, 255, 255, 0.096);
+  border-radius: 25px;
+}
 
 h2 {
   @include m.centered-heading;

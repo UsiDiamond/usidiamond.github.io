@@ -43,9 +43,7 @@ export class LanguageService {
     this.currentSubject.next(found);
     try {
       this.document.defaultView?.localStorage.setItem(STORAGE_KEY, found.code);
-    } catch {
-      // Storage may be disabled (private mode) — tolerate silently.
-    }
+    } catch {}
   }
 
   private applyLanguage(lang: SupportedLanguage): void {
@@ -73,9 +71,7 @@ export class LanguageService {
       const base = tag.split('-')[0];
       const byBase = findSupportedLanguage(base);
       if (byBase) return byBase;
-      const bySupportedBase = SUPPORTED_LANGUAGES.find(
-        (l) => l.code.split('-')[0] === base,
-      );
+      const bySupportedBase = SUPPORTED_LANGUAGES.find((l) => l.code.split('-')[0] === base);
       if (bySupportedBase) return bySupportedBase;
     }
 

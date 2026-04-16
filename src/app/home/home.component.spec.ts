@@ -1,17 +1,13 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { HomeComponent } from './home.component';
-import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-
 describe('HomeComponent', () => {
   let component: HomeComponent;
   let fixture: ComponentFixture<HomeComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [TranslateModule.forRoot()],
-      declarations: [HomeComponent],
-      schemas: [CUSTOM_ELEMENTS_SCHEMA],
+      imports: [HomeComponent, TranslateModule.forRoot()],
     });
 
     const translate = TestBed.inject(TranslateService);
@@ -126,9 +122,7 @@ describe('HomeComponent', () => {
 
     it('should render the icon inside the Pronouns Page anchor', () => {
       const el: HTMLElement = fixture.nativeElement;
-      const anchor = el.querySelector<HTMLAnchorElement>(
-        'a[title="Pronouns Page"]',
-      );
+      const anchor = el.querySelector<HTMLAnchorElement>('a[title="Pronouns Page"]');
       expect(anchor).toBeTruthy();
       expect(anchor?.querySelector('svg.pronouns-svg')).toBeTruthy();
     });
