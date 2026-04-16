@@ -84,6 +84,64 @@ h2 {
   }
 }
 
+// WCAG 2.4.7: visible focus indicator for every keyboard-reachable control.
+// Uses a high-contrast two-layer outline so the ring is visible on any
+// background — dark inner halo + light outer ring.
+:focus-visible {
+  outline: 3px solid #ffffff;
+  outline-offset: 2px;
+  box-shadow: 0 0 0 5px rgba(0, 0, 0, 0.75);
+}
+
+a:focus-visible,
+button:focus-visible,
+[role="button"]:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+.nav-link:focus-visible,
+[tabindex]:focus-visible {
+  outline: 3px solid #ffffff;
+  outline-offset: 2px;
+  box-shadow: 0 0 0 5px rgba(0, 0, 0, 0.75);
+}
+
+// WCAG 1.4.1 Links must be distinguishable beyond colour: underline by default.
+a {
+  text-decoration-line: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+}
+a:hover,
+a:focus-visible {
+  text-decoration-thickness: 2px;
+}
+
+// WCAG 1.4.6 Enhanced high-contrast mode — strip the translucent glass
+// layers in favour of solid backgrounds so text stays readable for users
+// who request more contrast.
+@media (prefers-contrast: more) {
+  .diamond-card {
+    background: #0a0514 !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    border-color: #ffffff !important;
+  }
+  h1,
+  h2 {
+    background: #0a0514 !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    border-color: #ffffff !important;
+    color: #ffffff !important;
+  }
+  .bg-toggle {
+    background: #000000 !important;
+    border-color: #ffffff !important;
+    color: #ffffff !important;
+  }
+}
+
 main {
   top: 0;
   position: absolute;

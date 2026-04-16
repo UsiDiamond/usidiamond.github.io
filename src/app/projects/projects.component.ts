@@ -5,6 +5,7 @@ import { TranslateModule } from '@ngx-translate/core';
   selector: '[projects]',
   host: {
     id: 'maincontent',
+    tabindex: '-1',
     class: 'container mt-1 mb-5',
     style: 'background-color: rgba(255, 255, 255, 0.096); border-radius: 25px;',
   },
