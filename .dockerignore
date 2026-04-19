@@ -3,3 +3,24 @@ public
 coverage
 .git
 integration-tests-report
+
+# Test and e2e
+e2e
+*.spec.ts
+karma.conf.js
+nightwatch.conf.js
+
+# CI / tooling
+.github
+.gitignore
+.editorconfig
+.prettierrc
+.prettierignore
+
+# Docs
+*.md
+
+# Docker files (not needed inside the build container)
+Dockerfile
+docker-compose.yml
+nginx.conf
