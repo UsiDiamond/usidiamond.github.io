@@ -36,7 +36,7 @@ jobs:
       # --- workflow_run path: reuse the artifact built and verified by integration tests ---
       - name: Download pre-built site from integration tests
         if: github.event_name != 'workflow_dispatch'
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           name: site-build
           run-id: ${{ github.event.workflow_run.id }}
@@ -50,7 +50,7 @@ jobs:
 
       - name: Setup Node.js
         if: github.event_name == 'workflow_dispatch'
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v5
         with:
           node-version: "24.x"
           cache: "npm"
@@ -65,7 +65,7 @@ jobs:
 
       # --- common: hand off to deploy job ---
       - name: Upload site for deployment
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: site-for-deploy
           path: site
@@ -78,7 +78,7 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: Download site
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           name: site-for-deploy
           path: ${{ runner.temp }}/site-for-deploy
