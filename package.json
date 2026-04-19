@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start-dev": "ng serve",
-    "start": "node server.js",
+    "start": "npx --yes http-server ./public/usidiamond.github.io/browser -p 8080 -c-1 --silent",
     "buildDev": "ng build --watch --configuration development",
     "build": "ng build --configuration production",
     "deploy": "gh-pages -d build",
@@ -19,7 +19,7 @@
     "e2e:safari": "start-server-and-test start http://localhost:8080 e2e:run:safari",
     "e2e:edge": "start-server-and-test start http://localhost:8080 e2e:run:edge",
     "dockerBuild": "docker build -f Dockerfile -t usidiamond.github.io .",
-    "dockerRun": "docker run  --env=PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin --workdir=/ -p 8080:8080 --runtime=runc -d usidiamond.github.io:latest",
+    "dockerRun": "docker run --env=PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin --workdir=/ -p 8080:8080 --read-only --tmpfs /tmp --security-opt no-new-privileges:true --cap-drop ALL --memory 128m --cpus 0.5 --runtime=runc -d usidiamond.github.io:latest",
     "e2e:docker": "docker compose up -d --wait && npm run e2e:run; CODE=$?; docker compose down; exit $CODE"
   },
   "private": true,
@@ -34,7 +34,6 @@
     "@ngx-translate/core": "^17.0.0",
     "@ngx-translate/http-loader": "^17.0.0",
     "bootstrap": "^5.3.8",
-    "express": "^5.2.1",
     "rxjs": "^7.8.2",
     "three": "^0.183.2",
     "vanta": "^0.5.24",
