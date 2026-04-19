@@ -14,8 +14,10 @@ const navLabelToRoute = {
 
 When("I click the {string} nav link", function (label) {
   const route = navLabelToRoute[label] || label.toLowerCase();
-  browser.waitForElementVisible(`button[routerlink="${route}"]`);
-  browser.click(`button[routerlink="${route}"]`);
+  const selector = `button[routerlink="${route}"]`;
+  browser.execute(function () { window.scrollTo(0, 0); });
+  browser.waitForElementVisible(selector);
+  browser.click(selector);
 });
 
 Then("the page header is visible", function () {
