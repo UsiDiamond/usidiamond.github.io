@@ -23,4 +23,3 @@ nightwatch.conf.js
 # Docker files (not needed inside the build container)
 Dockerfile
 docker-compose.yml
-nginx.conf
