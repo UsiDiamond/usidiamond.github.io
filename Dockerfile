@@ -6,12 +6,17 @@ COPY ./ ./
 RUN npm run build
 
 FROM nginx:stable-alpine
-# Patch any OS-level CVEs in the base image
-RUN apk upgrade --no-cache
-# Remove the default server config included by the upstream image
-RUN rm -f /etc/nginx/conf.d/default.conf
+# Patch OS-level CVEs in the base image before doing anything else
+RUN apk upgrade --no-cache \
+ && rm -f /etc/nginx/conf.d/default.conf
 COPY nginx.conf /etc/nginx/nginx.conf
-COPY --from=build /opt/usidiamond.github.io/public/usidiamond.github.io/browser /usr/share/nginx/html/browser
-RUN chown -R nginx:nginx /usr/share/nginx/html/browser
+# --chown avoids a separate RUN layer for ownership change
+COPY --from=build --chown=nginx:nginx \
+    /opt/usidiamond.github.io/public/usidiamond.github.io/browser \
+    /usr/share/nginx/html/browser
 USER nginx
 EXPOSE 8080
+# Container-level health check (also present in docker-compose for orchestrators
+# that don't read compose files, e.g. plain docker run / Kubernetes)
+HEALTHCHECK --interval=10s --timeout=5s --retries=3 --start-period=15s \
+    CMD curl -fs http://localhost:8080/ > /dev/null
