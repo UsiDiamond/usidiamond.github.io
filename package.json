@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start-dev": "ng serve",
-    "start": "node server.js",
+    "start": "npx --yes http-server ./public/usidiamond.github.io/browser -p 8080 -c-1 --silent",
     "buildDev": "ng build --watch --configuration development",
     "build": "ng build --configuration production",
     "deploy": "gh-pages -d build",
@@ -34,7 +34,6 @@
     "@ngx-translate/core": "^17.0.0",
     "@ngx-translate/http-loader": "^17.0.0",
     "bootstrap": "^5.3.8",
-    "express": "^5.2.1",
     "rxjs": "^7.8.2",
     "three": "^0.183.2",
     "vanta": "^0.5.24",
