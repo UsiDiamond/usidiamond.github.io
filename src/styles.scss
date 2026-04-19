@@ -146,6 +146,8 @@ a:focus-visible {
 main {
   top: 0;
   position: absolute;
+  display: flex;
+  flex-direction: column;
   width: 100%;
   max-width: 100%;
   min-height: 100%;
@@ -161,6 +163,9 @@ header,
 footer {
   position: relative;
   z-index: 1;
+}
+.container-xl {
+  flex: 1;
 }
 [menu] {
   position: relative;
