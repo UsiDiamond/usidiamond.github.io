@@ -11,7 +11,7 @@ RUN apk upgrade --no-cache
 # Remove the default server config included by the upstream image
 RUN rm -f /etc/nginx/conf.d/default.conf
 COPY nginx.conf /etc/nginx/nginx.conf
-COPY --from=build /opt/usidiamond.github.io/public/usidiamond.github.io/browser/. /usr/share/nginx/html
-RUN chown -R nginx:nginx /usr/share/nginx/html
+COPY --from=build /opt/usidiamond.github.io/public/usidiamond.github.io/browser /usr/share/nginx/html/browser
+RUN chown -R nginx:nginx /usr/share/nginx/html/browser
 USER nginx
 EXPOSE 8080
