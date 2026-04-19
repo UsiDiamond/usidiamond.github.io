@@ -19,7 +19,7 @@ jobs:
         uses: actions/checkout@v5
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v5
         with:
           node-version: "24.x"
           cache: "npm"
@@ -31,7 +31,7 @@ jobs:
         run: npm run build
 
       - name: Upload site build
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: site-build
           path: public/usidiamond.github.io/browser
@@ -47,7 +47,7 @@ jobs:
         uses: actions/checkout@v5
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v5
         with:
           node-version: "24.x"
           cache: "npm"
@@ -56,7 +56,7 @@ jobs:
         run: npm install
 
       - name: Download site build
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           name: site-build
           path: public/usidiamond.github.io/browser
@@ -66,7 +66,7 @@ jobs:
 
       - name: Upload test report
         id: upload-report
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         if: always()
         with:
           name: integration-test-report
