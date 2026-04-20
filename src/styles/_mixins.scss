@@ -72,6 +72,7 @@
 @mixin page-host {
   background-color: rgba(255, 255, 255, 0.096);
   border-radius: t.$page-radius;
+  padding-top: 1.5rem;
   padding-bottom: 1.5rem;
 }
 
