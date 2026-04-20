@@ -1,20 +1,8 @@
 @use "tokens" as t;
 @use "mixins" as m;
+
 :host {
-  background-color: rgba(255, 255, 255, 0.096);
-  border-radius: 25px;
-}
-
-h2 {
-  @include m.centered-heading;
-}
-p,
-a {
-  @include m.italic-body;
-}
-
-.contact-section {
-  padding: t.$card-padding;
+  @include m.page-host;
 }
 
 .contact-email {

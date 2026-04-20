@@ -1,16 +1,8 @@
 @use "tokens" as t;
 @use "mixins" as m;
-:host {
-  background-color: rgba(255, 255, 255, 0.096);
-  border-radius: 25px;
-}
 
-h2 {
-  @include m.centered-heading;
-}
-p,
-li {
-  @include m.italic-body;
+:host {
+  @include m.page-host;
 }
 
 .education-degree {
@@ -42,8 +34,4 @@ li {
   @media (max-width: 576px) {
     white-space: normal;
   }
-}
-
-.education-section {
-  padding: t.$card-padding;
 }

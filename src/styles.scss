@@ -94,19 +94,6 @@ h2 {
   box-shadow: 0 0 0 5px rgba(0, 0, 0, 0.75);
 }
 
-a:focus-visible,
-button:focus-visible,
-[role="button"]:focus-visible,
-input:focus-visible,
-select:focus-visible,
-textarea:focus-visible,
-.nav-link:focus-visible,
-[tabindex]:focus-visible {
-  outline: 3px solid #ffffff;
-  outline-offset: 2px;
-  box-shadow: 0 0 0 5px rgba(0, 0, 0, 0.75);
-}
-
 // WCAG 1.4.1 Links must be distinguishable beyond colour: underline by default.
 a {
   text-decoration-line: underline;
@@ -195,6 +182,7 @@ h2 {
   color: t.$gray;
   border-radius: t.$card-radius;
   border: 1px solid rgba(255, 255, 255, 0.18);
+  padding: t.$card-padding;
   overflow-wrap: anywhere;
   min-width: 0;
 
