@@ -69,6 +69,12 @@
   }
 }
 
+@mixin page-host {
+  background-color: rgba(255, 255, 255, 0.096);
+  border-radius: t.$page-radius;
+  padding-bottom: 1.5rem;
+}
+
 @mixin diamond-pill {
   padding: 0.2rem 0.7rem;
   border-radius: 999px;

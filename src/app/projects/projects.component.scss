@@ -1,24 +1,8 @@
 @use "tokens" as t;
 @use "mixins" as m;
-:host {
-  background-color: rgba(255, 255, 255, 0.096);
-  border-radius: 25px;
-  padding-bottom: 1.5rem;
-}
 
 :host {
-  background-color: rgba(255, 255, 255, 0.096);
-  border-radius: 25px;
-  padding-bottom: 1.5rem;
-}
-
-h2 {
-  @include m.centered-heading;
-}
-
-p,
-li {
-  @include m.italic-body;
+  @include m.page-host;
 }
 
 .project-date {
@@ -27,8 +11,4 @@ li {
 
 .project-org {
   @include m.label(t.$gray-mid);
-}
-
-.project-section {
-  padding: t.$card-padding;
 }
