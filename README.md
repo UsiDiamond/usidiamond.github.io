@@ -73,3 +73,42 @@ It has been a **professional full-stack developer for over 13 years**. It is res
 - Secure DevOps Environment Development
 - Cloud Migration
 - Enterprise Architecture
+
+---
+
+## 🛠️ What's this site built with?
+
+This is an [Angular](https://angular.dev/) (v21) + TypeScript single-page app, styled with Bootstrap and a [Three.js](https://threejs.org/)/[Vanta.js](https://www.vantajs.com/) animated background. A few things worth knowing if you're poking around the code:
+
+- **🌍 Internationalization** — [`@ngx-translate`](https://github.com/ngx-translate/core) drives translations across **11 languages** (English, Spanish, French, German, Russian, Korean, Vietnamese, Tagalog, Simplified Chinese, Arabic, and Yiddish), including full **right-to-left (RTL) layout** support for Arabic and Yiddish.
+- **♿ Accessibility** — the main nav is a proper WAI-ARIA `menubar`, with roving-tabindex keyboard navigation (arrow keys, <kbd>Home</kbd>/<kbd>End</kbd>), a skip-to-main-content link, and focus management on route changes.
+- **🔒 Hardened deployment** — production runs as a multi-stage Docker build: the Angular app served by an `nginx:stable-alpine` image locked down per OWASP guidance (CSP, `X-Frame-Options`, `X-Content-Type-Options`, hidden server tokens, non-root user, request-rate limiting).
+- **✅ Tests** — unit tests via Karma/Jasmine with code coverage, plus a Nightwatch + Cucumber (Gherkin) end-to-end suite covering navigation, i18n, RTL layout, and responsive behavior across Chrome/Firefox/Safari/Edge.
+- **🚦 CI/CD** — every push runs the Integration Tests and Code Coverage workflows above; merges to `main` auto-deploy to GitHub Pages via the Deploy workflow.
+
+### Running it locally
+
+```bash
+npm install
+npm run start-dev   # ng serve with live reload, http://localhost:4200
+```
+
+### Building & testing
+
+```bash
+npm run build       # production build -> public/usidiamond.github.io/browser
+npm test            # unit tests (Karma/Jasmine)
+npm run coverage    # unit tests with code coverage
+npm run e2e         # builds, serves, and runs the Nightwatch/Cucumber e2e suite in Chrome
+```
+
+(`e2e:firefox`, `e2e:safari`, and `e2e:edge` run the same suite in other browsers; `e2e:docker` runs it against the containerized build via `docker compose`.)
+
+### Running the container
+
+```bash
+npm run dockerBuild
+npm run dockerRun
+# or, equivalently:
+docker compose up
+```
