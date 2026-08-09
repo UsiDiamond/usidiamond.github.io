@@ -76,7 +76,7 @@
     "nightwatch": "^3.14.0",
     "nightwatch-html-reporter": "^2.0.6",
     "prettier": "^3.8.3",
-    "start-server-and-test": "^2.0.0",
+    "start-server-and-test": "^3.0.2",
     "ts-node": "^10.9.2",
     "tslib": "^2.8.1",
     "typescript": "^5.9.3"
