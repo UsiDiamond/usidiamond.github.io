@@ -42,7 +42,7 @@
   "devDependencies": {
     "@angular-devkit/build-angular": "^21.2.24",
     "@angular/cli": "^22.1.8",
-    "@angular/localize": "^21.2.24",
+    "@angular/localize": "^22.1.7",
     "@cucumber/cucumber": "^13.2.1",
     "@types/jasmine": "^5.1.13",
     "@types/mocha": "^10.0.10",
