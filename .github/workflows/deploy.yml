@@ -41,7 +41,11 @@ jobs:
           name: site-build
           run-id: ${{ github.event.workflow_run.id }}
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          path: site
+          path: ${{ runner.temp }}/site-build
+
+      - name: Stage downloaded site artifact
+        if: github.event_name != 'workflow_dispatch'
+        run: mkdir -p site && cp -r "${{ runner.temp }}/site-build/." site/
 
       # --- workflow_dispatch path: build fresh ---
       - name: Checkout
