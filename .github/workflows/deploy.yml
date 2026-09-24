@@ -83,7 +83,7 @@ jobs:
           name: site-for-deploy
           path: ${{ runner.temp }}/site-for-deploy
 
-      - uses: actions/configure-pages@v5
+      - uses: actions/configure-pages@v6
 
       - uses: actions/upload-pages-artifact@v3
         with:
