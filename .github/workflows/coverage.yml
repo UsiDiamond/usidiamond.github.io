@@ -39,7 +39,7 @@ jobs:
 
       - name: Post unit test summary as PR comment
         if: always() && github.event_name == 'pull_request' && hashFiles('coverage/usidiamond/pr-comment.md') != ''
-        uses: marocchino/sticky-pull-request-comment@v2
+        uses: marocchino/sticky-pull-request-comment@v3
         with:
           header: unit-tests
           path: coverage/usidiamond/pr-comment.md
