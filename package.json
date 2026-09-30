@@ -49,7 +49,7 @@
     "@types/nightwatch": "^3.0.1",
     "@types/node": "^25.6.0",
     "@types/three": "^0.186.0",
-    "geckodriver": "^6.1.0",
+    "geckodriver": "^7.0.0",
     "gh-pages": "^6.3.0",
     "handlebars": "^4.7.9",
     "jasmine-core": "^5.13.0",
